@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Teanga Admin</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="unicorn/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="unicorn/css/font-awesome.css" />
+        <link rel="stylesheet" href="unicorn/css/jquery-ui.css" />
+		<link rel="stylesheet" href="unicorn/css/icheck/flat/blue.css" />
+		<link rel="stylesheet" href="unicorn/css/select2.css" />		
+		<link rel="stylesheet" href="unicorn/css/unicorn.css" />
+		<link rel="stylesheet" href="css/customNavBar.css" />
+		<!--<link href="css/Flags2.css" rel="stylesheet" type="text/css" />-->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+		<![endif]-->
+	<style type="text/css">		
+	#footer {
+		padding: 40px;
+	}	
+
+			.dropdown-menu>li>a {
+   				 white-space: inherit;
+			}
+			
+	.flag {
+   	   position: relative;
+   	   top: -7px;
+	}
+
+	.caret {
+ 	   display: inline; 
+	}		
+			
+	.flags {
+	 text-align: left;
+	}
+
+
+	</style>
+			
+	</head>	
+	<body data-color="grey" class="flat">
+		<div id="wrapper">
+			<div id="header">
+				<h1><a href="#">Teanga Admin</a></h1>	
+				<a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>	
+			</div>
+		
+			<div id="user-nav">
+	            <ul class="btn-group">
+				
+					{% if user.UserType == 'USER_ADMIN'%}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"><b id="languageCaret" class="caret"></b></a>
+								<ul id='languageList' class="download-btn dropdown-menu" role="menu" style="min-width: 70px">
+								</ul>
+						</li>
+					{% else %}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"></a>							
+						</li
+					{% endif %}
+				
+	                <li class="btn" ><a title="" href="#"><i class="fa fa-user"></i> <span class="text">Profile</span></a></li>
+	                <li class="btn"><a title="" href="#"><i class="fa fa-cog"></i> <span class="text">Settings</span></a></li>
+	                <li class="btn"><a title="" href="signout"><i class="fa fa-share"></i> <span class="text">Logout</span></a></li>
+	            </ul>
+	        </div>
+
+			<div id="sidebar">
+				<ul>
+					<li class="active"><a href="languages"><i class="fa fa-bullhorn"></i> <span>Languages</span></a></li>
+					<li><a href="images"><i class="fa fa-th"></i> <span>Images</span></a></li>
+					<li><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					<li><a href="users"><i class="fa fa-user"></i> <span>Users</span></a></li>
+					<li><a href="/voices"><i class="fa fa-volume-up"></i> <span>Voices</span></a></li>
+				</ul>
+			
+			</div>
+			
+			<div id="content">
+				<div id="content-header" class="mini">
+					<h1>Languages</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="#" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Languages</a>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12" style="padding-bottom: 20px" id="tableView">
+							
+							<div class="pull-right">
+								<button class="btn btn-info" type="button" id="addButton">Add</button>
+							</div>
+						
+							<div class="widget-box">
+								<div class="widget-content nopadding">
+									<table class="table table-bordered table-striped table-hover with-check">
+										<thead>
+											<tr>
+												<th><i class="fa fa-resize-vertical"></i></th>
+												<th>Language ISO</th>
+												<th>Language Name</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody id="pageBody">
+											
+										</tbody>
+									</table>							
+								</div>
+							</div>
+						</div>
+						<div id="formView" class="col-xs-10" style="padding-bottom: 20px; display: none">
+							<form action="#" method="get" class="form-horizontal" id="submitForm">
+							<div class="ibox-content text-center">
+                           <div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">Flags</label>
+									<div class="col-sm-9 col-md-9 col-lg-10" class="form-control">
+                           		 <div class="flags">
+                                <img class="myflag" src="img/flags/32/Abkhazia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Afghanistan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Aland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Albania.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Algeria.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/American-Samoa.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Andorra.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Angola.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Anguilla.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Antarctica.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Antigua-and-Barbuda.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Argentina.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Armenia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Aruba.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Australia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Austria.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Azerbaijan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Bahamas.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Bahrain.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Bangladesh.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Barbados.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Basque-Country.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Belarus.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Belgium.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Belize.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Benin.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Bermuda.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Bhutan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Bolivia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Bosnia-and-Herzegovina.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Botswana.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Brazil.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/British-Antarctic-Territory.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/British-Virgin-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Brunei.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Bulgaria.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Burkina-Faso.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Burundi.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cambodia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cameroon.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Canada.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Canary-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cape-Verde.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cayman-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Central-African-Republic.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Chad.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Chile.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/China.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Christmas-Island.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cocos-Keeling-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Colombia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Commonwealth.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Comoros.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cook-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Costa-Rica.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cote-dIvoire.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Croatia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cuba.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Curacao.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Cyprus.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Czech-Republic.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Democratic-Republic-of-the-Congo.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Denmark.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Djibouti.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Dominica.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Dominican-Republic.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/East-Timor.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Ecuador.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Egypt.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/El-Salvador.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/England.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Equatorial-Guinea.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Eritrea.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Estonia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Ethiopia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/European-Union.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Falkland-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Faroes.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Fiji.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Finland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/France.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/French-Polynesia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/French-Southern-Territories.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Gabon.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Gambia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Georgia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Germany.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Ghana.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Gibraltar.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/GoSquared.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Greece.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Greenland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Grenada.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Guam.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Guatemala.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Guernsey.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Guinea-Bissau.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Guinea.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Guyana.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Haiti.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Honduras.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Hong-Kong.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Hungary.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Iceland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/India.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Indonesia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Iran.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Iraq.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Ireland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Isle-of-Man.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Israel.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Italy.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Jamaica.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Japan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Jersey.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Jordan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Kazakhstan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Kenya.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Kiribati.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Kosovo.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Kuwait.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Kyrgyzstan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Laos.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Latvia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Lebanon.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Lesotho.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Liberia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Libya.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Liechtenstein.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Lithuania.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Luxembourg.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Macau.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Macedonia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Madagascar.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Malawi.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Malaysia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Maldives.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Mali.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Malta.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Mars.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Marshall-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Martinique.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Mauritania.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Mauritius.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Mayotte.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Mexico.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Micronesia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Moldova.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Monaco.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Mongolia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Montenegro.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Montserrat.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Morocco.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Mozambique.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Myanmar.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/NATO.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Nagorno-Karabakh.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Namibia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Nauru.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Nepal.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Netherlands-Antilles.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Netherlands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/New-Caledonia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/New-Zealand.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Nicaragua.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Niger.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Nigeria.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Niue.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Norfolk-Island.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/North-Korea.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Northern-Cyprus.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Northern-Mariana-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Norway.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Olympics.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Oman.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Pakistan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Palau.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Palestine.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Panama.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Papua-New-Guinea.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Paraguay.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Peru.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Philippines.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Pitcairn-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Poland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Portugal.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Puerto-Rico.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Qatar.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Red-Cross.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Republic-of-the-Congo.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Romania.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Russia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Rwanda.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Saint-Barthelemy.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Saint-Helena.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Saint-Kitts-and-Nevis.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Saint-Lucia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Saint-Martin.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Saint-Vincent-and-the-Grenadines.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Samoa.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/San-Marino.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Sao-Tome-and-Principe.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Saudi-Arabia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Scotland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Senegal.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Serbia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Seychelles.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Sierra-Leone.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Singapore.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Slovakia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Slovenia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Solomon-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Somalia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Somaliland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/South-Africa.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/South-Georgia-and-the-South-Sandwich-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/South-Korea.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/South-Ossetia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/South-Sudan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Spain.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Sri-Lanka.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Sudan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Suriname.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Swaziland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Sweden.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Switzerland.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Syria.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Taiwan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Tajikistan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Tanzania.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Thailand.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Togo.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Tokelau.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Tonga.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Trinidad-and-Tobago.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Tunisia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Turkey.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Turkmenistan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Turks-and-Caicos-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Tuvalu.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/US-Virgin-Islands.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Uganda.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Ukraine.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/United-Arab-Emirates.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/United-Kingdom.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/United-Nations.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/United-States.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Unknown.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Uruguay.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Uzbekistan.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Vanuatu.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Vatican-City.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Venezuela.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Vietnam.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Wales.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Wallis-And-Futuna.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Western-Sahara.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Yemen.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Zambia.png" alt="flag">
+                                <img class="myflag" src="img/flags/32/Zimbabwe.png" alt="flag">
+                            		</div>
+                            		</div>
+                        		</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">ISO Code</label>
+									<div class="col-sm-9 col-md-9 col-lg-10" class="form-control">
+										<input id="LanguageISOCode" type="text" class="form-control input-sm">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">English Name</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<input id="LanguageNameEnglish" type="text" class="form-control input-sm">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">Native Name</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<input id="LanguageNameNative" type="text" class="form-control input-sm">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">Parts Ordering</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<input id="LanguagePartsOrdering" type="text" class="form-control input-sm">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label"></label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<div id="errorBox" style='color:red' type='text' ></div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label"></label>
+									<div class="col-sm-1 col-md-1 col-lg-1">
+										<button onclick="saveAll()" type="button" class="btn btn-info btn-sm">Save</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+					<div id="footer" class="col-xs-12">
+						2014 - 2015 &copy;TEANGA
+					</div>
+			</div>
+		</div>
+
+<script src="unicorn/js/jquery.min.js"></script>
+<script src="unicorn/js/jquery-ui.custom.js"></script>
+<script src="unicorn/js/bootstrap.min.js"></script>
+<script src="unicorn/js/jquery.icheck.min.js"></script>
+<script src="unicorn/js/select2.min.js"></script>
+<script src="unicorn/js/jquery.dataTables.min.js"></script>		
+<script src="unicorn/js/jquery.nicescroll.min.js"></script>
+<script src="unicorn/js/unicorn.js"></script>
+<script src="unicorn/js/bootbox.min.js"></script>
+<script src="unicorn/js/unicorn.tables.js"></script>
+<script>
+var currentISO
+var langData = {}
+var chosenFlag = 'none';
+var editExistingMode;	
+var LanguageNameEnglishOld = ""
+
+	{% if user.UserType == 'USER_ADMIN'%}
+		
+		var i= 0
+		
+		{% for lang in languages %}
+		
+		
+		langData['{{lang.LanguageID}}'] = {'LanguageISOCode' : '{{lang.LanguageISOCode}}', 'LanguageNameEnglish' : '{{lang.LanguageNameEnglish}}', 'LanguageNameNative' :'{{lang.LanguageNameNative}}', 'LanguageFlagURL' :'{{lang.LanguageFlagURL}}', 'PartsOrdering' :'{{lang.PartsOrdering}}', 'LanguageSupported' : {% if lang.LanguageSupported %} true {% else%} false {% endif %}}
+
+			console.log('ADDING LANGUAGE ' + '{{lang.LanguageISOCode}}')
+
+			$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+		
+			$( "#flag-{{lang.LanguageID}}" ).click(function() {
+ 	 			changeLanguage('{{lang.LanguageID}}', '{{lang.LanguageFlagURL}}')
+			});
+	
+		{% endfor %}
+	{% else %}
+		{% for lang in languages %}
+			{% if user.UserLearningLanguageID == '{{lang.LanguageID}}' %}
+	 			console.log('FOUND USER')
+	 		$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+	 		{% endif %}
+		{% endfor %}
+	{% endif %}
+	
+function changeLanguage(newLanguage, newLanguageURL){
+
+	console.log('TRYING TO CHANGE LANGUAGE ' + newLanguage)
+
+	$('#menuFlag').attr('src', newLanguageURL)
+				
+	var UserID = '{{user.UserID}}'
+	console.log('UserID ' + UserID)
+
+	var fd = new FormData()
+	fd.append('newLanguage', newLanguage)
+	fd.append('UserID', UserID)
+								
+		$.ajax({
+			type: 'POST',
+			url: '/changeLanguage',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+			}).done(function(data) {
+			   location.reload()
+			});					
+}
+
+function changeLanguageStatus(lang){
+	console.log(lang)
+}
+
+window.onload = function() {
+	editExistingMode = false;	
+	console.log(langData)
+	console.log('LANGDATA ' + Object.keys(langData).length)
+
+
+	$(function() { //this anonymous function will run when the page is ready
+	    $('.myflag').hover(function() {
+
+      var imgSrc = $(this).attr("src"); 
+     // console.log(imgSrc)
+      
+     	var next = imgSrc.replace('img/flags/32/','');
+    	var next2 = next.replace('.png','');
+      
+	      $(this).tooltip({
+	        title: next2
+ 	   });
+      
+
+	    },function() {
+	      //mouse leave
+	    });
+	});
+
+	$(function() { //this anonymous function will run when the page is ready
+  	  $('.myflag').click(function() {  
+     	  chosenFlag = $(this).attr("src"); 
+     ///	  console.log('chosen flag! - ' + chosenFlag)
+     	  
+     	var next = chosenFlag.replace('img/flags/32/','');
+    	var next2 = next.replace('.png','');
+     	  
+     	  $('#LanguageNameEnglish').val(next2)
+     	  
+     	  console.log('NEW CHOSEN FLAG ' + chosenFlag);
+     	  
+ 	   });
+	});
+
+	$('#addButton').click(function(){
+		editExistingMode = false;	
+	
+		$('#tableView').hide()
+		$('#formView').fadeIn(500)		
+	})
+				
+		var userAdminLanguage = "{{user.UserAdminLanguageID}}";
+		var UserType = "{{user.UserType}}";
+		var UserID = "{{user.UserID}}";
+		
+
+		
+			{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){	
+					console.log('SETTING PAGE LANGIUAGE')		
+					$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+				}
+			{% endfor %}
+		
+		
+		var dataKeys = Object.keys(langData)
+		
+		console.log('dataKeys')
+		console.log(dataKeys)
+		
+		var string = ''
+				
+		for (var i = 0; i < dataKeys.length; i++)//each language in array
+		{	
+			(function (i) {
+				string += '<tr>'				
+				
+				console.log('searching data keys ' + i)
+				console.log('searching data keys ' + dataKeys[i])
+								
+				if (langData[dataKeys[i]].LanguageSupported == true){
+					string += '<td><div id="checkbox'+i+'"  class="icheckbox_flat-blue checked" style="position: relative;"><input type="checkbox" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></td>'	
+				}else{
+					string += '<td><div id="checkbox'+i+'" class="icheckbox_flat-blue unchecked" style="position: relative;"><input type="checkbox" checked="" style="position: absolute; opacity: 0;"><ins   class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></td>'		
+				}			
+					string += '<td>'+langData[dataKeys[i]].LanguageISOCode+'</td>'
+					string += '<td>'+langData[dataKeys[i]].LanguageNameEnglish+'</td>'			
+					string +=  '<td>'
+					string +=  '<a title="" href="#" onclick="editLang('+i+')" class="tip-top" data-original-title="Edit"><i class="fa fa-pencil"></i></a>'
+					string +=  '<a title="" href="#" class="tip-top" data-original-title="Remove"><i class="fa fa-trash-o"></i></a>'
+					string +=  '</td>'	
+					string +=  '</tr>'
+			}) (i);	
+		}
+			
+			$('#pageBody').append(string)
+
+		for (var i = 0; i < dataKeys.length; i++)//e
+			{
+
+			(function (i) {			
+						$( '#checkbox'+i+'' ).click(function() {				
+							var ISO = langData[dataKeys[i]].LanguageISOCode
+							toggleLiveState(ISO, '#checkbox'+i+'')
+							console.log($('#checkbox'+i+'').prop('checked'))																				
+						});				
+				}) (i);	
+			}			
+}
+
+
+function editLang(i){
+
+var dataKeys = Object.keys(langData)
+
+console.log('EDITING LANG ' + i);
+console.log('EDITING LANG ' + langData[dataKeys[i]].LanguageNameEnglish);
+console.log('EDITING LANG ' + langData[dataKeys[i]].LanguagePartsOrdering);
+console.log('EDITING LANG chosen flag ' + langData[dataKeys[i]].LanguageFlagURL);
+
+console.log(langData[dataKeys[i]])
+
+		$('#tableView').hide()
+		$('#formView').fadeIn(500)
+		
+		LanguageNameEnglishOld = langData[dataKeys[i]].LanguageNameEnglish
+		
+		
+		$('#LanguagePartsOrdering').val(langData[dataKeys[i]].LanguagePartsOrdering)
+		$('#LanguageISOCode').val(langData[dataKeys[i]].LanguageISOCode)
+		$('#LanguageNameEnglish').val(langData[dataKeys[i]].LanguageNameEnglish)
+		$('#LanguagePartsOrdering').val(langData[dataKeys[i]].PartsOrdering)
+		$('#LanguageNameNative').val(langData[dataKeys[i]].LanguageNameNative)
+		
+		chosenFlag = langData[dataKeys[i]].LanguageFlagURL;
+		
+		editExistingMode = true;	
+
+}
+		
+function toggleLiveState(ISO, add) {
+
+	console.log(ISO)
+	console.log(add)
+	console.log($(''+add+'').hasClass('checked'))
+
+	var fd = new FormData()
+	fd.append('langISO', ISO)
+					
+		$.ajax({
+			type: 'POST',
+			url: '/changeLanguageStatus',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+		}).done(function(data) {
+			  console.log('post complete')
+						  
+			 if ($(''+add+'').hasClass('checked') == true){
+				$(''+add+'').removeClass('checked');
+				$(''+add+'').addClass('unchecked');
+			}else if ($(''+add+'').hasClass('unchecked') == true){
+				$(''+add+'').removeClass('unchecked');
+				$(''+add+'').addClass('checked');
+			}												  
+		});														
+}
+
+
+function saveAll(){
+
+	console.log('attempting to save all')
+	
+	var LanguageISOCode = $('#LanguageISOCode').val().toLowerCase();
+	var LanguageNameNative = $('#LanguageNameNative').val()
+	var LanguageNameEnglish = $('#LanguageNameEnglish').val()
+	var PartsOrdering = $('#LanguagePartsOrdering').val()
+	
+	
+	console.log('LanguageNameEnglishOld ' + LanguageNameEnglishOld)
+	console.log('chosenFlag ' + chosenFlag)
+	
+	if (LanguageISOCode == '' || LanguageNameNative == '' || LanguageNameEnglish == '' || PartsOrdering =='' || chosenFlag == 'none'){
+		console.log('Fields left blank')
+		$( '#errorBox' ).html('Fields Left Blank')
+		
+		return;
+	}
+	
+	if (!(PartsOrdering.indexOf(',') >= 0)){
+		console.log('Wrong parts ordering')
+		$( '#errorBox' ).html('Parts ordering not correct format')
+		
+		return;
+	}
+	
+	
+	PartsOrdering = PartsOrdering.replace(/\s/g, '');
+	
+	var fd = new FormData()
+	fd.append('LanguageISOCode', LanguageISOCode)
+	fd.append('LanguageNameEnglishOld', LanguageNameEnglishOld)
+	fd.append('LanguageNameNative', LanguageNameNative)
+	fd.append('LanguageNameEnglish', LanguageNameEnglish)
+	fd.append('LanguageFlagURL', chosenFlag)
+	fd.append('PartsOrdering', PartsOrdering)
+	fd.append('editExistingMode', editExistingMode)
+	
+	console.log(fd)
+					
+		$.ajax({
+			type: 'POST',
+			url: '/addLanguage',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+		}).done(function(data) {
+			console.log('post complete')
+			 window.location = '/languages'							  
+		});	
+}
+						
+</script>		
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67934815-1', 'auto');
+  ga('send', 'pageview');
+
+</script>		
+</body>
+</html>

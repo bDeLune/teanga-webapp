@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Teanga Admin</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="unicorn/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="unicorn/css/font-awesome.css" />
+        <link rel="stylesheet" href="unicorn/css/jquery-ui.css" />
+		<link rel="stylesheet" href="unicorn/css/icheck/flat/blue.css" />
+		<link rel="stylesheet" href="unicorn/css/select2.css" />		
+		<link rel="stylesheet" href="unicorn/css/unicorn.css" />
+		<link rel="stylesheet" href="css/customNavBar.css" />
+		<link href="css/Flags2.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+            p {
+              font-size: 1.2em;
+            }
+            p.demo{
+                text-align: center;
+            }
+            p.demo.demo4{
+                text-align: left;
+            }
+            pre{
+                margin: 10px 0;
+            }
+            .bs-docs-example {
+                position: relative;
+                margin: 15px 0;
+                padding: 39px 19px 14px;
+                background-color: white;
+                border: 1px solid #DDD;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            .bs-docs-example::after {
+                content: "Example";
+                position: absolute;
+                top: -1px;
+                left: -1px;
+                padding: 3px 7px;
+                font-size: 12px;
+                font-weight: bold;
+                background-color: whiteSmoke;
+                border: 1px solid #DDD;
+                color: #9DA0A4;
+                -webkit-border-radius: 4px 0 4px 0;
+                -moz-border-radius: 4px 0 4px 0;
+                border-radius: 4px 0 4px 0;
+            }
+            .addthis-buttons{
+                width: 80px;
+            }
+            .pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus{
+                cursor: pointer !important;
+            }
+			
+			#imageComment{
+			    position: absolute;
+				font-size: 13px;
+				width: 130px;
+				align-content: center;
+				margin: auto;
+				left: -30px;
+				background: #222222;
+				right: 69px;
+				border-radius: 5px;
+				z-index: -1;
+				top: 22px;				
+			}
+			
+			.dropdown-menu>li>a {
+   				 white-space: inherit;
+			}
+			
+			.flag {
+    position: relative;
+    top: -7px;
+}
+
+			.caret {
+ 				   display: inline; 
+			}
+			
+			
+			.gallery-masonry .item .actions-inner {top: 32%}
+        </style>
+
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+		<![endif]-->
+			
+	</head>	
+	<body data-color="grey" class="flat">
+		<div id="wrapper">
+			<div id="header">
+				<h1><a href="#">Teanga Admin</a></h1>	
+				<a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>	
+			</div>
+		
+			<div id="user-nav">
+	            <ul class="btn-group">
+				
+				{% if user.UserType == 'USER_ADMIN'%}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"><b id="languageCaret" class="caret"></b></a>
+								<ul id="languageList" class="download-btn dropdown-menu" role="menu" style="min-width: 70px">
+									<!--<li  onclick="changeLanguage('fre')"  class="lang_select" data-iso="fre" style="width: 100%">
+										<a href="#!" style="width: 100%">fre <img class="flag flag-fre pull-right"></a>
+								    </li>
+									<li  onclick="changeLanguage('eng')" class="lang_select" data-iso="eng" style="width: 100%">
+										<a href="#!" style="width: 100%">eng <img class="flag flag-eng pull-right"></a>
+									</li>
+								    <li onclick="changeLanguage('gle')" class="lang_select" data-iso="gle" style="width: 100%">
+										<a href="#!" style="width: 100%">gle <img class="flag flag-gle pull-right"></a>
+								    </li>
+									<li onclick="changeLanguage('ger')"  class="lang_select" data-iso="ger" style="width: 100%">
+										<a href="#!" style="width: 100%">ger <img class="flag flag-ger pull-right"></a>
+								    </li>-->
+									
+								</ul>
+						</li>
+					{% else %}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"></a>							
+						</li
+					{% endif %}
+				
+	                <li class="btn" ><a title="" href="#"><i class="fa fa-user"></i> <span class="text">Profile</span></a></li>
+	                <li class="btn"><a title="" href="#"><i class="fa fa-cog"></i> <span class="text">Settings</span></a></li>
+	                <li class="btn"><a title="" href="signout"><i class="fa fa-share"></i> <span class="text">Logout</span></a></li>
+	            </ul>
+	        </div>
+
+			<div id="sidebar">
+				<ul>
+					<li><a href="languages"><i class="fa fa-bullhorn"></i> <span>Languages</span></a></li>
+					<li class="active"><a href="images"><i class="fa fa-th"></i> <span>Images</span></a></li>
+					<li><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					<li><a href="users"><i class="fa fa-user"></i> <span>Users</span></a></li>
+					<li><a href="/voices"><i class="fa fa-volume-up"></i> <span>Voices</span></a></li>
+				</ul>
+			
+			</div>
+			
+			<div id="content">
+				<div id="content-header" class="mini">
+					<h1>Images</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="#" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Images</a>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12" id="galleryView">
+							<div class="pull-right">
+								<input placeholder="Search" style="margin-right: 20px" id="searchBox">
+								<button class="btn btn-info" type="button" id="addButton">Add</button>
+							</div>
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="icon">
+										<i class="fa fa-picture-o"></i>
+									</span>
+									<h5>Gallery</h5>
+								</div>
+								<div class="widget-content" style="min-height: 605px">
+									<div class="gallery-masonry"></div>
+									<div class="col-xs-12">
+										<p class="pagination demo"></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12" id="formView" style="display: none">
+							<form action="#" method="post" class="form-horizontal" id="submitForm" enctype="multipart/form-data">
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">Comment</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<input type="text" class="form-control input-sm" id="comment" name="comment">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">Image File</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<input type="file" id="comment" name="file">
+									</div>
+								</div>
+								<input type="hidden" id="imageID" name="imageID">
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label"></label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<button type="button" class="btn btn-info btn-sm" id="saveButton">Save</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div id="footer" class="col-xs-12">
+					2014 - 2015 &copy;TEANGA</div>
+				</div>
+			</div>
+		</div>
+<script src="unicorn/js/jquery.min.js"></script>
+<script src="unicorn/js/jquery-ui.custom.js"></script>
+<script src="unicorn/js/bootstrap.min.js"></script>	
+<script src="unicorn/js/jquery.nicescroll.min.js"></script>
+<script src="unicorn/js/unicorn.js"></script>
+<script src="unicorn/js/jquery.masonry.min.js"></script>
+<script src="unicorn/js/jquery.bootpag.min.js"></script>
+<script src="unicorn/js/bootbox.min.js"></script>
+<script>	
+var langData = {}
+	{% if user.UserType == 'USER_ADMIN'%}
+		
+		{% for lang in languages %}
+		langData['{{lang.LanguageID}}'] = {'LanguageISOCode' : '{{lang.LanguageISOCode}}', 'LanguageNameEnglish' : '{{lang.LanguageNameEnglish}}', 'LanguageNameNative' :'{{lang.LanguageNameNative}}', 'LanguageSupported' : {% if lang.LanguageSupported %} true {% else%} false {% endif %}}
+
+			console.log('ADDING LANGUAGE ' + '{{lang.LanguageISOCode}}')
+
+			$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+		
+			$( "#flag-{{lang.LanguageID}}" ).click(function() {
+ 	 			changeLanguage('{{lang.LanguageID}}', '{{lang.LanguageFlagURL}}')
+			});
+	
+		{% endfor %}
+	{% else %}
+		{% for lang in languages %}
+			{% if user.UserLearningLanguageID == '{{lang.LanguageID}}' %}
+	 			console.log('FOUND USER')
+	 		$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+	 		{% endif %}
+		{% endfor %}
+	{% endif %}
+
+
+
+	
+	var currentISO	
+	var imageData = null;
+	var validImageData = null;
+	
+	$('#addButton').click(function(){
+		$('#imageID').val("")
+		$('#comment').val("")
+		$('#file').val("")
+		
+		$('#galleryView').hide()
+		$('#formView').show()
+	})
+		
+	$('#saveButton').click(function(){
+		$.get('/getImageUploadURL', function(data){
+			$("#submitForm").attr("action", data['data']);
+			$('#submitForm').submit()
+		})
+	})
+		
+	$('#searchBox').keyup(function(){
+		validImageData = []
+		var term = $('#searchBox').val()
+			term = term.toLowerCase()
+		
+		console.log('term')
+		
+		for(var i=0; i<imageData.length; i++){
+			var item = imageData[i]['glyph_comment'].toLowerCase();
+							
+			if(item.indexOf(term) >= 0){
+				validImageData[validImageData.length] = imageData[i]
+			}
+		}
+			
+			setViewableImages(0)
+		
+			$('.pagination').bootpag({
+				total: (validImageData.length/20)+1,
+				page: 1,
+				maxVisible: 5,
+				leaps: true,
+				firstLastUse: true,
+				first: '<span aria-hidden="true">&larr;</span>',
+				last: '<span aria-hidden="true">&rarr;</span>',
+				wrapClass: 'pagination',
+				activeClass: 'active',
+				disabledClass: 'disabled',
+				nextClass: 'next',
+				prevClass: 'prev',
+				lastClass: 'last',
+				firstClass: 'first'
+			}).on("page", function(event, num){
+				setViewableImages(num-1)
+			});
+		})
+		
+		function getImages(){
+			$.get('/getImages', function(data){
+				imageData = data
+				validImageData = data
+				setViewableImages(0)
+				
+				console.log('data is length: ' + data.length);
+				console.log('validImageData is length: ' + validImageData.length);
+				console.log('Total: ' + (validImageData.length/20)+1);
+				
+				$('.pagination').bootpag({
+					total: (validImageData.length/20)+1,
+					page: 1,
+					maxVisible: 5,
+					leaps: true,
+					firstLastUse: true,
+					first: '<span aria-hidden="true">&larr;</span>',
+					last: '<span aria-hidden="true">&rarr;</span>',
+					wrapClass: 'pagination',
+					activeClass: 'active',
+					disabledClass: 'disabled',
+					nextClass: 'next',
+					prevClass: 'prev',
+					lastClass: 'last',
+					firstClass: 'first'
+				}).on("page", function(event, num){
+					console.log('on page?')
+					setViewableImages(num-1)
+				});
+			})
+		}
+		
+		function setViewableImages(page){
+			var startingIndex = page*20
+			var finalIndex = (page*20)+20
+			
+			html_out=''
+					
+			for(startingIndex; startingIndex<finalIndex; startingIndex++){
+				if (validImageData[startingIndex] != undefined){
+					html_out+='<div class="item"><a href="#" class="thumbnail"><img src="/glyph_serve?id='+validImageData[startingIndex]['glyph_id']+'" alt=""></a><div class="actions"><div class="actions-inner"><a title="" href="#!" class="tip-top edit" data-original-title="Edit" data-image-id="'+validImageData[startingIndex]['glyph_id']+'" data-image-comment="'+validImageData[startingIndex]['glyph_comment']+'"><i class="fa fa-pencil"></i></a><a title="" href="#!" class="tip-top remove" data-original-title="Remove" data-image-id="'+validImageData[startingIndex]['glyph_id']+'"><i class="fa fa-trash-o"></i></a><a class=""><div id="imageComment">'+validImageData[startingIndex]['glyph_comment']+'</div></a></div></div></div>'
+				}
+			}
+			
+			if( $('.item').length > 0 ){
+				$('.gallery-masonry').masonry('remove', $('.item'))
+				console.log('removing ');
+				console.log($('.item'));
+			}
+			
+			$('.gallery-masonry').html(html_out)
+			
+			$('.edit').click(function(e){
+				var imageID = e.target.parentElement.getAttribute('data-image-id')
+				var imageComment = e.target.parentElement.getAttribute('data-image-comment')
+				
+				startEdit(imageID, imageComment)
+			})
+			
+			$('.remove').click(function(e){
+				var imageID = e.target.parentElement.getAttribute('data-image-id')
+				
+				startRemove(imageID)
+			})
+			
+			$('.gallery-masonry').masonry({
+				itemSelector: '.item',
+				isAnimated: true, 
+				isFitWidth: true,
+				resize: true
+			})
+		}
+		
+		function startEdit(imageID, imageComment){
+			$('#imageID').val(imageID)
+			$('#comment').val(imageComment)
+			$('#file').val("")
+		
+			$('#galleryView').hide()
+			$('#formView').show()
+		}
+		
+		function startRemove(imageID){
+			bootbox.dialog({
+				message: "Are you sure you want to remove this image?",
+				backdrop: true,
+				buttons:{
+					cancel:{
+						label: "Cancel",
+						callback: function(){
+						}
+					},
+					ok:{
+						label: "Ok",
+						callback: function() {
+							$.get('/removeItem?type=Image&id='+imageID, function(data){
+								location.reload()
+							})
+						}
+					}
+				}
+				
+			}); 
+		}
+		
+		
+function changeLanguage(newLanguage, newLanguageURL){
+
+	console.log('TRYING TO CHANGE LANGUAGE ' + newLanguage)
+
+	$('#menuFlag').attr('src', newLanguageURL)
+				
+	var UserID = '{{user.UserID}}'
+	console.log('UserID ' + UserID)
+
+	var fd = new FormData()
+	fd.append('newLanguage', newLanguage)
+	fd.append('UserID', UserID)
+								
+		$.ajax({
+			type: 'POST',
+			url: '/changeLanguage',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+			}).done(function(data) {
+			   location.reload()
+			});					
+}
+
+window.onload = function() {
+
+	getImages()
+	
+	var userAdminLanguage = "{{user.UserAdminLanguageID}}";
+			var UserType = "{{user.UserType}}";
+			var UserID = "{{user.UserID}}";
+			
+			{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){		
+					$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					$('#newUserMenuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+				}
+			{% endfor %}
+
+			
+	setTimeout(function(){ 
+		$(window).load(function(){    
+		
+		$('#content').masonry();
+		 $('#content').masonry('layout');
+		
+		});
+	}, 100);		
+	
+}	
+</script>	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67934815-1', 'auto');
+  ga('send', 'pageview');
+
+</script>		
+</body>
+</html>

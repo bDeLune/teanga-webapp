@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Teanga Admin</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="unicorn/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="unicorn/css/font-awesome.css" />
+        <link rel="stylesheet" href="unicorn/css/jquery-ui.css" />
+		<link rel="stylesheet" href="unicorn/css/icheck/flat/blue.css" />
+		<link rel="stylesheet" href="unicorn/css/select2.css" />		
+		<link rel="stylesheet" href="unicorn/css/unicorn.css" />
+		<link rel="stylesheet" href="css/moduleEdit.css" />
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+		<![endif]-->
+			
+	</head>	
+	<body data-color="grey" class="flat">
+		<div id="wrapper">
+			<div id="header">
+				<h1><a href="#">Teanga Admin</a></h1>	
+				<a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>	
+			</div>
+		
+			<div id="user-nav">
+	            <ul class="btn-group">
+	                <li class="btn" ><a title="" href="#"><i class="fa fa-user"></i> <span class="text">Profile</span></a></li>
+	                <li class="btn"><a title="" href="#"><i class="fa fa-cog"></i> <span class="text">Settings</span></a></li>
+	                <li class="btn"><a title="" href="signout"><i class="fa fa-share"></i> <span class="text">Logout</span></a></li>
+	            </ul>
+	        </div>
+
+			<div id="sidebar">
+				<ul>
+					{% if user.UserType == 'USER_ADMIN'%}
+					<li><a href="languages"><i class="fa fa-bullhorn"></i> <span>Languages</span></a></li>
+					<li><a href="images"><i class="fa fa-th"></i> <span>Images</span></a></li>
+					<li><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li class="active"><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					<li><a href="users"><i class="fa fa-user"></i> <span>Users</span></a></li>
+					<li><a href="/voices"><i class="fa fa-volume-up"></i> <span>Voices</span></a></li>
+					{% else %}
+					<li><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li class="active"><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					{% endif %}
+				</ul>
+			
+			</div>
+			
+			<div id="ModuleTable">
+				<div id="content-header" class="mini">
+					<h1>Modules</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="https://www.teanga.me/modules" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Modules</a>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12" style="padding-bottom: 20px" id="tableView">
+						
+							<div class="pull-right">
+								<button href="#myAlert" data-toggle="modal" class="btn btn-info" type="button">Add</button>
+							</div>
+						
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="icon">
+										<i class="fa fa-th"></i>
+									</span>
+									<h5></h5>
+								</div>
+								<div class="widget-content nopadding" id="tableContent">
+								</div>
+							</div>
+						</div>
+						
+						<div class="widget-content">
+							<div id="myModal" class="modal fade" aria-hidden="true" style="display: none;">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button data-dismiss="modal" class="close" type="button">×</button>
+											<h3>Modal header</h3>
+											</div>
+											<div class="modal-body">
+											<p>One fine body…</p>
+											</div>
+											</div>
+											</div>
+											</div>
+							<div id="myAlert" class="modal fade" aria-hidden="true" style="display: none;">
+										<div class="modal-dialog">
+											<div class="modal-content">
+											<div class="modal-header">
+												<button data-dismiss="modal" class="close" type="button">×</button>
+												<h3>Create New Module</h3>
+												</div>
+													<div class="modal-body" id="myModal">
+													<p></p>
+													Module Title: <input id="title" class="modalInput"></input> <div class="validation" id="titleValidation"></div>
+													<br><br>
+													Module Subtitle: <input id="subtitle" class="modalInput"></input> <div class="validation" id="subtitleValidation"></div>
+													<br><br>
+													</div>
+												<div class="modal-footer">
+												<a class="btn btn-primary btn-small" id="addButton" href="#">Confirm</a>
+												<a data-dismiss="modal" class="btn btn-default btn-small" href="#">Cancel</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>			
+						</div>
+						</div>
+			</div>
+			
+			
+			
+			<div id="ModuleEdit">
+				<div id="content-header" class="mini">
+					<h1>Modules</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="#" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Modules</a>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12" style="padding-bottom: 20px">					
+							<form action="#" method="get" class="form-horizontal">
+								<div class="form-group">
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<h4>Module</h4>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<div class="btn-group">
+											<a href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle" id="addModuleButton"><i class="fa fa-plus icon-white"></i></a>
+										</div>
+										<div class="btn-group">
+											<a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle" id="removeModuleButton"><i class="fa fa-minus icon-white"></i></a>
+										</div>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-4">
+										<select id="moduleSelect">
+											{% for item in modules %}
+											<option value="{{item.ModuleID}}">{{item.ModuleTitle}}</option>
+											{% endfor %}
+										</select>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-3">
+										<select id="langSelect">
+											{% for item in languages %}
+											<option value="{{item.LanguageISOCode}}">{{item.LanguageISOCode}}</option>
+											{% endfor %}
+										</select>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-3">
+										<label><input type="checkbox" name="checkboxes" id="moduleLive"/> Live</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-9 col-md-9 col-lg-2"></div>
+									<div class="col-sm-9 col-md-9 col-lg-4">
+										<input id="moduleTitle" placeholder="Module Title" class="input-sm form-control"></input>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-5">
+										<input id="moduleArtworkURL" placeholder="Module Artwork URL" class="input-sm form-control"></input>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<h4>Step</h4>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<div class="btn-group">
+											<a href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle" id="addStepButton"><i class="fa fa-plus icon-white"></i></a>
+										</div>
+										<div class="btn-group">
+											<a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle" id="removeStepButton"><i class="fa fa-minus icon-white"></i></a>
+										</div>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-4">
+										<select id="stepSelect">
+										</select>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-6">
+										<input type="file" id="audioFile" accept="audio/*">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-9 col-md-9 col-lg-2">
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-4">
+										<input id="stepTitle" placeholder="Step Title" class="input-sm form-control">
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<label><input type="checkbox" name="checkboxes" id="stepReqReference"/> Reference</label>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<label><input type="checkbox" name="checkboxes" id="stepReqAudio"/> Record</label>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<label><input type="checkbox" name="checkboxes" id="stepReqRating"/> Rate</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<h4>Mash</h4>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-9 col-md-9 col-lg-2">
+										<img size="10" src="img/player/nowRecording.png" id="recordButton"></img>
+										<img size="10" src="img/player/Play64x64.png" id="playButton"></img>
+									</div>
+									<div class="col-sm-9 col-md-9 col-lg-4">
+										<input id="mashMeaningText" placeholder="Mash Meaning Text" class="input-sm form-control">
+									</div>
+								</div>							
+
+								<div class="col-xs-12">
+									<div class="col-sm-9 col-md-9 col-lg-2 pull-right">
+										<button type="button" id="saveButton" class="btn-info" style="font-size: 20px">Save</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			
+			
+			<div class="row">
+			<img id="previousModule" src="/img/player/arrow-left.png" style="font-size: 20px"/>
+			<img id="nextModule" src="/img/player/arrow-right.png" style="font-size: 20px"/>
+				<div id="footer" class="col-xs-12">
+					2014 - 2015 &copy;TEANGA</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script src="unicorn/js/jquery.min.js"></script>
+		<script src="unicorn/js/jquery-ui.custom.js"></script>
+		<script src="unicorn/js/bootstrap.min.js"></script>
+		<script src="unicorn/js/jquery.icheck.min.js"></script>
+		<script src="unicorn/js/select2.min.js"></script>
+		<script src="unicorn/js/jquery.dataTables.min.js"></script>
+		
+		<script src="unicorn/js/jquery.nicescroll.min.js"></script>
+		<script src="unicorn/js/unicorn.js"></script>
+		<script src="unicorn/js/bootbox.min.js"></script>
+		<script src="unicorn/js/unicorn.tables.js"></script>
+		
+		<script>
+		var moduleData = {}
+		var wordData = null;
+		var selectedPart = null;
+		var mashData = {}
+		var stepData = {}
+		var audio_blob;
+		var selectedModule = null;
+		var selectedLang;
+		var wordDataLang = null;
+		var modData = []
+		
+		{% for mod in mods%}
+		modData[modData.length] = {'ModType' : '{{mod.ModType}}', 'ModKey' : '{{mod.ModKey}}', 'ModText' : '{{mod.ModText}}'}
+		{% endfor %}
+		
+		{% for item in modules %}
+		moduleData['{{item.ModuleID}}'] = {'ModuleTitle' : '{{item.ModuleTitle}}', 'ModuleCreationLanguage' : '{{item.ModuleCreationLanguage}}', 'ModuleArtworkURL' : '{{item.ModuleArtworkURL}}', "StepData" : '', 'ModuleStatus' : '{{item.ModuleStatus}}'}
+		{% endfor %}
+		
+		$('#moduleSelect').change(function(){
+			moduleSelect()
+		})
+		
+		$('#stepSelect').change(function(){
+			stepSelect()
+		})
+		
+		$('.dropdown-primary').children().click(function(e){
+			var html = $('.quick-actions').html()
+			var part;
+			
+			if(e.target.nodeName == 'A'){
+				part = e.target.getAttribute('data-part')
+			}
+			else if(e.target.nodeName == 'I'){
+				part = e.target.parentElement.getAttribute('data-part')
+			}
+			
+			var id = makeid()
+			
+			html += '<li id='+id+'><a href="#!"><i class="icon-cal"></i>'+part+'</a></li>'
+			
+			$('.quick-actions').html(html)
+			
+			mashData[id] = {'PartType' : part, 'Word' : [], 'Position' : Object.keys(mashData).length}
+			
+			setMashValue()
+			setPartClicks()
+		})
+		
+		$('#addStepButton').click(function(){
+			$('#stepTitle').val('')
+			$('#mashMeaningText').val('')
+			selectedPart = null
+			
+			var stepID = makeid()
+			var mashID = makeid()
+			
+			$('#stepSelect').append(new Option('New Step', stepID))
+			$('#stepSelect').select2('val', stepID)
+			
+			$('#stepTitle').val('New Step')
+			
+			stepData[stepID] = JSON.parse('{"StepID": "'+stepID+'", "StepMash": {}, "StepRatingConfig": "RATING_REQ", "StepRecordingConfig": "RECORD_REQ", "StepReferenceConfig" : "REFERENCE_REQ", "StepRefVoiceURL": "", "StepTitle": "New Step", "StepModuleID" : "'+$('#moduleSelect').val()+'", "StepOrder" : '+$('#stepSelect')[0].length+'}')
+			stepData[stepID]['StepMash'] = JSON.parse('{"MashID": "'+mashID+'", "MashMeaningText": "", "MashPart": "[]", "MashVoiceURL": ""}')
+			
+			$('#wordPlusButton').hide()
+			$('.quick-actions').html('')
+			$('#wordContainer').html('')
+		})
+		
+		$('#removeStepButton').click(function(e){
+			e.preventDefault()
+			var stepId = $('#stepSelect').val()
+			var stepTitle = $('#stepTitle').val()
+			
+			showModal('Step', stepId, stepTitle)
+		})
+		
+		$('#addModuleButton').click(function(){
+			var moduleID = makeid()
+			
+			$('#moduleSelect').append(new Option('New Module', moduleID))
+			$('#moduleSelect').select2('val', moduleID)
+			
+			$('#moduleTitle').val('New Module')
+			
+			moduleData[moduleID] = {'ModuleTitle' : 'New Module', 'ModuleCreationLanguage' : $('#langSelect').val(), 'ModuleArtworkURL' : '', 'StepData' : ''}
+			
+			$('#moduleSelect').trigger('change')
+		})
+		
+		$('#removeModuleButton').click(function(e){
+			e.preventDefault()
+			var moduleId = $('#moduleSelect').val()
+			var moduleTitle = $('#moduleTitle').val()
+			
+			showModal('Module', moduleId, moduleTitle)
+		})
+		
+		$('#moduleTitle').keyup(function(){
+			var moduleID = $('#moduleSelect').val()
+			moduleData[moduleID]['ModuleTitle'] = $('#moduleTitle').val()
+			$('#moduleSelect')[0].options[$('#moduleSelect')[0].selectedIndex].text = $('#moduleTitle').val()
+			$('#moduleSelect').trigger('change')
+		})
+		
+		$('#moduleLive').on('ifChanged', function (){
+			var moduleID = $('#moduleSelect').val()
+			if($('#moduleLive').prop('checked')){
+				moduleData[moduleID]['ModuleStatus'] = 'OK'
+			}
+			else{
+				moduleData[moduleID]['ModuleStatus'] = 'Test'
+			}
+		})
+		
+		$('#stepTitle').keyup(function(){
+			var stepID = $('#stepSelect').val()
+			stepData[stepID]['StepTitle'] = $('#stepTitle').val()
+			$('#stepSelect')[0].options[$('#stepSelect')[0].selectedIndex].text = $('#stepTitle').val()
+			$('#stepSelect').trigger('change')
+		})
+		
+		$('#mashMeaningText').keyup(function(){
+			var stepID = $('#stepSelect').val()
+			stepData[stepID]['StepMash']['MashMeaningText'] = $('#mashMeaningText').val()
+		})
+		
+		$('#stepReqRating').on('ifChanged', function (){
+			var stepID = $('#stepSelect').val()
+			if($('#stepReqRating').prop('checked')){
+				stepData[stepID]['StepRatingConfig'] = 'RATING_REQ'
+			}
+			else{
+				stepData[stepID]['StepRatingConfig'] = 'RATING_NOT_REQ'
+			}
+		})
+		
+		$('#stepReqAudio').on('ifChanged', function (){
+			var stepID = $('#stepSelect').val()
+			if($('#stepReqAudio').prop('checked')){
+				stepData[stepID]['StepRecordingConfig'] = 'RECORD_REQ'
+			}
+			else{
+				stepData[stepID]['StepRecordingConfig'] = 'RECORD_NOT_REQ'
+			}
+		})
+		
+		$('#stepReqReference').on('ifChanged', function (){
+			var stepID = $('#stepSelect').val()
+			if($('#stepReqReference').prop('checked')){
+				stepData[stepID]['StepReferenceConfig'] = 'REFERENCE_REQ'
+			}
+			else{
+				stepData[stepID]['StepReferenceConfig'] = 'REFERENCE_NOT_REQ'
+			}
+		})
+		
+		$('#audioFile').change(function(e){
+			file = e.target.files
+			
+			reader = new FileReader()
+			reader.onload = (function(theFile){
+				audio_blob = new Blob(theFile, {type : file[0].type})
+			})(file)
+			
+			var stepID = $('#stepSelect').val()
+			stepData[stepID]['audio'] = audio_blob
+		})
+		
+		$('#minusButton').click(function(){
+			if(selectedPart != null){
+				for(i=0; i<mashData.length; i++){
+					if(mashData[i]['ElementID'] == selectedPart){
+						mashData.splice(i, 1)
+					}
+				}
+			
+				$('#'+selectedPart).remove()
+				selectedPart = null
+				
+				setMashValue()
+			}
+		})
+		
+		$('#wordPlusButton').click(function(){
+			var words = mashData[selectedPart]['Word']
+			var html = ''
+			
+			for(i=0; i<words.length; i++){
+				html += '<div class="col-sm-9 col-md-9 col-lg-11"><div class="col-sm-9 col-md-9 col-lg-5"><select id="'+selectedPart+'_'+i+'" class="select"></select></div><div class="col-sm-9 col-md-9 col-lg-5"><select multiple id="mod_'+selectedPart+'_'+i+'" style="width: 200px" class="mod-select"></select></div><div class="col-sm-9 col-md-9 col-lg-1"><div class="btn-group"><a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle wordMinus" id="minus_'+selectedPart+'_'+i+'"><i class="fa fa-minus icon-white"></i></a></div></div></div>'
+			}
+			
+			html += '<div class="col-sm-9 col-md-9 col-lg-11"><div class="col-sm-9 col-md-9 col-lg-5"><select id="'+selectedPart+'_'+words.length+'" class="select"></select></div><div class="col-sm-9 col-md-9 col-lg-5"><select multiple id="mod_'+selectedPart+'_'+words.length+'" style="width: 200px" class="mod-select"></select></div><div class="col-sm-9 col-md-9 col-lg-1"><div class="btn-group"><a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle wordMinus" id="minus_'+selectedPart+'_'+i+'"><i class="fa fa-minus icon-white"></i></a></div></div></div>'
+			
+			$('#wordContainer').html(html)
+			
+			mashData[selectedPart]['Word'][words.length] = {'WordID' : 'unset', 'WordImageURL' : "/glyph_serve?id=", 'WordType' : 'unset', 'Mod' : []}
+			
+			var lang = $('#langSelect').val()
+			
+			for(var i=0; i<words.length; i++){
+				$('#'+selectedPart+'_'+i).select2()
+				getWords(lang, selectedPart+'_'+i)
+				$('#mod_'+selectedPart+'_'+i).select2()
+				setMods('mod_'+selectedPart+'_'+i)
+			}
+			$('#'+selectedPart+'_'+words.length).select2()
+			getWords(lang, selectedPart+'_'+words.length)
+			$('#mod_'+selectedPart+'_'+words.length).select2()
+			setMods('mod_'+selectedPart+'_'+words.length)
+			
+			setWordSelect()
+			setModSelect()
+			
+			$('.wordMinus').click(function(e){
+				wordMinusClick(e)
+			})
+		})
+		
+		$('#saveButton').click(function(){
+			saveModule("All")
+		})
+		
+		$('#langSelect').change(function(){
+			if(mashData[selectedPart] != undefined){
+				var words = mashData[selectedPart]['Word']
+				var lang = $('#langSelect').val()
+				
+				for(var i=0; i<words.length; i++){
+					$('#'+selectedPart+'_'+i).select2()
+					getWords(lang, selectedPart+'_'+i)
+					$('#mod_'+selectedPart+'_'+i).select2()
+					setMods('mod_'+selectedPart+'_'+i)
+				}
+			}
+		})
+		
+		function showModal(type, id, title){
+			bootbox.dialog({
+				message: "Are you sure you want to remove the "+type+" "+title+"?",
+				backdrop: true,
+				buttons:{
+					cancel:{
+						label: "Cancel",
+						callback: function(){
+							//return false
+						}
+					},
+					ok:{
+						label: "Ok",
+						callback: function() {
+							$.get('/removeItem?type='+type+'&id='+id+'&title='+title, function(data){
+								bootbox.dialog({
+									message: data['title']+' has been removed.',
+									title: 'Result',
+									buttons: {
+										main: {
+											label: 'Ok',
+											className: 'btn-default'
+										}
+									}
+								});
+								
+								if(data['type'] == 'Step'){
+									var stepId = $('#stepSelect').val()
+									
+									$("#stepSelect option[value='"+stepId+"']").remove();
+					
+									var position = stepData[stepId]['StepOrder']
+									
+									delete stepData[stepId]
+									
+									var stepKeys = Object.keys(stepData)
+									
+									for(var i=0; i<stepKeys.length; i++){
+										var thisPos = stepData[stepKeys[i]]['StepOrder']
+										if(thisPos > position){
+											stepData[stepKeys[i]]['StepOrder']--
+										}
+									}
+									
+									saveModule($('#moduleSelect').val())
+									
+									$('#stepSelect').trigger('change')
+								}
+								if(data['type'] == 'Module'){
+									$("#moduleSelect option[value='"+moduleID+"']").remove();
+									
+									$('#moduleSelect').trigger('change')
+								}
+							})
+							
+							return true
+						}
+					}
+				}
+				
+			}); 
+		}
+		
+		function setWordSelect(){
+			$('.select').change(function(e){
+				var index = parseInt(e.target.id.split('_')[1])
+				var wordID = e.target.value
+				if(selectedPart != null){
+					mashData[selectedPart]['Word'][index] = {'WordID' : wordData[wordID]['word_id'], 'WordImageURL' : "/glyph_serve?id="+wordData[wordID]['word_glyph_id'], 'WordType' : wordData[wordID]['word_type'], 'Mod' : mashData[selectedPart]['Word'][index]['Mod']}
+				}
+				
+				setMashValue()
+			})
+		}
+		
+		function setModSelect(){
+			$('.mod-select').change(function(e){
+				var index = parseInt(e.target.id.split('_')[2])
+				if(selectedPart != null){
+					mashData[selectedPart]['Word'][index]['Mod'] = $('#'+e.target.id).val()
+				}
+				
+				setMashValue()
+			})
+		}
+		
+		function wordMinusClick(e){
+			var index = e.target.id.split('_')[2]
+			
+			mashData[selectedPart]['Word'].splice(index, 1)
+			
+			var words = mashData[selectedPart]['Word']
+			var html = ''
+			
+			for(i=0; i<words.length; i++){
+				html += '<div class="col-sm-9 col-md-9 col-lg-11"><div class="col-sm-9 col-md-9 col-lg-5"><select id="'+selectedPart+'_'+i+'" class="select"></select></div><div class="col-sm-9 col-md-9 col-lg-5"><select multiple id="mod_'+selectedPart+'_'+i+'" style="width: 200px" class="mod-select"></select></div><div class="col-sm-9 col-md-9 col-lg-1"><div class="btn-group"><a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle wordMinus" id="minus_'+selectedPart+'_'+i+'"><i class="fa fa-minus icon-white"></i></a></div></div></div>'
+				
+			}
+			
+			$('#wordContainer').html(html)
+			
+			for(var i=0; i<words.length; i++){
+				$('#'+selectedPart+'_'+i).select2()
+				getWords($('#langSelect').val(), selectedPart+'_'+i)
+				$('#mod_'+selectedPart+'_'+i).select2()
+				setMods('mod_'+selectedPart+'_'+i)
+			}
+			
+			setWordSelect()
+			setModSelect()
+			
+			setMashValue()
+			
+			$('.wordMinus').click(function(e){
+				wordMinusClick(e)
+			})
+		}
+		
+		function setPartClicks(){
+			$('.quick-actions').children().click(function(e){
+				partClick(e)
+			})
+		}
+		
+		function partClick(e){
+			if(selectedPart != null){
+				$('#'+selectedPart)[0].style.border = '1px solid #d5d5d5'
+			}
+			
+			if(e.target.nodeName == 'I'){
+				selectedPart = e.target.parentElement.parentElement.getAttribute('id')
+			}
+			else if(e.target.nodeName == 'A'){
+				selectedPart = e.target.parentElement.getAttribute('id')
+			}
+			else if(e.target.nodeName == 'LI'){
+				selectedPart = e.target.getAttribute('id')
+			}
+			
+			$('#wordPlusButton').show()
+			$('#'+selectedPart)[0].style.border = '5px solid green'
+			
+			drawWords()
+		}
+		
+		function moduleSelect(){
+			var id = $('#moduleSelect').val()
+			var data = moduleData[id]
+			
+			if(selectedModule != null){
+				moduleData[selectedModule]['StepData'] = stepData
+			}
+			
+			stepData = {}
+			
+			if(data != undefined){
+				if($('#moduleTitle').val() != data['ModuleTitle']){
+					$('#moduleTitle').val(data['ModuleTitle'])
+				}
+				$('#langSelect').select2('val', data['ModuleCreationLanguage'])
+				$('#moduleArtworkURL').val(data['ModuleArtworkURL'])
+				
+				if(data['ModuleStatus'] == 'OK'){
+					$('#moduleLive').iCheck('check')
+				}
+				else{
+					$('#moduleLive').iCheck('uncheck')
+				}
+				
+				$('#langSelect').trigger('change')
+			}
+			
+			getSteps()
+		}
+		
+		function stepSelect(){
+			var id = $('#stepSelect').val()
+			var data = stepData[id]
+			
+			if(data != undefined){
+				if($('#stepTitle').val() != data['StepTitle']){
+					$('#stepTitle').val(data['StepTitle'])
+				}
+				$('#mashMeaningText').val(data['StepMash']['MashMeaningText'])
+				if(data['StepRatingConfig'] == 'RATING_REQ'){
+					$('#stepReqRating').iCheck('check')
+				}
+				else{
+					$('#stepReqRating').iCheck('uncheck')
+				}
+				if(data['StepRecordingConfig'] == 'RECORD_REQ'){
+					$('#stepReqAudio').iCheck('check')
+				}
+				else{
+					$('#stepReqAudio').iCheck('uncheck')
+				}
+				if(data['StepReferenceConfig'] == 'REFERENCE_REQ'){
+					$('#stepReqReference').iCheck('check')
+				}
+				else{
+					$('#stepReqReference').iCheck('uncheck')
+				}
+			
+				//set mash data
+				var mash = JSON.parse(data['StepMash']['MashPart'])
+				
+				var html = ''
+				selectedPart = null
+				$('#wordPlusButton').hide()
+				$('#wordContainer').html('')
+				mashData = {}
+				
+				for(var i=0; i<mash.length; i++){
+					var tempID = makeid()
+					var t = mash[i]
+					t['Position'] = i
+					mashData[tempID] = t
+					html += '<li id='+tempID+'><a href="#!"><i class="icon-cal"></i>'+mash[i]['PartType']+'</a></li>'
+				}
+				
+				$('.quick-actions').html(html)
+				
+				setPartClicks()
+			}
+		}
+		
+		function makeid(){
+			var text = "";
+			var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+			for( var i=0; i < 10; i++ )
+				text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+			return text;
+		}
+		
+		function drawWords(){
+			var words = mashData[selectedPart]['Word']
+			
+			var html = ''
+			
+			for(i=0; i<words.length; i++){
+				html += '<div class="col-sm-9 col-md-9 col-lg-11"><div class="col-sm-9 col-md-9 col-lg-5"><select id="'+selectedPart+'_'+i+'" class="select"></select></div><div class="col-sm-9 col-md-9 col-lg-5"><select multiple id="mod_'+selectedPart+'_'+i+'" style="width: 200px" class="mod-select"></select></div><div class="col-sm-9 col-md-9 col-lg-1"><div class="btn-group"><a href="#" data-toggle="dropdown" class="btn btn-danger dropdown-toggle wordMinus" id="minus_'+selectedPart+'_'+i+'"><i class="fa fa-minus icon-white"></i></a></div></div></div>'
+			}
+			
+			$('#wordContainer').html(html)
+			
+			for(var i=0; i<words.length; i++){
+				$('#'+selectedPart+'_'+i).select2()
+				getWords($('#langSelect').val(), selectedPart+'_'+i)
+				$('#mod_'+selectedPart+'_'+i).select2()
+				setMods('mod_'+selectedPart+'_'+i)
+			}
+			
+			setWordSelect()
+			setModSelect()
+			
+			$('.wordMinus').click(function(e){
+				wordMinusClick(e)
+			})
+		}
+		
+		
+		function getWords(lang, selectID){
+			if(wordData == null || wordDataLang != $('#langSelect').val()){
+				$.get('https://www.teanga.me/getWords?lang='+lang, function(data){
+					wordData = data;
+				
+					wordDataLang = $('#langSelect').val()
+				
+					var wordSelect = $('#'+selectID)
+						
+					$('#'+selectID).empty()
+						
+					wordKeys = Object.keys(wordData)
+						
+					for(i=0; i<wordKeys.length; i++){
+						var id = wordKeys[i]
+						var value = unescape(wordData[id]['word_text_root'])
+						wordSelect.append(new Option(value, id))
+					}
+						
+					var part = selectID.split('_')[0]
+					var index = selectID.split('_')[1]
+					
+					if(mashData[part]['Word'] != undefined){
+						$('#'+selectID).select2('val', mashData[part]['Word'][index]['WordID'])
+					}
+				})
+			}
+			else{
+				var wordSelect = $('#'+selectID)
+					
+				$('#'+selectID).empty()
+					
+				wordKeys = Object.keys(wordData)
+					
+				for(var i=0; i<wordKeys.length; i++){
+					var id = wordKeys[i]
+					var value = unescape(wordData[id]['word_text_root'])
+					wordSelect.append(new Option(value, id))
+				}
+					
+				var part = selectID.split('_')[0]
+				var index = selectID.split('_')[1]
+					
+				if(mashData[part]['Word'][index] != undefined){
+					$('#'+selectID).select2('val', mashData[part]['Word'][index]['WordID'])
+				}
+			}
+		}
+		
+		function getSteps(){
+			var moduleID = $('#moduleSelect').val()
+			
+			if(selectedModule == moduleID){
+				return
+			}
+			
+			if(moduleData[moduleID]['StepData'] != ''){
+				var stepSelectElem = $('#stepSelect')
+					
+				selectedModule = moduleID;
+				
+				stepData = {}
+			
+				$('#stepTitle').val('')
+				$('#mashMeaningText').val('')
+			
+				selectedPart = null
+			
+				$('#wordPlusButton').hide()
+				$('.quick-actions').html('')
+				$('#wordContainer').html('')
+				
+				stepSelectElem.empty()
+				
+				stepData = moduleData[moduleID]['StepData']
+				
+				var stepKeys = Object.keys(stepData)
+				
+				var order = []
+				
+				for (var step in stepData)
+					order.push([step, stepData[step]['StepOrder']])
+					
+				order.sort(function(a, b) {return a[1] - b[1]})
+				
+				for(var i=0; i<order.length; i++){
+					var id = stepData[order[i][0]]['StepID']
+					var value = stepData[order[i][0]]['StepTitle']
+					stepSelectElem.append(new Option(value, id))
+				}
+				
+				$('#stepSelect').trigger('change')
+			}
+			else{
+				$.get("/api/modules/"+moduleID+"/steps", function(data){
+					var stepSelectElem = $('#stepSelect')
+					
+					selectedModule = moduleID;
+					
+					stepData = {}
+				
+					$('#stepTitle').val('')
+					$('#mashMeaningText').val('')
+				
+					selectedPart = null
+				
+					$('#wordPlusButton').hide()
+					$('.quick-actions').html('')
+					$('#wordContainer').html('')
+					
+					stepSelectElem.empty()
+					
+					steps = data['data']
+					
+					if(data['result'] == '200 OK'){
+						for(var i=0; i<steps.length; i++){
+							var id = steps[i]['StepID']
+							var value = steps[i]['StepTitle']
+							stepSelectElem.append(new Option(value, id))
+							
+							stepData[steps[i]['StepID']] = steps[i]
+						}
+						
+						$('#stepSelect').trigger('change')
+					}
+					
+					moduleData[moduleID]['StepData'] = stepData
+				})
+			}
+		}
+		
+		function setMods(id){
+			var select = $('#'+id)
+			
+			select.empty()
+			
+			for(var i=0; i<modData.length; i++){
+				var key = modData[i]['ModKey']
+				var text = modData[i]['ModText']
+				select.append(new Option(text, key))
+			}
+			
+			var index = parseInt(id.split('_')[2])
+			
+			if(mashData[selectedPart]['Word'][index] != undefined){
+				select.select2('val', mashData[selectedPart]['Word'][index]['Mod'])
+			}
+		}
+		
+		function setMashValue(){
+			var mashKeys = Object.keys(mashData)
+			var mash_out = []
+			
+			for(var i=0; i<mashKeys.length; i++){
+				mash_out[mashData[mashKeys[i]]['Position']] = {'PartType' : mashData[mashKeys[i]]['PartType'], 'Word' : mashData[mashKeys[i]]['Word']}
+			}
+			
+			var stepID = $('#stepSelect').val()
+			
+			stepData[stepID]['StepMash']['MashPart'] = JSON.stringify(mash_out)
+		}
+		
+		function saveModule(id){
+			var moduleKeys = []
+			if(id=="All"){
+				moduleKeys = Object.keys(moduleData)
+			}
+			else{
+				moduleKeys[0] = id
+			}
+		
+			for(var i=0; i<moduleKeys.length; i++){
+		
+				console.log('start:'+moduleKeys[i])
+		
+				$.get('/getUploadLink?moduleID='+moduleKeys[i], function(data){
+					var url = data['data']
+					var moduleID = data['moduleID']
+				
+					console.log('got upload url:'+moduleID)
+				
+					var fd = new FormData()
+					fd.append('moduleID', moduleID)
+					fd.append('moduleLanguage', moduleData[moduleID]['ModuleCreationLanguage'])
+					fd.append('moduleTitle', moduleData[moduleID]['ModuleTitle'])
+					fd.append('moduleArtworkURL', moduleData[moduleID]['ModuleArtworkURL'])
+					fd.append('moduleStatus', moduleData[moduleID]['ModuleStatus'])
+					fd.append('stepData', JSON.stringify(moduleData[moduleID]['StepData']))
+					
+					console.log('form data set:'+moduleID)
+					
+					var stepKeys = Object.keys(stepData)
+					
+					for(var i=0; i<stepKeys.length; i++){
+						if(stepData[stepKeys[i]]['audio'] != undefined){
+							fd.append('audio', stepData[stepKeys[i]]['audio'], stepKeys[i])
+						}
+					}
+			
+					console.log('post start:'+moduleID)
+			
+					$.ajax({
+						type: 'POST',
+						url: url,
+						data: fd,
+						cache: false,
+						processData: false,
+						contentType: false
+					}).done(function(data) {
+						   console.log('post complete:'+moduleID)
+					});
+				})
+			}
+		}
+		
+		window.onload = function(){
+			setPartClicks()
+			moduleSelect()
+			getSteps()
+		}
+		</script>
+
+<script>	
+		var wordData;
+		var imageData;
+		var validImageData;
+		var moduleData = {}
+		var wordData = null;
+		var selectedPart = null;
+		var mashData = {}
+		var stepData = {}
+		var audio_blob;
+		var selectedModule = null;
+		var selectedLang;
+		var wordDataLang = null;
+		var modData = []
+		var ModuleCreationLanguage;
+		var UserType
+		var curatorLanguage
+		
+		{% for item in modules %}
+		moduleData['{{item.ModuleID}}'] = {'ModuleTitle' : '{{item.ModuleTitle}}', 'ModuleCreationLanguage' : '{{item.ModuleCreationLanguage}}', 'ModuleArtworkURL' : '{{item.ModuleArtworkURL}}', "StepData" : '{{item.ModuleStepCount}}', 'ModuleStatus' : '{{item.ModuleStatus}}', 'ModuleSubtitle' : '{{item.ModuleSubtitle}}', 'ModuleID' : '{{item.ModuleID}}', 'ModuleCreationDateTime' : '{{item.ModuleCreationDateTime|date:"SHORT_DATE_FORMAT"}} ', 'ModuleCreationLanguage' : '{{item.ModuleCreationLanguage}} '}	
+		{% endfor %}		
+		
+		UserType = '{{user.UserType}}'
+		curatorLanguageID = '{{user.UserAdminLanguageID}}'	
+				
+		if (curatorLanguageID == '1'){curatorLanguage = 'eng'}else if(curatorLanguageID == '2'){curatorLanguage = 'fre'}else if(curatorLanguageID == '4'){curatorLanguage = 'gle'}else{curatorLanguage = 'ger'}
+		
+		if (UserType == 'USER_CURATOR'){
+		$('#flag').addClass('flag-'+curatorLanguage+'')
+		}else{$('#flag').addClass('flag-eng')}
+		
+		console.log('user type: ' + UserType + ' curatorLanguage: ' + curatorLanguage + ' , language: '+ curatorLanguage+'' )
+			
+		
+		$('#searchBox').keyup(function(){
+			validImageData = []
+			var term = $('#searchBox').val()
+		
+			for(var i=0; i<imageData.length; i++){
+				if(imageData[i]['glyph_comment'].indexOf(term) >= 0){
+					validImageData[validImageData.length] = imageData[i]
+				}
+			}
+		
+			$('.pagination').bootpag({
+				total: (validImageData.length/20)+1,
+				page: 1,
+				maxVisible: 5,
+				leaps: true,
+				firstLastUse: true,
+				first: '<span aria-hidden="true">&larr;</span>',
+				last: '<span aria-hidden="true">&rarr;</span>',
+				wrapClass: 'pagination',
+				activeClass: 'active',
+				disabledClass: 'disabled',
+				nextClass: 'next',
+				prevClass: 'prev',
+				lastClass: 'last',
+				firstClass: 'first'
+			}).on("page", function(event, num){
+				setViewableImages(num-1)
+			});
+		})
+		
+		$('#saveButton').click(function(){			
+				saveRecording(data['data'])
+		})
+		
+		
+		
+		window.onload = function(){
+			
+			getWords()
+				
+			$(window).trigger('resize');
+				
+			$('#submitForm').on('keyup keypress', function(e) {   ///stop enter triggering form
+			var code = e.keyCode || e.which;
+			if (code == 13) { 
+				e.preventDefault();
+				return false;
+				}
+			});				
+		}		
+		function getWords(){
+		
+				var dataKeys = Object.keys(moduleData)
+		
+				console.log(moduleData)	
+					
+				html_out = '<table class="table table-bordered table-striped table-hover data-table"><thead><tr><th></th><th>Title</th><th>Subtitle</th><th>Steps</th><th>Date Created</th><th></th></tr></thead><tbody>'
+				
+				for(var i=0; i< dataKeys.length; i++){
+					
+					if (unescape(moduleData[dataKeys[i]]['ModuleTitle']) == 'Not Live'){
+						var status = 'unchecked'}else{ var status = 'checked'}
+					
+					var date = unescape(moduleData[dataKeys[i]]['ModuleCreationDateTime'])
+						if (date == 0){date = 'N/A'} 
+						
+					var ModuleCreationLanguage = String(moduleData[dataKeys[i]]['ModuleCreationLanguage']).replace(/ /g,'')	
+					var currentCuratorLanguage = String(curatorLanguage).replace(/ /g,'')
+					
+					//console.log('ModuleCreationLanguage:' + ModuleCreationLanguage + 'currentCuratorLanguage:' + currentCuratorLanguage + 'EQUALS:' + (ModuleCreationLanguage == currentCuratorLanguage))					
+						
+					if (ModuleCreationLanguage == currentCuratorLanguage && UserType == 'USER_CURATOR' || UserType == 'USER_ADMIN'){
+						html_out+='<td><div id="checkbox'+i+'" onclick="toggleLiveState('+i+')" class="icheckbox_flat-blue '+status+'" style="position: relative;"><input type="checkbox" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></td>'		
+						html_out+= '<td>'+unescape(moduleData[dataKeys[i]]['ModuleTitle'])+'</td><td>'+unescape(moduleData[dataKeys[i]]['ModuleSubtitle'])+'</td><td>'+unescape(moduleData[dataKeys[i]]['StepData'])+'</td><td>'+date+'</td><td><a onclick="openEdit('+i+')" href="#!" data-original-title="Edit"><i class="fa fa-pencil"></i></a><a data-word-text="'+unescape(moduleData[dataKeys[i]]['ModuleTitle'])+'" data-word-id="'+unescape(moduleData[dataKeys[i]]['ModuleID'])+'" title="" href="#!" class="tip-top remove" data-original-title="Remove"><i class="trashIcon fa fa-trash-o"></i></a></td></tr>'								
+					}
+				}
+				
+				html_out += '</tbody></table>'
+				
+				$('#tableContent').html(html_out)
+				
+				$('.remove').click(function(e){
+					var moduleID = e.target.parentElement.getAttribute('data-word-id')
+					var moduleTitle = e.target.parentElement.getAttribute('data-word-text')
+
+					console.log(moduleTitle)
+					
+					startRemove(moduleID, moduleTitle)
+					console.log('removing ' + e)
+				})
+				
+				$('.edit').click(function(e){
+					var wordID = e.target.parentElement.getAttribute('data-word-id')				
+					console.log('editing ' + e)
+					startEdit(wordID)
+				})
+				
+				$('.data-table').dataTable({
+									"columns": [
+						{ "width": "10px;" },
+						null,
+						null,
+						null,
+						null
+					  ],				
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers",
+					"sDom": '<""l>t<"F"fp>'
+				});
+		}
+		
+		function toggleLiveState(indexNo) {	
+		
+		if ($( '#checkbox'+indexNo+'' ).hasClass( "checked" ) == true){		
+				$('#checkbox'+indexNo+'').removeClass('checked')
+				$('#checkbox'+indexNo+'').addClass('unchecked')	
+				console.log(indexNo + ' is no longer live.')
+		}else if ($( '#checkbox'+indexNo+'' ).hasClass( "unchecked" ) == true){
+				$('#checkbox'+indexNo+'').removeClass('unchecked')
+				$('#checkbox'+indexNo+'').addClass('checked')
+				console.log(indexNo + ' is now live.')
+		}	
+	}
+
+		function startRemove(moduleID, moduleTitle){
+		
+		console.log('moduleID ' + moduleID)
+		console.log('moduleTitle ' + moduleTitle)
+		///console.log('moduleTitle ' + unescape(moduleData[dataKeys[i]]['ModuleTitle']))
+		
+			bootbox.dialog({
+				message: "Are you sure you want to remove module \""+moduleTitle+"\"?",
+				backdrop: true,
+				buttons:{
+					cancel:{
+						label: "Cancel",
+						callback: function(){
+							//return false
+						}
+					},
+					ok:{
+						label: "Ok",
+						callback: function() {
+							$.get('/removeItem?type=Module&id='+moduleID, function(data){
+								location.reload()
+								
+							})
+						}
+					}
+				}			
+			}); 
+		}
+		
+	$('#addButton').click(function(){		
+				addModule()
+		})			
+		
+	function addModule() {
+	
+		console.log('Creating new module...')				
+		var title = $('#title').val()
+		var subTitle = $('#subtitle').val()
+						
+			if (!title){
+				document.getElementById('titleValidation').innerHTML = 'Please enter valid title.'
+			}else if (!subTitle){
+				document.getElementById('subtitleValidation').innerHTML = 'Please enter valid subtitle.'
+			}else{	
+				document.getElementById('titleValidation').innerHTML =''
+				document.getElementById('subtitleValidation').innerHTML = ''
+				
+				var fd = new FormData()			
+				fd.append('moduleTitle', $('#title').val())
+				fd.append('moduleSubtitle', $('#subtitle').val())
+				fd.append('moduleStatus', 'Not Live')
+				fd.append('moduleArtworkURL', 'Not yet added')
+				fd.append('moduleCreationTime', ModuleCreationLanguage) 					//CHECK
+		
+		
+				console.log(fd)
+				
+					$.ajax({
+						type: 'POST',
+						url: '/saveModule',
+						data: fd,
+						cache: false,
+						processData: false,
+						contentType: false
+					}).done(function(data) {
+						getWords()
+						console.log('module saved')
+						 $('#myModal').modal('hide');
+						 window.location = '/modules'
+					});
+					return false;			
+			}
+			
+		return false;		
+	}
+
+	function deleteModule(index){
+		console.log('module deleted')
+	}
+
+	function openEdit(index){
+		console.log('opened edit window ' + index)
+	}
+	
+</script>	
+
+
+
+		
+		<script type="text/javascript" src="js/recordMP3/recordmp3.js"></script>
+
+<script>
+	
+		
+var currentlySaving;																			///RECORDING INPUT///	
+var mp3Blob = 'null';																			
+var firstRecord = true;
+var rec;
+var micInput;
+var blob;
+var bufferArray = [];
+var mediaStream;
+var navigator = window.navigator;
+var currentlyRecording, bufferExists, recordedAgain = false, currentlyRecording, interrupted = false, reachedEnd = false;
+var audio_context;
+var recorder;
+var localStream;
+var input;
+
+$(document).ready(function() { 
+
+		try {
+				window.AudioContext = window.AudioContext || window.webkitAudioContext;
+				navigator.getUserMedia = ( navigator.getUserMedia ||
+										navigator.webkitGetUserMedia ||
+									    navigator.mozGetUserMedia ||
+										navigator.msGetUserMedia);
+				window.URL = window.URL || window.webkitURL;
+
+				audio_context = new AudioContext;
+				gainNode = audio_context.createGain()
+					
+				console.log('Audio context set up.');
+				console.log('navigator.getUserMedia ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
+		} catch (e) {
+				alert('No web audio support in this browser!');
+		}
+		
+		populateModuleInfo()
+			
+		$('#recordButton').click(function () {											//record button handler
+			if (nowRecording == false){			
+				console.log('Recording')
+				$('#playButton').fadeOut(500)		
+				startRecording()
+				nowRecording = true;
+				finishedRecording = false;
+			}else if (nowRecording == true){
+				stopRecording()
+				nowRecording = false;				
+			}
+		});	
+
+
+ });
+
+function populateModuleInfo() {
+		
+	var userAdminLanguageISO = "{{lang.LanguageISO}}";
+	console.log('LANGUAGE: ' + userAdminLanguageISO)
+
+		//var currentRecording = String('serve_recording?id='+wordID+'')			//load recording, if exists
+		console.log(currentRecording)
+			
+		if (currentRecording != 'null'){
+				console.log('Editing word.')
+				mp3Blob == 'Existing Word'
+				$('#playButton').fadeIn(500);
+				$('#saveButton').fadeIn(500);
+				bufferAudio(currentRecording, 10)			
+			}else{
+				console.log('This is a new word.')
+				$('#saveButton').fadeOut(500);				
+			}
+			
+		$('#recordButton').fadeIn(500)	
+}
+
+function startRecording() {
+		
+	document.getElementById('recordButton').style.pointerEvents = 'none';
+
+	setTimeout(function(){ 	
+			document.getElementById('recordButton').style.pointerEvents = 'auto';
+		}, 500);	
+	
+	currentlySaving = false;
+	
+	document.getElementById('saveValidation').innerHTML = ''
+	$('#saveButton').fadeOut(500)
+
+	navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
+	  console.log('No live audio input: ' + e);
+     });
+
+	function startUserMedia(stream) {
+	
+		$('#recordButton').attr('src', 'img/player/currentlyRecording.png')
+
+	    input = audio_context.createMediaStreamSource(stream);
+		localStream = stream;
+
+		recorder = new Recorder(input, {
+                  numChannels: 1
+                });
+				
+	    recorder && recorder.record();
+		
+		console.log('Recording...');	
+		
+				setTimeout(function(){ 	
+			try{					
+				if (currentlySaving == false)
+				{
+					stopRecording()
+					document.getElementById('saveValidation').innerHTML = 'Record has been stopped automatically';
+					nowRecording = false;
+				}else{console.log('tried to stop automatically but failed.')}
+				
+			}catch(e){
+				console.log(e)
+			}
+		}, 4000);
+		
+		
+				
+		setTimeout(function(){ 	
+			try{					
+				if (currentlySaving == false)
+				{
+					stopRecording()
+					document.getElementById('saveValidation').innerHTML = 'Record has been stopped automatically';
+					nowRecording = false;
+				}else{console.log('tried to stop automatically but failed.')}
+				
+			}catch(e){
+				console.log(e)
+			}
+		}, 4000);
+	}
+ }
+
+  function stopRecording() {
+  
+	document.getElementById('recordButton').style.pointerEvents = 'none';
+
+	currentlySaving = true
+    recorder && recorder.stop();
+	
+	try {
+	}catch(e){
+		console.log('cant stop media stream as function is deprecated.')
+	}
+
+	try {
+		var track = localStream.getTracks()[0]; 
+        track.stop();
+	}catch(e){
+		console.log('cant stop media stream as function is deprecated.')
+	}
+	
+	console.log(localStream.active)
+    console.log('Stopped recording.');	
+	$('#recordButton').attr('src', 'img/player/nowRecording.png')
+	
+	try{
+		createDownloadLink();
+		recorder.clear();
+	}catch(e){
+		console.log(e)
+	}
+  }
+
+  function createDownloadLink() {
+		recorder && recorder.exportWAV(function(blob) {
+    });	
+  }
+  
+  function playAudio(url){
+  
+	document.getElementById('saveValidation').innerHTML = '';
+	document.getElementById('recordButton').style.pointerEvents = 'auto';
+	console.log('playing audio url')
+	console.log(url)
+	
+	gainNode.gain.value = 1;	
+	var source = audio_context.createBufferSource();														
+	source.buffer = url;	
+	source.connect(gainNode);																		
+	gainNode.connect(audio_context.destination);
+	source.start(0);
+	
+	var waitTime = (1 + source.buffer.duration)
+	document.getElementById('recordButton').style.pointerEvents = 'auto'; 
+  }
+  
+  function bufferAudio(URL, glyphID){																			//Buffer relevant audio files				
+	try {												
+		var request = new XMLHttpRequest();
+		request.open('GET', URL, true);																		//function should accept URL, row and column
+		request.responseType = 'arraybuffer';
+		request.onload = function() {
+		audio_context.decodeAudioData(request.response, function(buffer) {
+			
+			if (glyphID == 0 || glyphID == 'null'){
+				playAudio(buffer)
+				$("#playButton").unbind();
+				$('#playButton').fadeIn(500)
+				$('#saveButton').fadeIn(500)
+				finishedRecording = true	
+				console.log('BUFFERING AND PLAYING')
+				$("#playButton").click(function(){ playAudio(buffer); });
+			}else{		
+				console.log('buffered audio asset')				
+				$("#playButton").unbind();
+				$("#playButton").click(function(){ playAudio(buffer); });			
+				}				
+		});	}																									// by corresponding nodes, building an appropriate audio graph
+			request.send();
+	}catch(e){
+		alert("Could not buffer " + URL);																	
+	}
+}
+
+function saveRecording(url){
+		console.log('saving...')	
+		currentlySaving = false;	
+		
+		var value= $.trim($("#wordText").val());
+
+		if (value.length == 0){
+			console.log('Word text.')
+			document.getElementById('saveValidation').innerHTML = 'Please enter word text.'
+		}else{
+			document.getElementById('saveValidation').innerHTML = ''
+			var fd = new FormData()
+			
+			if (mp3Blob instanceof Blob == true){
+				fd.append('file', mp3Blob)
+			}else{
+				console.log('cant buffer as not of type blob')
+			}
+				
+			fd.append('wordText', $('#wordText').val())
+			fd.append('wordType', $('#wordType').val())
+			fd.append('wordSyllables', $('#wordSyllables').val())
+			if ($('#wordGender').val() != 'null'){
+				fd.append('wordGender', $('#wordGender').val())}else{console.log('Gender not included in form')}
+			fd.append('imageID', ($('#imageID').val()))
+			fd.append('wordID', $('#wordID').val())				
+
+				$.ajax({
+					type: 'POST',
+					url: url,
+					data: fd,
+					cache: false,
+					processData: false,
+					contentType: false
+				}).done(function(data) {
+					   window.location = '/words'
+				});
+				return false;			
+		}
+	return false;
+}				
+		</script>
+	</body>
+</html>

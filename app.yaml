@@ -1,0 +1,188 @@
+application: teanga-webapp
+version: v2-live
+runtime: python27
+api_version: 1
+threadsafe: no
+
+handlers:
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /css
+  static_dir: css
+  
+- url: /fonts
+  static_dir: fonts
+  
+- url: /img
+  static_dir: img
+  
+- url: /js
+  static_dir: js
+  
+- url: /less
+  static_dir: less
+  
+- url: /unicorn
+  static_dir: unicorn
+  
+- url: /TeangaMP3
+  static_dir: TeangaMP3
+  http_headers:
+    Access-Control-Allow-Origin: '*'
+  
+- url: /modules
+  static_dir: modules
+  http_headers:
+    Access-Control-Allow-Origin: '*'
+  
+- url: /
+  script: main.app
+  secure: always
+  
+- url: /contact
+  script: main.app
+  
+  
+- url: /glyph_serve
+  script: main.app
+  
+- url: /serve_recording
+  script: main.app
+  
+- url: /serve_mash_recording
+  script: main.app
+  
+- url: /wordids
+  script: main.app
+  
+- url: /get_upload_url
+  script: main.app
+  
+- url: /upload_mp3
+  script: main.app
+  
+- url: /updateEntities
+  script: main.app  
+  
+- url: /db_edit
+  script: main.app
+  
+- url: /masher
+  script: main.app
+  secure: always
+  
+- url: /signup
+  script: main.app
+  
+- url: /signin
+  script: main.app
+  
+- url: /signout
+  script: main.app
+  
+- url: /verify_user
+  script: main.app
+  
+- url: /mailCheck
+  script: main.app
+  
+- url: /modules
+  script: main.app
+  
+- url: /languages
+  script: main.app
+  
+- url: /changeLanguage
+  script: main.app 
+  
+- url: /changeModuleStatus
+  script: main.app 
+  
+- url: /changeLanguageStatus
+  script: main.app   
+  
+- url: /images
+  script: main.app
+  
+- url: /words
+  script: main.app
+  
+- url: /voices
+  script: main.app
+  
+- url: /users
+  script: main.app
+  
+- url: /getWords
+  script: main.app
+  
+- url: /getImages
+  script: main.app
+ 
+- url: /getRecordings
+  script: main.app 
+  
+- url: /getImageUploadURL
+  script: main.app
+  
+- url: /imageUploadHandler
+  script: main.app
+  
+- url: /getUploadWordURL
+  script: main.app
+  
+- url: /wordUploadHandler
+  script: main.app
+  
+- url: /saveModule
+  script: main.app
+  
+- url: /saveMash
+  script: main.app  
+
+- url: /addLanguage
+  script: main.app  
+    
+- url: /updateDB
+  script: main.app
+  
+- url: /makeChange
+  script: main.app  
+  
+- url: /saveStep
+  script: main.app   
+  
+- url: /removeItem
+  script: main.app
+  
+- url: /getUploadLink
+  script: main.app
+ 
+- url: /api/([^/]+)
+  script: main.app
+  secure: always
+  
+- url: /api/([^/]+)/(\d+)
+  script: main.app
+  secure: always
+  
+- url: /api/([^/]+)/(\d+)/([^/]+)
+  script: main.app
+  secure: always
+  
+- url: /api/([^/]+)/([^/]+)/([^/]+)
+  script: main.app
+  secure: always
+  
+- url: /*
+  script: main.app
+  
+libraries:
+- name: django
+  version: "1.3"
+  
+builtins:
+- remote_api: on

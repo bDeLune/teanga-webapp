@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Teanga Admin</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="unicorn/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="unicorn/css/font-awesome.css" />
+        <link rel="stylesheet" href="unicorn/css/jquery-ui.css" />
+		<link rel="stylesheet" href="unicorn/css/icheck/flat/blue.css" />
+		<link rel="stylesheet" href="unicorn/css/select2.css" />		
+		<link rel="stylesheet" href="unicorn/css/unicorn.css" />
+		<link rel="stylesheet" href="css/customNavBar.css" />
+		<link href="css/Flags2.css" rel="stylesheet" type="text/css" />
+		<link href="css/userEdit.css" rel="stylesheet" type="text/css" />
+		
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+		<![endif]-->
+						<style type="text/css">		
+
+			.dropdown-menu>li>a {
+   				 white-space: inherit;
+			}
+			
+			
+			.flag {
+    position: relative;
+    top: -7px;
+}
+
+			.caret {
+ 				   display: inline; 
+			}
+
+	</style>	
+	</head>	
+	<body data-color="grey" class="flat">
+		<div id="wrapper">
+			<div id="header">
+				<h1><a href="#">Teanga Admin</a></h1>	
+				<a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>	
+			</div>
+				
+			<div id="user-nav">
+							
+	            <ul class="btn-group">
+				{% if user.UserType == 'USER_ADMIN'%}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"><b id="languageCaret" class="caret"></b></a>
+								<ul id="languageList" class="download-btn dropdown-menu" role="menu" style="min-width: 70px">
+									<!--<li  onclick="changeLanguage('fre')"  class="lang_select" data-iso="fre" style="width: 100%">
+										<a href="#!" style="width: 100%">fre <img class="flag flag-fre pull-right"></a>
+								    </li>
+									<li  onclick="changeLanguage('eng')" class="lang_select" data-iso="eng" style="width: 100%">
+										<a href="#!" style="width: 100%">eng <img class="flag flag-eng pull-right"></a>
+									</li>
+								    <li onclick="changeLanguage('gle')" class="lang_select" data-iso="gle" style="width: 100%">
+										<a href="#!" style="width: 100%">gle <img class="flag flag-gle pull-right"></a>
+								    </li>
+									<li onclick="changeLanguage('ger')"  class="lang_select" data-iso="ger" style="width: 100%">
+										<a href="#!" style="width: 100%">ger <img class="flag flag-ger pull-right"></a>
+								    </li>-->
+									
+								</ul>
+						</li>
+					{% else %}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"></a>							
+						</li>
+					{% endif %}
+				
+				
+	                <li class="btn" ><a title="" href="#"><i class="fa fa-user"></i> <span class="text">Profile</span></a></li>
+	                <li class="btn"><a title="" href="#"><i class="fa fa-cog"></i> <span class="text">Settings</span></a></li>
+	                <li class="btn"><a title="" href="signout"><i class="fa fa-share"></i> <span class="text">Logout</span></a></li>
+	            </ul>
+	        </div>
+
+			<div id="sidebar">
+				<ul>
+					<li><a href="languages"><i class="fa fa-bullhorn"></i> <span>Languages</span></a></li>
+					<li><a href="images"><i class="fa fa-th"></i> <span>Images</span></a></li>
+					<li><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					<li class="active"><a href="users"><i class="fa fa-user"></i> <span>Users</span></a></li>
+					<li><a href="/voices"><i class="fa fa-volume-up"></i> <span>Voices</span></a></li>
+				</ul>
+			
+			</div>
+			
+			<div id="content">
+				<div id="content-header" class="mini">
+					<h1>Users</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="#" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Users</a>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+					
+					<div class="pull-right">
+								<button href="#myAlert" data-toggle="modal" class="btn btn-info" id="addNewUserButton" type="button">Add</button>
+					</div>
+											
+						<div class="col-xs-12" id="tableView">
+							<div class="widget-box">
+								<div class="widget-content nopadding">
+									<table class="table table-bordered table-striped table-hover">
+										<thead>
+											<tr>
+												<th style="width: 35%">User Name</th>
+												<th style="width: 35%">User Email</th>
+												<th style="width: 20%">User Type</th>
+												<th style="width: 10%"></th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for user in users %}
+											<tr>
+												<td>{{user.UserUsername}}</td>
+												<td>{{user.UserEmail}}</td>
+												<td>{{user.UserType}}</td>
+												<td>
+													<a title="" href="#" class="tip-top edit" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+													<a title="" onclick="removeUser('{{user.UserID}}', '{{user.UserUsername}}')" href="#" class="tip-top" data-original-title="Remove"><i class="fa fa-trash-o"></i></a>
+												</td>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>							
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12" id="formView">
+							
+						</div>
+						
+							<div class="widget-content">
+
+							<div id="myAlert" class="modal fade" aria-hidden="true" style="display: none;">
+										<div class="modal-dialog">
+											<div class="modal-content">
+											<div class="modal-header">
+												<button data-dismiss="modal" class="close" type="button">×</button>
+												<h3>Add Language Curator</h3>
+												</div>
+													<div class="modal-body" id="myModal">
+													<p></p>
+													User Email: <input placeholder="Confirmation email will be sent to new user" type="text" id="newUserEmail"></input>
+													<br><br>
+													User Language: 
+													<div id="newUserLanguageSelect1" class="dropdown">
+														<a id="newUserLanguageSelect2" class="dropdown-toggle" data-toggle="dropdown" role="button">
+														<img id="newUserFlag" class="flag"><b id="newUserLanguageCaret" class="caret"></b></a>
+															<ul id="newCuratorLanguageList" class="download-btn dropdown-menu" role="menu" style="min-width: 130px">
+																<!--<li onclick="setLanguage('fre')"  class="lang_select" data-iso="fre" style="width: 100%">
+																	<a href="#!" style="width: 100%">fre <img class="flag flag-fre pull-right"></a>
+																</li>
+																<li  onclick="setLanguage('eng')" class="lang_select" data-iso="eng" style="width: 100%">
+																	<a href="#!" style="width: 100%">eng <img class="flag flag-eng pull-right"></a>
+																</li>
+																<li onclick="setLanguage('gle')" class="lang_select" data-iso="gle" style="width: 100%">
+																	<a href="#!" style="width: 100%">gle <img class="flag flag-gle pull-right"></a>
+																</li>
+																<li onclick="setLanguage('ger')"  class="lang_select" data-iso="ger" style="width: 100%">
+																	<a href="#!" style="width: 100%">ger <img class="flag flag-ger pull-right"></a>
+																</li>	-->															
+															</ul>
+													</div>	
+													<br>
+													<div style="color:red; position: absolute; top: 100px;" id="emailError"></div>
+													<br><br>
+													</div>
+												<div class="modal-footer">
+												<a style="visibility: hidden" class="btn btn-primary btn-small" id="addButton" >Confirm</a>
+												<a data-dismiss="modal" class="btn btn-default btn-small" href="#">Cancel</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>												
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div id="footer" class="col-xs-12">
+					2014 - 2015 &copy;TEANGA</div>
+				</div>
+			</div>
+		</div>
+
+<script src="unicorn/js/jquery.min.js"></script>
+<script src="unicorn/js/jquery-ui.custom.js"></script>
+<script src="unicorn/js/bootstrap.min.js"></script>
+<script src="unicorn/js/bootbox.min.js"></script>
+<script src="unicorn/js/jquery.nicescroll.min.js"></script>
+<script src="unicorn/js/unicorn.js"></script>
+<script>
+
+var langData = {}
+	{% if user.UserType == 'USER_ADMIN'%}
+		
+		{% for lang in languages %}
+		langData['{{lang.LanguageID}}'] = {'LanguageISOCode' : '{{lang.LanguageISOCode}}', 'LanguageNameEnglish' : '{{lang.LanguageNameEnglish}}', 'LanguageNameNative' :'{{lang.LanguageNameNative}}', 'LanguageSupported' : {% if lang.LanguageSupported %} true {% else%} false {% endif %}}
+
+			console.log('ADDING LANGUAGE ' + '{{lang.LanguageISOCode}}')
+
+			$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+		
+			$( "#flag-{{lang.LanguageID}}" ).click(function() {
+ 	 			changeLanguage('{{lang.LanguageID}}', '{{lang.LanguageFlagURL}}')
+			});
+			
+			if ('{{lang.LanguageSupported}}' == 'True'){
+				$( "#newCuratorLanguageList" ).append( 
+				"<li id='curatorflag-{{lang.LanguageID}}' class='lang_select flag' data-iso='{{lang.LanguageISOCode}}' style='width: 60%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+				);
+		
+				$( "#curatorflag-{{lang.LanguageID}}" ).click(function() {
+			
+					console.log('clicked flag -  ' + '{{lang.LanguageFlagURL}}')
+ 	 				changeCuratorLanguage('{{lang.LanguageID}}', '{{lang.LanguageFlagURL}}',  '{{lang.LanguageISOCode}}')
+				});
+			}else{
+				console.log('{{lang.LanguageNameEnglish}} is not included in new language list')
+			}
+			
+	
+		{% endfor %}
+	{% else %}
+		{% for lang in languages %}
+			{% if user.UserLearningLanguageID == '{{lang.LanguageID}}' %}
+	 			console.log('FOUND USER')
+	 		$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+	 		{% endif %}
+		{% endfor %}
+	{% endif %}
+
+
+
+var currentISO;
+var userAdminLanguage;
+var userData = []
+var newUserLanguage = 3;
+var nativeLanguageISOCode
+var adminLanguage
+
+	$('#addButton').click(function(){		
+		addNewUser()
+	})	
+	
+function setLanguage(lang){
+
+	//$('#newUserMenuFlag').removeClass('flag-eng')
+	//$('#newUserMenuFlag').removeClass('flag-ger')
+	//$('#newUserMenuFlag').removeClass('flag-gle')
+	//$('#newUserMenuFlag').removeClass('flag-fre')
+	//$('#newUserMenuFlag').removeClass('flag-spa')	
+	//$('#newUserMenuFlag').addClass('flag-'+lang+'')
+	//$("#newUserLanguageCaret").val(lang);
+}
+
+function changeCuratorLanguage(langID, langURL, langISO){
+
+	console.log('Changing curator language to ' + langID)
+	$('#newUserFlag').attr('src', langURL)
+	newUserLanguage = langID
+	
+	nativeLanguageISOCode = langISO
+	console.log('setting ' + nativeLanguageISOCode)
+	
+}
+	
+
+function addNewUser() {
+	
+	console.log('Adding new user...')				
+	var newUserEmail = $('#newUserEmail').val()
+		
+	console.log(newUserLanguage)
+		
+	newUserEmail = newUserEmail.replace(/\s/g, '');
+		
+	console.log(newUserEmail)
+		
+	console.log('userAdminLanguage ' +  adminLanguage)
+	console.log('nativeLanguageNo ' +  newUserLanguage)
+	console.log('nativeLanguage ' +  nativeLanguageISOCode)
+		
+	if (userData.indexOf(newUserEmail) > -1){
+		console.log('error: email already exists.');
+		$('#emailError').text('Sorry, this email already exists. Please use another.')
+		
+	}else if (newUserEmail){	
+		$('#emailError').text('')
+		var fd = new FormData()			
+		fd.append('newUserEmail', newUserEmail)
+		fd.append('adminLanguageNo', adminLanguage)
+		fd.append('nativeLanguageNo', newUserLanguage)
+		fd.append('nativeLanguage', nativeLanguageISOCode)
+			
+		console.log('newUserEmail ' + newUserEmail)
+				
+		$.ajax({
+			type: 'POST',
+			url: '/signup',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+		}).done(function(data) {
+			console.log('New User Created')
+			$('#myModal').modal('hide');
+			window.location = '/users'
+		});
+			return false;			
+		}			
+		
+	return false;		
+}
+
+function removeUser(userID, userName){
+	
+	bootbox.dialog({
+		message: "Are you sure you want to remove user \""+userName+"\"?",
+		backdrop: true,
+		buttons:{
+			cancel:{
+			label: "Cancel",
+			callback: function(){
+			}
+		},
+		ok:{
+			label: "Ok",
+			callback: function() {
+			$.get('/removeItem?type=User&id='+userID, function(data){
+				location.reload()							
+			})
+			}
+		}
+	}			
+	}); 
+}	
+	
+function changeLanguage(newLanguage, newLanguageURL){
+
+	console.log('TRYING TO CHANGE LANGUAGE ' + newLanguage)
+
+	$('#menuFlag').attr('src', newLanguageURL)
+				
+	var UserID = '{{user.UserID}}'
+	console.log('UserID ' + UserID)
+
+	var fd = new FormData()
+	fd.append('newLanguage', newLanguage)
+	fd.append('UserID', UserID)
+								
+		$.ajax({
+			type: 'POST',
+			url: '/changeLanguage',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+			}).done(function(data) {
+			   location.reload()
+			});					
+}
+
+window.onload = function() {
+		
+	userAdminLanguage = "{{user.UserAdminLanguageID}}";
+	var UserType = "{{user.UserType}}";
+	var UserID = "{{user.UserID}}";
+			
+			{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){		
+					$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+
+					adminLanguage = '{{lang.LanguageID}}'
+					
+					if ('{{lang.LanguageSupported}}' == 'True'){
+						$('#newUserFlag').attr('src', '{{lang.LanguageFlagURL}}')
+						newUserLanguage = '{{lang.LanguageID}}'
+						nativeLanguageISOCode = '{{lang.LanguageISOCode}}'
+					}else{
+						console.log('defaulting curator language to irish')
+						newUserLanguage = 4
+						nativeLanguageISOCode = 'gle'
+						$('#newUserFlag').attr('src', 'img/flags/32/Ireland.png')
+					}
+					
+					
+					
+					console.log('setting ' + nativeLanguageISOCode)
+				}
+			{% endfor %}
+			
+			
+	$("#newUserLanguageCaret").val(currentISO);
+			
+		jQuery(function($) {
+			var input = $('#newUserEmail');
+			input.on('keydown', function() {
+				var key = event.keyCode || event.charCode;
+				var contents = $( "#newUserEmail" ).val()
+
+				if (contents !== '' && contents.indexOf('@') >= 0){console.log('ADD'); $("#addButton" ).css('visibility', 'visible')}else{$("#addButton" ).css('visibility', 'hidden')}
+				
+				if($( "#newUserEmail" ).val().length == 0){
+					$("#addButton" ).css('visibility', 'hidden')
+				}
+			});
+	});	
+		
+	{% for user in users %}
+		userData.push('{{user.UserEmail}}')
+	{% endfor %}			
+		console.log(userData)		
+}		
+</script>			
+</body>
+</html>

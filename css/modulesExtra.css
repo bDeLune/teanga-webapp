@@ -1,0 +1,356 @@
+#recordButton {
+	position: absolute;
+	left: 113px;
+	width: 64px;
+	height: 64px;	
+	max-width: 64px;
+	min-width: 10px;
+	z-index:10000;
+	cursor: pointer;
+	display: none; 
+}
+
+#playButton {
+	display: none; 
+	position: absolute;
+	left: 20px;
+	width: 64px;
+	height: 64px;	
+	max-width: 64px;
+	min-width: 10px;
+	cursor: pointer;	
+	z-index:10000;	
+}
+
+#playOriginal{
+	display: none; 
+	position: absolute;
+	right: 40px;
+	width: 64px;
+	height: 64px;	
+	max-width: 64px;
+	min-width: 10px;
+	cursor: pointer;	
+	z-index:10000;	
+}
+
+#flag {
+	vertical-align: middle;
+	position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.item {
+	min-height: 90px;
+}
+
+#saveValidation{
+	color: red;
+}
+
+#wordText{
+		width: 40px;
+}
+
+.trashIcon{
+    position: relative;
+    left: 10px;
+}
+
+h4, h5, h6 {
+    margin-top: 0px;
+}
+
+
+.breadcrumb > li + li:before {
+    content: "\3E"
+}
+
+
+.custom {
+	padding: 0px;
+	font-weight: bold;
+    color: #444444;
+	background-image: none;
+	
+}
+
+
+
+
+
+
+
+
+
+
+/* MASHER */
+
+#partDiv0{
+	position: absolute;
+	height: 100%;
+	width: 33%;
+	left: 0%;
+	padding: 2%;
+	background-color: none;
+}
+
+#partDiv1{
+	position: absolute;
+	height: 100%;
+	left: 34%;
+	width: 33%;
+	padding: 2%;
+	background-color: none;
+}
+
+#partDiv2{
+	float: right;
+	position: absolute;
+	left: 66%;
+	height: 100%;
+	width: 33%;
+	padding: 2%;
+	background-color: none;
+}
+
+
+.Flap1 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:1;
+	visibility:visible;
+	display:none;
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.Flap2 {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:2;
+	visibility:visible;
+	display:none;
+
+}
+
+.Flap3 {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:3;
+	visibility:visible;
+	display:none;
+
+}
+.Flap4 {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:4;
+	visibility:visible;
+	display:none;
+}
+
+.Flap5 {
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:5;
+	visibility:visible;
+	display:none;
+
+}
+.Flap6 {
+	
+	opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index:6;
+	display:none;
+}
+
+.masculineWord{	
+  	    -webkit-filter: drop-shadow(3px 2px 25px rgba(51, 153, 255, 1));
+    filter: url(#drop-shadow);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+}
+.feminineWord{
+	    -webkit-filter: drop-shadow(3px 2px 25px rgba(204, 0, 255, 1));
+    filter: url(#drop-shadow);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+}
+.neutralWord{
+	    -webkit-filter: drop-shadow(3px 2px 25px rgb(255,255,255));
+    filter: url(#drop-shadow);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";	
+
+}
+
+.mainWord {
+	position:absolute;	
+	left:143px;
+	top:144px;
+	max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+	z-index:77;
+	visibility:visible;
+    display: none;
+}
+
+.SecondWord {
+	position:absolute;
+	left:152px;
+	top:253px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display:none;
+}
+
+.ThirdWord {
+	position:absolute;
+	left:62px;
+	top:201px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display: none;
+
+}
+
+.FourthWord {
+	position:absolute;
+	left:62px;
+	top:201px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display: none;
+
+}
+.ModArticle {
+	position:absolute;
+	left:151px;
+	top:48px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display: none;
+}
+
+
+.ModPlural {
+	position:absolute;
+	left:241px;
+	top:100px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display: none;
+}
+
+.CircleFlap5 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:350px;
+	z-index:1;
+	visibility:visible;
+	display: none;
+}
+
+.CircleFlap4 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:350px;
+	z-index:2;
+	visibility:visible;
+	display: none;
+}
+.CircleFlap3 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:350px;
+	z-index:3;
+	visibility:visible;
+	display: none;
+}
+.CircleFlap2 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:350px;
+	z-index:4;
+	visibility:visible;
+	display: none;
+}
+.CircleFlap1 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:350px;
+	z-index:5;
+	visibility:visible;
+	display: none;
+}
+
+.CircleModTime {
+	position:absolute;
+	left:153px;
+	top:44px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display: none;
+		
+}
+
+.CircleModTense {
+	position:absolute;
+	left:252px;
+	top:115px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display: none;
+}
+
+.CircleModNegative {
+	position:absolute;
+	left:217px;
+	top:239px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display: none;
+}
+
+.CircleModInterrogative {
+	position:absolute;
+	left:84px;
+	top:235px;
+	width:48px;
+	z-index:7;
+	visibility:visible;
+	display: none;
+}

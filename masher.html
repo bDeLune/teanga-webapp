@@ -1,0 +1,2359 @@
+<!doctype html>
+<html lang="en">
+   <head>   	
+        <!--<meta charset="UTF-8" />-->
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">  		
+         <title>TEANGA</title>						
+         <meta name="description" content="" />   	
+         <!-- Meta Viewport -->
+         <meta name="viewport" content="width=device-width, initial-scale=1">		
+         <!-- All CSS Styles -->
+        <link type="text/css" href="css/bootstrap.css" rel="stylesheet" media="screen" />
+        <link type="text/css" href="css/animate.css" rel="stylesheet" media="screen" />
+        <link type="text/css" href="css/magnific-popup.css" rel="stylesheet" media="screen" />
+        <link type="text/css" href="css/styles/style-green.css" rel="stylesheet" media="screen" /> 	
+        <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" media="screen" />
+		<link rel="stylesheet" href="css/BootSideMenu.css">
+		<!--<link href="css/Flags2.css" rel="stylesheet" type="text/css" />-->
+		<link type="text/css" href="css/teangaStylesheet.css" rel="stylesheet" media="screen" />
+        <link type="text/css" href="css/media.css" rel="stylesheet" media="screen" />
+        <script type="text/javascript" src="js/modernizr.js"></script> 	
+	</head>
+	<body>
+</main>
+    <div id="loader-wrapper">	 
+      <div id="loader"></div>
+    </div>
+
+<div id="pageOverlayWrapper">	 
+    <div id="pageOverlay"><img  style="display:none" src="img/Background/overlaySubject.jpg"></img></div>
+</div>
+
+<!--<div class="overlayWrapper">-->
+ <!--<div class="overlay">-->
+ <header>  
+  <style type="text/css">
+  
+  body {
+    background-repeat: repeat;
+    background-image: url(img/Background/WhiteWall.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /*background: url(img/Background/WhiteWall.png)repeat center;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  
+  .flag{
+     position: relative;
+     top: -7px;
+  }
+  
+  .playSlow {
+	position: absolute;
+    bottom: 10px;
+	z-index:10000000;
+    left: 41.3%;
+    top: 93%;
+	display:none;
+	}
+
+.dotstyle ul {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    left: 45.7%;
+    top: 165px;
+    list-style: none;
+    cursor: default;
+}
+
+.navDots {
+
+	display: none;
+
+}
+
+.dotstyle li {
+	position: relative;
+	display: block;
+	float: left;
+	margin: 0 16px;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+
+.dotstyle li a {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border-radius: 50%;
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.3);
+	text-indent: -999em;
+	cursor: pointer; /* make the text accessible to screen readers */
+	position: absolute;
+}
+
+.dotstyle-fillup li a {
+	overflow: hidden;
+	background-color: #ccc;
+	box-shadow: inset 0 0 0 2px black;
+	transition: background 0.3s;
+}
+
+.dotstyle-fillup li a::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	height: 0;
+	left: 0;
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0 0 1px #fff;
+	transition: height 0.3s;
+}
+
+.dotstyle-fillup li a:hover,
+.dotstyle-fillup li a:focus {
+	background-color: rgba(0,0,0,0.2);
+}
+
+.dotstyle-fillup li.current a::after {
+	height: 100%;
+	background-color: #555;
+	box-shadow: 0 0 1px #fff;
+}
+
+#stepNoDisplay{
+	display: block;
+    position: absolute;
+    left: 47.5%;
+    right: 0;
+    margin: 0;
+    top: 637px;
+    font-size: 42px;
+}
+
+
+
+
+
+
+#dropdown2
+{
+    position: relative;
+        left: 80%;
+    /* bang */
+
+}
+
+/*
+.overlayWrapper
+{
+    position: relative;
+    display: inline-block;
+    z-index: 0; 
+}
+
+.overlay
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 255, 0.5);
+    z-index: -1;
+}*/
+
+.infoOverlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /*z-index: 90;//bang2*/
+}
+
+#intro {
+    padding-top: auto;
+    /* height: 80%; */
+}
+
+.infoWordNormalSize {
+	 max-width:100%;
+	 height:auto;
+ 	 display: inline-block;
+ 
+ 
+ }
+ 
+.infoWordResizable {
+	 width:50%;
+ }
+ 
+ 
+.resizedInfoWord0{
+     float: left;
+ }
+ 
+.resizedInfoWord1{
+     float: right;
+ }
+ 
+ 
+.infoWordResizableHeight {
+	 height:50%;
+	 width:auto%;
+ }
+ 
+@media (max-width: 991px)
+media.css:45{
+	#intro {
+   		/*  padding-top: 130px;*/
+    	/* height: 80%; */
+	}
+}
+
+.container {
+	 width: 90%;
+}
+
+@media (min-width: 992px)
+bootstrap.css:1{
+.container {
+    width: 90%;
+}
+}
+
+@media (min-width: 768px)
+bootstrap.css:1{
+.container {
+    width: 90%;
+}
+}
+
+
+
+
+.top-bar {
+    background: transparent;
+}
+
+
+@media (max-width: 991px)
+style-green.css:1306{
+	.top-bar {
+    background: transparent;
+	}
+}
+
+#dropdown2 {
+    left: 90%;
+	top: -20px;
+}
+
+@media (max-width: 991px){ 
+    #dropdown2{
+     top: 50px;  
+	}
+}
+
+.dropdown-menu {
+
+    padding: 8px 0;
+    left: auto;
+    right: 12%;
+    top: 2px;
+}
+
+@media (min-width: 991px)
+.dropdown-menu {
+.container {
+    right: 24%;
+	}
+}
+
+
+.Part{
+	top: 0%;
+}
+
+@media (max-width: 991px){
+	.Part{
+		top: 20%;
+	}
+}
+
+
+#languageDropdown{
+	min-width:150px;
+}
+
+@media (max-width: 991px){
+#languageDropdown{
+	left:68%
+	min-width:150px;
+}
+}
+
+.navbar-toggle {
+    left: 90%;
+     top: -2px;
+}
+
+#monkeyLogo{
+	 top: 10px;
+}
+
+.defaultInfoContainer{
+ top: -70px;
+ position: relative;
+ text-align: center;
+}
+
+.resizedInfoContainer{
+ /*top: -60px;*/
+    position: relative;
+
+
+}
+
+
+
+  </style>		 
+               <!-- Intro -->           
+               <div id="intro" data-scroll-index="0">  
+       
+                       <!-- Top Bar -->
+                        <div class="top-bar">            
+                           <div class="container">
+                              <div class="row">                              
+                                 <div class="col-md-12">                                
+                                       <!-- Logo -->
+                                       <div class="logo"><a title="" href="#"><img id="monkeyLogo" class="monkeyLogo" src="img/bg/CHAPPI-TEANGA-MONKEY-SMALL.png" alt="TEANGA!" width="60" height="60"></a></div>                 
+                                       <!-- Menu -->
+                                       <div class="nav">                     
+                                          <nav id="flagHolder" class="navbar navbar-default" role="navigation">
+                                             <!-- Mobile Button -->
+		                                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                             </button>
+                                             <!-- Mobile Button End -->
+                                          		               
+                                        	
+												<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img class="menuFlagClass" id="thisMenuFlag"></img><b id="languageCaret" class="caret"></b></a>
+												<ul id='languageDropdown' class="download-btn dropdown-menu" role="menu">
+												</ul>
+																 
+                                         </nav>                     
+                                       </div>
+                                       <!-- Menu End -->                                       
+                                 </div>             
+                              </div><!-- .row End -->                  
+                           </div><!-- .container End -->                                                                      
+                        </div>
+                        <!-- Top Bar End -->
+                        
+            <div id="infoContainer" class="defaultInfoContainer" style="">
+                <!--<div id="infoPartDiv0" style="padding: 50px;">-->																							<!--was 0.5    float left flaot right-->
+				<img class="infoWord" id="infoPart0" style=" display:none; top: 70px;" src="img/Info-Overlay-Subject.png">
+				<!--</div>-->
+				<!--<div id="infoPartDiv1" style="padding: 50px;">-->
+				<img class="infoWord" id="infoPart1" style="display:none; top: 70px;" src="img/Info-Overlay-Verb.png">
+						<!--</div>-->            		
+            </div> 
+                        
+                        
+                        
+                        
+                        
+                        <div class="container">
+                           <div class="row">         
+                                 <div class="col-md-12">         
+                           
+										<div id="masherBorder">
+										
+										<div id="innerMashContainer"></div>
+											<div class="Part" id="partDiv2">
+												<img id="partDiv2Error" src="img/player/HexagonPart-NODROP.png" class="validateDrag"></img>
+												<img id="partDiv2Confirm" src="img/player/HexagonPart-DROP.png" class="validateDrag"></img>
+												<img id="flap26" class="Flap6" src="img/player/HexFlap6.png">
+												<img id="flap25" class="Flap5" src="img/player/HexFlap5.png">
+												<img id="flap24" class="Flap4" src="img/player/HexFlap4.png">
+												<img id="flap23" class="Flap3" src="img/player/HexFlap3.png">
+												<img id="flap22" class="Flap2" src="img/player/HexFlap2.png">
+												<img id="flap21" class="Flap1" src="img/player/HexFlap1.png">
+												<img id="partTypeImage2" src="img/player/Hexagon.png" class="partTypeImages" style="display: inline;">
+												<img class="mainWord" id="mainWord2" onMouseOver="showEdit('mainWord2', 'mainWord2Hover','IN')" onMouseOut="showEdit('mainWord2', 'mainWord2Hover','OUT')" src="img/player/blank.gif">
+											</div>
+											<div class="Part" id="partDiv1">
+												<img id="partDiv1Error" src="img/player/CirclePart-NODROP.png" class="validateDrag"></img>
+												<img id="partDiv1Confirm" src="img/player/CirclePart-DROP.png" class="validateDrag"></img>
+												<!--<img id="flap16" class="Flap6 " src="img/player/blank.gif">-->
+												<img id="flap16" class="Flap6 CircleFlap6" src="img/player/CircleFlap6.png">
+												<img id="flap15" class="Flap5 CircleFlap5" src="img/player/CircleFlap5.png">
+												<img id="flap14" class="Flap4 CircleFlap4" src="img/player/CircleFlap4.png">
+												<img id="flap13" class="Flap3 CircleFlap3" src="img/player/CircleFlap3.png">
+												<img id="flap12" class="Flap2 CircleFlap2" src="img/player/CircleFlap2.png">
+												<img id="flap11" class="Flap1 CircleFlap1" src="img/player/CircleFlap1.png">
+												<img id="partTypeImage1" src="img/player/Circle.png" class="partTypeImages" style="display: inline;">
+												<img class="mainWord" id="mainWord1" onMouseOver="showEdit('mainWord1', 'mainWord1Hover','IN')" onMouseOut="showEdit('mainWord1', 'mainWord1Hover','OUT')" src="img/player/blank.gif">
+											</div>
+											<div class="Part" id="partDiv0">
+												<img id="partDiv0Error" src="img/player/HexagonPart-NODROP.png" class="validateDrag"></img>
+												<img id="partDiv0Confirm" src="img/player/HexagonPart-DROP.png" class="validateDrag"></img>
+												<img id="flap06" class="Flap6 opacityIn" src="img/player/HexFlap6.png">
+												<img id="flap05" class="Flap5 opacityIn" src="img/player/HexFlap5.png">
+												<img id="flap04" class="Flap4 opacityIn" src="img/player/HexFlap4.png">
+												<img id="flap03" class="Flap3 opacityIn" src="img/player/HexFlap3.png">
+												<img id="flap02" class="Flap2 opacityIn" src="img/player/HexFlap2.png">
+												<img id="flap01" class="Flap1 opacityIn" src="img/player/HexFlap1.png">
+												<img id="partTypeImage0" src="img/player/Hexagon.png" class="partTypeImages" style="display: inline;">
+												<img class="mainWord" id="mainWord0" onMouseOver="showEdit('mainWord0', 'mainWord0Hover','IN')" onMouseOut="showEdit('mainWord0', 'mainWord0Hover','OUT')" src="img/player/blank.gif">
+											</div>					                                 	
+										</div>
+											<div id="innerMashContainer"></div>									
+											<div id="ratingsBox"><div id="place"></div></div> 
+
+									</div>
+										<div id="stepNoDisplay">
+										</div>                                	
+                                 </div>
+							</div>		                           
+                           </div>
+                        </div>						
+			    </div>        
+         </header></div>
+         <!-- Footer 
+    <footer>    
+     </footer>-->
+<nav class="nav1" id="nav1">
+	<ul id="listElem" class="list-unstyled main-menu">
+		<li class="text-right"><a href="#" id="nav-close">X</a></li> 
+		<li class="sub-nav"><a href="#"></a></li>
+	</ul>
+</nav>
+<!--Include your brand here ADD FIXED AT THE END OF NAV EXPANDER TO FIX-->
+ <div class="navbar-header pull-left">
+      <a id="nav-expander" class="nav-expander fixed">
+	  <img src="img/player/Modules-TAB.png" id="navArrowLeft" onClick=""></img>
+      </a>
+ </div> 
+<!-- Javascript Files -->
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script> 		
+<script type="text/javascript" src="js/bootstrap.min.js"></script>	
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/scrollIt.js"></script>         
+<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+<script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>
+<script type="text/javascript" src="js/jquery.particleground.min.js"></script>
+<script type="text/javascript" src="js/custom2.js"></script>
+<script type="text/javascript" src="js/monkeyPatch.js"></script>		
+<script type="text/javascript" src="js/ios6-timers.js"></script>	    
+<script type="text/javascript" src="js/recorder.js"></script>
+<script type="text/javascript" src="js/recorderWorker.js"></script>	 
+<script type="text/javascript" src="js/jqfloat.js"></script>
+<script src="js/BootSideMenu.js"></script>			
+<script>
+var req;															
+var currentStep = 0;
+var modArray = []
+var currentJSON;
+var moduleInfoURL = 'https://www.teanga.me/api/modules';
+var noOfParts;																			
+var moduleTitle;																	
+var noOfSteps;
+var data;
+var currentDuration;
+var initLoading = true;
+var flapArray = [];
+var subWordTypeImageArray = []
+var subWordImageArray = []
+var flapCount = 0;
+var flapsInUseArray = []
+var finished = false;
+var currentlyRecording = false;
+var modCount = 0;
+var myContext;	
+var recordedAgain = false;
+var moduleHistory = [];
+var modulesTaken = 0;
+var allowLanguageChange = true;
+var unlocked = false;	
+var reachedEnd = false; 
+var interrupted = false;
+var bufferArray = [];
+var recordingIteration = 0;
+var defaultLanguage = 'eng';	
+var onePart = true;	
+var firstLoad = true;	
+var go;
+var myContext;
+var bufferExists = false;
+var countDown1, countDown2, countDown3, countDownEnd;	
+var notCompatable = false;
+var StepRecordingConfig 
+var StepRatingConfig
+var StepReferenceConfig
+var stepReferenceAutoConfig
+var StepRefAutoConfig
+var currentLanguage
+var playSlow
+var userData = {}
+var langData = {}
+var infoOverlayActivated = false
+		
+{% for mod in mods%}
+	userData[modData.length] = {'userType' : '{{user.userType}}', 'userLanguage' : '{{user.userLanguage}}'}
+	{% endfor %}	
+	
+	
+		{% for lang in languages %}
+		langData['{{lang.LanguageID}}'] = {'LanguageISOCode' : '{{lang.LanguageISOCode}}', 'LanguageNameEnglish' : '{{lang.LanguageNameEnglish}}', 'LanguageNameNative' :'{{lang.LanguageNameNative}}', 'PartsOrdering' :'{{lang.PartsOrdering}}', 'LanguageSupported' : {% if lang.LanguageSupported %} true {% else%} false {% endif %}}
+
+			
+
+			if ('{{lang.LanguageSupported}}' == 'True'){
+			
+				console.log('ADDING LANGUAGE ' + '{{lang.LanguageISOCode}}')
+
+				$( "#languageDropdown" ).append( 
+					"<li id='flag-{{lang.LanguageID}}' class='lang_select flag' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}} <img src='{{lang.LanguageFlagURL}}'></a></li>"
+				);
+			
+				console.log(' TEST {{lang.LanguageID}}')
+				console.log(' TEST {{user.UserLearningLanguageID}}')
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserLearningLanguageID}}"){					
+					curLangURL = '{{lang.LanguageFlagURL}}'
+					$('#thisMenuFlag').attr('src', curLangURL)									
+					currentLanguage = "{{lang.LanguageISOCode}}"
+					console.log('setting flag to ' + '{{lang.LanguageNameEnglish}}')
+				}else{
+					//curLangURL = 'img/flags/32/Ireland.png'
+					//$('#thisMenuFlag').attr('src', curLangURL)									
+					//currentLanguage = 'gle'			
+					//console.log('defaulting to irish')
+					
+					curLangURL = 'img/flags/32/United-Kingdom.png'
+					$('#thisMenuFlag').attr('src', curLangURL)									
+					currentLanguage = 'eng'			
+					console.log('defaulting to english')
+					
+				}
+								
+		
+				$( "#flag-{{lang.LanguageID}}" ).click(function() {
+ 	 									var lang = '{{lang.LanguageISOCode}}'
+										var langURL = '{{lang.LanguageFlagURL}}'
+										var LanguageID = '{{lang.LanguageID}}'
+										populateMenu(lang)									
+										var userType = '{{user.UserType}}'
+										var userID = '{{user.UserID}}'
+										
+										//$('.menuFlagClass').remove();																													
+										//$('#dropdown2').append('<img class="menuFlagClass" id="myMenuFlag" src='+langURL+' /><b id="languageCaret" class="caret"></b>');
+										///
+										console.log('Channging language to ' + langURL)
+										
+										currentLanguage = lang
+										$('.menuFlagClass').attr('src', langURL)	
+										
+										
+										if (userType == 'USER_STUDENT'){
+
+											var fd = new FormData()
+											fd.append('newLanguage', LanguageID)
+											fd.append('UserID', userID)
+											fd.append('langType', 'learningLanguage')
+																		
+												$.ajax({
+													type: 'POST',
+													url: '/changeLanguage',
+													data: fd,
+													cache: false,
+													processData: false,
+													contentType: false
+												});
+										}
+				});
+			
+			}else{
+				console.log('Not including language ' + '{{lang.LanguageNameEnglish}}')
+			}
+	
+		{% endfor %}	
+	
+		console.log(userData)
+		
+function populateFlag(){
+
+	$.getJSON(moduleInfoURL, function(moduleInfo) {		
+			var LanguageInfo = moduleInfo.data[0].LanguageInfo
+				var noOfLanguages = LanguageInfo.length
+				var curLangURL = '{{lang.LanguageFlagURL}}'
+				var userType = '{{user.UserType}}'
+				var langISO = '{{langISO}}'	
+				
+			///	currentLanguage = '{{langISO}}'	
+				
+			///{% for lang in languages %}
+			///
+			//console.log('lang langid  - - - {{lang.LanguageID}}')	
+			//console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+			///	if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){					
+			//		curLangURL = '{{lang.LanguageFlagURL}}'
+										
+					
+			///		currentLanguage = "{{lang.LanguageISOCode}}"
+			//	}
+			//{% endfor %}
+			
+		//console.log('SETTING FLAG!!! ' + curLangURL)			
+		//$('#thisMenuFlag').attr('src', curLangURL)	
+				
+		if (userType == 'USER_CURATOR' || userType == 'USER_STUDENT' ||  userType == 'USER_ADMIN' ){
+																		
+					//var html = ' '
+					//html += '<ul id="listDD" class="download-btn dropdown-menu" role="menu" style="min-width: 70px">'
+					
+					///console.log(moduleInfo)		
+							
+					//for (var i = 0; i < noOfLanguages; i++){
+					
+					/////	if (moduleInfo.data[0].LanguageInfo[i].LanguageSupported = true){
+					///		var lang = moduleInfo.data[0].LanguageInfo[i].LanguageISOCode
+					///		var langImageURL = moduleInfo.data[0].LanguageInfo[i].LanguageFlagURL
+					///		console.log(moduleInfo.data[0].LanguageInfo[i])
+					///		html += '<li id="flag'+i+'" class="lang_select" data-iso='+lang+' style="width: 100%">'
+					////		html += ''+lang+' <img src='+langImageURL+' pull-right"/>'
+					//		html += '</li>'
+					//	}
+					///}			
+					
+					////console.log(html)
+					
+					//html += '</ul>'				
+					//$("#dropdown2").insertAfter(html)
+					///$( html).insertAfter( "#dropdown2" );
+										
+					//for (var x = 0; x < (noOfLanguages); x++){
+					////	 (function (x) {
+					///	 var LanguageID = moduleInfo.data[0].LanguageInfo[x].LanguageID
+					////			if (moduleInfo.data[0].LanguageInfo[x].LanguageSupported = true){
+					//				$( '#flag'+LanguageID+'' ).click(function() {
+									//	var lang = moduleInfo.data[0].LanguageInfo[x].LanguageISOCode
+									//	var langURL = moduleInfo.data[0].LanguageInfo[x].LanguageFlagURL
+									///	var LanguageID = moduleInfo.data[0].LanguageInfo[x].LanguageID
+									///	populateMenu(lang)									
+									///	var userType = '{{user.UserType}}'
+									//	var userID = '{{user.UserID}}'
+										
+										//$('#myMenuFlag').remove();																													
+										//$('#dropdown2').html('<img id="myMenuFlag" src='+langURL+' /><b id="languageCaret" class="caret"></b>');
+										
+									///	currentLanguage = lang
+										
+									//	if (userType == 'USER_STUDENT'){
+
+									////		var fd = new FormData()
+									///		fd.append('newLanguage', LanguageID)
+									//		fd.append('UserID', userID)
+									//		fd.append('langType', 'learningLanguage')
+																		
+									//			$.ajax({
+									/////				type: 'POST',
+									//				url: '/changeLanguage',
+									///				data: fd,
+									//				cache: false,
+									//				processData: false,
+									///				contentType: false
+									//			}).done(function(data) {										
+									//			});														
+									//	}																												
+					///				});
+					/////		}
+					///	}) (x);										
+					//}					 	
+		}else{
+		//	$('#languageCaret').removeClass('caret');				
+		//	$('#listDD').hide();
+		//	$('b.caret').remove();
+		//	$("#menuFlag").prop("disabled",true);
+		///	$("#dropdown1").prop("disabled",true);
+		///	$("#dropdown2").prop("disabled",true);
+		}
+	});	
+}
+	
+function populateMenu(language){
+
+	language = String(language)
+	console.log('populating menu')
+
+	if (allowLanguageChange == true){
+	
+	console.log('populating menu2')
+	console.log('moduleInfoURL + ' + moduleInfoURL)
+	//console.log('moduleInfo + ' + moduleInfo)
+
+		$.getJSON(moduleInfoURL, function(moduleInfo) {					 														
+					
+			var noOfModules = moduleInfo.data.length;	
+			console.log(moduleInfoURL);  
+			console.log('No of modules available (via ModuleInfoJSON) is ' + noOfModules);  
+			console.log('ModuleCreationLanguage of first module is ' + moduleInfo.data[0].ModuleCreationLanguage +' type is: ' +  typeof moduleInfo.data[0].ModuleCreationLanguage); 
+			console.log('User language is: ' + language); 							
+				
+			if (firstLoad == false)
+			{
+				setTimeout(function(){					
+					$('body').addClass('nav-expanded');	
+					$('#navArrowLeft').fadeOut(500);
+				}, 1800);	
+			}	
+				
+				setTimeout(function(){	
+					
+					if (firstLoad == false)
+					{						
+						for (var module = 0; module < noOfModules; module++)	
+						{					
+							$('#menuItem'+module+'').remove();	
+							$('#sub-nav'+module+'').remove();
+							$('#subMenuItem'+module+'').remove();	
+						}			
+					}		
+					
+					for (var module = 0; module < (noOfModules); module++)	
+					{	
+						console.log('module Info test: ' + module)
+						console.log(moduleInfo.data[module])
+						var moduleLanguage = moduleInfo.data[module].ModuleCreationLanguage
+						var ModuleStatus = moduleInfo.data[module].ModuleStatus
+						moduleLanguage = moduleLanguage.replace(/\s+/g, '');
+						language = language.replace(/\s+/g, '');
+						
+						var ModuleID = moduleInfo.data[module].ModuleID
+						
+						if (moduleLanguage == language && ModuleStatus == 'Live')
+						{
+							var chosenModule = moduleInfo.data[module];
+							$('#listElem').append(
+								$('<li class="menuItem">').attr('id','sub-nav'+module+'').append(
+									$('<a id="menuItem'+module+'">').attr('onclick','parseJSON('+ModuleID+')').attr('href','#').append(
+										$('<span class="subMenuItem'+module+'">').append('<img width="65" src="'+moduleInfo.data[module].ModuleArtworkURL+'"> &nbsp;<font size="5">'+moduleInfo.data[module].ModuleTitle+'</font></img>')	
+									)
+								)
+							); 
+						}				
+					}			
+						firstLoad = false;								
+					}, 500); 	
+			});	
+		}else{		
+			console.log('Cannot change language in the middle of a module.')
+		}
+				
+		if ($( "#nav-expander" ).hasClass('nav-expanded') !== false){
+			$('#navArrowLeft').fadeIn(500);
+		}			
+}			
+																	//PARSE JSON DATA//																	
+function hideMenu(){
+$('body').removeClass('nav-expanded');
+$('#navArrowLeft').fadeIn(500);
+}
+
+$(window).on('resize', function() {
+//was 1005
+    if($(window).width() < 991) {
+        $('.infoWord').addClass('infoWordResizable');
+        $('.infoWord').removeClass('infoWordNormalSize');
+        $('#infoContainer').removeClass('defaultInfoContainer');
+        $('#infoContainer').addClass('resizedInfoContainer');
+        
+        
+        $('#infoPart0').addClass('resizedInfoWord0');
+        $('#infoPart1').addClass('resizedInfoWord1');
+        
+        
+    }else{
+        $('.infoWord').addClass('infoWordNormalSize');
+        $('.infoWord').removeClass('infoWordResizable');
+        $('#infoContainer').addClass('defaultInfoContainer');
+        $('#infoContainer').removeClass('resizedInfoContainer');
+        
+        $('#infoPart0').removeClass('resizedInfoWord0');
+        $('#infoPart1').removeClass('resizedInfoWord1');   
+    }
+    
+  //  if($(window).height() < 450) {
+  //     $('.infoWord').addClass('infoWordResizableHeight');
+   //     $('.infoWord').removeClass('infoWordNormalSize');
+   // }else{
+   //     $('.infoWord').addClass('infoWordNormalSize');
+   //     $('.infoWord').removeClass('infoWordResizableHeight');
+////      console.log('resizing height. window height '+$(window).height()+'')
+  //  }
+    
+})
+																										
+window.onload = function(){
+//was 1010
+    if($(window).width() < 991) {
+        $('.infoWord').addClass('infoWordResizable');
+        $('.infoWord').removeClass('infoWordNormalSize');
+        console.log('info images now resize. window size '+$(window).width()+'')
+        $('#infoContainer').removeClass('defaultInfoContainer');
+        $('#infoContainer').addClass('resizedInfoContainer');
+        
+        $('#infoPart0').addClass('resizedInfoWord0');
+        $('#infoPart1').addClass('resizedInfoWord1');
+        
+    }else{
+        $('.infoWord').addClass('infoWordNormalSize');
+        $('.infoWord').removeClass('infoWordResizable');
+        $('#infoContainer').addClass('defaultInfoContainer');
+        $('#infoContainer').removeClass('resizedInfoContainer');
+        console.log('info images now actual size. window size '+$(window).width()+'')
+        
+        $('#infoPart0').removeClass('resizedInfoWord0');
+        $('#infoPart1').removeClass('resizedInfoWord1');
+    }
+    
+   // if($(window).height() < 450) {
+   //     $('.infoWord').addClass('infoWordResizableHeight');
+   //     $('.infoWord').removeClass('infoWordNormalSize');
+   // }else{
+   //     $('.infoWord').addClass('infoWordNormalSize');
+   //     $('.infoWord').removeClass('infoWordResizableHeight');
+  // }
+    
+    
+
+	try {							
+		myContext = new (window.AudioContext || window.webkitAudioContext)(); 
+		console.log('Audio context created');
+	    gainNode = myContext.createGain();
+	}catch(e){
+		alert('Web Audio API is not supported in this browser');
+		notCompatable = true;
+	}
+	
+	var monkeyAudio = 'TeangaMP3/Teanga2.mp3'
+	bufferAudio(monkeyAudio, 100);
+	
+	console.log(langData)
+	animatedFadeOut()
+	populateFlag()	
+	
+	var userLanguage = '{{user.UserLearningLanguageID}}'
+	var currentISO
+										
+			{% for lang in languages %}
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){	
+					currentISO = "{{lang.LanguageISOCode}}"
+				}
+			{% endfor %}
+	
+	console.log('found lang ' + currentISO)
+
+	populateMenu(currentISO);
+
+    $('#nav-expander').on('click',function(e){
+      	e.preventDefault();
+      	$('body').toggleClass('nav-expanded');
+		$('#navArrowLeft').fadeOut(500);
+    });
+	
+    $('#nav-close').on('click',function(e){
+      	e.preventDefault();
+      	$('body').removeClass('nav-expanded');
+		$('#navArrowLeft').fadeIn(500);
+    });	
+	
+	$('container').on('click',function(e){															//REVIEW
+      	e.preventDefault();
+      	$('body').removeClass('nav-expanded');
+		$('#navArrowLeft').fadeIn(500);
+    });	
+		
+	$('.lang_select').click(function(event){
+	//	if(event.target.nodeName == "LI"){
+	///		iso = event.target.getAttribute('data-iso')
+	//	}
+	///	else if(event.target.nodeName == "A"){
+	//		iso = event.target.parentElement.getAttribute('data-iso')
+	///	}
+		///else if(event.target.nodeName == "IMG"){
+	//		iso = event.target.parentElement.parentElement.getAttribute("data-iso")
+	//	}
+			
+		console.log('POPULATING')	
+		$('body').removeClass('nav-expanded');			
+	//	$('.dropdown-toggle').html('<img src="img/Blank1x1.png"  class="flag flag-'+iso+'" /><b class="caret"></b>')		
+	})
+		
+	$(".dropdown").attr("onclick", "hideMenu()");
+	
+	
+	var currentJSON = "css/exampleModule3.json";	   	
+	$('#masherBorder').fadeIn(500)	
+	$('#div2').fadeIn(500)		
+	$('#partTypeImage0').fadeIn(500)		
+	$('#partTypeImage1').fadeIn(500)		
+	$('#partTypeImage2').fadeIn(500)	
+	
+	var playbackRecording = document.createElement("img"); 
+	playbackRecording.setAttribute("id", 'playbackRecording');
+	playbackRecording.setAttribute('src', 'img/player/Play64x64.png');
+	playbackRecording.classList.add("validateIcons");	
+		
+    var playbackOriginal = document.createElement("img"); 
+	playbackOriginal.setAttribute("id", 'playbackOriginal');
+	playbackOriginal.setAttribute('src', 'img/player/PlayREF64x64.png');	
+	playbackOriginal.classList.add("validateIcons");
+	playbackOriginal.classList.add("ref");	
+	
+	var playbackOriginalSlow = document.createElement("img"); 
+	playbackOriginalSlow.setAttribute("id", 'playbackOriginalSlow');
+	playbackOriginalSlow.setAttribute('src', 'img/player/playSlow.png');	
+	playbackOriginalSlow.classList.add("playSlow");	
+
+	var playbackImage = document.createElement("img"); 
+	playbackImage.setAttribute("id", 'playbackImage');
+	playbackImage.setAttribute('src', 'img/player/number3.png');	
+    playbackImage.classList.add("validateIcons");	
+	
+	var sadIcon = document.createElement("img"); 
+	sadIcon.setAttribute("id", 'sadIcon');
+	sadIcon.setAttribute('src', 'img/player/RatingsFace-SAD.png');
+	sadIcon.classList.add("validateIcons");	
+	
+	var happyIcon = document.createElement("img"); 
+	happyIcon.setAttribute("id", 'happyIcon');
+	happyIcon.setAttribute('src', 'img/player/RatingsFace-HAPPY.png');	
+	happyIcon.classList.add("validateIcons");
+	
+	var continueArrow = document.createElement("img"); 
+	continueArrow.setAttribute("id", 'continueArrow');
+	continueArrow.setAttribute('src', 'img/player/arrow.png');	
+	continueArrow.classList.add("continueArrow");	
+	
+	var moduleCompleteIcon = document.createElement("img"); 
+	moduleCompleteIcon.setAttribute("id", 'moduleCompleteIcon');
+	moduleCompleteIcon.setAttribute('src', 'img/player/allSlidesCompleted.png');	
+	moduleCompleteIcon.classList.add("validateIcons");	
+	
+	var mashContainer = document.getElementById("ratingsBox");
+	$('#ratingsBox').append(playbackImage);
+	$('#ratingsBox').append(happyIcon);
+	$('#ratingsBox').append(sadIcon);
+	$('#ratingsBox').append(playbackOriginal);
+	$('#ratingsBox').append(playbackOriginalSlow);
+	$('#ratingsBox').append(playbackRecording);
+	$('#ratingsBox').append(continueArrow);
+	$('#ratingsBox').append(moduleCompleteIcon);
+	  	
+	//bang, was insertbeofre  	
+	//insertAt(mashContainer, playbackImage);
+	//insertAt(mashContainer, happyIcon);
+	//insertAt(mashContainer, sadIcon);
+	//insertAt(mashContainer, playbackOriginal);
+	//insertAt(mashContainer, playbackOriginalSlow);
+	//insertAt(mashContainer, playbackRecording);
+	//insertAt(mashContainer, continueArrow);
+	//insertAt(mashContainer, moduleCompleteIcon);	
+		
+	$( "#playbackOriginal" ).hover(
+		function() {
+			$( '#playbackOriginalSlow' ).fadeIn( 25 );
+		}, function() {	
+		}
+	);
+	
+	$( "#playbackOriginalSlow" ).hover(
+		function() {
+		
+			if(!$('#playbackOriginalSlow').is(':visible'))
+				{
+				$( '#playbackOriginalSlow' ).fadeIn( 425 );
+				}		
+		}
+	);
+	
+	$( "#partTypeImage0" ).hover(
+		function() {
+				$( '#playbackOriginalSlow' ).fadeOut( 425 );
+		}
+	);
+	
+	$( "#partTypeImage1" ).hover(
+		function() {
+				$( '#playbackOriginalSlow' ).fadeOut( 425 );
+		}
+	);
+	
+	$( "#partTypeImage2" ).hover(
+		function() {
+				$( '#playbackOriginalSlow' ).fadeOut( 425 );
+		}
+	);
+	
+	$( "#playbackImage" ).hover(function() {$( '#playbackOriginalSlow' ).fadeOut( 425 );});
+	$( "#playbackRecording" ).hover(function() {$( '#playbackOriginalSlow' ).fadeOut( 425 );});
+		
+	$('#sadIcon').click(clickThrottled(function () {
+	nextStep()
+	}));
+	
+	$('.monkeyLogo').click(function () {
+		
+		
+		toggleInfoOverlay();
+		//playOnce(100, 1)
+		console.log('clicked monkeylogo')
+	});
+	
+	$('#happyIcon').click(clickThrottled(function () {
+	nextStep()
+	}));
+	
+	$('#playbackImage').click(function () {	
+		restartCountDown();
+		interruptRecording();	
+	});
+
+	$( "#continueArrow" ).click(function() {
+		nextStep()
+		$('#continueArrow').fadeOut(500);
+	});
+
+	$('#playbackImage').hide();	
+	$('#playbackRecording').hide();		
+	$('#playbackOriginal').hide();
+	$('#sadIcon').hide();
+	$('#continueArrow').hide();
+	$('#happyIcon').hide();
+	$('#moduleCompleteIcon').hide();	
+	$("#playbackOriginal").attr("onclick", "playOnce(currentStep, 1)");
+	
+	$( "#playbackOriginalSlow" ).click(function() {
+		var speed = .85
+		playSlow = true
+		console.log('playing back slow')
+		playOnce(currentStep, speed)
+	});
+	
+	$("#playbackRecording").attr("onclick", "playOnce(1000, 1)");
+}	
+
+function parseJSON(chosenModule){																				//Begin a new module
+
+	$('.dropdown-toggle').prop('disabled', true);
+	//$('#languageCaret').removeClass('caret');
+		
+	
+	go = 2;
+	$('body').toggleClass('nav-expanded');
+	$('#navArrowLeft').fadeIn(500);	
+	interrupted = true;
+	finished = false;
+	
+	//$(".navDots").fadeOut(500);
+	//$('.dotstyle ul').css('left','45.7%');
+	$( "#stepNoDisplay" ).fadeOut(500);
+		
+	if  (initLoading == false)
+	{			
+		console.log('Moving to another module, removing elements')
+		$('#moduleCompleteIcon').fadeOut(500);
+		animatedFadeOut();
+	}
+								
+	initLoading = false;		
+	currentStep = 0;
+	currentJSON = 'https://www.teanga.me/api/modules/'+chosenModule+'/steps'	
+	console.log(currentJSON)
+					
+	moduleHistory.push(currentJSON);
+	modulesTaken++;
+	console.log('New JSON file chosen. Attempting to parse: ' + currentJSON); 																		
+
+	setTimeout(function(){	
+		//$(".navDots").remove();				
+		createMash(currentJSON);	
+		$('#languageCaret').remove();							
+	}, 800);				
+}
+
+function getJSON(url) {
+    var resp ;
+    var xmlHttp ;
+    resp  = '' ;
+    xmlHttp = new XMLHttpRequest();
+
+    if(xmlHttp != null)
+    {
+        xmlHttp.open( "GET", url, false );
+        xmlHttp.send( null );
+        resp = xmlHttp.responseText;
+       }
+    return resp ;
+}
+
+function createMash(chosenModule){
+
+	$('#continueArrow').fadeOut(500);
+	recordedAgain = false;
+	allowLanguageChange = false;
+	reachedEnd = false;	
+	var promise = $.getJSON(chosenModule);
+
+	promise.done(function(obj) {
+		 
+	var stepMash = obj.data[currentStep].StepMash
+		noOfSteps = obj.data.length;
+		noOfParts = obj.data[currentStep].StepMash.MashPart.length;
+	var mashMeaning = obj.data[currentStep].StepMash.MashMeaningText;
+	var StepRefVoiceURL = obj.data[currentStep].StepRefVoiceURL;
+	
+	console.log('StepRefVoiceURL ' + StepRefVoiceURL);		
+	console.log(stepMash);	
+	
+	if (StepRefVoiceURL == 'None'){
+		StepRecordingConfig = 'NO';
+		StepRatingConfig = 'YES';
+		StepReferenceConfig = 'NO';
+		StepRefAutoConfig = 'YES';
+	}else{
+		setTimeout(function(){
+			bufferAudio(StepRefVoiceURL, currentStep);
+			}, 2500);
+		
+		StepRecordingConfig = String(obj.data[currentStep].StepRecordingConfig);
+		StepRatingConfig = String(obj.data[currentStep].StepRatingConfig);
+		StepReferenceConfig = String(obj.data[currentStep].StepReferenceConfig);
+		StepRefAutoConfig = String(obj.data[currentStep].StepRefAutoConfig);
+	}
+	
+	console.log('StepRecordingConfig ' + StepRecordingConfig)
+	console.log('StepRatingConfig ' + StepRatingConfig)
+	console.log('StepReferenceConfig ' + StepReferenceConfig)	
+	console.log('stepOptionRefAuto ' + StepRefAutoConfig)
+	console.log('Step ' + (currentStep+1) + ' started - ' + mashMeaning);	
+	console.log('There are ' + noOfSteps + ' steps in this module, with ' + noOfParts + ' parts in each. This is step ' + (currentStep+1));
+	
+	if (currentStep > noOfSteps){
+		console.log('All steps in module completed');
+	}else{		
+
+		for (var flap = 0; flap < 6; flap++)													//Fade out the flaps in use			
+		{					
+			$('#Flap'+flap+'').removeClass("opacityIn");	
+			$('#Flap'+flap+'').css('opacity', '.3');
+		}	
+
+		var mashPart = stepMash.MashPart
+			currentMashJSON = mashPart
+		var MashMeaningText = stepMash.MashMeaningText
+			mashID = stepMash.MashID
+			mashVoiceURL = stepMash.MashVoiceURL
+		var mashExists = false
+		
+		$('#stepMeaningText').val(MashMeaningText)
+		
+		if (MashMeaningText != 'null' || MashMeaningText != '' || MashMeaningText != 'undefined' || MashID != 0)
+		{
+			try {var mashPart = JSON.parse(mashPart)}catch(e){console.log(e)}
+			
+			for (var parts = 0; parts < mashPart.length; parts++){
+			
+			if (MashMeaningText == ''){$('wordGlyph').attr('src', 'img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png')}
+			$('#partTypeImage'+parts+'').removeClass("neuterGenderGlow")
+			$('#partTypeImage'+parts+'').removeClass("maleGenderGlow")
+			$('#partTypeImage'+parts+'').removeClass("femaleGenderGlow")
+						
+			try {
+				var partType = String(mashPart[parts].PartType)
+			}catch(e){
+				if (parts == 0){var partType = 'SUBJECT'}
+				if (parts == 1){var partType = 'VERB'}
+				if (parts == 2){var partType = 'OBJECT'}
+			}
+					
+			try {
+				var wordCount = mashPart[parts].Word.length	
+				
+				if (mashPart[parts].Word[0].WordType != 'word_adjective'){
+					var mainImageURL = ''+mashPart[parts].Word[0].WordImageURL+''
+					var wordGender = mashPart[parts].Word[0].WordGender	
+				}else{
+					var mainImageURL = 'img/player/blank.gif'
+					var wordGender = 'None'
+				}			
+						
+				}catch(e){
+					var wordCount = 0
+					var mainImageURL = 'img/player/blank.gif'
+					var wordGender = 'None'
+				}				
+					
+				console.log(mashPart[parts].Word[0])					
+				console.log('wordGender ' + wordGender)
+				console.log('mainImageURL ' + mainImageURL)
+						
+				flap1 = document.getElementById('flap'+parts+'1');
+				flap2 = document.getElementById('flap'+parts+'2');
+				flap3 = document.getElementById('flap'+parts+'3');
+				flap4 = document.getElementById('flap'+parts+'4');
+				flap5 = document.getElementById('flap'+parts+'5');
+				flap6 = document.getElementById('flap'+parts+'6');
+				var partTypeImage = document.getElementById('partTypeImage'+parts+'');		
+				
+				if (partType.indexOf('SUBJECT') >=0 || partType.indexOf('OBJECT') >=0 ){								//review - use for loop
+					partTypeImage.setAttribute('src','img/player/Hexagon.png');
+					partTypeImage.setAttribute('name','subject');
+					flap1.setAttribute("src", 'img/player/HexFlap1.png'); 
+					flap2.setAttribute("src", 'img/player/HexFlap2.png');	
+					flap3.setAttribute("src", 'img/player/HexFlap3.png');	
+					flap4.setAttribute("src", 'img/player/HexFlap4.png');	
+					flap5.setAttribute("src", 'img/player/HexFlap5.png');	
+					flap6.setAttribute("src", 'img/player/HexFlap6.png');
+					$('#mainWord'+parts+'').css('opacity', '0.9');														
+					$('#mainWord'+parts+'').attr("src", mainImageURL)					
+					$('#mainWord'+parts+'').attr('data-wordPartPosition', '0');									
+					$('#partDiv'+parts+'').attr("name", partType)			
+					defaultMods(parts, 'word_noun')
+
+					if(wordGender == 'Masculine'){
+						$('#partTypeImage'+parts+'').addClass("maleGenderGlow")
+					}else if(wordGender == 'Feminine'){
+						$('#partTypeImage'+parts+'').addClass("femaleGenderGlow")
+					}else if (wordGender == 'Neuter'){
+						$('#partTypeImage'+parts+'').addClass("neuterGenderGlow")}						
+					}else if (partType.indexOf('VERB') >=0 || partType.indexOf('Action') >=0 ){	
+						partTypeImage.setAttribute('src','img/player/Circle.png');	
+						partTypeImage.setAttribute('name','verb');
+						flap1.setAttribute("src", 'img/player/CircleFlap1.png');
+						flap2.setAttribute("src", 'img/player/CircleFlap2.png');	
+						flap3.setAttribute("src", 'img/player/CircleFlap3.png');	
+						flap4.setAttribute("src", 'img/player/CircleFlap4.png');	
+						flap5.setAttribute("src", 'img/player/CircleFlap5.png');	
+						flap6.setAttribute("src", 'img/player/CircleFlap6.png');
+						$('#mainWord'+parts+'').css('opacity', '0.9');				
+						$('#mainWord'+parts+'').attr('data-wordPartPosition', '0');								
+						$('#mainWord'+parts+'').attr("src", mainImageURL)	
+						$('#partDiv'+parts+'').attr("name", partType)
+						defaultMods(parts, 'word_verb')
+					}else{
+						partTypeImage.setAttribute('src','img/player/blank.gif');	
+						flap1.setAttribute("src", '');
+						flap2.setAttribute("src", '');	
+						flap3.setAttribute("src", '');	
+						flap4.setAttribute("src", '');	
+						flap5.setAttribute("src", '');	
+						flap6.setAttribute("src", '');
+						$('#partDiv'+parts+'').attr("name", "UNUSED") 						
+					}
+								
+					for (var i = 1; i <= 6; i++){
+						$('flap'+parts+''+i+'').addClass('Flap')
+					}
+
+					for (var word = 0; word < wordCount; word++){
+						
+						try {
+							var wordImageURL = ''+mashPart[parts].Word[word].WordImageURL+''									
+						}catch(e){
+							var wordImageURL = 'img/player/blank.gif'
+						}
+
+						try {					
+							var ModArrayLength = mashPart[parts].Word[word].Mod.length					
+						}catch(e){
+							var ModArrayLength = 0
+						}
+
+						try {				
+							var WordPartPosition = mashPart[parts].Word[word].WordPartPosition						
+						}catch(e){
+							var WordPartPosition = 7		//was 0
+						}						
+							var WordID = mashPart[parts].Word[word].WordID
+						try{
+							var WordType = mashPart[parts].Word[word].WordType
+						}catch(e)
+						{var WordType = 'word_noun'}
+							
+						var WordGender = mashPart[parts].Word[word].WordGender
+					
+						if (WordType.indexOf('word_ordinal') >= 0){									
+										$('#part'+parts+'HexWordOrdinal').fadeTo( "slow" , '0.9')
+										$('#part'+parts+'HexWordOrdinal').attr('src', wordImageURL);											
+										$('#part'+parts+'HexWordOrdinal').attr('data-wordPartPosition', '3');
+										$('#part'+parts+'HexWordOrdinal').attr('data-wordType', WordType);
+										$('#part'+parts+'HexWordOrdinal').attr('data-wordGlyphID', wordImageURL);	
+										$('#part'+parts+'HexWordOrdinal').attr('data-wordID', WordID);
+										$('#part'+parts+'HexWordOrdinal').addClass("Word")			
+										$('#flap'+parts+'3').css('opacity', '1');
+						}else if (WordType.indexOf('word_preposition') >= 0){									
+										$('#part'+parts+'HexWordPreposition').fadeTo( "slow" , '0.9')
+										$('#part'+parts+'HexWordPreposition').attr('src', wordImageURL);												
+										$('#part'+parts+'HexWordPreposition').attr('data-wordPartPosition', '4');
+										$('#part'+parts+'HexWordPreposition').attr('data-wordType', WordType);
+										$('#part'+parts+'HexWordPreposition').attr('data-wordGlyphID', wordImageURL);	
+										$('#part'+parts+'HexWordPreposition').attr('data-wordID', WordID);
+										$('#part'+parts+'HexWordPreposition').addClass("Word")									
+										$('#flap'+parts+'4').css('opacity', '1')									
+						}else if (WordType.indexOf('word_adjective') >= 0 && WordPartPosition == '6'){									
+										$('#part'+parts+'HexWordSecondary1').fadeTo( "slow" , '0.9')
+										$('#part'+parts+'HexWordSecondary1').attr('src', wordImageURL);		
+										$('#part'+parts+'HexWordSecondary1').attr('data-wordType', 'word_adjective');																		
+										$('#part'+parts+'HexWordSecondary1').attr('data-wordPartPosition', '6');
+										$('#part'+parts+'HexWordSecondary1').attr('data-wordType', WordType);
+										$('#part'+parts+'HexWordSecondary1').attr('data-wordGlyphID', wordImageURL);	
+										$('#part'+parts+'HexWordSecondary1').attr('data-wordID', WordID);
+										$('#part'+parts+'HexWordSecondary1').addClass("Word")
+										$('#flap'+parts+'6').css('opacity', '1')				
+						}else if (WordType.indexOf('word_adjective') >= 0 && WordPartPosition == '1'){									
+										$('#part'+parts+'HexWordSecondary2').fadeTo( "slow" , '0.9')
+										$('#part'+parts+'HexWordSecondary2').attr('src', wordImageURL);		
+										$('#part'+parts+'HexWordSecondary2').attr('data-wordPartPosition', '1');
+										$('#part'+parts+'HexWordSecondary2').attr('data-wordType', 'word_adjective');
+										$('#part'+parts+'HexWordSecondary2').attr('data-wordType', WordType);
+										$('#part'+parts+'HexWordSecondary2').attr('data-wordGlyphID', wordImageURL);	
+										$('#part'+parts+'HexWordSecondary2').attr('data-wordID', WordID);
+										$('#part'+parts+'HexWordSecondary2').addClass("Word")
+										$('#flap'+parts+'1').css('opacity', '1')
+										console.log(WordType + ' word put in pos 6' )
+						}else if (WordType.indexOf('word_adverb') >= 0 && WordPartPosition == '5'){									
+										$('#part'+parts+'CircleWordSecondaryAdverb').fadeTo("slow" , '0.9')
+										$('#part'+parts+'CircleWordSecondaryAdverb').attr('src', wordImageURL);		
+										$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordPartPosition', '5');
+										$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordType', 'word_adverb');
+										$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordType', WordType);
+										$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordGlyphID', wordImageURL);	
+										$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordID', WordID);
+										$('#part'+parts+'CircleWordSecondaryAdverb').addClass("Word")
+										$('#flap'+parts+'5').css('opacity', '1')
+						}else if (WordType.indexOf('word_verb') >= 0 && WordPartPosition == '3'){									
+										$('#part'+parts+'CircleWordSecondaryVerb').fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleWordSecondaryVerb').attr('src', wordImageURL);		
+										$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordPartPosition', '3');
+										$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordType', 'word_verb');
+										$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordType', WordType);
+										$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordGlyphID', wordImageURL);	
+										$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordID', WordID);
+										$('#part'+parts+'CircleWordSecondaryVerb').addClass("Word")
+										$('#flap'+parts+'3').css('opacity', '1')
+						}else if (WordType.indexOf('word_verb') >= 0 && WordPartPosition == '0'){									
+										$('#mainWord'+parts+'').fadeTo( "slow" , '0.9')
+										$('#mainWord'+parts+'').attr('src', wordImageURL);		
+										$('#mainWord'+parts+'').attr('data-wordPartPosition', '0');
+										$('#mainWord'+parts+'').attr('data-wordType', 'word_verb');
+										$('#mainWord'+parts+'').attr('data-wordType', WordType);
+										$('#mainWord'+parts+'').attr('data-wordGlyphID', wordImageURL);	
+										$('#mainWord'+parts+'').attr('data-wordID', WordID);
+										$('#mainWord'+parts+'').addClass("Word")								
+						}else if (WordType.indexOf('word_interrogative') >= 0 && WordPartPosition == '1'){									
+										$('#part'+parts+'CircleWordSecondaryQuestion').fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleWordSecondaryQuestion').attr('src', wordImageURL);		
+										$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordPartPosition', '1');
+										$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordType', 'word_question');
+										$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordType', WordType);
+										$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordGlyphID', wordImageURL);	
+										$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordID', WordID);
+										$('#part'+parts+'CircleWordSecondaryQuestion').addClass("Word")
+										$('#flap'+parts+'1').css('opacity', '1')									
+						}else if (WordType.indexOf('word_noun') >= 0){									
+										$('#mainWord'+parts+'').fadeTo( "slow", '0.9')									
+										$('#mainWord'+parts+'').attr('src', wordImageURL);		
+										$('#mainWord'+parts+'').attr('data-wordPartPosition', '0');															
+										$('#mainWord'+parts+'').attr("value", WordType)														
+										$('#mainWord'+parts+'').attr('data-wordType', WordType);
+										$('#mainWord'+parts+'').attr('data-wordGlyphID', wordImageURL);	
+										$('#mainWord'+parts+'').attr('data-wordID', WordID);
+										$('#mainWord'+parts+'').addClass("Word")
+										console.log('main word is ' + wordImageURL)
+						}
+										
+								
+						for (var mod = 0; mod < ModArrayLength; mod++){
+						
+							var ModImageURL = mashPart[parts].Word[word].Mod[mod].ModImageURL					
+							var ModType = mashPart[parts].Word[word].Mod[mod].ModType
+							
+							console.log(ModType)
+							
+								if (ModType.indexOf('ARTICLE') >= 0 ){
+										$('#part'+parts+'HexModArticle').attr('src', ModImageURL);
+										$('#part'+parts+'HexModArticle').attr('data-original', ModImageURL);				
+										$('#part'+parts+'HexModArticle' ).fadeTo( "slow" , '0.9')										
+										$('#flap'+parts+'5').css('opacity', '1');			
+								}else if (ModType.indexOf('PLURAL') >= 0){								
+										$( '#part'+parts+'HexModPlural' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'HexModPlural').attr('src', ModImageURL);
+										$('#part'+parts+'HexModPlural').attr('data-original', ModImageURL);													
+										$('#flap'+parts+'2').css('opacity', '1');
+								}else if (ModType.indexOf('COMPSUPER') >= 0 && partType.indexOf('VERB') >= 0){								
+										$( '#part'+parts+'CircleModCompSuper' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleModCompSuper').attr('src', ModImageURL);	
+										$('#part'+parts+'CircleModCompSuper').attr('data-original', ModImageURL);											
+										$('#flap'+parts+'5').css('opacity', '1');
+										console.log('compsupered')
+								}else if (ModType.indexOf('COMPSUPER') >= 0 && partType.indexOf('SUBJECT') >= 0 || ModType.indexOf('COMPSUPER') >= 0 &&  partType.indexOf('OBJECT') >= 0){								
+										$( '#part'+parts+'HexModCompSuper' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'HexModCompSuper').attr('src', ModImageURL);
+										$('#part'+parts+'HexModCompSuper').attr('data-original', ModImageURL);											
+										$('#flap'+parts+'6').css('opacity', '1');
+										//console.log('compsupered')										
+								}else if (ModType.indexOf('TIME') >= 0){									
+										$('#part'+parts+'CircleModTime' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleModTime').attr('src', ModImageURL);
+										$('#part'+parts+'CircleModTime').attr('data-original', ModImageURL);		
+										$('#flap'+parts+'1').css('opacity', '1');
+								}else if (ModType.indexOf('TENSE') >= 0){									
+										$('#part'+parts+'CircleModTense' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleModTense').attr('src', ModImageURL);
+										$('#part'+parts+'CircleModTense').attr('data-original', ModImageURL);														
+										$('#flap'+parts+'2').css('opacity', '1');	
+								}else if (ModType.indexOf('NEGATIVE') >= 0){								
+										$( '#part'+parts+'CircleModNegative' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleModNegative').attr('src', ModImageURL);	
+										$('#part'+parts+'CircleModNegative').attr('data-original', ModImageURL);		
+										$('#flap'+parts+'6').css('opacity', '1');	
+								}else if (ModType.indexOf('QUESTION') >= 0){									
+										$( '#part'+parts+'CircleModQuestion' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleModQuestion').attr('src', ModImageURL);
+										$('#part'+parts+'CircleModQuestion').attr('data-original', ModImageURL);		
+										$('#flap'+parts+'1').css('opacity', '1')
+								}else if (ModType.indexOf('MODAL') >= 0){									
+										$('#part'+parts+'CircleModModal' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleModModal').attr('src', ModImageURL);	
+										$('#part'+parts+'CircleModModal').attr('data-original', ModImageURL);		
+										$('#flap'+parts+'4').css('opacity', '1')
+								}else if (ModType.indexOf('IMPERATIVE') >= 0){									
+										$('#part'+parts+'CircleModImperativePassive' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleModImperativePassive').attr('src', ModImageURL);
+										$('#part'+parts+'CircleModImperativePassive').attr('data-original', ModImageURL);		
+										$('#flap'+parts+'4').css('opacity', '1')
+								}else if (ModType.indexOf('INTERROGATIVE') >= 0){									
+										$('#part'+parts+'CircleModQuestion' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'CircleModQuestion').attr('src', ModImageURL);
+										$('#part'+parts+'CircleModQuestion').attr('data-original', ModImageURL);		
+										$('#flap'+parts+'1').css('opacity', '1')
+										console.log('FOUND!')		
+								}else if (ModType.indexOf('MOD_DOTTY') >= 0){									
+										$('#part'+parts+'HexModDotty' ).fadeTo( "slow" , '0.9')
+										$('#part'+parts+'HexModDotty').attr('src', ModImageURL);
+										$('#part'+parts+'HexModDotty').attr('data-original', ModImageURL);		
+										$('#flap'+parts+'5').css('opacity', '1');									
+								}				
+						}									
+				}
+			}		
+		}	
+	}	 
+		console.log('succesfully loaded JSON')	
+			
+			//if (currentStep == l){
+				$( "#stepNoDisplay" ).html( ''+(currentStep+1)+'/'+noOfSteps+'');
+
+				//$('#stepNoDisplay').append('<li class="navDots current" id="navDot'+l+'"><a href="#"></a></li>')				
+			//}else{		
+				//$('#stepNoDisplay').append('<li class="navDots" id="navDot'+l+'"><a href="#"></a></li>')	
+			//}
+		
+		$('#stepNoDisplay').fadeIn(500); 
+	
+	})
+}
+
+function defaultMods(partNo, currentWordType){
+
+		var turnOn = 'IN'
+		var turnOff = 'OUT'
+		
+		$('#partDiv'+partNo+'').append( '<div onmouseover="showEdit(\'mainWord'+partNo+'\', \'mainWord'+partNo+'Hover\',\''+turnOn+'\')"  onmouseout="showEdit(\'mainWord'+partNo+'\', \'mainWord'+partNo+'Hover\',\''+turnOff+'\')" id="mainWord'+partNo+'Hover"  class="wordInteract mainWordHover">  <div class="actions-inner customInner"></div> <div class="actions-inner4"><a><i onclick="play(\'mainWord'+partNo+'\')" class="playButton fa fa-play"></i></a></div></div>');				
+
+		if (currentWordType == 'word_noun' || currentWordType == 'word_object'){
+														
+			$('#partDiv'+partNo+'').append('<img class="HexModCompSuper Mod" id="part'+partNo+'HexModCompSuper" src="img/player/mod_compsuper_0.png"></img>');				
+			$('#partDiv'+partNo+'').append('<img class="HexModPlural Mod"  id="part'+partNo+'HexModPlural" src="img/player/mod_plural_0.png"></img>');
+			$('#partDiv'+partNo+'').append('<img class="HexModArticle Mod"  id="part'+partNo+'HexModArticle" src="img/player/mod_article_0.png"></img>');							
+			$('#partDiv'+partNo+'').append('<img class="HexWordSecondary2 Word extraWord"  onmouseover="showEdit(\'part'+partNo+'HexWordSecondary2\', part'+partNo+'HexWordSecondary2Hover,\''+turnOn+'\')"   onmouseout="showEdit(\'part'+partNo+'HexWordSecondary2\', part'+partNo+'HexWordSecondary2Hover,\''+turnOff+'\')"  id="part'+partNo+'HexWordSecondary2"	 src="img/player/blank.gif"></img> <div  onmouseover="showEdit(\'part'+partNo+'HexWordSecondary2\', part'+partNo+'HexWordSecondary2Hover,\''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'HexWordSecondary2\', part'+partNo+'HexWordSecondary2Hover,\''+turnOff+'\')" id="part'+partNo+'HexWordSecondary2Hover"   class="wordInteract HexWordSecondary2Hover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'HexWordSecondary2\')" class="playButton fa fa-play"></i></a>	</div></div>');
+			$('#partDiv'+partNo+'').append('<img class="HexWordOrdinal Word extraWord" 	 onmouseover="showEdit(\'part'+partNo+'HexWordOrdinal\', part'+partNo+'HexWordOrdinalHover,\''+turnOn+'\')"			onmouseout="showEdit(\'part'+partNo+'HexWordOrdinal\', part'+partNo+'HexWordOrdinalHover,\''+turnOff+'\')"     id="part'+partNo+'HexWordOrdinal"	 src="img/player/blank.gif"></img> <div  onmouseover="showEdit(\'part'+partNo+'HexWordOrdinal\', part'+partNo+'HexWordOrdinalHover,\''+turnOn+'\')"		onmouseout="showEdit(\'part'+partNo+'HexWordOrdinal\', part'+partNo+'HexWordOrdinalHover,\''+turnOff+'\')"  id="part'+partNo+'HexWordOrdinalHover" 	 	class="wordInteract HexWordOrdinalHover">     <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'HexWordOrdinal\')" class="playButton fa fa-play"></i></a>	</div></div>');
+			$('#partDiv'+partNo+'').append('<img class="HexWordPreposition Word extraWord" onmouseover="showEdit(\'part'+partNo+'HexWordPreposition\', part'+partNo+'HexWordPrepositionHover,\''+turnOn+'\')" onmouseout="showEdit(\'part'+partNo+'HexWordPreposition\', part'+partNo+'HexWordPrepositionHover,\''+turnOff+'\')" id="part'+partNo+'HexWordPreposition" src="img/player/blank.gif"></img> <div  onmouseover="showEdit(\'part'+partNo+'HexWordPreposition\', part'+partNo+'HexWordPrepositionHover,\''+turnOn+'\')" onmouseout="showEdit(\'part'+partNo+'HexWordPreposition\', part'+partNo+'HexWordPrepositionHover,\''+turnOff+'\')" id="part'+partNo+'HexWordPrepositionHover"  class="wordInteract HexWordPrepositionHover"> <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'HexWordPreposition\')" class="playButton fa fa-play"></i></a>	</div></div>');
+			$('#partDiv'+partNo+'').append('<img class="HexWordSecondary1 Word extraWord"  onmouseover="showEdit(\'part'+partNo+'HexWordSecondary1\', part'+partNo+'HexWordSecondary1Hover,\''+turnOn+'\')"   onmouseout="showEdit(\'part'+partNo+'HexWordSecondary1\', part'+partNo+'HexWordSecondary1Hover,\''+turnOff+'\')"  id="part'+partNo+'HexWordSecondary1"  src="img/player/blank.gif"></img> <div  onmouseover="showEdit(\'part'+partNo+'HexWordSecondary1\', part'+partNo+'HexWordSecondary1Hover,\''+turnOn+'\')"   onmouseout="showEdit(\'part'+partNo+'HexWordSecondary1\', part'+partNo+'HexWordSecondary1Hover,\''+turnOff+'\')" id="part'+partNo+'HexWordSecondary1Hover"   class="wordInteract HexWordSecondary1Hover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'HexWordSecondary1\')" class="playButton fa fa-play"></i></a>	</div></div>');					
+						
+			console.log('DOTTY TEST - ' + currentLanguage)			
+						
+			if (currentLanguage == 'eng'){
+				$('#partDiv'+partNo+'').append('<img class="HexModDotty Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModDotty" src="img/player/mod_dotty_eng_0.png"></img>');
+				console.log('Inserted Dotty element')	
+			}else if (currentLanguage == 'gle'){
+				$('#partDiv'+partNo+'').append('<img class="HexModDotty Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModDotty" src="img/player/mod_dotty_gle_0.png"></img>');
+				console.log('Inserted Dotty element')	
+			}else if (currentLanguage == 'fre'){
+				$('#partDiv'+partNo+'').append('<img class="HexModDotty Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModDotty" src="img/player/mod_dotty_eng_0.png"></img>');
+				console.log('Inserted Dotty element')	
+			}else if (currentLanguage == 'ger'){
+				$('#partDiv'+partNo+'').append('<img class="HexModDotty Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModDotty" src="img/player/mod_dotty_eng_0.png"></img>');
+				console.log('Inserted Dotty element')	
+			}
+						
+		}else if (currentWordType == 'word_verb'){
+				$('#partDiv'+partNo+'').append('<img class="CircleModTime Mod" id="part'+partNo+'CircleModTime" src="img/player/mod_time_0.png"></img>');			
+				$('#partDiv'+partNo+'').append('<img class="CircleModTense Mod"  id="part'+partNo+'CircleModTense" src="img/player/mod_tense_0.png"></img>');
+				$('#partDiv'+partNo+'').append('<img class="CircleModNegative Mod"  id="part'+partNo+'CircleModNegative" src="img/player/mod_negative_0.png"></img>');
+				$('#partDiv'+partNo+'').append('<img class="CircleModImperativePassive Mod" id="part'+partNo+'CircleModImperativePassive" src="img/player/mod_imperative_0.png"></img>');
+				$('#partDiv'+partNo+'').append('<img class="CircleModModal Mod"  id="part'+partNo+'CircleModModal" src="img/player/mod_modal_0.png"></img>');
+				$('#partDiv'+partNo+'').append('<img class="CircleModCompSuper Mod" id="part'+partNo+'CircleModCompSuper" src="img/player/mod_compsuper_0.png"></img>');
+				$('#partDiv'+partNo+'').append('<img class="CircleModQuestion Mod"  id="part'+partNo+'CircleModQuestion" src="img/player/mod_interrogative_0.png"></img>');
+				$('#partDiv'+partNo+'').append('<img class="CircleWordSecondaryAdverb Word extraWord" 	onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryAdverb\', part'+partNo+'CircleWordSecondaryAdverbHover, \''+turnOn+'\')" 	  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryAdverb\', part'+partNo+'CircleWordSecondaryAdverbHover,\''+turnOff+'\')"		id="part'+partNo+'CircleWordSecondaryAdverb"   src="img/player/blank.gif"></img>	<div  onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryAdverb\', part'+partNo+'CircleWordSecondaryAdverbHover,\''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryAdverb\', part'+partNo+'CircleWordSecondaryAdverbHover,\''+turnOff+'\')" id="part'+partNo+'CircleWordSecondaryAdverbHover"   class="wordInteract CircleWordSecondaryAdverbHover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'CircleWordSecondaryAdverb\')" class="playButton fa fa-play"></i></a>	</a></div></div>');
+				$('#partDiv'+partNo+'').append('<img class="CircleWordSecondaryQuestion Word extraWord" onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryQuestion\', part'+partNo+'CircleWordSecondaryQuestionHover, \''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryQuestion\', part'+partNo+'CircleWordSecondaryQuestionHover,\''+turnOff+'\')"   id="part'+partNo+'CircleWordSecondaryQuestion" src="img/player/blank.gif"></img>	<div  onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryQuestion\', part'+partNo+'CircleWordSecondaryQuestionHover,\''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryQuestion\', part'+partNo+'CircleWordSecondaryQuestionHover,\''+turnOff+'\')" id="part'+partNo+'CircleWordSecondaryQuestionHover"   class="wordInteract CircleWordSecondaryQuestionHover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'CircleWordSecondaryQuestion\')" class="playButton fa fa-play"></i></a>	</a></div></div>');		
+				$('#partDiv'+partNo+'').append('<img class="CircleWordSecondaryVerb Word extraWord" 	onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryVerb\', part'+partNo+'CircleWordSecondaryVerbHover, \''+turnOn+'\')" 	  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryVerb\', part'+partNo+'CircleWordSecondaryVerbHover,\''+turnOff+'\')" 		id="part'+partNo+'CircleWordSecondaryVerb"	   src="img/player/blank.gif"></img>	<div  onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryVerb\', part'+partNo+'CircleWordSecondaryVerbHover,\''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryVerb\', part'+partNo+'CircleWordSecondaryVerbHover,\''+turnOff+'\')" id="part'+partNo+'CircleWordSecondaryVerbHover"   class="wordInteract CircleWordSecondaryVerbHover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'CircleWordSecondaryVerb\')" class="playButton fa fa-play"></i></a>	<a> <i onclick="removeImage(\'part'+partNo+'CircleWordSecondaryVerb\')" class="trashButton fa fa-trash-o"></i>	</a></div></div>');
+			}							
+	$('.Mod').css('opacity', '1');			//check if correct
+
+	for (var i = 1; i <= 6; i++){
+		$('#flap'+partNo+''+i+'').css('opacity', '.3');
+	}
+}
+
+function showEdit(img, editSectionDiv, msg){
+
+	//bang
+	if (infoOverlayActivated == true){
+		console.log('overlay activated - hover deactivated')
+		return;
+	}
+	
+	console.log(editSectionDiv)
+	console.log(img)
+	console.log(typeof editSectionDiv)
+
+	var src = $('#'+img+'').attr('src')
+
+	if (typeof editSectionDiv == 'string'){
+		var editSectionDivID = ''+img+''
+	}else{
+		var editSectionDivID = editSectionDiv.id
+	}
+
+	console.log(editSectionDivID)
+
+	if (editSectionDivID.indexOf('main') !== -1){
+		
+		if (msg == 'IN'){
+			$('#'+editSectionDiv+'').css('visibility','visible')
+		}else if (msg == 'OUT'){
+			$('#'+editSectionDiv+'').css('visibility','hidden')
+		}
+	
+	}else if (src.indexOf('blank') == -1){
+	
+		if (msg == 'IN'){
+
+		try {
+				editSectionDiv.style.visibility = 'visible'
+			}catch(e){
+				$('#'+editSectionDiv+'').style.visibility = 'visible'
+				$('#'+editSectionDiv.id+'').style.visibility = 'visible'
+			}
+		
+		}else if (msg == 'OUT'){	
+			try {
+				editSectionDiv.style.visibility = 'hidden'
+			}catch(e){
+				$('#'+editSectionDiv+'').style.visibility = 'hidden'
+			}
+		}
+	}
+}
+
+function play(img) {
+
+	var id = $('#'+img+'').attr('data-wordID')
+	var URL = 'serve_recording?id='+id+''
+	
+		var request = new XMLHttpRequest();
+		request.open('GET', URL, true);																		//function should accept URL, row and column
+		request.responseType = 'arraybuffer';
+		request.onload = function() {
+		myContext.decodeAudioData(request.response, function(wordBuffer) {			
+			playWordAudio(wordBuffer);		
+			$('#'+img+'').click(function(){ playWordAudio(wordBuffer);		});			
+		});	}																									// by corresponding nodes, building an appropriate audio graph
+			request.send();
+}
+
+function playWordAudio(url){
+
+	gainNode.gain.value = 1;	
+	var source = myContext.createBufferSource();														
+	source.buffer = url;	
+	source.connect(gainNode);																		
+	gainNode.connect(myContext.destination);
+	source.start(0);
+}
+
+function animatedFadeOut(){																					//Fade Out Transition
+	
+	$('.partTypeImages').attr('src', 'img/player/blank.gif')
+	$('.Flap1').attr('src', 'img/player/blank.gif')
+	$('.Flap2').attr('src', 'img/player/blank.gif')
+	$('.Flap3').attr('src', 'img/player/blank.gif')
+	$('.Flap4').attr('src', 'img/player/blank.gif')
+	$('.Flap5').attr('src', 'img/player/blank.gif')
+	$('.Flap6').attr('src', 'img/player/blank.gif')
+	$('.Flap1').css('opacity', '0')
+	$('.Flap2').css('opacity', '0')
+	$('.Flap3').css('opacity', '0')
+	$('.Flap4').css('opacity', '0')
+	$('.Flap5').css('opacity', '0')
+	$('.Flap6').css('opacity', '0')
+	$('.Mod').remove();
+	
+	$('.Mod').remove();
+	$('.extraWord').remove();
+	$('.wordInteract').remove();
+	
+	$('.mainWord').attr('src', 'img/player/blank.gif')
+	$('.mainWord').attr('src', 'img/player/blank.gif')
+	$('.mainWord').attr('src', 'img/player/blank.gif')
+	$('.Mod').attr('src', 'img/player/blank.gif')
+	$('.Word').attr('src', 'img/player/blank.gif')
+	$('#wordGlyph').attr('src', 'img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png')
+	flapsInUseArray = []
+	
+	$('#partTypeImage0').removeClass("maleGenderGlow")
+	$('#partTypeImage1').removeClass("maleGenderGlow")
+	$('#partTypeImage2').removeClass("maleGenderGlow")
+	$('#partTypeImage0').removeClass("femaleGenderGlow")
+	$('#partTypeImage1').removeClass("femaleGenderGlow")
+	$('#partTypeImage2').removeClass("femaleGenderGlow")
+	$('#partTypeImage0').removeClass("neuterGenderGlow")
+	$('#partTypeImage1').removeClass("neuterGenderGlow")
+	$('#partTypeImage2').removeClass("neuterGenderGlow")
+
+	$('#nextStepArrow').fadeOut(500);
+	$('#happyIcon').fadeOut(500);
+	$('#sadIcon').fadeOut(500);
+	$('#playbackOriginal').fadeOut(500);
+	//$('#playbackOriginalSlow').fadeOut(500);
+	$('#playbackImage').fadeOut(500);
+	$('#playbackRecording').fadeOut(500);	
+}
+	
+function animatedFadeIn(){																				//Fade in transition			
+		
+	$('.partTypeImages').attr('src', 'img/player/blank.gif')
+	$('.Flap1').attr('src', 'img/player/blank.gif')
+	$('.Flap2').attr('src', 'img/player/blank.gif')
+	$('.Flap3').attr('src', 'img/player/blank.gif')
+	$('.Flap4').attr('src', 'img/player/blank.gif')
+	$('.Flap5').attr('src', 'img/player/blank.gif')
+	$('.Flap6').attr('src', 'img/player/blank.gif')
+	$('.Flap1').css('opacity', '0.3')
+	$('.Flap2').css('opacity', '0.3')
+	$('.Flap3').css('opacity', '0.3')
+	$('.Flap4').css('opacity', '0.3')
+	$('.Flap5').css('opacity', '0.3')
+	$('.Flap6').css('opacity', '0.3')
+	$('.Mod').attr('src', 'img/player/blank.gif')
+	$('.Word').attr('src', 'img/player/blank.gif')
+	$('#wordGlyph').attr('src', 'img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png')
+	flapsInUseArray = []	
+}
+
+function nextStep(){	
+																					
+$('#nextStepArrow').fadeOut(500);		
+$('#playbackOriginal').fadeOut(100); 	
+$('#playbackOriginalSlow').fadeOut(100); 								
+$('#playbackImage').fadeOut(500);
+$('#playbackRecording').fadeOut(500);
+$('#happyIcon').fadeOut(200);
+$('#sadIcon').fadeOut(200); 
+
+//$(".navDots").fadeOut(500);
+$( "#stepNoDisplay" ).fadeOut(500);
+
+		if (currentStep < (noOfSteps-1))
+		{		
+			animatedFadeOut();
+			console.log('Moving to next step out of ' + noOfSteps + '. Last Step was ' + currentStep + '');
+			currentStep++;		
+					
+			setTimeout(function(){					
+				//playAudio();				
+				animatedFadeIn()
+				createMash(currentJSON)
+				$('#happyIcon').fadeOut(200);
+				$('#sadIcon').fadeOut(200); 
+				//$( ".navDots" ).remove();
+				//$( "#stepNoDisplay" ).html( ''+currentStep+'/'+noOfSteps+'');
+				//$('.dotstyle ul').css('left','45.7%');			
+			}, 4000);	
+		}
+		else
+		{	
+			$('.dropdown-toggle').prop('disabled', false);
+			allowLanguageChange = true;
+			finished = true;
+			animatedFadeOut();					
+			$('#moduleCompleteIcon').addClass("animated shake")
+			   .on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+			    $(this).removeClass('animated shake');
+				$('#mod000').fadeOut(1000);	
+			});
+			
+			$('#moduleCompleteIcon').fadeIn(500);
+			$('.dropdown-menu::after').css('display', 'block');
+			$('.dropdown-menu::after').css('content', 'block');					
+		}
+}
+
+function insertAfter(referenceNode, newNode ){
+	referenceNode.parentNode.insertBefore( newNode, referenceNode.nextSibling );
+}
+																///MASHER ANIMATION +PLAYBACK///	
+function bufferAudio(URL, number){																			//Buffer relevant audio files			
+	console.log('Attempting to buffer ' + URL);
+		
+	//try {		
+		var request = new XMLHttpRequest();
+		request.open('GET', URL, true);																		//function should accept URL, row and column
+		request.responseType = 'arraybuffer';
+		request.onload = function() {
+		myContext.decodeAudioData(request.response, function(buffer) {
+		
+		if (number == 100){
+			bufferArray[100] = buffer;			
+		}else{
+			bufferArray[currentStep] = buffer;			
+		}
+		
+		console.log('buffered. currentStep is ' + currentStep)
+
+			currentRecordingDuration = buffer.duration;
+			console.log('New currentRecordingDuration' + currentRecordingDuration)										
+						playAudio();
+						go = 3; 
+		});}																									// by corresponding nodes, building an appropriate audio graph
+			request.send();
+}
+
+function playAudio(){																						//Play audio from array							
+	
+	console.log('playaudio')
+	console.log(StepReferenceConfig)
+	if (currentStep == 0){var pauseTime = 0;}else{var pauseTime = 1000;}
+	
+	if (StepReferenceConfig == 'NO' && StepRecordingConfig == 'NO' && StepRatingConfig == 'NO'){ 
+		setTimeout(function () { displayNextStepArrow()	 }, 1800);
+	}else if (StepReferenceConfig == 'NO' && StepRecordingConfig == 'NO' && StepRatingConfig == 'YES'){ 
+		setTimeout(function () { displayNextStepArrow()	 }, 1800);
+	}else if(StepReferenceConfig == 'YES'){	
+		
+		console.log('Playing reference audio');
+		
+			setTimeout(function(){			
+						
+				$('#playbackOriginal').fadeIn(500);	
+				//$('#playbackOriginalSlow').fadeIn(500);						
+				$('#playbackOriginal').addClass("animated slideInUp")
+						.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+						$(this).removeClass('animated slideInUp');							
+							$('#playbackOriginal').addClass("animated pulse")
+							.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {					
+							$(this).removeClass('animated pulse');	   
+						});			
+					});		
+				
+			}, pauseTime);
+	}
+	
+		setTimeout(function(){	
+						var source = myContext.createBufferSource();				
+						source.buffer = bufferArray[currentStep];
+						var duration = source.buffer.duration	
+						currentDuration = source.buffer.duration			
+						source.connect(myContext.destination);						
+					    
+						///console.log('!!!!REFPLAY!!!!!: ' + StepRefAutoConfig)
+						
+						if (StepRefAutoConfig == 'YES' || StepRefAutoConfig == '' || StepRefAutoConfig == 'undefined'){	
+						source.start(0);}	
+		}, 1000);
+
+
+	if (StepRecordingConfig == 'YES'){	
+		
+		setTimeout(function(){
+			
+			interrupted = false;	
+			
+				$('#playbackImage').unbind('click');
+		
+				$('#playbackImage').click(function () {	
+				restartCountDown();
+				interruptRecording();	
+				});
+			
+				runningModule = currentJSON;			
+				if (interrupted == false){						
+					 
+					$('#playbackImage').removeClass('animated infinite flash');
+					$('#playbackImage').attr('src', 'img/player/number3.png').fadeIn(500);		
+											
+					countDown3 = setTimeout(function(){
+					$('#playbackImage').attr('src', 'img/player/number2.png').fadeIn(500);
+					 },1000);
+					
+					countDown2 = setTimeout(function(){
+					$('#playbackImage').attr('src', 'img/player/number1.png').fadeIn(500);					
+					 }, 2000);			
+						
+					countDown1 = setTimeout(function(){
+					recordAudio();																							 											
+					}, 3000);
+													
+				}
+			}, 4000);
+	
+	}else if (StepRecordingConfig == 'NO'){
+		   setTimeout(function () { displayNextStepArrow()	 }, 2800);
+	}								
+}	
+																	///RECORDING INPUT///																			
+var rec;
+var micInput;
+var blob;
+var gainNode;
+var stopTimeOut
+var mediaStream;
+var currentRecordingDuration;
+var navigator = window.navigator;
+navigator.getUserMedia =
+(
+	navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia
+);	
+
+function restartCountDown(){
+  clearTimeout(countDown3);
+  clearTimeout(countDown2);
+  clearTimeout(countDown1);
+  clearTimeout(countDownEnd);
+}
+																	
+function recordAudio(){																						//main record function
+
+			stopTimeOut = 0;
+			$('#playbackImage').attr('src', 'img/player/currentlyRecording.png').fadeIn(200);					
+			$('#playbackImage').unbind('click');
+			$('#playbackImage').click(function () {	
+				stopRecording(gainNode);
+				console.log('STOPPED RECORDING')
+				clearTimeout(stopTimeOut)
+			});
+			
+			currentlyRecording = true;
+			console.log('PASSED - Recording');		
+			navigator.getUserMedia({audio: true}, function(localMediaStream){
+
+				console.log('GOT USER MEDIA STREAM')
+				console.log('record time is ' + (Number(currentRecordingDuration) + Number(2000)))
+				
+				mediaStream = localMediaStream;
+				var mediaStreamSource = myContext.createMediaStreamSource(localMediaStream);
+				var analyser = myContext.createAnalyser();
+				
+				var buffer = new Uint8Array(analyser.fftSize);		 
+				var recordingStart = myContext.currentTime;
+				var anFrame2;
+				var rms;
+				
+				mediaStreamSource.connect(gainNode); 											      					 //Connect it to the destination to hear yourself (or any other node for processing!)	
+				gainNode.connect(analyser); 	
+				analyser.connect(myContext.destination); 		
+				gainNode.gain.value = 0;							
+				
+				rec = new Recorder(mediaStreamSource, {
+				  workerPath: 'js/recorderWorker.js'
+				});
+				
+				rec.record();
+													
+				currentRecordingDuration = currentRecordingDuration*1000
+					
+				stopTimeOut = setTimeout(function(){
+					stopRecording(gainNode);
+					console.log('STOPPED RECORDING Automatically')
+				 }, Number(6000))
+				 
+		}, function(err){
+		console.log('Browser not supported');
+		console.log(err);
+		});
+}
+
+function myCallback(blob){																					//handles recorded audio
+		blob = blob;
+		}	
+	
+function errorCallback(){																					 //error message if problem with getting user media
+		console.log('Error getting media stream from microphone. Please ensure it is connected.');
+}
+
+function interruptRecording(){
+		
+		if (bufferExists == true){
+		
+		 rec && rec.stop();
+		$('#playbackImage').attr('src', 'img/player/nowRecording.png').fadeIn(200);
+		
+		try {
+		var track = mediaStream.getTracks()[0]; 
+        track.stop();
+		}catch(e){
+		console.log('cant stop media stream as function is deprecated.')
+		}
+	
+		$( '#playbackRecording').fadeTo( "slow", 0.33 );				
+		}
+		
+		if (currentlyRecording == true){
+		rec.clear();		
+		}
+			
+		$('#playbackImage').fadeOut(500)		
+		$('#playbackImage').fadeOut(200, function()
+		{
+		//$(this).attr('src', 'img/player/nowRecording.png').fadeIn(200);
+		});
+		
+		$('#playbackImage').click(function () {	
+		restartCountDown();
+		recordAgain();
+			
+		});
+		
+		console.log('Recording interrupted')
+}
+	
+function stopRecording(gainNode){	
+																
+	rec && rec.stop();
+	$('#playbackImage').attr('src', 'img/player/nowRecording.png').fadeIn(200);
+	
+	try {
+		var track = mediaStream.getTracks()[0]; 
+        track.stop();
+	}catch(e){
+		console.log('cant stop media stream as function is deprecated.')
+	}
+	
+	console.log('Stopped recording');
+			
+	bufferExists = true;
+	
+	if (interrupted == false)
+	{
+		setTimeout(function(){
+		console.log('Playing back audio');
+		gainNode.gain.value = 1;	//was outside of this loop
+		playRecording(runningModule);
+		currentlyRecording = false;
+		}, 1000);	
+	}
+}
+
+function playRecording(){																																		
+	if (interrupted == false)
+	{
+		gainNode.gain.value = 1;			
+		rec.getBuffer(playRecordedAudio);
+		console.log('replaying recorded audio');
+	}
+}
+
+function recordAgain(){
+	
+	if (bufferExists == true){
+		$( '#playbackRecording').fadeTo( "slow", 0.33 );	
+	}
+
+	console.log('Re-recording')
+	
+	$('#playbackImage').unbind('click');
+	
+	$('#playbackImage').click(function () {	
+		restartCountDown();
+		interruptRecording();	
+	});
+
+		var allowRecord = false	;	
+		recordedAgain = true;	
+	
+		$('#happyIcon').fadeOut(250);
+		$('#sadIcon').fadeOut(250);			
+		$('#sadIcon').css('opacity', '1');	
+				
+			console.log('sample ended. Interrrupted: ' + interrupted)
+			
+			if (interrupted == false){
+				
+					$('#playbackImage').removeClass('animated infinite flash');
+					$('#playbackImage').attr('src', 'img/player/number3.png').fadeIn(200);		
+										
+				countDown3 = setTimeout(function(){
+					$('#playbackImage').attr('src', 'img/player/number2.png').fadeIn(200);
+					$('#happyIcon').fadeOut(250);
+					$('#sadIcon').fadeOut(250);					//2
+				 },1000);
+				
+				countDown2 = setTimeout(function(){
+					$('#playbackImage').attr('src', 'img/player/number1.png').fadeIn(200);
+					$('#happyIcon').fadeOut(250);
+					$('#sadIcon').fadeOut(250);				
+				 }, 2000);			
+			
+				countDown1 = setTimeout(function(){
+					allowRecord = true;
+				}, 3000);				
+				
+				countDownEnd = setTimeout(function(){
+					recordAudio();
+					reachedEnd = false;		
+				}, 3100);								
+	}
+}
+
+function playRecordedAudio(buffers) {																		 //handles recorded audio
+			
+	if (interrupted == false && reachedEnd == false){																								//reachedEnd checks
+		
+			if (recordedAgain == true){
+				$('#playbackRecording').fadeTo( "slow", 1 );			
+			}else if (recordedAgain == false){
+				$('#playbackRecording').fadeIn(500);
+				$('#playbackRecording').addClass("animated slideInLeft")
+					.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+						$(this).removeClass('animated slideInLeft');	  
+						$('#playbackRecording').addClass("animated pulse")
+							.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+							$(this).removeClass('animated pulse');	   
+						});			
+					});				
+			}
+			
+		$('#playbackRecording').fadeIn(500);		
+		$('#playbackRecording').addClass("animated pulse");	
+		var newSource = myContext.createBufferSource();															//Create source node and attach the buffered audio
+		var newBuffer = myContext.createBuffer( 2, buffers[0].length, myContext.sampleRate );					//Get channel data for both stereo channels
+		newBuffer.getChannelData(0).set(buffers[0]);
+		newBuffer.getChannelData(1).set(buffers[1]);
+		newSource.buffer = newBuffer;
+		bufferArray[1000] = newBuffer;	
+		newSource.connect( myContext.destination );
+		newSource.start(0);	
+	}
+	
+	setTimeout(function(){
+	
+	$('#playbackImage').unbind('click');	
+	$('#playbackImage').click(function () {	
+		restartCountDown();
+		recordAgain();	
+	});
+			
+	if (interrupted == false && reachedEnd == false && StepRatingConfig == 'YES' && StepRecordingConfig == 'YES'){							//CONFIG CONDITION ADDED HERE
+						
+			gainNode.gain.value = 0;				
+			
+			$('#sadIcon').fadeIn(250);			
+			$('#sadIcon').addClass("animated slideInLeft")
+				.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+				$(this).removeClass('animated slideInLeft');
+				$('#sadIcon').css('opacity', '1');					
+				});	
+			
+			$('#happyIcon').fadeIn(250);			
+			$('#happyIcon').addClass("animated slideInLeft")
+			.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+			$(this).removeClass('animated slideInLeft');
+				$('#happyIcon').css('opacity', '1');	
+			});		
+			
+			reachedEnd = true;	
+			interrupted = false;
+			
+		}else if (interrupted == false && reachedEnd == false && StepRatingConfig == 'NO'  && StepRecordingConfig == 'YES'){
+				
+			displayNextStepArrow()
+			
+		}	
+	}, 2350);
+}
+
+function displayNextStepArrow() {
+	
+	$('#continueArrow').attr('src','img/player/Next.png')
+	$('#continueArrow').fadeIn(500);
+	$('#continueArrow').addClass('.continueArrow')
+		
+	console.log('cue next arrow to fade in here')
+	reachedEnd = true;	
+	interrupted = false;	
+}
+
+function clickThrottled(fn) {
+  var click = true;
+  return function () {
+    if(click) {
+      click = false;
+      fn.apply(this, arguments);
+      setTimeout(function () { click = true; }, 1000);
+    }
+  };
+}	
+
+function playOnce(number, speed){																						//Play audio only once
+		
+		gainNode.gain.value = 1;	
+		console.log('playing back once. speed - ' + speed)
+		
+		var source = myContext.createBufferSource();	
+		source.buffer = bufferArray[number];
+		source.connect(myContext.destination);	
+		source.playbackRate.value = speed;	
+		source.start();
+		
+		$('#playbackOriginal').removeClass('pulse animated bounce');
+		$('#playbackRecording').removeClass('pulse animated bounce');
+		
+		var div1Class = $('#playbackOriginal').attr('class');		
+		var div2Class = $('#playbackRecording').attr('class');			
+		
+		if (number < 100){
+		
+			if (speed == 1){
+				$('#playbackOriginal').addClass("animated bounce")
+				.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+				$(this).removeClass('animated bounce');	   
+				});	
+			}else{
+				$('#playbackOriginalSlow').addClass("animated bounce")
+				.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+				$(this).removeClass('animated bounce');	   
+				});	
+			}		
+		}else if (number == 1000){	
+				$('#playbackRecording').addClass("animated bounce")
+				.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+				$(this).removeClass('animated bounce');	   
+			});	
+		}else if (number == 100){	
+				console.log('bounce')
+				$('.monkeyLogo').addClass("animated bounce")
+				.on('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(e) {
+				$(this).removeClass('animated bounce');	   
+			});	
+		}		
+		
+	setTimeout(function(){
+		gainNode.gain.value = 0;	
+	}, source.buffer.duration + 3);
+		
+	unlocked = true;
+}			
+
+
+function toggleInfoOverlay(){
+
+	if (infoOverlayActivated == true){
+	
+		$('.navbar-default').fadeTo("slow", 1);
+		$('#nav-expander').fadeTo("slow", 1);
+		$('#pageOverlayWrapper').removeClass('infoOverlay');
+		
+		$('#infoPart0').fadeOut(500)
+		$('#infoPart1').fadeOut(500)
+		
+		
+		//createMash(currentJSON)
+		//$('#part'+parts+'HexWordOrdinal').fadeTo( "slow" , '0.9')
+		//$('#part'+parts+'HexWordPreposition').fadeTo( "slow" , '0.9')
+		//$('#part'+parts+'HexWordSecondary1').fadeTo( "slow" , '0.9')
+		//$('#part'+parts+'HexWordSecondary2').fadeTo( "slow" , '0.9')
+		//var mainWord0 = $('#mainWord0').data('wordGlyphID'); 
+		//var mainWord1 = $('#mainWord0').data('wordGlyphID');
+		//var part1CircleWordSecondaryAdverb = $('#part1CircleWordSecondaryAdverb').data('wordGlyphID');
+		//var part1CircleWordSecondaryVerb = $('#part1CircleWordSecondaryVerb').data('wordGlyphID');
+ 		//var part1CircleWordSecondaryQuestion = $('#part1CircleWordSecondaryQuestion').data('wordGlyphID');
+ 		//var part0CircleModCompSuper = $('#part0CircleModCompSuper').data('original');
+		//var part0HexModArticle = $('#part0HexModArticle').data('original');
+ 		//var part0HexModPlural = $('#part0HexModPlural').data('original');
+ 		//var part0HexModCompSuper = $('#part0HexModCompSuper').data('original');
+ 		//var part0CircleModTime = $('#part0CircleModTime').data('original');
+ 		//var part0CircleModTense = $('#part0CircleModTense').data('original');
+		//var part0CircleModQuestion = $('#part0CircleModQuestion').data('original');
+ 		//var part0CircleModModal = $('#part0CircleModModal').data('original');
+ 		//var part0CircleModImperativePassive = $('#part0CircleModImperativePassive').data('original');
+ 		//var part0HexModDotty = $('#part0HexModDotty').data('original');
+ 				  				 
+ 		//console.log('ORIGINAL - ' + part0HexModDotty)		 				 
+		//$('#mainWord0').attr('src', mainWord0);	
+		//$('#mainWord1').attr('src', mainWord1);
+		//$('#part1CircleWordSecondaryAdverb').attr('src', part1CircleWordSecondaryAdverb);
+		//$('#part1CircleWordSecondaryVerb').attr('src', part1CircleWordSecondaryVerb);	 
+ 		//$('#part1CircleWordSecondaryQuestion').attr('src', part1CircleWordSecondaryQuestion);
+ 		//$('#part0CircleModCompSuper').attr('src', part0CircleModCompSuper);
+		//$('#part0HexModArticle').attr('src', part0HexModArticle);	
+ 		//$('#part0HexModPlural').attr('src', part0HexModPlural);
+ 		//$('#part0HexModCompSuper').attr('src', part0HexModCompSuper);
+ 		//$('#part0CircleModTime').attr('src', part0CircleModTime);	
+ 		//$('#part0CircleModTense').attr('src', part0CircleModTense);	
+		//$('#part0CircleModQuestion').attr('src',part0CircleModQuestion);
+ 		///$('#part0CircleModModal').attr('src', part0CircleModModal);
+ 		//$('#part0CircleModImperativePassive').attr('src', part0CircleModImperativePassive);
+ 		//$('#part0HexModDotty').attr('src', part0HexModDotty);						
+		//$('#partDiv2').fadeIn(1000);
+		//$('#ratingsBox').fadeIn(1000);
+		$('#partDiv0').css('visibility', 'visible');
+		$('#partDiv1').css('visibility', 'visible');
+		$('#partDiv2').css('visibility', 'visible');
+		
+		//$('#ratingsBox').css('visibility', 'visible');
+		$('#ratingsBox').css('display', 'block');
+		
+		$('#stepNoDisplay').css('visibility', 'visible');
+		$('#dropdown2').css('visibility', 'visible');
+		$('.navbar-default').css('visibility', 'visible');	
+			
+		$('.Flap6').css('visibility', 'visible');
+		$('.Flap5').css('visibility', 'visible');
+		$('.Flap4').css('visibility', 'visible');
+		$('.Flap3').css('visibility', 'visible');
+		$('.Flap2').css('visibility', 'visible');
+		$('.Flap1').css('visibility', 'visible');
+		
+		//$('#mainWord0').css('visibility', 'visible');
+		//$('#mainWord1').css('visibility', 'visible');
+		//$('#mainWord2').css('visibility', 'visible');	
+		$('.Word').css('visibility', 'visible');
+		
+		$('.Mod').css('visibility', 'visible');	
+		
+		
+						
+		infoOverlayActivated = false		
+				
+	}else{	
+	 	$('.navbar-default').fadeTo("slow", 0);
+		$('#nav-expander').fadeTo("slow", 0);
+		//$('#dropdown2').css('visibility', 'hidden');
+		//$(this)
+		//$('#.navbar-default').css('visibility', 'hidden');
+		$('#pageOverlayWrapper').addClass('infoOverlay');
+
+		//$('#partDiv2').fadeOut(1000);
+		//$('#ratingsBox').fadeOut(1000);
+		//$('#ratingsBox').css('visibility', 'hidden');
+		
+		$('#ratingsBox').css('display', 'none');
+		
+		$('#stepNoDisplay').css('visibility', 'hidden');
+		$('#partDiv0').css('visibility', 'hidden');
+		$('#partDiv1').css('visibility', 'hidden');
+		$('#partDiv2').css('visibility', 'hidden');
+			
+		$('.Flap6').css('visibility', 'hidden');
+		$('.Flap5').css('visibility', 'hidden');
+		$('.Flap4').css('visibility', 'hidden');
+		$('.Flap3').css('visibility', 'hidden');
+		$('.Flap2').css('visibility', 'hidden');
+		$('.Flap1').css('visibility', 'hidden');
+		
+		//$('#mainWord0').css('visibility', 'hidden');
+		//$('#mainWord1').css('visibility', 'hidden');
+		//$('#mainWord2').css('visibility', 'hidden');
+		$('.Word').css('visibility', 'hidden');
+			
+		$('#infoPart0').fadeIn(500)
+		$('#infoPart1').fadeIn(500)
+		
+		$('.Mod').css('visibility', 'hidden');	
+		//$('#mainWord0').attr('src', 'https://www.teanga.me/img/blank.png');	
+		//$('#part0HexModArticle').attr('src','/img/player/mod_article_2.png');	
+ 		//$('#part0HexModPlural').attr('src','img/player/mod_plural_1.png');
+ 		//$('#part0HexModCompSuper').attr('src','https://www.teanga.me/img/player/mod_compsuper_1.png');
+ 		//$('#part0HexModDotty').attr('src', 'https://www.teanga.me/img/player/mod_dotty_eng_0.png');
+ 		//$('#part0HexWordOrdinal').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id=1063');
+ 		//$('#part0HexWordSecondary').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id=1193');
+		//$('#part0HexWordPreposition').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id=344');
+		//$('#part0HexWordSecondary2').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id=1193');
+
+		//attr('src', '/img/blank.png');
+		//$('#part1CircleWordSecondaryAdverb').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id=1192');
+		///$('#part1CircleWordSecondaryVerb').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id=473');	 
+ 		//$('#part1CircleWordSecondaryQuestion').attr('src', 'img/blank.png');
+ 		//$('#part1CircleModCompSuper').attr('src','https://www.teanga.me/img/player/mod_compsuper_2.png');
+ 		//$('#part1CircleModTime').attr('src','https://www.teanga.me/img/player/mod_time_2.png');	
+ 		//$('#part1CircleModTense').attr('src','https://www.teanga.me/img/player/mod_tense_1.png');	
+		//$('#part1CircleModQuestion').attr('src','https://www.teanga.me/img/player/mod_interrogative_1.png');
+ 		//$('#part1CircleModModal').attr('src','https://www.teanga.me/img/player/mod_modal_2.png');
+ 		//$('#part1CircleModImperativePassive').attr('src', 'https://www.teanga.me/img/player/mod_imperative_1.png');
+ 		//$('#part1CircleModNegative').attr('src', 'https://www.teanga.me/img/player/mod_negative_1.png');
+ 		
+ 		
+ 		//for (var d = 0; d <= 6; d++){
+ 		///	$('.Flap'+d+'').css('opacity', '1');
+ 		//}
+ 		
+ 		infoOverlayActivated = true
+		
+	}
+
+	console.log("Info overlay is set to: " + infoOverlayActivated)
+}
+
+																																								  
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67934815-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+#user-nav .dropdown-menu {
+    width: 100px;
+}
+
+#user-nav > ul > li {
+   border-right: 1px solid #292929;
+   height: 35px;
+}
+
+.flag {
+    position: relative;
+	top: -3px;
+	}
+
+	
+.gallery-masonry .item .actions {
+	top: 10px;
+    bottom: 25px;
+    left: 5px;
+    right: 5px;
+	
+	
+}

@@ -1,0 +1,24 @@
+#newUserEmail {
+	
+	position: absolute;
+    left: 140px;
+	top: 26px;
+	width: 300px;
+	
+}
+
+#newUserLanguageSelect1{
+	
+	position: absolute;
+    left: 140px;
+	top: 70px;
+	z-index: 500px;
+			
+}
+
+#addNewUserButton {
+	
+	position: relative;
+    right: 40PX;
+
+}

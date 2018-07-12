@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+   <head>	
+         <meta charset="utf-8" />  		
+         <title>TEANGA</title>						
+         <meta name="description" content="" />  	
+         <!-- Meta Viewport -->
+         <meta name="viewport" content="width=device-width, initial-scale=1">		
+         <!-- All CSS Styles -->
+         <link type="text/css" href="css/bootstrap.css" rel="stylesheet" media="screen" />
+         <link type="text/css" href="css/animate.css" rel="stylesheet" media="screen" />
+         <link type="text/css" href="css/swiper.css" rel="stylesheet" media="screen" />
+         <link type="text/css" href="css/owl.carousel.css" rel="stylesheet" media="screen" />
+         <link type="text/css" href="css/owl.theme.css" rel="stylesheet" media="screen" />
+         <link type="text/css" href="css/magnific-popup.css" rel="stylesheet" media="screen" />
+         <link type="text/css" href="css/styles/style-green.css" rel="stylesheet" media="screen" /> 	
+         <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet" media="screen" />
+	  <!-- <link type="text/css" href="css/chappicss3.css" rel="stylesheet"/>-->           
+         <!-- Media Queries -->
+         <link type="text/css" href="css/media.css" rel="stylesheet" media="screen" />         
+         <!-- Modernizr -->
+         <script type="text/javascript" src="js/modernizr.js"></script>
+		
+         <!-- Comments for IE8 and Lower -->					
+         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+         <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+         <![endif]-->     
+         
+         <!-- Gradient Support IE9 -->
+         <!--[if gte IE 9]>
+            <style type="text/css">
+              .gradient {
+                 filter: none;
+              }
+            </style>
+         <![endif]-->	 
+	  <style>
+	     .dropdown{
+		bottom: 5px;
+           } 
+           
+           .subheadline {
+            margin-bottom: 0px;
+            }
+
+            #innerVideoContainer{
+                  height:250px;
+                  padding: 10px;
+            }
+
+            .customColumn{
+                  width:100%;
+                  height:100%;
+            }
+            
+            .customRow{
+                  padding: 17px 0px 20px 0px;
+            }
+
+            .videoTitle{
+                  text-align: center;
+                  display: inline-block;
+                  margin-bottom: 5px;
+            }
+
+            .top-bar {
+                  margin-bottom: 0px;
+            }
+
+            .top-bar.slidedown {
+                  top: -110px;
+            }
+
+            .centreDiv{
+                  margin:auto;
+                  left: 0;
+                  right:0;
+            }
+
+            h6 {
+                  font-weight: 100;
+                  font-size: 20px;
+                  color: #303030;
+                  margin-bottom: 0px;
+                  text-transform: uppercase;
+            }
+
+            @media (max-width: 991px){
+            .videoContainer {   
+                  top: 150px;
+                  padding: 40px 0px 0px 0px;
+                  /* text-align: center; */
+                  /* margin: -60px; */
+                  margin-left: -5%;
+                  /* left: 0; */
+                  width: 110%;
+                  /* right: 0; */
+                  }
+            }
+
+            .innerVideoContainer{
+                  height: 218px;
+                  width: 83%;
+                  margin: auto;
+            }
+
+
+            @media (max-width: 991px){
+            .innerVideoContainer {   
+                  height: 218px;
+                  width: 90%;
+                  margin: auto;
+              
+                  }
+            }
+
+            .contact {
+                  padding: 20px;
+                  position: relative;
+            }
+
+            @media (max-width: 992px)
+            {
+                  .contact {
+                        padding: 55px 0;
+                        position: relative;
+                  }
+            }
+
+            .contact .submit {
+                         width: 100%; 
+                         padding: 0 0px;
+                         margin: 0;
+                        left: 0;
+                        right: 0;
+                        display: block;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                        border-color: #7cb28a;
+                        background: #7cb28a;
+                        transition: all 0.2s;
+                        -moz-transition: all 0.2s;
+                        -webkit-transition: all 0.2s;
+                        -o-transition: all 0.2s;
+                        -ms-transition: all 0.2s;
+                  }
+
+
+            @media (max-width: 992){ /*was 600*/
+                  .contact .submit {
+                         width: 100%; 
+                         padding: 0 0px;
+                         margin: 0;
+                        left: 0;
+                        right: 0;
+                        display: block;
+                        align-items: center;
+                        text-align: center;
+                        justify-content: center;
+                        border-color: #7cb28a;
+                        background: #7cb28a;
+                        transition: all 0.2s;
+                        -moz-transition: all 0.2s;
+                        -webkit-transition: all 0.2s;
+                        -o-transition: all 0.2s;
+                        -ms-transition: all 0.2s;
+                  }
+            }
+
+            .heading {
+                  display: inline-block;
+                  margin-bottom: 20px;
+            }
+
+            .nav {
+                  float: right;
+                  padding-top: 0px;
+            }
+
+            #signIn{
+
+            }
+
+            .centerElements{
+                  margin: auto;
+                  /* left: 20px; */
+                  width: 82%;
+            }
+
+            .customHeadline{
+
+                  margin-bottom: -20px;
+            }
+
+            .input-field {
+             height: 40px;
+            }
+
+            .accreditation{
+                  width: 80px;
+                  padding: 4px 4px 4px 4px;
+                  position: absolute;
+            }
+            
+            .bottomRow{
+                  display:inline-block
+            }
+
+            #footerTicker{
+                  top: 0px;
+                  width: 73%;
+                  margin: auto;
+                  position: relative;
+                  padding: 5px 0px 10px 0px;
+                  font-size: 17px;
+                  text-align: center;
+                  height: 20px;
+            }
+
+            @media (max-width: 991px){
+                  #footerTicker {   
+                        top: 75px;
+                        width: 100%; 
+                  }
+            }
+
+            #bottomBar{
+                  position: relative;
+                  height: 10%;
+                  width: 100%;
+            }
+
+            #intro {          
+                  height: 100%;
+                  padding-top:10px;
+            }
+
+            @media (max-width: 991px){
+                  #intro {   
+                        height: 700px;
+                        /*padding-top: 100px;*/
+                        padding-top: 16%;
+                  }
+            }
+
+            .desktopErrorMessage{
+                  top: 12px;
+                  position: relative;
+                  width: 100%;
+                  display: inline-block;
+                  text-align: center;
+            }
+
+            #signInDiv{
+                  padding:20px;
+                  text-align: center;      
+            }
+            
+            @media (max-width: 991px){
+                  #signInDiv{
+                        padding: 0px;                        
+                  }
+            }
+
+            #learningLangFlag{
+                  text-align:right;
+
+            }
+
+            .languageSelect{
+                  width:100%;
+                  padding-left: 10px;
+            }
+
+            @media (max-width: 991px){
+                  .languageSelect{
+                        width:50%;  
+                        padding-left: 20px;                         
+                  }
+            }
+
+            #learningLanguageSignUp {
+                  position:relative;
+                  right: 10%;
+                  bottom: 22px;  
+            }
+
+            @media (max-width: 991px){
+                  #learningLanguageSignUp{
+                        right: 20%;
+                        bottom: 35px;                         
+                  }
+            }
+
+            .contactPadding{
+                  padding-top: 1%;
+            }
+
+            @media (max-width: 991px){
+                  .contactPadding{
+                        padding-top: 3%;                        
+                  }
+            }
+	</style>	 
+	</head>
+	<body>	      
+	   <!-- Preloader -->
+         <div id="loader-wrapper">
+             <div id="loader"></div>
+         </div>
+         <!-- Preloader End -->
+			
+         <!-- Header -->
+         <header>
+         
+               <!-- Intro -->
+               <div id="intro" class="overlay-gradient" data-scroll-index="0">        
+                  
+                        <!-- Top Bar -->
+                        <div class="top-bar">
+               
+                           <div class="container" style="width:90%">
+                              <div class="row">
+                              
+                                 <div class="col-md-12">
+                                 
+                                       <!-- Logo -->
+                                    <div class="logo"><a title="" href="#"><img onclick="playAudio()" src="img/bg/CHAPPI-TEANGA-MONKEY-SMALL.png" alt="TEANGA!" width="60" height="60"> </a></div>
+                                    <!-- Logo End -->                                     
+                                    <!-- Menu -->
+                                    <div class="nav">
+                                          <nav class="navbar navbar-default" role="navigation">
+                                             <!-- Mobile Button -->
+		                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                             </button>
+                                             <!-- Mobile Button End -->
+                                          		               
+                                             <ul class="collapse navbar-collapse navbar-ex1-collapse" style="overflow-y: inherit">
+                                                 <li><a href="mailto:info@teanga.me"><i class="fa fa-envelope fa-2x navIcon"></i></a></li>
+                                                <li><a href='https://twitter.com/teangainfo?lang=en' target="_blank"><i class="fa fa-twitter fa-2x navIcon"></i></a></li>
+                                                <li><a href='https://www.facebook.com/teanga.me/' target="_blank"><i class="fa fa-facebook fa-2x navIcon"></i></a></li>
+                                                <li><a href='https://www.youtube.com/channel/UCoMxpZV3vb8X0Q6ss0AoIxA' target="_blank"><i class="fa fa-youtube fa-2x navIcon"></i></a></li>
+                                                <li><a href="#" class='toolTipper' data-container="body" data-toggle="tooltip" data-placement="bottom" title="Coming Soon!"><h1 class='navIcon' style='font-size: 30px'>T2020</h1></a></li>
+                                             </ul>									 
+                                          </nav>
+                                       </div>
+                                       <!-- Menu End -->         
+                                 </div>
+               
+                              </div><!-- .row End -->                  
+                           </div><!-- .container End -->                
+                        </div>
+                        <!-- Top Bar End -->
+      
+                        <div class="container">   
+                              <!--<h2 class="localisation centreDiv" data-id="LOC_TXT_SIGNUP_RESULT_HEADER">WELCOME TO TEANGA!</h2>-->
+
+                              <div class="col-md-6 contactPadding" style='padding-left: 3%;padding-right: -0%;'>
+                              <!--<div class="col-md-6" style='padding-left: 5%; padding-top: 3%;'>-->
+
+                                          <div class="headline customHeadline">
+                                                      <h2 style="color: black; visibility: visible; animation-name: fadeInDown; font-size: 32px;" class="wow fadeInDown localisation animated" data-id="LOC_TXT_STRAPLINE1">We're trialling.Talk to us.</h2>
+                                                      <!--<span><p style="margin-bottom:0px;color: black; visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;" class="wow fadeInDown localisation animated" data-id="LOC_TXT_STRAPLINE2" data-wow-delay="0.5s">Image and Voice-based Language Learning</p></span>-->
+                                          </div>
+
+                                    <div class="contact">     
+                                          <div class="container customColumn">
+                                                <div class="row">
+                                                      <div class="col-md-12">
+                                                             <!-- Sign Up Form --> 
+                                                            <div class="contact-message"></div>     
+                                                                  <form role="form" method="post" action="/signup" name="signupform" id="signupform" class="clearfix">
+                                                                        <input  name="name" id="name" class="input-field form-control" placeholder="Enter Name">
+                                                                        <input  name="email" id="email" class="input-field form-control" placeholder="Enter E-Mail">
+                                                                        <input  name="pass" id="pass" class="input-field form-control" placeholder="Choose Password" type="password">                          
+                                                                        <input type="hidden" value="eng" name="nativeLanguage" id="nativeLanguage">
+                                                                        <!--<span><div class='languageSelect'>Select language you would like to learn: </div><div style="position:relative" class="pull-right" id="learningLanguageSignUp"></div></span>-->
+                                                                        <br>
+                                                                        
+                                                                        <span>
+                                                                        <p class='centerElements' class="subheadline">
+                                                                              <input style='' type="button" value="Sign Up" name="submitFormButton" class="submit" id="submitFormButton"></p>
+                                                                        </span>
+                                                                        <span id="message" class='desktopErrorMessage' style="display: none"></span>
+                                                                  </form>
+                                                                  <div id='signInDiv'><span>Have an account already? <a href="/signin" id='signIn' style='color:white;' class="localisation" data-id="LOC_TXT_SIGNIN_HEADER">Sign In.</a></span></div>
+                                                                  <span id="validationMessage" class='desktopErrorMessage' style="display: none"></span>
+                                                                  <!-- Sign Up Form End -->     
+                                                                                                       
+                                                            </div>                              
+                                                      </div><!-- .row End -->
+                                                </div><!-- .container End -->
+                                          </div>
+                                    </div> 
+                              
+                                    <div class="col-md-6" style='position:inherit' >
+                                          <div class="row videoRow customRow">  
+                                                <div class="col-md-6 customColumn videoContainer">   
+                                                      <div class='innerVideoContainer'>
+                                                                  <iframe scrolling="no" class='customColumn' src="https://www.youtube.com/embed/_XT4tULXHNw" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                          <div class='headline' style='margin-top: -5px; margin-bottom: 5px;'></div>
+                                          <div class="row videoRow customRow">  
+                                                <div class="col-md-6 customColumn videoContainer">
+                                                      <div class='innerVideoContainer'>
+                                                                  <iframe scrolling="no" class='customColumn' src="https://www.youtube.com/embed/png6gjzYDLE" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div><!-- .row End -->
+                              <div class="col-md-12" id='desktopFooter' >
+                                          <div id='desktopRow' class="row">      
+                                                <img class='accreditation' src='img/el-logo.png'/>          
+                                                <div id='footerTicker'></div>
+                                          </div>
+                              </div>           
+                  </div>
+            </div><!-- .container End --> 
+      </header>
+      <!-- Header -->
+      </div>
+      <!-- Content End -->
+      <!-- Javascript Files -->
+      <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script> 		
+      <script type="text/javascript" src="js/bootstrap.min.js"></script>	
+      <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+      <script type="text/javascript" src="js/scrollIt.js"></script>         
+      <script type="text/javascript" src="js/swiper.min.js"></script>
+      <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+      <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+      <script type="text/javascript" src="js/wow.min.js"></script>
+      <script type="text/javascript" src="js/jquery.stellar.min.js"></script>
+      <script type="text/javascript" src="js/jquery.ajaxchimp.min.js"></script>
+      <script type="text/javascript" src="js/jquery.particleground.min.js"></script>
+      <script type="text/javascript" src="js/custom.js"></script>
+	<script type="text/javascript" src="js/monkeyPatch.js"></script>
+	<script type="text/javascript" src="js/ios6-timers.js"></script>	 
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/recorder.js"></script>
+      <script type="text/javascript" src="js/recorderWorker.js"></script>
+	<script>
+	var learningISO;
+	var nativeISO;
+	var learningLangURL;
+	var selectedLearningLanguageISO = 'eng'     //'English'
+	var selectedLearningLanguageURL = 'img/32/England.png'
+	var selectedNativeLanguageISO = 'eng'
+      var footerTickerInterval;
+      var mobileMenuActivated = false;
+      var tickerContentNo = 1;
+      var tickerContent = {
+            1:"TEANGA uses a set of images and symbols common to all languages so you can build confidence by focusing on speaking and listening",
+            2:"Less text, more voice. One day all language students will start this way. Those learners who are text averse will love this! ",
+            3:"Teanga is an inherently simple and effective way to engage the student in language learning, with active audio tools for voice-based learning fun."
+      }
+	
+      window.onload = function(){
+		
+		$('#submit').fadeOut(500);
+            $('.toolTipper').tooltip({placement: "bottom"})
+
+            if ($(window).width() < 991) {
+                  console.log('Less than 991 - added to desktop footer');
+                  $('.videoRow').removeClass('customRow')
+                  $('#footerTicker').insertAfter("#signupform");
+                  $('.accreditation').css("bottom", "-220px");   
+            }
+            else {
+                  console.log('more than 991  - added to mobile footer');
+                  $('.videoRow').addClass('customRow')
+                  $('#footerTicker').insertBefore("#desktopRow");
+                  $('.accreditation').css("bottom", "-26px"); 
+            }
+       
+            $('#footerTicker').text(tickerContent[tickerContentNo]).fadeTo(1000, 1);
+            footerTickerInterval = setInterval(function(){ startTicker(); }, 7000);
+
+/*
+		flagDropdownHTML = '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" id="lang_select_text" aria-expanded="false"><span id="topFlagSpan" ><b id="topCaret" style="margin: 4px;" class="caret"></b><img  style="margin: 5px;" id="topFlag" src="img/flags/32/United-Kingdom.png" "></span></a><ul id="nativeLanguageToggle" class="download-btn dropdown-menu" role="menu" style="min-width: 90px">'
+	 	
+            {% for lang in languages%}
+			flagDropdownHTML += '<li  id="nativeLanguage" class="nativelang_select" style="width: 100%"><a href="#!" id="nativeFlagClick{{lang.LanguageISOCode}}" style="width: 100%;  padding: 5px">{{lang.LanguageNameEnglish}} <img src="{{lang.LanguageFlagURL}}" pull-right"></a></li>'
+			if ('{{lang.LanguageISOCode}}' == 'English'){
+				learningLangURL = '{{lang.LanguageFlagURL}}'
+			}		
+
+		{% endfor %}
+		flagDropdownHTML += '</ul></li>'
+		
+		//$('.navbar-collapse').append(flagDropdownHTML)
+		
+		signUpDropdownHTML = '<div class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" id="Learnlang_select_text" aria-expanded="false"><b style="position:relative; right:5px" class="caret"></b><img id="mainFlag" src="img/flags/32/United-Kingdom.png" "></a><ul id="learningLanguageToggle" class="download-btn dropdown-menu" role="menu" style="position:absolute;  min-width: 110px">'
+		
+		{% for lang in languages%}
+			signUpDropdownHTML += '<li id="learningLanguage" class="learninglang_select" style="width: 100%"><a href="#!" id="learningFlagClick{{lang.LanguageISOCode}}" style="width: 100%; padding: 5px">{{lang.LanguageNameEnglish}} <img id="learninglangFlag" src="{{lang.LanguageFlagURL}}" style="float:right;"  pull-right"></a></li>'
+			//i++
+		{% endfor %}
+		signUpDropdownHTML += '</ul></div>'
+		
+		$('#learningLanguageSignUp').append(signUpDropdownHTML)	
+		
+		{% for lang in languages%}
+		 
+			console.log('creating handler ' + '{{lang.LanguageFlagURL}}')
+			 
+			 $( '#learningFlagClick{{lang.LanguageISOCode}}' ).click(function() {
+			  var languageURL = '{{lang.LanguageFlagURL}}'
+			 var languageEnglish = '{{lang.LanguageNameEnglish}}'
+			 var languageISO = '{{lang.LanguageISOCode}}'
+  			
+  				changeLearningFlag(languageURL, languageISO)
+			});
+
+			$( '#nativeFlagClick{{lang.LanguageISOCode}}' ).click(function() {
+			var languageURL = '{{lang.LanguageFlagURL}}'
+			 var languageEnglish = '{{lang.LanguageNameEnglish}}'
+			 var languageISO = '{{lang.LanguageISOCode}}'
+ 				 changeNativeFlag(languageURL, languageISO)
+			}); 
+		{% endfor %} 
+
+   */         
+		
+		$('#learningLanguageToggle').val('eng')
+		$('#nativeLanguage').val('eng')
+		nativeISO = 'eng'
+		
+		$('.dropdown-toggle').click(function(event){
+
+			if($('.navbar-toggle').is(':visible')){
+				$('.dropdown-menu').css('left', '45%')
+			}
+			else{
+				$('.dropdown-menu').css('left', '0%')
+			}
+		})
+
+            $('.navbar-toggle').click(function(event){
+                  if (mobileMenuActivated == true){
+                        console.log('clicked dropdown toggle -  is now true.')
+                        $('.navIcon').fadeTo(1000, 0).fadeTo(1000, 1);
+                        mobileMenuActivated = false
+                  }else if (mobileMenuActivated == false){
+                        console.log('clicked dropdown toggle - is now false.')
+                        mobileMenuActivated = true
+                  }
+		})
+		
+		$('#submitFormButton').click(function(e){
+			var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+			var email = $('#email').val()
+			
+			if(email.search(emailRegEx) == -1){
+				$('#message').html('*The email address you have provided is not valid.')
+				$('#message').show()
+				return
+			}
+			
+			$.get('/mailCheck?email='+email, function(data){
+				if(data.exists){
+					$('#message').html('*The email address you have provided is already in use.')
+					$('#message').show()
+					console.log('native1 ' + nativeISO)
+					console.log('native1 ' + 1)
+					console.log('learning ' + $('#learningLanguageToggle').val())
+					return
+				}
+				else{
+					$('#pre_signup').hide()
+                              $('#post_signup').show()
+                              
+                              //$('#signupform').hide()
+					//$('#signupform').hide()
+					$('#signInDiv').hide()                                                            
+							
+					console.log('native1 ' + nativeISO)
+					console.log('learning ' + $('#learningLanguageToggle').val())
+										
+					data = {'name' : $('#name').val(), 'email' : $('#email').val(), 'pass' : $('#pass').val(), 'nativeLanguage' : selectedNativeLanguageISO, 'learningLanguage' : selectedLearningLanguageISO}
+                              
+                              console.log('sign in data')
+                              console.log(data)
+
+					$.post('/signup', data, function(data){
+                                    console.log('successfully signed up!')
+                                    $('#message').hide()
+                                    $('#validationMessage').html('An email has been sent to your email address. Click the activation link to verify your account!')
+					      $('#validationMessage').show()
+                                    //window.location.href = "https://www.teanga.me/signin";
+					})
+				}
+			})
+		})
+		
+		w = $('#videoContainer').width()
+		h = (((w/4)*3)/16)*9
+		$('#videoContainer').height(h)
+	
+		try {
+			var AudioContext = window.AudioContext || window.webkitAudioContext;
+			myContext = new AudioContext();
+			console.log('web audio activated');
+			bufferAudio(randomSample, 0)
+		}catch(e){
+			alert('Web Audio API is not supported in this browser');
+			notCompatable = true;
+		}
+	}
+	
+	$(window).resize(function(){
+		w = $('#videoContainer').width()
+		h = (((w/4)*3)/16)*9
+		$('#videoContainer').height(h)
+           
+            if ($(window).width() < 991) {
+                  console.log('Less than 991 - added to desktop footer');
+                  $('.videoRow').removeClass('customRow')
+                  $('#footerTicker').insertAfter("#signupform");
+                  $('.accreditation').css("bottom", "-220px"); 
+            }
+            else {
+                  console.log('more than 991  - added to mobile footer');
+                  $('.videoRow').addClass('customRow')
+                  $('#footerTicker').insertBefore("#desktopRow");
+                                    $('#footerTicker').css('padding','0px');
+                  $('.accreditation').css("bottom", "0px"); 
+                  $('.accreditation').css("bottom", "-26px"); 
+            }
+	})
+
+      function startTicker(){
+
+            $('#footerTicker').animate({opacity:0},function(){
+                  $('#footerTicker').text(tickerContent[tickerContentNo]).animate({opacity:1});  
+            })
+
+            tickerContentNo++
+
+            if (tickerContentNo == 4){
+                  tickerContentNo = 1;
+            }
+      }
+																			
+	var activated = false;																								
+	var myContext;		 
+	var bufferArray = [];
+	var iOS = /iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;													
+	var notCompatable = false;
+	var localSoundsArray = ['TeangaMP3/Teanga2.mp3'];		//Path to sample that plays when monkey is clicked	
+	var randomSample = localSoundsArray[Math.floor(Math.random() * localSoundsArray.length)];
+	var newBuffer;
+
+	function activate ()
+	{																							
+		if (activated == false){																			       	
+			activated = true;						
+			var buffer = myContext.createBuffer(1, 22050, 44100);												
+			var source = myContext.createBufferSource();
+			source.buffer = buffer;
+			source.connect(myContext.destination);
+			source.start(0);			
+		}
+	}
+		
+	function bufferAudio(URL, number)
+	{
+		console.log(URL);
+		var request = new XMLHttpRequest();
+		request.open("GET", URL, true);
+		request.responseType = "arraybuffer";
+		request.onload = function() {
+			myContext.decodeAudioData(request.response, function(buffer) {
+				newBuffer = buffer;
+				console.log(newBuffer);
+			}, function(error) {
+				console.error("decodeAudioData error", error);
+			});
+		};
+		request.send();
+	}
+	
+	function playAudio()
+	{								
+		var source = myContext.createBufferSource();														
+		source.buffer = newBuffer;
+		source.connect(myContext.destination);		
+		source.start();
+	}
+	
+	function changeLearningFlag(selectedFlagURL, selectedFlagISO){
+		console.log(selectedFlagISO)
+		console.log('selected flag ' + selectedFlagURL)	
+		selectedLearningLanguageISO = selectedFlagISO
+		$('#mainFlag').attr('src' ,selectedFlagURL)
+	}
+
+      function checkFormIsValid(){
+		console.log('checking form is valid');
+		
+		if ($('#contactname').val() && $('#contactemail').val() && $('#contactmessage').val()){
+		
+			console.log('submit button FIRST activated email ' + $('#contactemail').val())
+			var email = $('#contactemail').val()
+			//var isEmail = isEmail(email);
+			console.log('email is ' + email)
+			
+			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+ 			 var ans = regex.test(email);
+ 			 console.log('email is ' + ans)
+			
+			if (ans == true){
+				console.log('email valid')
+				$('#submit').fadeIn(1000);
+				console.log('submit button Second activated')			
+			}else{
+				console.log('email not recognised')
+				$('#submit').fadeOut(1000);
+			}
+		}
+	}	
+</script>  		
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67934815-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,3473 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Teanga Admin</title>
+		<!--<meta charset="UTF-8" />-->
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="unicorn/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="unicorn/css/font-awesome.css" />
+        <link rel="stylesheet" href="unicorn/css/jquery-ui.css" />
+		<link rel="stylesheet" href="unicorn/css/icheck/flat/blue.css" />
+		<link rel="stylesheet" href="unicorn/css/select2.css" />		
+		<link rel="stylesheet" href="unicorn/css/unicorn.css" />
+
+		<link rel="stylesheet" href="css/customNavBar.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href="css/Flags2.css" rel="stylesheet" type="text/css" />
+				<link rel="stylesheet" href="css/moduleEdit.css" />
+			
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+		<![endif]-->
+		
+		<style>
+			.select2-container .select2-choice .select2-chosen {
+				color: #555555;
+				font-size: 12px !important;
+				bottom: 6px !important;
+				position: relative !important; 
+			}
+			
+			.select2-container {
+				top: 2px;
+			}
+			
+			.select2-container .select2-choice {
+				height: 31px;
+			}
+			
+			#breadcrumb a {
+				font-size: 11px;
+			}
+			
+			.dd-container {
+				position: absolute;
+				display: inline-block;
+				height: 30px;
+			}
+			
+			.dd-select {
+				background-image: none !important;
+				background: #fff !important;
+				top: 7px;
+				height: 32px;
+			}
+			
+			.dd-selected {
+			    background-image: none !important;
+				background: #fff !important;
+			}
+			
+			.dd-select a {	
+				background-image: none !important;
+				background: #fff !important;
+			}
+			
+			.dd-selected a{
+			    background-image: none !important;
+				background: #fff !important;
+			}
+			
+			.dd-selected a{
+			  	background-image: none !important;
+				background: #fff !important;
+			}
+			
+			.dd-option-text{
+			    line-height: 33px;
+			}
+			
+			.dd-options dd-click-off-close{
+					line-height: 33px;
+			}
+			
+			body {
+
+			line-height: 1.2;
+
+			}
+		
+			#title{
+				left: 155px;			
+			}
+			
+			#subtitle{
+				left: 155px;			
+			}
+
+			.modal-body {
+				padding: 25.5px;
+				margin: 10px;
+			}
+
+			#footer {
+				padding: 80px; ///WAS 10PX
+			}
+			
+			#content {
+				min-height: 700px;			
+			}
+
+
+
+			.dropdown-menu>li>a {
+   				 white-space: inherit;
+			}
+
+			.flag {
+   				 position: relative;
+    				top: -7px;
+			}
+
+			.caret {
+ 				   display: inline; 
+			}
+
+			#playButton{
+				z-index: 0;
+			}
+
+			</style>
+			
+	</head>
+
+	
+	<body data-color="grey" class="flat">
+		<div id="wrapper">
+			<div id="header">
+				<h1><a href="#">Teanga Admin</a></h1>	
+				<a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>	
+			</div>
+		
+			<div id="user-nav">
+	            <ul class="btn-group">
+				
+				{% if user.UserType == 'USER_ADMIN'%}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"><b id="languageCaret" class="caret"></b></a>
+								<ul id="languageList" class="download-btn dropdown-menu" role="menu" style="min-width: 70px">
+									<!-- <li  onclick="changeLanguage('fre')"  class="lang_select" data-iso="fre" style="width: 100%">
+										<a href="#!" style="width: 100%">fre <img class="flag flag-fre pull-right"></a>
+								    </li>
+									<li  onclick="changeLanguage('eng')" class="lang_select" data-iso="eng" style="width: 100%">
+										<a href="#!" style="width: 100%">eng <img class="flag flag-eng pull-right"></a>
+									</li>
+								    <li onclick="changeLanguage('gle')" class="lang_select" data-iso="gle" style="width: 100%">
+										<a href="#!" style="width: 100%">gle <img class="flag flag-gle pull-right"></a>
+								    </li>
+									<li onclick="changeLanguage('ger')"  class="lang_select" data-iso="ger" style="width: 100%">
+										<a href="#!" style="width: 100%">ger <img class="flag flag-ger pull-right"></a>
+								    </li>	-->								
+								</ul>
+						</li>
+					{% else %}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"></b></a>
+						</li>
+					{% endif %}
+					
+					
+	                <li class="btn" ><a title="" href="#"><i class="fa fa-user"></i> <span class="text">Profile</span></a></li>
+	                <li class="btn"><a title="" href="#"><i class="fa fa-cog"></i> <span class="text">Settings</span></a></li>
+	                <li class="btn"><a title="" href="signout"><i class="fa fa-share"></i> <span class="text">Logout</span></a></li>
+	            </ul>
+	        </div>
+
+			<div id="sidebar">
+				<ul>
+					{% if user.UserType == 'USER_ADMIN'%}
+					<li><a href="languages"><i class="fa fa-bullhorn"></i> <span>Languages</span></a></li>
+					<li><a href="images"><i class="fa fa-th"></i> <span>Images</span></a></li>
+					<li><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li class="active"><a id='module-btn' href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					<li><a href="users"><i class="fa fa-user"></i> <span>Users</span></a></li>
+					<li><a href="/voices"><i class="fa fa-volume-up"></i> <span>Voices</span></a></li>
+					{% else %}
+					<li><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li class="active"><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					{% endif %}
+				</ul>		
+			</div>
+			
+		
+			<div id="content">
+				<div id="content-header" class="mini">
+					<h1>Modules</h1>
+				</div>
+				
+			<div id="moduleTable">	
+				<div id="breadcrumb">
+					<a href="https://www.teanga.me/modules" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Modules</a>
+				</div>
+				<div class="container-fluid">
+					<div id="moduleSelectTable" class="row">
+						<div class="col-xs-12" style="padding-bottom: 20px" id="tableView">
+						
+							<div class="pull-right">
+								<button href="#myAlert" data-toggle="modal" class="btn btn-info" type="button">Add</button>
+							</div>
+						
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="fa fa-th"></i>
+									</span>
+									<h5></h5>
+								</div>
+								<div class="widget-content nopadding" id="tableContent">
+								</div>
+							</div>
+						</div>
+						
+						<div class="widget-content">
+							<div id="myModal" class="modal fade" aria-hidden="true" style="display: none;">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button data-dismiss="modal" class="close" type="button">×</button>
+											<h3>Modal header</h3>
+											</div>
+											<div class="modal-body">
+											<p>One fine body…</p>
+											</div>
+											</div>
+											</div>
+							</div>
+							<div id="myAlert" class="modal fade" aria-hidden="true" style="display: none;">
+										<div class="modal-dialog">
+											<div class="modal-content">
+											<div class="modal-header">
+												<button data-dismiss="modal" class="close" type="button">×</button>
+												<h3>Create New Module</h3>
+												</div>
+													<div class="modal-body" id="myModal">
+													<p></p>
+													Module Title: <input type="text" id="title"></input>
+													<br><br>
+													Module Subtitle: <input type="text" id="subtitle"></input>
+													<br><br>
+													</div>
+												<div class="modal-footer">
+												<a style="visibility: hidden" class="btn btn-primary btn-small" id="addButton" >Confirm</a>
+												<a data-dismiss="modal" class="btn btn-default btn-small" href="#">Cancel</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>			
+						</div>
+						</div>
+				</div>							
+								
+			<div id="ModuleEdit" style="display: none">	
+				<div id="breadcrumb">
+					<a href="#" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Modules</a>	
+					<a href="#" class="custom"><input class="input-sm form-control" placeholder="Module Title" id="moduleSelect" value="{{item.ModuleID}}"></input></a>
+					<a href="#" class="custom"><span style="font-weight: bold">Artwork: </a>		
+					<!--<a href="#" class="custom"><input id="moduleArtworkURL" placeholder="Module Artwork URL" class="input-sm form-control"></input></span></a>	-->
+			
+						<!--<select id="moduleArtworkURL" name="moduleArtworkURL">
+											<option class="dropdownImage" data-content="<img src='https://10.6.6.39/online_cos-portlet/images/icon/money_usd.png" value="Circle 1">Empty Circle</option>
+											<option class="dropdownImage" value="Circle 2"><img src="/img/player/MODULE-ArtworkCircle1.png"></img>Circle 1</option>
+											<option class="dropdownImage" value="Circle 3"><img src="/img/player/MODULE-ArtworkCircle2.png"></img>Circle 2</option>
+											<option class="dropdownImage" value="Circle 4"><img src="/img/player/MODULE-ArtworkCircle3.png"></img>Circle 3</option>
+											<option class="dropdownImage" value="Circle 5"><img src="/img/player/MODULE-ArtworkCircle4.png"></img>Circle 4</option>
+											<option class="dropdownImage" value="Circle 6"><img src="/img/player/MODULE-ArtworkCircle5.png"></img>Circle 5</option>
+											<option class="dropdownImage" value="Hex 1"><img src="/img/player/MODULE-ArtworkHex0.png"></img>Empty Hex</option>
+											<option class="dropdownImage" value="Hex 1"><img src="/img/player/MODULE-ArtworkHex1.png"></img>Hex 1</option>
+											<option class="dropdownImage" value="Hex 2"><img src="/img/player/MODULE-ArtworkHex2.png"></img>Hex 2</option>
+											<option class="dropdownImage" value="Hex 3"><img src="/img/player/MODULE-ArtworkHex3.png"></img>Hex 3</option>
+											<option class="dropdownImage" value="Hex 4"><img src="/img/player/MODULE-ArtworkHex4.png"></img>Hex 4</option>
+						</select>-->
+						
+						<div id="moduleArtwork"></div>			
+					</div>
+				
+				<div class="container-fluid">
+					<div id="spinnerContainer"></div>
+					<div id="modulesEditPage" class="row">
+						
+						<div class="col-xs-12" style="padding-bottom: 20px">					
+							<form action="#" method="get" class="form-horizontal">    
+								
+								<div style="height: 80px;" class="form-group">
+									<div class="col-sm-1 col-md-1 col-lg-1">
+										<h4><div id="currentStepDisplay"></div></h4>
+										
+										<ul class="pagination alternate" id="addRemoveStep">											
+											<li class=""><a onclick="changeStep('add')" class="stepChange" id="addStepButton" class="btn btn-default"><i class="fa fa-plus"></i></a></li>
+											<li class=""><a onclick="changeStep('remove')" class="stepChange" id="removeStepButton" class="btn btn-default" ><i style="margin:-1.5px" class="fa fa-trash"></i></a></li>
+										</ul>
+										
+											<!--<button onclick="changeStep('add')" class="stepChange" id="addStepButton" class="btn btn-default" ><img id="addStep"></img>+</button>																																														
+											<button onclick="changeStep('remove')" class="stepChange" id="removeStepButton" class="btn btn-default" ><img id="removeStep"></img>-</button>-->																															
+									</div>
+								
+									<div class="col-sm-2 col-md-2 col-lg-4">
+										<input width="175px" id="stepTitle" placeholder="Step Title" class="input-sm form-control">
+									</div>	
+									
+									<div id="optionContainer">
+										<div class="col-sm-1 col-md-1 col-lg-1">
+											<label><input type="checkbox" name="checkboxes" class="checkBox" onclick="do()" id="stepReqReference"/> Ref</label>
+										</div>
+										<div id="stepRefAutoDiv" class="col-sm-1 col-md-1 col-lg-1">
+											<label ><input type="checkbox" name="checkboxes" class="checkBox" id="stepRefAuto"/> Auto</label>
+										</div>
+										<div class="col-sm-1 col-md-1 col-lg-1">
+											<label><input type="checkbox" name="checkboxes" class="checkBox" id="stepReqAudio"/> Rec</label>
+										</div>
+										<div id="stepReqRatingDiv" class="col-sm-1 col-md-1 col-lg-1">
+											<label ><input type="checkbox" name="checkboxes" class="checkBox" id="stepReqRating"/> Rate</label>
+										</div>
+									</div>
+									
+									<div class="col-sm-4 col-md-4 col-lg-2" >
+										<img src="img/player/nowRecording.png" id="recordButton"></img>
+										<img src="img/player/Play64x64.png" id="playButton"></img>
+										<div style="color:red" id="recValidation"></div>
+									</div>										
+								</div>	
+								
+								<div class="form-group" style="margin:8px;">								
+									<div class="col-sm-1 col-md-1 col-lg-1 ">									
+										<img id="wordGlyph" src="img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png"></img>
+										<div id="wordSpinny"></div>	
+									</div>
+									
+									<div class="col-md-4">
+																
+										<div class="widget-content">
+															<span role="status" aria-live="polite" class="ui-helper-hidden-accessible">3 results are available, use up and down arrow keys to navigate.</span><input type="text" class="form-control ui-autocomplete-input" placeholder="Enter tag"  id="tags"  autocomplete="off">
+														</div>
+																												
+									</div>
+									
+									<div class="col-sm-3 col-md-3 col-lg-3">
+										<span class="input-group-btn">																		
+										</span>
+										<input id="mashMeaningText" placeholder=""  class="input-sm form-control">		 										
+									</div>
+
+									<div class="col-md-6">
+													
+									</div>
+									
+								</div>										
+						</div>									
+						
+							<div class="col-xs-12">																		
+									<div id="masherBorder">	
+										<div id="innerMashContainer"></div>
+										<div id="partDiv2">
+												<img id="partDiv2Error" src="img/player/HexagonPart-NODROP.png" class="validateDrag"></img>
+												<img id="partDiv2Confirm" src="img/player/HexagonPart-DROP.png" class="validateDrag"></img>
+												<img id="flap26" class="Flap6" src="img/player/HexFlap6.png">											
+												<img id="flap25" class="Flap5" src="img/player/HexFlap5.png">
+												<img id="flap24" class="Flap4" src="img/player/HexFlap4.png">
+												<img id="flap23" class="Flap3" src="img/player/HexFlap3.png">
+												<img id="flap22" class="Flap2" src="img/player/HexFlap2.png">
+												<img id="flap21" class="Flap1" src="img/player/HexFlap1.png">
+												<img id="partTypeImage2" src="img/player/Hexagon.png" class="partTypeImages" style="display: inline;">
+												<img class="mainWord" onmouseover="showEdit('mainWord2', 'mainWord2Hover','IN')" onmouseout="showEdit('mainWord2', 'mainWord2Hover','OUT')" id="mainWord2" src="img/player/blank.gif"></div>
+										<div id="partDiv1">
+												<img id="partDiv1Error" src="img/player/CirclePart-NODROP.png" class="validateDrag"></img>
+												<img id="partDiv1Confirm" src="img/player/CirclePart-DROP.png" class="validateDrag"></img>
+												<img id="flap16" class="Flap6" src="img/player/blank.gif">
+												<img id="flap15" class="Flap5 CircleFlap5" src="img/player/CircleFlap5.png">
+												<img id="flap14" class="Flap4 CircleFlap4" src="img/player/CircleFlap4.png">
+												<img id="flap13" class="Flap3 CircleFlap3" src="img/player/CircleFlap3.png">
+												<img id="flap12" class="Flap2 CircleFlap2" src="img/player/CircleFlap2.png">
+												<img id="flap11" class="Flap1 CircleFlap1" src="img/player/CircleFlap1.png">
+												<img id="partTypeImage1" src="img/player/Circle.png" class="partTypeImages" style="display: inline;">
+												<img class="mainWord" onmouseover="showEdit('mainWord1', 'mainWord1Hover','IN')" onmouseout="showEdit('mainWord1', 'mainWord1Hover','OUT')" id="mainWord1" src="img/player/blank.gif"></div>
+										<div id="partDiv0">
+												<img id="partDiv0Error" src="img/player/HexagonPart-NODROP.png" class="validateDrag"></img>
+												<img id="partDiv0Confirm" src="img/player/HexagonPart-DROP.png" class="validateDrag"></img>
+												<img id="flap06" class="Flap6 opacityIn" src="img/player/HexFlap6.png">
+												<img id="flap05" class="Flap5 opacityIn" src="img/player/HexFlap5.png">
+												<img id="flap04" class="Flap4 opacityIn" src="img/player/HexFlap4.png">
+												<img id="flap03" class="Flap3 opacityIn" src="img/player/HexFlap3.png">
+												<img id="flap02" class="Flap2 opacityIn" src="img/player/HexFlap2.png">
+												<img id="flap01" class="Flap1 opacityIn" src="img/player/HexFlap1.png">
+												<img id="partTypeImage0" src="img/player/Hexagon.png" class="partTypeImages" style="display: inline;">
+												<img class="mainWord" onmouseover="showEdit('mainWord0', 'mainWord0Hover','IN')" onmouseout="showEdit('mainWord0', 'mainWord0Hover','OUT')" id="mainWord0" src="img/player/blank.gif"></div>											
+										</div>																															
+
+									<div class="col-sm-9 col-md-9 col-lg-9">
+								    <ul class="pagination alternate" id="stepNavigation">											
+								    </ul>		
+									</div> 
+						
+								<div class="col-xs-12">
+									<div class="col-sm-9 col-md-9 col-lg-2 pull-right">
+										<div class="actions"><div class="actions-inner"><a title="" href="#!" class="tip-top edit" data-original-title="Edit" data-image-id="3" data-image-comment="anonymous"><i class="fa fa-pencil"></i></a><a title="" href="#!" class="tip-top remove" data-original-title="Remove" data-image-id="3"><i class="fa fa-trash-o"></i></a></div></div>
+									</div>
+									<br>
+								</div>
+							</div>
+						</div>									
+						</div>
+						</form>
+					</div>
+				</div>
+					
+				<div class="row">
+					<div id="footer" class="col-xs-12">
+						2014 - 2015 &copy;TEANGA</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<script src="unicorn/js/jquery.min.js"></script>
+		<script src="unicorn/js/jquery-ui.custom.js"></script>
+		<script src="unicorn/js/bootstrap.min.js"></script>
+		<script src="unicorn/js/jquery.icheck.min.js"></script>
+		<script src="unicorn/js/select2.min.js"></script>
+		<script src="unicorn/js/jquery.dataTables.min.js"></script>		
+		<script src="unicorn/js/jquery.nicescroll.min.js"></script>
+		<script src="unicorn/js/unicorn.js"></script>
+		<script src="unicorn/js/bootbox.min.js"></script>
+		<script src="/js/shortcut.js"></script>		
+		<script src="unicorn/js/jquery.masonry.min.js"></script>
+		<script src="unicorn/js/unicorn.tables.js"></script>
+		<script src="/js/spinModal.js"></script>	
+		<script src="/js/ddslick.js"></script>	
+		
+<script>
+var langData = {}
+	var curatorLanguage
+
+
+	{% if user.UserType == 'USER_ADMIN'%}
+		
+		{% for lang in languages %}
+		langData['{{lang.LanguageID}}'] = {'LanguageISOCode' : '{{lang.LanguageISOCode}}', 'LanguageNameEnglish' : '{{lang.LanguageNameEnglish}}', 'LanguageNameNative' :'{{lang.LanguageNameNative}}', 'LanguageSupported' : {% if lang.LanguageSupported %} true {% else%} false {% endif %}}
+
+			console.log('ADDING LANGUAGE ' + '{{lang.LanguageISOCode}}')
+
+			$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+		
+			$( "#flag-{{lang.LanguageID}}" ).click(function() {
+ 	 			changeLanguage('{{lang.LanguageID}}', '{{lang.LanguageFlagURL}}')
+			});
+	
+		{% endfor %}
+	{% else %}
+		{% for lang in languages %}
+			{% if user.UserLearningLanguageID == '{{lang.LanguageID}}' %}
+	 			console.log('FOUND USER')
+	 		$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+	 		{% endif %}
+		{% endfor %}
+	{% endif %}
+
+console.log('WRITE!!!!')
+
+	var moduleData = {}
+	var wordData = null;
+	var selectedPart = null;
+	var mashData = {}
+	var stepData = {}
+	var audio_blob;
+	var selectedModule = null;
+	var selectedLang;
+	var wordDataLang = null;
+	var modData = []
+	var currentISO
+	var CheckMicInterval;
+	var currentModuleArtworkURL = 'img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png'
+	var ddData = [
+		{
+			text: "Circle (None)",
+			value: 1,
+			selected: false,
+			description: 'Empty Circle',
+			imageSrc: "/img/Modules/MODULE-ArtworkCircle0.png"
+		},
+		{
+			text: "MODULE-ArtworkCircle",
+			value: 1,
+			selected: false,
+			description: 'Full Circle',
+			imageSrc: "/img/Modules/MODULE-ArtworkCircle.png"
+		},
+		{
+			text: "MODULE-ArtworkCircle1",
+			value: 1,
+			selected: false,
+			description: 'Negatives',
+			imageSrc: "/img/Modules/MODULE-ArtworkCircle1.png"
+		},
+		{
+			text: "MODULE-ArtworkCircle2",
+			value: 1,
+			selected: false,
+			description: 'Secondary word/Interrogative ',
+			imageSrc: "/img/Modules/MODULE-ArtworkCircle2.png"
+		},
+		{
+			text: "MODULE-ArtworkCircle3",
+			value: 1,
+			selected: false,
+			description: 'Time and Tense',
+			imageSrc: "/img/Modules/MODULE-ArtworkCircle3.png"
+		},
+		{
+			text: "MODULE-ArtworkCircle4",
+			value: 1,
+			selected: false,
+			description: 'Additional Verb',
+			imageSrc: "/img/Modules/MODULE-ArtworkCircle4.png"
+		},
+		{
+			text: "MODULE-ArtworkCircle5",
+			value: 1,
+			selected: false,
+			description: 'Imperative/Modal',
+			imageSrc: "/img/Modules/MODULE-ArtworkCircle5.png"
+		},
+		{
+			text: "MODULE-ArtworkCircle6",
+			value: 1,
+			selected: false,
+			description: 'Comparative/Superlative',
+			imageSrc: "/img/Modules/MODULE-ArtworkCircle6.png"
+		},
+		{
+			text: "Hex (None)",
+			value: 1,
+			selected: false,
+			description: 'Empty Hex',
+			imageSrc: "/img/Modules/MODULE-ArtworkHex0.png"
+		},
+		{
+			text: "MODULE-ArtworkHex",
+			value: 1,
+			selected: false,
+			description: 'Full Hex',
+			imageSrc: "/img/Modules/MODULE-ArtworkHex.png"
+		},
+		{
+			text: "MODULE-ArtworkHex1",
+			value: 1,
+			selected: false,
+			description: 'Comparative/Superlative',
+			imageSrc: "/img/Modules/MODULE-ArtworkHex1.png"
+		},
+		{
+			text: "MODULE-ArtworkHex2",
+			value: 1,
+			selected: false,
+			description: 'Additional Word',
+			imageSrc: "/img/Modules/MODULE-ArtworkHex2.png"
+		},		{
+			text: "MODULE-ArtworkHex3",
+			value: 1,
+			selected: false,
+			description: 'Plural Mod',
+			imageSrc: "/img/Modules/MODULE-ArtworkHex3.png"
+		},		{
+			text: "MODULE-ArtworkHex4",
+			value: 1,
+			selected: false,
+			description: 'Ordinal Word',
+			imageSrc: "/img/Modules/MODULE-ArtworkHex4.png"
+		},	{
+			text: "MODULE-ArtworkHex5",
+			value: 1,
+			selected: false,
+			description: 'Preposition',
+			imageSrc: "/img/Modules/MODULE-ArtworkHex5.png"
+		},
+		{
+			text: "MODULE-ArtworkHex6",
+			value: 1,
+			selected: false,
+			description: 'Articles',
+			imageSrc: "/img/Modules/MODULE-ArtworkHex6.png"
+		}
+	];
+		
+function changeLanguage(newLanguage, newLanguageURL){
+
+	console.log('TRYING TO CHANGE LANGUAGE ' + newLanguage)
+
+	$('#menuFlag').attr('src', newLanguageURL)
+				
+	var UserID = '{{user.UserID}}'
+	console.log('UserID ' + UserID)
+
+	var fd = new FormData()
+	fd.append('newLanguage', newLanguage)
+	fd.append('UserID', UserID)
+								
+		$.ajax({
+			type: 'POST',
+			url: '/changeLanguage',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+			}).done(function(data) {
+			   location.reload()
+			});					
+}
+
+	{% for mod in mods%}
+	modData[modData.length] = {'ModType' : '{{mod.ModType}}', 'ModKey' : '{{mod.ModKey}}', 'ModText' : '{{mod.ModText}}'}
+	{% endfor %}
+		
+$('#moduleSelect').change(function(){})
+		
+$('#moduleArtworkURL').change(function(){})
+	
+$("#moduleSelect").bind("input change", function() {
+		console.log('moduleSelect ' + currentModuleTitle)		
+		console.log($("#moduleSelect").val())
+		
+		var title = $("#moduleSelect").val()
+		console.log($("#moduleSelect").val())
+		
+		title = String(title).replace("&#39", '&rsquo');
+		
+		currentModuleTitle = title		
+		saveModuleInfo()
+});	
+	
+		
+$('#stepSelect').change(function(){
+		stepSelect()
+	})
+		
+$('#stepTitle').change(function(){
+		saveStepInfo('saveExisting')
+})
+	
+$('#mashMeaningText').change(function(){
+		saveMashInfo()
+})	
+				
+$('#langSelect').change(function(){
+			if(mashData[selectedPart] != undefined){
+				var words = mashData[selectedPart]['Word']
+				var lang = $('#langSelect').val()
+				
+				for(var i=0; i<words.length; i++){
+					$('#'+selectedPart+'_'+i).select2()
+					getWords(lang, selectedPart+'_'+i)
+					$('#mod_'+selectedPart+'_'+i).select2()
+					setMods('mod_'+selectedPart+'_'+i)
+				}
+			}
+		})
+		
+function showModal(type, id, title){
+			bootbox.dialog({
+				message: "Are you sure you want to remove the "+type+" "+title+"?",
+				backdrop: true,
+				buttons:{
+					cancel:{
+						label: "Cancel",
+						callback: function(){
+						}
+					},
+					ok:{
+						label: "Ok",
+						callback: function() {
+							$.get('/removeItem?type='+type+'&id='+id+'&title='+title, function(data){
+								bootbox.dialog({
+									message: data['title']+' has been removed.',
+									title: 'Result',
+									buttons: {
+										main: {
+											label: 'Ok',
+											className: 'btn-default'
+										}
+									}
+								});
+								
+								if(data['type'] == 'Step'){
+									var stepId = $('#stepSelect').val()
+									
+									$("#stepSelect option[value='"+stepId+"']").remove();
+					
+									var position = stepData[stepId]['StepOrder']
+									
+									delete stepData[stepId]
+									
+									var stepKeys = Object.keys(stepData)
+									
+									for(var i=0; i<stepKeys.length; i++){
+										var thisPos = stepData[stepKeys[i]]['StepOrder']
+										if(thisPos > position){
+											stepData[stepKeys[i]]['StepOrder']--
+										}
+									}
+									
+									saveModule($('#moduleSelect').val())
+									
+									$('#stepSelect').trigger('change')
+								}
+								if(data['type'] == 'Module'){
+									$("#moduleSelect option[value='"+moduleID+"']").remove();									
+									$('#moduleSelect').trigger('change')
+								}
+							})							
+							return true
+						}
+					}
+				}			
+			}); 
+		}		
+		
+function makeid(){
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for( var i=0; i < 10; i++ )
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+		return text;
+}	
+
+function RefreshTable() {
+		$( "#DataTables_Table_1" ).load( "modules.html #DataTables_Table_1" );
+	}
+			
+window.onload = function(){
+
+	loadWords()
+				
+	shortcut.add("Enter",function() {
+		searchGlyphs()
+		console.log('pressed enter')
+	});
+	
+	$('#wordSearch').attr('placeholder', 'Noun');			
+	$( "#title" ).keypress(function() {				
+	if ($( "#title" ).val() !== ''){console.log('ADD'); $("#addButton" ).css('visibility', 'visible')}else{$("#addButton" ).css('visibility', 'hidden')}			
+	if($( "#title" ).val().length == 0){			
+		$("#addButton" ).css('visibility', 'hidden')
+	}
+	
+	checkMicAvailibility()
+
+	var css = document.createElement("style");
+	css.type = "text/css";
+	css.innerHTML = ".dd-selected a {  background-image: url('') }";
+	css.innerHTML = ".dd-option-text {  line-height: 33px; }";
+	css.innerHTML = ".dd-options dd-click-off-close { line-height: 33px; }";
+	document.body.appendChild(css);
+
+/*
+$( "#stepReqAudio" ).click(function() {
+	console.log('clicked stepreqaudio!!!!')
+	if ($('#stepReqRating').prop('checked') == true){var stepReqRating = 'YES'}else{var stepReqRating = 'NO'}
+	if ($('#stepReqAudio').prop('checked') == true){var stepReqAudio = 'YES'; $('#stepReqRatingDiv').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast');}else{var stepReqAudio = 'NO'; $('#stepReqRatingDiv').css({opacity: 1, visibility: "hidden"}).animate({opacity: 0}, 'fast'); }	
+	
+		console.log('stepReqRating is now' + stepReqRating)
+		console.log('stepReqAudio is now' + stepReqAudio)
+	});
+
+$( "#stepReqReference" ).click(function() {
+	console.log('clicked stepreqref!!!!' )
+
+	if ($('#stepRefAuto').prop('checked') == true){var stepRefAuto = 'YES'}else{var stepRefAuto = 'NO'}
+	if ($('#stepReqReference').prop('checked') == true){var stepReqReference = 'YES'; $('#stepRefAutoDiv').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast');}else{var stepReqReference = 'NO'; $('#stepRefAutoDiv').css({opacity: 1, visibility: "hidden"}).animate({opacity: 0}, 'fast'); }
+		console.log('stepReqReference is now' + stepReqReference)
+		console.log('stepRefAuto is now' + stepRefAuto)
+	});	*/
+});
+
+
+jQuery(function($) {
+	var input = $('#title');
+	input.on('keydown', function() {
+	var key = event.keyCode || event.charCode;
+
+	if ($( "#title" ).val() !== ''){console.log('ADD'); $("#addButton" ).css('visibility', 'visible')}else{$("#addButton" ).css('visibility', 'hidden')}
+			
+	if($( "#title" ).val().length == 0){
+		$("#addButton" ).css('visibility', 'hidden')
+	}
+		});
+});
+		
+	$("#module-btn").on("click", RefreshTable);
+				
+	var userAdminLanguage = "{{user.UserAdminLanguageID}}";
+	var UserType = "{{user.UserType}}";
+	var UserID = "{{user.UserID}}";
+			
+			{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){		
+					$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					//$('#newUserMenuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+				}
+			{% endfor %}
+					
+	$('.dropdown-menu li').click(function(e){
+		e.preventDefault();
+		var selected = $(this).text();
+		console.log('selected ' + selected)
+		selectedWordType = selected
+		$('#wordSearch').val('')
+		$('#wordSearch').attr('placeholder', selected);
+	});
+		
+	jQuery(".dropdown-menu li").click(function(e){
+		console.log('clicked')
+		e.preventDefault();
+	});
+					
+		getModules()
+									
+		$(window).trigger('resize');
+				
+		$('#submitForm').on('keyup keypress', function(e) {   ///stop enter triggering form
+		var code = e.keyCode || e.which;
+		if (code == 13) { 
+			e.preventDefault();
+			return false;
+		}
+	});		
+}
+</script>
+
+<script>	
+	var wordData;
+	var imageData = [];
+	var validImageData;
+	var moduleData = {}
+	var wordData = null;
+	var selectedPart = null;
+	var mashData = {}
+	var stepData = {}
+	var currentModuleID
+	var audio_blob;
+	var selectedModule = null;
+	var selectedLang;
+	var wordDataLang = null;
+	var modData = []
+	var ModuleCreationLanguage;		
+	var UserType
+
+		
+		{% for item in modules %}
+			moduleData['{{item.ModuleID}}'] = {'ModuleTitle' : '{{item.ModuleTitle}}', 'ModuleCreationLanguage' : '{{item.ModuleCreationLanguage}}', 'ModuleArtworkURL' : '{{item.ModuleArtworkURL}}', "StepData" : '{{item.StepData}}', 'ModuleStatus' : '{{item.ModuleStatus}}', 'ModuleSubtitle' : '{{item.ModuleSubtitle}}', 'ModuleID' : '{{item.ModuleID}}', 'ModuleCreationDateTime' : '{{item.ModuleCreationDateTime|date:"SHORT_DATE_FORMAT"}} ', 'ModuleCreationLanguage' : '{{item.ModuleCreationLanguage}} ', 'ModuleStepCount' : '{{item.ModuleStepCount}}'}	
+		{% endfor %}		
+		
+		UserType = '{{user.UserType}}'
+		curatorLanguageID = '{{user.UserAdminLanguageID}}'	
+		LearningLanguageID = '{{user.UserLearningLanguageID}}'	
+				
+			{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){		
+					$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					//$('#newUserMenuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					curatorLanguage = '{{lang.LanguageISOCode}}'
+				}
+			{% endfor %}
+		
+		console.log('user type: ' + UserType + ' curatorLanguage: ' + curatorLanguage + ' , language: '+ curatorLanguage+'' )
+				
+	$('#saveButton').click(function(){			
+		saveRecording(data['data'])
+		})	
+
+	$('#addButton').click(function(){		
+		addModule()
+	})				
+
+function getModules(){
+		
+	var dataKeys = Object.keys(moduleData)		
+	console.log(moduleData)	
+						
+	html_out = '<table class="table table-bordered table-striped table-hover data-table"><thead><tr><th></th><th>Title</th><th>Subtitle</th><th>Steps</th><th>Date Created</th><th></th></tr></thead><tbody>'
+				
+				console.log(moduleData)
+			//	console.log(dataKeys)
+				
+				
+				for(var i= 0; i< dataKeys.length; i++){			
+					
+					if (unescape(moduleData[dataKeys[i]]['ModuleStatus']) == 'Live'){
+						var status = 'checked'}else{ var status = 'unchecked'}
+						//console.log(moduleData[dataKeys[i]])
+					var date = unescape(moduleData[dataKeys[i]]['ModuleCreationDateTime'])
+					var ModuleID = unescape(moduleData[dataKeys[i]]['ModuleID'])
+						if (date == 0){date = 'N/A'} 
+												
+						ModuleCreationLanguage = String(moduleData[dataKeys[i]]['ModuleCreationLanguage']).replace(/ /g,'')	
+					var currentCuratorLanguage = String(curatorLanguage).replace(/ /g,'')
+					var moduleTitle =  unescape(moduleData[dataKeys[i]]['ModuleTitle'])
+					moduleTitle = String(moduleTitle).replace("&#39", '&rsquo');
+					
+					console.log('C-' + currentCuratorLanguage);
+					console.log('M-' + ModuleCreationLanguage);
+					console.log(ModuleCreationLanguage == curatorLanguage && UserType == 'USER_CURATOR');
+					
+					if (ModuleCreationLanguage == currentCuratorLanguage && UserType == 'USER_CURATOR' || UserType == 'USER_ADMIN' && ModuleCreationLanguage == currentCuratorLanguage){
+						console.log('Creating HTMLModuleCreationLanguage ' + ModuleCreationLanguage);
+						html_out+='<td><div id="checkbox'+i+'" onclick="toggleLiveState('+ModuleID+', '+i+')" class="icheckbox_flat-blue '+status+'" style="position: relative;"><input type="checkbox" checked="" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></td>'		
+						html_out+= '<td>'+moduleTitle+'</td><td>'+unescape(moduleData[dataKeys[i]]['ModuleSubtitle'])+'</td><td>'+unescape(moduleData[dataKeys[i]]['ModuleStepCount'])+'</td><td>'+date+'</td><td><a onclick="editModule('+unescape(moduleData[dataKeys[i]]['ModuleID'])+')" href="#!" data-original-title="Edit"><i class="fa fa-pencil"></i></a><a data-word-text="'+moduleTitle+'" data-word-id="'+unescape(moduleData[dataKeys[i]]['ModuleID'])+'" title="" href="#!" class="tip-top remove" data-original-title="Remove"><i class="trashIcon fa fa-trash-o"></i></a></td></tr>'												
+					}
+				}
+				
+				html_out += '</tbody></table>'
+				
+				$('#tableContent').html(html_out)
+				
+				$('.remove').click(function(e){
+					var moduleID = e.target.parentElement.getAttribute('data-word-id')
+					var moduleTitle = e.target.parentElement.getAttribute('data-word-text')
+
+					console.log(moduleTitle)					
+					startRemove(moduleID, moduleTitle)
+					console.log('removing ' + e)
+				})
+				
+				$('.edit').click(function(e){
+					var wordID = e.target.parentElement.getAttribute('data-word-id')				
+					console.log('editing ' + e)
+					startEdit(wordID)
+				})
+				
+				$('.data-table').dataTable({
+									"columns": [
+						{ "width": "10px;" },
+						null,
+						null,
+						null,
+						null
+					  ],	
+					"iDisplayLength": 50,
+					"bJQueryUI": true,
+					"sPaginationType": "full_numbers",
+					"sDom": '<""l>t<"F"fp>'
+				});
+		}
+
+function checkStepRecordings(moduleID) {
+
+	var completedStepRecArray = []
+	var stepJSON = getJSON('https://www.teanga.me/api/modules/'+moduleID+'/steps') ;
+	var obj = JSON.parse(stepJSON)
+	var noOfSteps = obj.data.length
+	
+	for (var i = 0; i < noOfSteps; i++){	 
+			var recording = obj.data[i].StepRefVoiceURL					
+			var status = 'completed'
+			$( '#item'+i+'').removeClass( "glow" );
+		if (recording == 'Null' || recording == '' || recording == 'None'){
+			completedStepRecArray.push(''+'<br>'+'<b>Step ' + (i+1) + ':</b>  No recording')
+			var status = 'incomplete'	
+			$( '#item'+i+'').addClass( "glow" );
+		}else{
+		completedStepRecArray.push(''+'<br>'+'<b>Step ' + (i+1) + ':</b>  Completed')}
+	}
+		return [status, completedStepRecArray]
+} 
+		
+function toggleLiveState(moduleID, indexNo) {
+			
+			if ($('#checkbox'+indexNo+'' ).hasClass( "unchecked" ) == true){var oldStatus = 'InProgress'; var newStatus = 'Live';}
+			if ($('#checkbox'+indexNo+'' ).hasClass( "checked" ) == true){var oldStatus = 'Live'; var newStatus = 'InProgress';}
+			
+			var oldS = oldStatus; var newS = newStatus
+			
+			if (oldS == 'InProgress'){oldS = 'In Progress'}
+			if (newS == 'InProgress'){newS = 'In Progress'}
+			
+			var remaining = checkStepRecordings(moduleID)
+			console.log(remaining[0])
+
+			
+			if (remaining[0].indexOf('incomplete') == -1){
+				var msg = 'Are you sure you want to change live status from <b>'+oldS+'</b> to <b>'+newS+'</b>?<br> <br><b> Module step status: </b> <br>'+remaining[1]+''
+			}else{
+				var msg = 'Cannot set module to live as it is incomplete. <br><br><b> Module step status: </b> <br>'+remaining[1]+''
+			}		
+			
+			if (remaining[0] == 'completed'){var label = 'OK'}else{var label = 'Edit Module'}
+											
+			bootbox.dialog({
+				message: msg,
+				backdrop: true,
+				inputType: "textarea",
+				buttons:{				
+					cancel:{
+						label: "Cancel",
+						callback: function(){
+						}
+					},
+										
+					ok:{
+						label: label,
+												
+						callback: function() {
+												
+							if (remaining[0] == 'completed'){
+								var fd = new FormData()			
+								fd.append('ModuleID', moduleID)
+								fd.append('NewModuleStatus', newStatus)				
+								
+									$.ajax({
+										type: 'POST',
+										url: '/changeModuleStatus',
+										data: fd,
+										cache: false,
+										processData: false,
+										contentType: false
+									}).done(function(data) {
+										///console.log('module status saved')
+										$('#myModal').modal('hide');
+										window.location = '/modules'
+								});
+							
+								if ($('#checkbox'+indexNo+'' ).hasClass( "checked" ) == true){		
+									$('#checkbox'+indexNo+'').removeClass('checked')
+									$('#checkbox'+indexNo+'').addClass('unchecked')	
+									console.log(moduleID + ' is no longer live.')
+								}else if ($('#checkbox'+indexNo+'' ).hasClass( "unchecked" ) == true){
+									$('#checkbox'+indexNo+'').removeClass('unchecked')
+									$('#checkbox'+moduleID+'').addClass('checked')
+									console.log(indexNo + ' is now live.')
+								}	
+							
+							}else{editModule(moduleID)}
+						
+						}
+					}
+			}
+		}); 
+}
+
+function startRemove(moduleID, moduleTitle){
+	
+			bootbox.dialog({
+				message: "Are you sure you want to remove module \""+moduleTitle+"\"?",
+				backdrop: true,
+				buttons:{
+					cancel:{
+						label: "Cancel",
+						callback: function(){
+							//return false
+						}
+					},
+					ok:{
+						label: "Ok",
+						callback: function() {
+							$.get('/removeItem?type=Module&id='+moduleID, function(data){
+								location.reload()							
+							})
+						}
+					}
+				}			
+			}); 
+		}	
+		
+function addModule() {
+				
+		var title = $('#title').val()
+		var subTitle = $('#subtitle').val()
+						
+		if (!title){
+
+			}else{		
+				try {
+				
+			{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){		
+					//$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					//$('#newUserMenuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					curLang = '{{lang.LanguageISOCode}}'
+				}
+			{% endfor %}
+					
+				}catch(e){console.log('cant set module creation language')}
+				
+				console.log('curLang -  ' + curLang)
+				
+				var fd = new FormData()			
+				fd.append('moduleTitle', $('#title').val())
+				fd.append('moduleSubtitle', $('#subtitle').val())
+				fd.append('moduleStatus', 'InProgress')
+				fd.append('moduleArtworkURL', 'CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png')
+				fd.append('moduleCreationLanguage', curLang) 					//CHECK
+				
+					$.ajax({
+						type: 'POST',
+						url: '/saveModule',
+						data: fd,
+						cache: false,
+						processData: false,
+						contentType: false
+					}).done(function(data) {
+						//getWords()
+						console.log('module saved')
+						 $('#myModal').modal('hide');
+						 window.location = '/modules'
+					});
+					return false;			
+			}			
+		return false;		
+	}
+	
+</script>		
+<script type="text/javascript" src="js/recordMP3/recordmp3.js"></script>
+<script>																																
+var firstRecord = true, rec, currentlySaving, micInput, blob, audio_context, input, recorder,  mp3Blob = 'Null';	
+var bufferArray = [];
+var navigator = window.navigator, mediaStream, localStream
+var currentlyRecording, bufferExists, recordedAgain = false, currentRecording, interrupted = false, reachedEnd = false,  nowRecording = false, currentStepRecording
+var currentModuleID, currentModuleStepCount, currentStepID, moduleID
+var spinner
+var finishedRecording = false
+var newBlob = false
+
+function editModule(moduleID){
+		
+		$('#moduleTable').css('visibility', 'hidden');
+		$('#moduleSelectTable').css('visibility', 'hidden');			
+		$('#moduleTable').fadeOut(100)
+		$('#playButton').fadeOut(100)		
+	
+		currentModuleID = moduleID
+		var dataKeys = Object.keys(moduleData)
+		currentModuleStepCount = moduleData[moduleID]['ModuleStepCount']
+		console.log('Editing module ' + moduleID + ', has ' + currentModuleStepCount + ' steps' )
+					
+		window.AudioContext = window.AudioContext || window.webkitAudioContext;
+		
+		audio_context = new AudioContext;
+				gainNode = audio_context.createGain()
+		
+		try {				
+				navigator.getUserMedia = ( navigator.getUserMedia ||
+										navigator.webkitGetUserMedia ||
+									    navigator.mozGetUserMedia ||
+										navigator.msGetUserMedia);
+				window.URL = window.URL || window.webkitURL;
+				
+				checkMicAvailibility()
+		
+				setInterval(function(){checkMicAvailibility() }, 6000);
+				
+		} catch (e) {
+				alert('Web audio recorder not supported in this browser.');
+		}					
+			
+		populateModuleInfo(moduleID)
+			
+		$('#recordButton').click(function () {											//record button handler
+			if (nowRecording == false){			
+				console.log('Recording')
+				$('#playButton').fadeOut(500)		
+				startRecording()
+				nowRecording = true;
+				finishedRecording = false;
+			}else if (nowRecording == true){
+				stopRecording()
+				nowRecording = false;
+				clearTimeout(recordingTimeOut);
+			}
+		});	
+ }
+</script>
+<script>
+																			///RECORDING INPUT///																				
+var currentRecordingDuration
+var recordingTimeOut;
+var currentBuffer;
+
+function checkMicAvailibility() {
+	
+	if (nowRecording == false){
+		navigator.getUserMedia({audio: true}, success, function(e) {
+			console.log('No live audio input: ' + e);
+		
+			$('#recordButton').attr('src','/img/player/warningNoMic.png')
+			$('#recordButton').fadeIn(500)
+			$('#recValidation').show();
+			$("#recordButton").unbind();	
+		});	
+
+		function success(stream) {
+			console.log('Microphone detected');
+			$('#recordButton').attr('src','/img/player/nowRecording.png')
+			$('#recordButton').fadeIn(500)
+			
+			var track = stream.getTracks()[0]; 
+			track.stop();
+			
+			try {
+				localStream.stop();
+			}catch(e){		
+			}
+			
+			$('#recordButton').unbind()		
+			$('#recordButton').click(function () {	
+				clearTimeout(recordingTimeOut);
+				if (nowRecording == false){
+					clearInterval(CheckMicInterval)			
+					console.log('Recording')
+					$('#playButton').fadeOut(500)		
+					startRecording()
+					nowRecording = true;
+					finishedRecording = false;
+				}else if (nowRecording == true){
+				console.log('clicked stop recording')
+					stopRecording()			
+				}
+			});			
+		}
+	}else{
+		console.log('mic check paused')
+	}
+}
+
+function startRecording() {
+	
+	clearInterval(CheckMicInterval);	
+	
+	document.getElementById('recordButton').style.pointerEvents = 'none';
+
+	setTimeout(function(){ 	
+			document.getElementById('recordButton').style.pointerEvents = 'auto';
+		}, 500);	
+	
+	$('#saveButton').fadeOut(500)
+
+	navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
+	  console.log('No live audio input: ' + e);
+});
+
+
+	function startUserMedia(stream) {
+ 
+	///$( ".listEl" ).addClass('disabled') //ADDED
+	
+		$('#recordButton').attr('src', 'img/player/currentlyRecording.png')
+
+	    input = audio_context.createMediaStreamSource(stream);
+		localStream = stream;
+
+		recorder = new Recorder(input, {
+                  numChannels: 1
+                });
+				
+	    recorder && recorder.record();
+		
+		nowRecording = true;	
+		console.log('Recording...');	
+					
+		 recordingTimeOut = setTimeout(function(){ 	
+			try{				
+					stopRecording()
+			}catch(e){
+				console.log(e)
+			}
+		}, 10000);
+	}
+}
+
+function stopRecording() {
+	
+	nowRecording = true;
+	$('#spinnerContainer').spin("modal")
+	document.getElementById('recordButton').style.pointerEvents = 'none';
+
+    recorder && recorder.stop();
+	
+    console.log('Stopped recording.');	
+	$('#recordButton').attr('src', 'img/player/nowRecording.png')
+	
+	createDownloadLink();
+		
+	try{		
+		var track = localStream.getTracks()[0]; 
+        track.stop();	
+		recorder.clear();
+	}catch(e){}
+
+  }
+
+function createDownloadLink() {
+		recorder && recorder.exportWAV(function(blob) {
+    });	
+		saveRecording('D')
+  }
+  
+function playAudio(url){
+  
+	document.getElementById('recValidation').innerHTML = '';
+	document.getElementById('recordButton').style.pointerEvents = 'auto';
+	
+	gainNode.gain.value = 1;	
+	var source = audio_context.createBufferSource();
+	
+	console.log('playing URL + ' + URL)
+														
+	source.buffer = url;	
+	source.connect(gainNode);																		
+	gainNode.connect(audio_context.destination);
+	source.start(0);
+
+	var waitTime = (1 + source.buffer.duration)
+	document.getElementById('recordButton').style.pointerEvents = 'auto'; 
+  }
+  
+function bufferAudio(URL, glyphID){																			//Buffer relevant audio files				
+	nowRecording = true;
+	clearInterval(CheckMicInterval)
+	
+	if (URL.indexOf('data') >= 0){			//maybe delete whole function on cleanup				
+		console.log('buffering new recording')	
+		newBlob = true;
+	}else{
+		newBlob = false
+		console.log('buffering existing recording')	
+	}	
+												
+		var request = new XMLHttpRequest();
+		request.open('GET', URL, true);																		//function should accept URL, row and column
+		request.responseType = 'arraybuffer';
+		request.onload = function() {
+		audio_context.decodeAudioData(request.response, function(buffer) {
+						
+			currentRecordingDuration = buffer.length;
+			console.log('currentRecordingDuration ' + currentRecordingDuration)
+			
+			$('#playButton').fadeIn(500)
+			
+			currentBuffer = buffer;
+			console.log(buffer)
+
+			$('#playButton').fadeIn(500)
+			$('#saveButton').fadeIn(500)
+			finishedRecording = true
+			
+			console.log('StepRefVoiceURL ' + URL + ' + BLOB = ' + mp3Blob)
+			saveStepInfo('saveExisting')
+			
+			CheckMicInterval = setInterval(function(){checkMicAvailibility() }, 4000);
+			
+			$("#playButton").unbind();
+			$("#playButton").click(function(){ 
+					console.log('clicked play button')
+					playAudio(buffer);	
+			
+				});	
+			nowRecording = false	
+	});	}																									// by corresponding nodes, building an appropriate audio graph
+			request.send();
+}
+
+function saveRecording(url){
+		console.log('saving...')			
+		if (mp3Blob instanceof Blob == true){			//maybe delete whole function on cleanup				
+			}else{
+				console.log('cant buffer as not of type blob')
+			}
+}			
+</script>
+
+<script>
+																	///MASHER///																	
+var modArray = []
+var wordArray = []		
+var flapsInUseArray = []
+var currentWordID
+var currentWordType 
+var modNo = 0;
+var stepJSON;
+var currentModuleStepData
+var currentStepNumber
+var currentStepCount
+var currentModuleTitle
+var mashID
+var mashVoiceURL
+var stepVoiceURL
+var currentMashJSON
+var activateModInfo = []
+var activateWordInfo = []
+var searchedWordsArray = []
+var pauseForLoad = false;
+
+function getJSON(url) {
+        var resp ;
+        var xmlHttp ;
+        resp  = '' ;
+        xmlHttp = new XMLHttpRequest();
+
+        if(xmlHttp != null)
+        {
+            xmlHttp.open( "GET", url, false );
+            xmlHttp.send( null );
+            resp = xmlHttp.responseText;
+        }
+        return resp ;
+}
+
+function populateModuleInfo(moduleID) {
+
+	document.getElementById('recordButton').style.pointerEvents = 'auto';
+	var dataKeys = Object.keys(moduleData)
+	currentStepCount = unescape(moduleData[moduleID]['ModuleStepCount'])
+	
+	var moduleTitle = unescape(moduleData[moduleID]['ModuleTitle'])
+	var moduleArtworkURL = unescape(moduleData[moduleID]['ModuleArtworkURL'])
+	
+	
+	moduleTitle = String(moduleTitle).replace("&#39;", "'")
+	moduleTitle = String(moduleTitle).replace("&amp;#39", "'")
+	
+	currentModuleTitle = moduleTitle
+	
+	
+	
+	$("#moduleSelect").val(currentModuleTitle)
+	currentModuleArtworkURL = moduleArtworkURL
+	//var s = '/Controller/Action?id=11112&value=4444';
+	//s = moduleArtworkURL.substring(0, moduleArtworkURL.indexOf('/'));
+	
+	var index = 0;
+	
+	for (i in ddData){
+		//console.log('START')
+		console.log(ddData[i].imageSrc)
+		if (ddData[i].imageSrc == moduleArtworkURL){
+			index = i;
+		}
+	}
+		
+	$('#moduleArtwork').ddslick({
+		data: ddData,
+		width: 200,
+		height: 300,
+		imagePosition: "left",
+		selectText: "Select",
+		defaultSelectedIndex: index,
+		showSelectedHTML: false,
+		onSelected: function (data) {
+			
+			console.log($('#ModuleTitle'));
+			console.log($('#ModuleTitle').val());
+			
+			currentModuleArtworkURL = data.selectedData.imageSrc
+			
+				$('#moduleArtwork').val(data.selectedData.imageSrc)
+				saveModuleInfo()		
+			}	
+	});	
+	
+	
+	//$('select2-chosen').text(s)
+	$('moduleArtwork').val(moduleArtworkURL)
+	
+	
+	
+	$('#moduleSelect').val(moduleTitle) 
+	$('#moduleSelect').attr('placeholder', moduleTitle)
+	
+	if (moduleArtworkURL == ''){
+		$('#moduleArtworkURL').attr('placeholder', 'Module Artwork URL') 
+		
+	}else{
+		$('#moduleArtworkURL').attr('placeholder', moduleArtworkURL)
+		$('#moduleArtworkURL').val(moduleArtworkURL) 
+	}			
+		
+		try { 	
+			var index = moduleID			
+			currentModuleStepData = unescape(moduleData[index]['StepData'])
+			
+			$('#moduleSelect').val() = moduleTitle
+		//	$('#moduleArtworkURL').val() = moduleArtworkURL	
+			$('#moduleSelect').attr('placeholder', moduleTitle)
+			$('#moduleArtworkURL').attr('placeholder', moduleArtworkURL)		
+			$('#recordButton').fadeIn(500)
+			$('#playButton').fadeIn(500)
+						
+		}catch(e){
+			console.log('Not enough module info to populate field.')
+		}
+			
+	populateStepInfo(moduleID, 0)	
+}
+
+function removeAllElements() {
+$('.partTypeImages').attr('src', 'img/player/blank.gif')
+$('.Flap1').attr('src', 'img/player/blank.gif')
+$('.Flap2').attr('src', 'img/player/blank.gif')
+$('.Flap3').attr('src', 'img/player/blank.gif')
+$('.Flap4').attr('src', 'img/player/blank.gif')
+$('.Flap5').attr('src', 'img/player/blank.gif')
+$('.Flap6').attr('src', 'img/player/blank.gif')
+$('.Flap1').css('opacity', '0.3')
+$('.Flap2').css('opacity', '0.3')
+$('.Flap3').css('opacity', '0.3')
+$('.Flap4').css('opacity', '0.3')
+$('.Flap5').css('opacity', '0.3')
+$('.Flap6').css('opacity', '0.3')
+
+$('.Mod').remove();
+$('.extraWord').remove();
+$('.wordInteract').remove();
+
+$('.mainWord').attr('src', 'img/player/blank.gif')
+$('.mainWord').attr('src', 'img/player/blank.gif')
+$('.mainWord').attr('src', 'img/player/blank.gif')
+$('#partTypeImage0').removeClass("femaleGenderGlow")
+$('#partTypeImage1').removeClass("maleGenderGlow")
+$('#partTypeImage2').removeClass("neuterGenderGlow")
+$('#mainWordEdit').remove();
+
+$('.Mod').attr('src', 'img/player/blank.gif')
+$('.Word').attr('src', 'img/player/blank.gif')
+$('#wordGlyph').attr('src', 'img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png')
+flapsInUseArray = []
+$('#recValidation').fadeOut(500)
+}
+
+function populateStepInfo(moduleID, stepNumber){
+	
+	$("#playButton").unbind();
+	document.getElementById('recordButton').style.pointerEvents = 'auto';
+	newBlob = false
+	removeAllElements()	
+	currentModuleID = moduleID
+	currentStepNumber = stepNumber
+			
+	stepJSON = getJSON('https://www.teanga.me/api/modules/'+moduleID+'/steps') ;
+		
+	var obj = JSON.parse(stepJSON)	
+	currentStepCount =  obj.data.length
+
+	//console.log('Loading module: Raw step JSON ')
+	//console.log(stepJSON)
+	
+	$('.listEl').remove();
+		
+		var html = ''
+				
+		for (var i = 0; i < currentStepCount; i++){				
+			html += '<li class="listEl"><a id="item'+i+'">'+(1+i)+'</a></li>'				
+		}
+				
+		$("#stepNavigation").append(html)
+			
+		for (var i = 0; i < currentStepCount; i++){
+				
+	    (function (i) {
+		$( '#item'+i+'').click(function() {
+			saveAll()
+			console.log('clicked' + i)
+		//	$( '.listEl' ).removeClass('active')	//ADDED									
+			//$( '#item'+i+'' ).closest('li').addClass('active')
+				$('#modulesEditPage').fadeOut(500)
+			//	spinner = new Spinner({
+			//			lines: 12, 
+			//			length: 14, 
+			//			width: 5, 
+			//			radius: 40, 
+			//			color: '#fff',
+			//			className: 'spinner',
+			///			speed: 2, 
+			//			trail: 77, 
+			///			shadow: true 
+			//		}).spin(document.getElementById("spinnerContainer"));	
+						
+			//	$('#spinnerContainer').data('spinner', spinner);
+
+			populateStepInfo(moduleID, i)								
+			});
+		}) (i);			
+	}
+		
+	$( '#item'+currentStepNumber+'' ).closest('li').addClass('active')	
+	
+	var str = 'Step ' + (Number(stepNumber+1)) + ' of ' + currentStepCount +''
+	$("#currentStepDisplay" ).html( str );	
+	
+	try{	
+		var stepTitle = obj.data[stepNumber].StepTitle}catch(e){console.log('no Title.')}		
+	
+	try{var stepOptionReference = obj.data[stepNumber].StepReferenceConfig		
+		var stepOptionRecord = obj.data[stepNumber].StepRecordingConfig		
+		var stepOptionRate = obj.data[stepNumber].StepRatingConfig
+		var stepOptionRefAuto = obj.data[stepNumber].StepRefAutoConfig
+		
+		$('#stepReqReference').val = stepOptionReference;
+		$('#stepReqAudio').val = stepOptionRecord;
+		$('#stepReqRating').val = stepOptionRate;
+		$('#stepRefAuto').val = stepOptionRefAuto;
+		
+		if (stepOptionRefAuto == 'YES'){$('#stepRefAuto').iCheck('check');}else{$('#stepRefAuto').iCheck('uncheck')}
+		if (stepOptionRate == 'YES'){$('#stepReqRating').iCheck('check');}else{$('#stepReqRating').iCheck('uncheck')}
+		if (stepOptionRecord == 'YES'){$('#stepReqAudio').iCheck('check'); $('#stepReqRatingDiv').css({visibility: "visible"})}else{$('#stepReqAudio').iCheck('uncheck'); $('#stepReqRatingDiv').css({visibility: "hidden"})}
+		//if (stepOptionReference == 'YES'){$('#stepReqReference').iCheck('check');}else{$('#stepReqReference').iCheck('uncheck')}
+		if (stepOptionReference == 'YES'){$('#stepReqReference').iCheck('check'); $('#stepRefAutoDiv').css({visibility: "visible"});}else{$('#stepReqReference').iCheck('uncheck'); $('#stepRefAutoDiv').css({visibility: "hidden"})}
+		
+	}catch(e){console.log('No step options specified yet')}
+				
+		var StepMeaningTextInfo = obj.data[stepNumber].StepMeaningTextInfo		
+		
+		for (var t = 0; t < StepMeaningTextInfo.length; t++){ 
+			var currentGlyphID = StepMeaningTextInfo[t].word_glyph_id
+			var currentWordType = StepMeaningTextInfo[t].word_type
+			var currentWordRootText = StepMeaningTextInfo[t].word_text_root
+			var currentWordID = StepMeaningTextInfo[t].word_id
+			var currentGender = StepMeaningTextInfo[t].word_gender
+			var currentRec = 'serve_recording?id='+currentWordID+''			///FEED
+			searchedWordsArray.push([currentGlyphID, currentWordType, currentWordRootText, currentWordID, currentGender, currentRec])
+		}		
+		
+		var StepModuleID = obj.data[stepNumber].StepModuleID	
+		var StepMash	 = obj.data[stepNumber].StepMash
+			currentStepID	= obj.data[stepNumber].StepID
+			StepRefVoiceURL	= obj.data[stepNumber].StepRefVoiceURL				
+					
+			if (StepRefVoiceURL.indexOf('?') >= 1){
+				$('#playButton').fadeIn(500);
+				console.log('buffering')
+				bufferAudio(StepRefVoiceURL, 10)	
+				console.log('Found Recording - buffering ' + StepRefVoiceURL) 
+			}else{
+				console.log('No recording exists for this module yet.')
+				$("#playButton").unbind();
+				$('#playButton').fadeOut(500)			
+			}			
+				$('#recordButton').fadeIn(500)
+								
+		console.log('MODULE: ' +moduleID + ' currentStepNo: '+stepNumber + ' CurrentStepCount: ' + currentStepCount  + ' currentStepID: ' + currentStepID  )
+		
+		$('#stepTitle').attr('value', String(stepTitle))
+		$('#stepTitle').val(String(stepTitle));
+		$('#stepTitle').placeholder = stepTitle;
+		
+		populateMash(moduleID, stepNumber)
+		checkStepRecordings(moduleID)		
+}
+
+function populateMash(moduleID, stepNumber){
+   
+    var obj = JSON.parse(stepJSON)
+   	var stepMash = obj.data[stepNumber].StepMash
+   	console.log('RAW stepMash')
+	console.log(stepMash)
+   
+   	for (var flap = 0; flap < 6; flap++)													//Fade out the flaps in use			
+	{					
+		$('#Flap'+flap+'').removeClass("opacityIn");	
+		$('#Flap'+flap+'').css('opacity', '.3');
+	}	
+
+    var mashPart = stepMash.MashPart
+		currentMashJSON = mashPart
+	var MashMeaningText = stepMash.MashMeaningText
+		mashID = stepMash.MashID
+		mashVoiceURL = stepMash.MashVoiceURL
+	var mashExists = false
+	
+	$('#mashMeaningText').val(MashMeaningText)
+	
+	if (MashMeaningText != 'null' || MashMeaningText != '' || MashMeaningText != 'undefined' || MashID != 0)
+	{
+		try {var mashPart = JSON.parse(mashPart)}catch(e){console.log(e)}
+		
+		for (var parts = 0; parts < mashPart.length; parts++){
+		
+			if (MashMeaningText == 'Default Mash'){$('wordGlyph').attr('src', 'img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png')}
+			$('#partTypeImage'+parts+'').removeClass("neuterGenderGlow")
+			$('#partTypeImage'+parts+'').removeClass("maleGenderGlow")
+			$('#partTypeImage'+parts+'').removeClass("femaleGenderGlow")
+		
+		
+				try {
+					var partType = String(mashPart[parts].PartType)
+				}catch(e){
+					if (parts == 0){var partType = 'SUBJECT'}
+					if (parts == 1){var partType = 'VERB'}
+					if (parts == 2){var partType = 'OBJECT'}
+				}
+				
+				try {
+					var wordCount = mashPart[parts].Word.length	
+					var mainImageURL = ''+mashPart[parts].Word[0].WordImageURL+''
+				}catch(e){
+					var wordCount = 0
+					var mainImageURL = 'img/player/blank.gif'
+				}
+										
+				flap1 = document.getElementById('flap'+parts+'1');
+				flap2 = document.getElementById('flap'+parts+'2');
+				flap3 = document.getElementById('flap'+parts+'3');
+				flap4 = document.getElementById('flap'+parts+'4');
+				flap5 = document.getElementById('flap'+parts+'5');
+				flap6 = document.getElementById('flap'+parts+'6');
+				var partTypeImage = document.getElementById('partTypeImage'+parts+'');		
+			
+						if (partType.indexOf('SUBJECT') >=0 || partType.indexOf('OBJECT') >=0 ){								//review - use for loop
+								partTypeImage.setAttribute('src','img/player/Hexagon.png');
+								partTypeImage.setAttribute('name','subject');
+								flap1.setAttribute("src", 'img/player/HexFlap1.png'); 
+								flap2.setAttribute("src", 'img/player/HexFlap2.png');	
+								flap3.setAttribute("src", 'img/player/HexFlap3.png');	
+								flap4.setAttribute("src", 'img/player/HexFlap4.png');	
+								flap5.setAttribute("src", 'img/player/HexFlap5.png');	
+								flap6.setAttribute("src", 'img/player/HexFlap6.png');
+								$('#mainWord'+parts+'').css('opacity', '0.9');														
+								//$('#mainWord'+parts+'').attr("src", mainImageURL)
+								$('#mainWord'+parts+'').attr('data-wordPartPosition', '0');									
+								$('#partDiv'+parts+'').attr("name", partType)			
+								defaultMods(parts, 'word_noun')		
+
+							}else if (partType.indexOf('VERB') >=0 || partType.indexOf('Action') >=0 ){	
+							partTypeImage.setAttribute('src','img/player/Circle.png');	
+							partTypeImage.setAttribute('name','verb');
+								flap1.setAttribute("src", 'img/player/CircleFlap1.png');
+								flap2.setAttribute("src", 'img/player/CircleFlap2.png');	
+								flap3.setAttribute("src", 'img/player/CircleFlap3.png');	
+								flap4.setAttribute("src", 'img/player/CircleFlap4.png');	
+								flap5.setAttribute("src", 'img/player/CircleFlap5.png');	
+								flap6.setAttribute("src", 'img/player/CircleFlap6.png');
+								$('#mainWord'+parts+'').css('opacity', '0.9');				
+								$('#mainWord'+parts+'').attr('data-wordPartPosition', '0');								
+								//$('#mainWord'+parts+'').attr("src", mainImageURL)	
+								$('#partDiv'+parts+'').attr("name", partType)
+								defaultMods(parts, 'word_verb')
+							}else{
+								partTypeImage.setAttribute('src','img/player/blank.gif');	
+								flap1.setAttribute("src", '');
+								flap2.setAttribute("src", '');	
+								flap3.setAttribute("src", '');	
+								flap4.setAttribute("src", '');	
+								flap5.setAttribute("src", '');	
+								flap6.setAttribute("src", '');
+								$('#partDiv'+parts+'').attr("name", "UNUSED") 						
+							}
+							
+							for (var i = 1; i <= 6; i++){
+								$('flap'+parts+''+i+'').addClass('Flap')
+							}
+
+				for (var word = 0; word < wordCount; word++){
+					
+					try {
+						var wordImageURL = ''+mashPart[parts].Word[word].WordImageURL+''									
+					}catch(e){
+						var wordImageURL = 'img/player/blank.gif'
+					}
+
+					try {					
+						var ModArrayLength = mashPart[parts].Word[word].Mod.length					
+					}catch(e){
+						var ModArrayLength = 0
+					}
+
+					try {				
+						var WordPartPosition = mashPart[parts].Word[word].WordPartPosition						
+					}catch(e){
+						var WordPartPosition = 7 //0
+					}						
+						var WordID = mashPart[parts].Word[word].WordID
+					try{
+						var WordType = mashPart[parts].Word[word].WordType
+					}catch(e)
+					{
+						var WordType = 'word_noun'}
+						
+						var wordRec = mashPart[parts].Word[word].WordRec
+						var wordGender = mashPart[parts].Word[word].WordGender
+						
+						//console.log('part: ' + parts)
+						//console.log('WordPartPosition: ' + WordPartPosition)
+						console.log('WordType: ' + WordType)
+						//console.log('wordImageURL: ' + wordImageURL)
+				
+					if (WordType.indexOf('word_ordinal') >= 0){									
+									$('#part'+parts+'HexWordOrdinal').fadeTo( "slow" , '0.9')
+									$('#part'+parts+'HexWordOrdinal').attr('src', wordImageURL);											
+									$('#part'+parts+'HexWordOrdinal').attr('data-wordPartPosition', '3');
+									$('#part'+parts+'HexWordOrdinal').attr('data-wordType', WordType);
+									$('#part'+parts+'HexWordOrdinal').attr('data-wordGlyphID', wordImageURL);	
+									$('#part'+parts+'HexWordOrdinal').attr('data-wordID', WordID);
+									$('#part'+parts+'HexWordOrdinal').attr('data-wordGender', wordGender);
+									$('#part'+parts+'HexWordOrdinal').attr('data-wordRec', wordRec);
+									$('#part'+parts+'HexWordOrdinal').addClass("Word extraWord")			
+									$('#flap'+parts+'3').css('opacity', '1');
+					}else if (WordType.indexOf('word_preposition') >= 0){									
+									$('#part'+parts+'HexWordPreposition').fadeTo( "slow" , '0.9')
+									$('#part'+parts+'HexWordPreposition').attr('src', wordImageURL);												
+									$('#part'+parts+'HexWordPreposition').attr('data-wordPartPosition', '4');
+									$('#part'+parts+'HexWordPreposition').attr('data-wordType', WordType);
+									$('#part'+parts+'HexWordPreposition').attr('data-wordGlyphID', wordImageURL);	
+									$('#part'+parts+'HexWordPreposition').attr('data-wordID', WordID);
+									$('#part'+parts+'HexWordPreposition').attr('data-wordGender', wordGender);
+									$('#part'+parts+'HexWordPreposition').attr('data-wordRec', wordRec);
+									$('#part'+parts+'HexWordPreposition').addClass("Word extraWord")	
+									$('#flap'+parts+'4').css('opacity', '1')									
+					}else if (WordType.indexOf('word_adjective') >= 0 && WordPartPosition == '6'){									
+									$('#part'+parts+'HexWordSecondary1').fadeTo( "slow" , '0.9')
+									$('#part'+parts+'HexWordSecondary1').attr('src', wordImageURL);		
+									$('#part'+parts+'HexWordSecondary1').attr('data-wordType', 'word_adjective');																		
+									$('#part'+parts+'HexWordSecondary1').attr('data-wordPartPosition', '6');
+									$('#part'+parts+'HexWordSecondary1').attr('data-wordType', WordType);
+									$('#part'+parts+'HexWordSecondary1').attr('data-wordGlyphID', wordImageURL);	
+									$('#part'+parts+'HexWordSecondary1').attr('data-wordID', WordID);
+									$('#part'+parts+'HexWordSecondary1').attr('data-wordGender', wordGender);
+									$('#part'+parts+'HexWordSecondary1').attr('data-wordRec', wordRec);
+									$('#part'+parts+'HexWordSecondary1').addClass("Word extraWord")
+									$('#flap'+parts+'6').css('opacity', '1')				
+					}else if (WordType.indexOf('word_adjective') >= 0 && WordPartPosition == '1'){	//was 6								
+									$('#part'+parts+'HexWordSecondary2').fadeTo( "slow" , '0.9')
+									$('#part'+parts+'HexWordSecondary2').attr('src', wordImageURL);		
+									$('#part'+parts+'HexWordSecondary2').attr('data-wordPartPosition', '1');
+									$('#part'+parts+'HexWordSecondary2').attr('data-wordType', 'word_adjective');
+									$('#part'+parts+'HexWordSecondary2').attr('data-wordType', WordType);
+									$('#part'+parts+'HexWordSecondary2').attr('data-wordGlyphID', wordImageURL);	
+									$('#part'+parts+'HexWordSecondary2').attr('data-wordID', WordID);
+									$('#part'+parts+'HexWordSecondary2').attr('data-wordGender', wordGender);
+									$('#part'+parts+'HexWordSecondary2').attr('data-wordRec', wordRec);
+									$('#part'+parts+'HexWordSecondary2').addClass("Word extraWord")
+									$('#flap'+parts+'1').css('opacity', '1')
+					}else if (WordType.indexOf('word_adverb') >= 0 && WordPartPosition == '5'){									
+									$('#part'+parts+'CircleWordSecondaryAdverb').fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleWordSecondaryAdverb').attr('src', wordImageURL);		
+									$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordPartPosition', '5');
+									$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordType', 'word_adverb');
+									$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordType', WordType);
+									$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordGlyphID', wordImageURL);	
+									$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordID', WordID);
+									$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordGender', wordGender);
+									$('#part'+parts+'CircleWordSecondaryAdverb').attr('data-wordRec', wordRec);
+									$('#part'+parts+'CircleWordSecondaryAdverb').addClass("Word extraWord")
+									$('#flap'+parts+'5').css('opacity', '1')
+					}else if (WordType.indexOf('word_verb') >= 0 && WordPartPosition == '3'){									
+									$('#part'+parts+'CircleWordSecondaryVerb').fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleWordSecondaryVerb').attr('src', wordImageURL);		
+									$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordPartPosition', '3');
+									$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordType', 'word_verb');
+									$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordType', WordType);
+									$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordGlyphID', wordImageURL);	
+									$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordID', WordID);
+									$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordGender', wordGender);
+									$('#part'+parts+'CircleWordSecondaryVerb').attr('data-wordRec', wordRec);
+									$('#part'+parts+'CircleWordSecondaryVerb').addClass("Word extraWord")
+									$('#flap'+parts+'3').css('opacity', '1')
+					}else if (WordType.indexOf('word_verb') >= 0 && WordPartPosition == '0'){									
+									$('#mainWord'+parts+'').fadeTo( "slow" , '0.9')
+									$('#mainWord'+parts+'').attr('src', wordImageURL);		
+									$('#mainWord'+parts+'').attr('data-wordPartPosition', '0');
+									$('#mainWord'+parts+'').attr('data-wordType', 'word_verb');
+									$('#mainWord'+parts+'').attr('data-wordType', WordType);
+									$('#mainWord'+parts+'').attr('data-wordGlyphID', wordImageURL);	
+									$('#mainWord'+parts+'').attr('data-wordID', WordID);
+									$('#mainWord'+parts+'').attr('data-wordGender', wordGender);
+									$('#mainWord'+parts+'').attr('data-wordRec', wordRec);
+									$('#mainWord'+parts+'').addClass("Word")
+									
+									//if (wordGender == 'male'){
+									//	$('#mainWord'+parts+'').addClass("maleGenderGlow")
+									//}else if (wordGender == 'female'){
+									//	$('#mainWord'+parts+'').addClass("femaleGenderGlow")
+									//}								
+									$('#flap'+parts+'0').css('opacity', '1')
+					}else if (WordType.indexOf('word_interrogative') >= 0 && WordPartPosition == '1'){									
+									$('#part'+parts+'CircleWordSecondaryQuestion').fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleWordSecondaryQuestion').attr('src', wordImageURL);		
+									$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordPartPosition', '1');
+									$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordType', 'word_question');
+									$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordType', WordType);
+									$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordGlyphID', wordImageURL);	
+									$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordID', WordID);
+									$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordGender', wordGender);
+									$('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordRec', wordRec);
+									$('#part'+parts+'CircleWordSecondaryQuestion').addClass("Word extraWord")
+									//('#part'+parts+'CircleWordSecondaryQuestion').attr('data-wordGender', wordGender);
+									$('#part'+parts+'CircleModQuestion').attr('src', 'img/player/mod_interrogative_1.png')
+									$('#flap'+parts+'1').css('opacity', '1')									
+					}else if (WordType.indexOf('word_noun') >= 0){									
+									$('#mainWord'+parts+'').fadeTo("slow", '0.9')									
+									$('#mainWord'+parts+'').attr('src', wordImageURL);		
+									$('#mainWord'+parts+'').attr('data-wordPartPosition', '0');															
+									$('#mainWord'+parts+'').attr("value", WordType)														
+									$('#mainWord'+parts+'').attr('data-wordType', WordType);
+									$('#mainWord'+parts+'').attr('data-wordGlyphID', wordImageURL);	
+									$('#mainWord'+parts+'').attr('data-wordID', WordID);
+									$('#mainWord'+parts+'').attr('data-wordGender', wordGender);
+									$('#mainWord'+parts+'').attr('data-wordRec', wordRec);
+									$('#mainWord'+parts+'').addClass("Word")
+									
+									if(wordGender == 'Masculine'){
+										$('#partTypeImage'+parts+'').addClass("maleGenderGlow")
+									}else if(wordGender == 'Feminine'){
+										$('#partTypeImage'+parts+'').addClass("femaleGenderGlow")
+									}else if (wordGender == 'Neuter'){
+										$('#partTypeImage'+parts+'').addClass("neuterGenderGlow")}																		
+					}
+									
+							
+					for (var mod = 0; mod < ModArrayLength; mod++){
+					
+						var ModImageURL = mashPart[parts].Word[word].Mod[mod].ModImageURL					
+						var ModType = mashPart[parts].Word[word].Mod[mod].ModType
+						
+						//console.log('ModType ' + ModType)
+						//console.log('ModImageURL ' + ModImageURL)
+						
+							if (ModType.indexOf('ARTICLE') >= 0 ){
+									$('#part'+parts+'HexModArticle').attr('src', ModImageURL);				
+									$('#part'+parts+'HexModArticle' ).fadeTo( "slow" , '0.9')										
+									$('#flap'+parts+'5').css('opacity', '1');			
+							}else if (ModType.indexOf('PLURAL') >= 0){								
+									$( '#part'+parts+'HexModPlural' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'HexModPlural').attr('src', ModImageURL);												
+									$('#flap'+parts+'2').css('opacity', '1');
+							}else if (ModType.indexOf('COMPSUPER') >= 0 && partType.indexOf('VERB') >= 0 ){								
+									$('#part'+parts+'CircleModCompSuper' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleModCompSuper').attr('src', ModImageURL);											
+									$('#flap'+parts+'5').css('opacity', '1');	
+							}else if (ModType.indexOf('COMPSUPER') >= 0 && partType.indexOf('SUBJECT') >= 0 || partType.indexOf('OBJECT') >= 0 && ModType.indexOf('COMPSUPER') >= 0 ){								
+									$( '#part'+parts+'HexModCompSuper' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'HexModCompSuper').attr('src', ModImageURL);											
+									$('#flap'+parts+'6').css('opacity', '1');	
+							}else if (ModType.indexOf('TIME') >= 0){									
+									$('#part'+parts+'CircleModTime' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleModTime').attr('src', ModImageURL);		
+									$('#flap'+parts+'2').css('opacity', '1');
+							}else if (ModType.indexOf('TENSE') >= 0){									
+									$('#part'+parts+'CircleModTense' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleModTense').attr('src', ModImageURL);											
+									$('#flap'+parts+'2').css('opacity', '1');	
+							}else if (ModType.indexOf('NEGATIVE') >= 0){								
+									$( '#part'+parts+'CircleModNegative' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleModNegative').attr('src', ModImageURL);		
+									$('#flap'+parts+'6').css('opacity', '1');	
+							//}else if (ModType.indexOf('QUESTION') >= 0){									
+							//		$( '#part'+parts+'CircleModQuestion' ).fadeTo( "slow" , '0.9')
+							//		$('#part'+parts+'CircleModQuestion').attr('src', ModImageURL);		
+							//		$('#flap'+parts+'1').css('opacity', '1')
+							}else if (ModType.indexOf('INTERROGATIVE') >= 0){									
+									$('#part'+parts+'CircleModQuestion' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleModQuestion').attr('src', ModImageURL);		
+									$('#flap'+parts+'1').css('opacity', '1')
+									console.log('FOUND!')
+							}else if (ModType.indexOf('MODAL') >= 0){									
+									$( '#part'+parts+'CircleModModal' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleModModal').attr('src', ModImageURL);		
+									$('#flap'+parts+'4').css('opacity', '1')
+							}else if (ModType.indexOf('IMPERATIVE') >= 0){									
+									$( '#part'+parts+'CircleModImperativePassive' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'CircleModImperativePassive').attr('src', ModImageURL);		
+									$('#flap'+parts+'4').css('opacity', '1')
+							}else if (ModType.indexOf('MOD_DOTTY') >= 0){									
+									$( '#part'+parts+'HexModDotty' ).fadeTo( "slow" , '0.9')
+									$('#part'+parts+'HexModDotty').attr('src', ModImageURL);		
+									$('#flap'+parts+'5').css('opacity', '1');}										
+					}									
+			}
+		}
+	}	
+	$('#modulesEditPage').fadeIn(500)
+	$('#ModuleEdit').fadeIn(100)
+}
+
+function defaultMods(partNo, currentWordType){
+
+	var turnOn = 'IN'
+	var turnOff = 'OUT'
+	
+	$('#partDiv'+partNo+'').append( '<div onmouseover="showEdit(\'mainWord'+partNo+'\', \'mainWord'+partNo+'Hover\',\''+turnOn+'\')"  onmouseout="showEdit(\'mainWord'+partNo+'\', \'mainWord'+partNo+'Hover\',\''+turnOff+'\')" id="mainWord'+partNo+'Hover"  class="wordInteract mainWordHover">  <div class="actions-inner customInner"></div> <div class="actions-inner4"><a><i onclick="play(\'mainWord'+partNo+'\')" class="playButton fa fa-play"></i></a><a><i onclick="removeImage(\'mainWord'+partNo+'\')" class="trashButton fa fa-trash-o"></i></a></div></div>');				
+
+	if (currentWordType == 'word_noun' || currentWordType == 'word_object'){
+													
+		$('#partDiv'+partNo+'').append('<img class="HexModCompSuper Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModCompSuper" src="img/player/mod_compsuper_0.png"></img>');					
+		$('#partDiv'+partNo+'').append('<img class="HexModPlural Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModPlural" src="img/player/mod_plural_0.png"></img>');
+		//$('#partDiv'+partNo+'').append('<img class="HexModDotty Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModDotty" src="img/player/mod_dotty_eng_0.png"></img>');
+		$('#partDiv'+partNo+'').append('<img class="HexModArticle Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModArticle" src="img/player/mod_article_0.png"></img>');									
+		$('#partDiv'+partNo+'').append('<img class="HexWordSecondary2 Word extraWord"  onmouseover="showEdit(\'part'+partNo+'HexWordSecondary2\', part'+partNo+'HexWordSecondary2Hover,\''+turnOn+'\')"   onmouseout="showEdit(\'part'+partNo+'HexWordSecondary2\', part'+partNo+'HexWordSecondary2Hover,\''+turnOff+'\')"  id="part'+partNo+'HexWordSecondary2"	 src="img/player/blank.gif"></img> <div  onmouseover="showEdit(\'part'+partNo+'HexWordSecondary2\', part'+partNo+'HexWordSecondary2Hover,\''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'HexWordSecondary2\', part'+partNo+'HexWordSecondary2Hover,\''+turnOff+'\')" id="part'+partNo+'HexWordSecondary2Hover"   class="wordInteract HexWordSecondary2Hover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'HexWordSecondary2\')" class="playButton fa fa-play"></i></a>	<a> <i onclick="removeImage(\'part'+partNo+'HexWordSecondary2\')" class="trashButton fa fa-trash-o"></i>	</a></div></div>');
+		$('#partDiv'+partNo+'').append('<img class="HexWordOrdinal Word extraWord" 	 onmouseover="showEdit(\'part'+partNo+'HexWordOrdinal\', part'+partNo+'HexWordOrdinalHover,\''+turnOn+'\')"			onmouseout="showEdit(\'part'+partNo+'HexWordOrdinal\', part'+partNo+'HexWordOrdinalHover,\''+turnOff+'\')"     id="part'+partNo+'HexWordOrdinal"	 src="img/player/blank.gif"></img> <div  onmouseover="showEdit(\'part'+partNo+'HexWordOrdinal\', part'+partNo+'HexWordOrdinalHover,\''+turnOn+'\')"		onmouseout="showEdit(\'part'+partNo+'HexWordOrdinal\', part'+partNo+'HexWordOrdinalHover,\''+turnOff+'\')"  id="part'+partNo+'HexWordOrdinalHover" 	 	class="wordInteract HexWordOrdinalHover">     <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'HexWordOrdinal\')" class="playButton fa fa-play"></i></a>	<a> <i onclick="removeImage(\'part'+partNo+'HexWordOrdinal\')" class="trashButton fa fa-trash-o"></i>	</a></div></div>');
+		$('#partDiv'+partNo+'').append('<img class="HexWordPreposition Word extraWord" onmouseover="showEdit(\'part'+partNo+'HexWordPreposition\', part'+partNo+'HexWordPrepositionHover,\''+turnOn+'\')" onmouseout="showEdit(\'part'+partNo+'HexWordPreposition\', part'+partNo+'HexWordPrepositionHover,\''+turnOff+'\')" id="part'+partNo+'HexWordPreposition" src="img/player/blank.gif"></img> <div  onmouseover="showEdit(\'part'+partNo+'HexWordPreposition\', part'+partNo+'HexWordPrepositionHover,\''+turnOn+'\')" onmouseout="showEdit(\'part'+partNo+'HexWordPreposition\', part'+partNo+'HexWordPrepositionHover,\''+turnOff+'\')" id="part'+partNo+'HexWordPrepositionHover"  class="wordInteract HexWordPrepositionHover"> <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'HexWordPreposition\')" class="playButton fa fa-play"></i></a>	<a> <i onclick="removeImage(\'part'+partNo+'HexWordPreposition\')" class="trashButton fa fa-trash-o"></i>	</a></div></div>');
+		$('#partDiv'+partNo+'').append('<img class="HexWordSecondary1 Word extraWord"  onmouseover="showEdit(\'part'+partNo+'HexWordSecondary1\', part'+partNo+'HexWordSecondary1Hover,\''+turnOn+'\')"   onmouseout="showEdit(\'part'+partNo+'HexWordSecondary1\', part'+partNo+'HexWordSecondary1Hover,\''+turnOff+'\')"  id="part'+partNo+'HexWordSecondary1"  src="img/player/blank.gif"></img> <div  onmouseover="showEdit(\'part'+partNo+'HexWordSecondary1\', part'+partNo+'HexWordSecondary1Hover,\''+turnOn+'\')"   onmouseout="showEdit(\'part'+partNo+'HexWordSecondary1\', part'+partNo+'HexWordSecondary1Hover,\''+turnOff+'\')" id="part'+partNo+'HexWordSecondary1Hover"   class="wordInteract HexWordSecondary1Hover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'HexWordSecondary1\')" class="playButton fa fa-play"></i></a>	<a> <i onclick="removeImage(\'part'+partNo+'HexWordSecondary1\')" class="trashButton fa fa-trash-o"></i>	</a></div></div>');					
+					
+		if (curatorLanguage == 'fre' || curatorLanguage == 'eng' || curatorLanguage == 'ger'){
+			$('#partDiv'+partNo+'').append('<img class="HexModDotty Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModDotty" src="img/player/mod_dotty_eng_0.png"></img>');
+		}else if (curatorLanguage == 'gle'){
+			$('#partDiv'+partNo+'').append('<img class="HexModDotty Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'HexModDotty" src="img/player/mod_dotty_gle_0.png"></img>');
+		}//ADD DOTTY FOR OTHER LANGUAGES HERE
+					
+	}else if (currentWordType == 'word_verb'){
+			$('#partDiv'+partNo+'').append('<img class="CircleModTime Mod" onclick="navigateAvailableMods(this, '+partNo+')"id="part'+partNo+'CircleModTime" src="img/player/mod_time_0.png"></img>');			
+			$('#partDiv'+partNo+'').append('<img class="CircleModTense Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'CircleModTense" src="img/player/mod_tense_0.png"></img>');
+			$('#partDiv'+partNo+'').append('<img class="CircleModNegative Mod" onclick="navigateAvailableMods(this, '+partNo+')"id="part'+partNo+'CircleModNegative" src="img/player/mod_negative_0.png"></img>');
+			$('#partDiv'+partNo+'').append('<img class="CircleModImperativePassive Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'CircleModImperativePassive" src="img/player/mod_imperative_0.png"></img>');
+			$('#partDiv'+partNo+'').append('<img class="CircleModModal Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'CircleModModal" src="img/player/mod_modal_0.png"></img>');
+			$('#partDiv'+partNo+'').append('<img class="CircleModCompSuper Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'CircleModCompSuper" src="img/player/mod_compsuper_0.png"></img>');
+			$('#partDiv'+partNo+'').append('<img class="CircleModQuestion Mod" onclick="navigateAvailableMods(this, '+partNo+')" id="part'+partNo+'CircleModQuestion" src="img/player/mod_interrogative_0.png"></img>');
+			$('#partDiv'+partNo+'').append('<img class="CircleWordSecondaryAdverb Word extraWord" 	onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryAdverb\', part'+partNo+'CircleWordSecondaryAdverbHover, \''+turnOn+'\')" 	  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryAdverb\', part'+partNo+'CircleWordSecondaryAdverbHover,\''+turnOff+'\')"		id="part'+partNo+'CircleWordSecondaryAdverb"   src="img/player/blank.gif"></img>	<div  onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryAdverb\', part'+partNo+'CircleWordSecondaryAdverbHover,\''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryAdverb\', part'+partNo+'CircleWordSecondaryAdverbHover,\''+turnOff+'\')" id="part'+partNo+'CircleWordSecondaryAdverbHover"   class="wordInteract CircleWordSecondaryAdverbHover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'CircleWordSecondaryAdverb\')" class="playButton fa fa-play"></i></a>	<a> <i onclick="removeImage(\'part'+partNo+'CircleWordSecondaryAdverb\')" class="trashButton fa fa-trash-o"></i>	</a></div></div>');
+			$('#partDiv'+partNo+'').append('<img class="CircleWordSecondaryQuestion Word extraWord" 	onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryQuestion\', part'+partNo+'CircleWordSecondaryQuestionHover, \''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryQuestion\', part'+partNo+'CircleWordSecondaryQuestionHover,\''+turnOff+'\')"   id="part'+partNo+'CircleWordSecondaryQuestion" src="img/player/blank.gif"></img>	<div  onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryQuestion\', part'+partNo+'CircleWordSecondaryQuestionHover,\''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryQuestion\', part'+partNo+'CircleWordSecondaryQuestionHover,\''+turnOff+'\')" id="part'+partNo+'CircleWordSecondaryQuestionHover"   class="wordInteract CircleWordSecondaryQuestionHover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'CircleWordSecondaryQuestion\')" class="playButton fa fa-play"></i></a>	<a> <i onclick="removeImage(\'part'+partNo+'CircleWordSecondaryQuestion\')" class="trashButton fa fa-trash-o"></i>	</a></div></div>');		
+			$('#partDiv'+partNo+'').append('<img class="CircleWordSecondaryVerb Word extraWord" 		onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryVerb\', part'+partNo+'CircleWordSecondaryVerbHover, \''+turnOn+'\')" 	  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryVerb\', part'+partNo+'CircleWordSecondaryVerbHover,\''+turnOff+'\')" 		id="part'+partNo+'CircleWordSecondaryVerb"	   src="img/player/blank.gif"></img>	<div  onmouseover="showEdit(\'part'+partNo+'CircleWordSecondaryVerb\', part'+partNo+'CircleWordSecondaryVerbHover,\''+turnOn+'\')"  onmouseout="showEdit(\'part'+partNo+'CircleWordSecondaryVerb\', part'+partNo+'CircleWordSecondaryVerbHover,\''+turnOff+'\')" id="part'+partNo+'CircleWordSecondaryVerbHover"   class="wordInteract CircleWordSecondaryVerbHover">  <div class="actions-inner"></div> <div class="actions-inner2">	<a class=""><i onclick="play(\'part'+partNo+'CircleWordSecondaryVerb\')" class="playButton fa fa-play"></i></a>	<a> <i onclick="removeImage(\'part'+partNo+'CircleWordSecondaryVerb\')" class="trashButton fa fa-trash-o"></i>	</a></div></div>');
+		}				
+			
+		$('.Mod').css('opacity', '1');			//check if correct
+
+		for (var i = 1; i <= 6; i++){
+			$('#flap'+partNo+''+i+'').css('opacity', '.3');
+		}			
+}
+
+function showEdit(img, editSectionDiv, msg){
+
+
+//console.log('here')
+//console.log(msg)
+
+var src = $('#'+img+'').attr('src')
+var editSectionDivID = ''+editSectionDiv+''
+//console.log(editSectionDiv)
+//console.log(editSectionDivID)
+
+	if (editSectionDivID.indexOf('main') !== -1){
+		
+		if (msg == 'IN'){
+		//$(editSectionDiv).fadeIn(20)
+		$('#'+editSectionDiv+'').css('visibility','visible')
+		//editSectionDiv.style.visibility = 'visible'
+		
+		}else if (msg == 'OUT'){
+		//$(editSectionDiv).css('visibility','hidden').show().fadeOut('fast');
+		//$(editSectionDiv).fadeOut(20)
+		$('#'+editSectionDiv+'').css('visibility','hidden')
+		//editSectionDiv.style.visibility = 'hidden'
+		}
+	
+	}else if (src.indexOf('blank') == -1){
+
+	//console.log(editSectionDiv)
+	//console.log(editSectionDiv.id)
+	
+		if (msg == 'IN'){
+		//$(editSectionDiv).fadeIn(20)
+		//$(editSectionDiv).css('visibility','visible').hide().fadeIn('fast');
+		
+		try {
+				editSectionDiv.style.visibility = 'visible'
+			}catch(e){
+				$('#'+editSectionDiv.id+'').style.visibility = 'visible'
+			}
+		
+		}else if (msg == 'OUT'){
+		//$(editSectionDiv).css('visibility','hidden').show().fadeOut('fast');
+		//$(editSectionDiv).fadeOut(20)
+		//$('#'+editSectionDiv.id+'').fadeOut(200)
+		//editSectionDiv.style.visibility = 'hidden'	
+			try {
+				editSectionDiv.style.visibility = 'hidden'
+			}catch(e){
+				$('#'+editSectionDiv.id+'').style.visibility = 'hidden'
+			}
+		}
+	}
+}
+
+function removeImage(img) {
+
+
+console.log('removing ' + img)
+
+//console.log('REMOVING')
+
+$('#'+img+'').attr('src', '/img/player/blank.gif')
+//$('#'+img+'Hover').fadeOut(200);
+$('#'+img+'Hover').css('visibility' , 'hidden');
+
+
+var partPosition = $('#'+img+'').attr('data-wordPartPosition')
+//console.log('partPosition ' + partPosition)
+
+var itemPart = img.replace( /(^.+)(\w\d+\w)(.+$)/i,'$2'); 
+//var itemPart2
+
+//console.log('ITEM PART ' + itemPart)
+
+var r = /\d+/g;
+var s = img;
+var m;
+while ((m = r.exec(s)) != null) {
+ // itemPart2 = m[0]
+}
+var partNo = img.match(/\d+/g); 
+ var itemPart2 = img.match(/\d+/)[0]
+
+console.log('ITEM PART ' + itemPart2)
+console.log('partNo ' + partNo)
+
+	if (img.indexOf('CircleWordSecondaryAdverb') >= 0){
+		$('#part'+itemPart2+'CircleModCompSuper').attr('src', 'img/player/mod_compsuper_0.png');
+		$('#flap'+itemPart2+'5').css('opacity', '.3');
+	}else if (img.indexOf('HexWordSecondary1') >= 0){
+		$('#part'+itemPart2+'HexModCompSuper').attr('src', 'img/player/mod_compsuper_0.png');
+		$('#flap'+itemPart2+'6').css('opacity', '.3');
+	}
+
+
+	if (img.indexOf('main') >= 0){
+			
+		console.log('partNo ' + partNo)
+		$('#partTypeImage'+partNo+'').removeClass("maleGenderGlow")
+		$('#partTypeImage'+partNo+'').removeClass("femaleGenderGlow")
+		$('#partTypeImage'+partNo+'').removeClass("neuterGenderGlow")	
+	}else{
+		$('#flap'+itemPart2+''+partPosition+'').css('opacity', '.3');	
+	}
+
+	
+	if (img.indexOf('interrogative') >= 0){
+		$('#part'+partNo+'CircleModQuestion').attr('src', 'https://www.teanga.me/img/player/mod_interrogative_0.png')
+	
+	}
+//}
+//REMOVE ALL ATTRIBUTES
+//FADE OUT HOVER IMAGE AFTER Remove
+//SET TO FADE OUT
+
+
+saveMashInfo()
+
+
+}
+
+function play(img) {
+
+//console.log(img)
+//console.log($('#'+img+'').attr('src'))
+//console.log($('#'+img+''))
+//console.log($('#part0HexWordSecondary2'))
+
+var id = $('#'+img+'').attr('data-wordid')
+
+var URL = 'serve_recording?id='+id+''
+
+console.log(URL)
+	
+		var request = new XMLHttpRequest();
+		request.open('GET', URL, true);																		//function should accept URL, row and column
+		request.responseType = 'arraybuffer';
+		request.onload = function() {
+		audio_context.decodeAudioData(request.response, function(newBuffer) {			
+			playAudio(newBuffer);		
+			$('#'+img+'').click(function(){ playAudio(newBuffer);		});			
+		});	}																									// by corresponding nodes, building an appropriate audio graph
+			request.send();
+}
+
+function navigateAvailableMods(mod, partNo) {
+
+	var partSrc = document.getElementById('mainWord'+partNo+'').src
+	try{
+		var AdjectiveSrc = document.getElementById('part'+partNo+'HexWordSecondary1').src
+	}catch(e){
+	
+	}
+	
+	var modID = mod.id
+	
+	if (modID.indexOf('Circle') >= 0){var partType = 'Circle'}else if(modID.indexOf('Hex') >= 0){var partType = 'Hex'}
+	
+	///if mod is compsuper
+	///, associated part is empty
+	///return
+	
+
+	
+	
+	
+	if (partSrc !== 'https://www.teanga.me/img/player/blank.gif'){ // || AdjectiveSrc !== 'https://www.teanga.me/img/player/blank.gif'
+	
+		var src = mod.src
+		var id = mod.id
+		var srcNo = src.replace( /^\D+/g, ''); 
+		srcNo = Number(srcNo.replace( '.png', ''));					//READ WORD STATE INSTEAD OF WORD URL
+		var partNo = id.match(/\d+/)[0]			
+		var nextNo = Number(srcNo + 1)	
+		var totalNoOfMods
+		var linkedMod = '';
+		
+		if (src.indexOf('article') >= 0){ totalNoOfMods = 4; var flap = document.getElementById('flap'+partNo+'5'); $('#part'+partNo+'HexModDotty').attr('src', 'img/player/mod_dotty_eng_0.png'); console.log('should turn dotty off'); } //turn off dotty
+		if (src.indexOf('plural') >= 0){ totalNoOfMods = 1; var flap = document.getElementById('flap'+partNo+'2');}
+		if (src.indexOf('negative') >= 0){ totalNoOfMods = 1; var flap = document.getElementById('flap'+partNo+'6')}
+		if (src.indexOf('interrogative') >= 0){ totalNoOfMods = 1; linkedMod = $('#part'+partNo+'CircleWordSecondaryQuestion').attr('src'); var flap = document.getElementById('flap'+partNo+'1');}
+		if (src.indexOf('imperative') >= 0){ totalNoOfMods = 1; var flap = document.getElementById('flap'+partNo+'4');}
+		if (src.indexOf('modal') >= 0){ totalNoOfMods = 4; var flap = document.getElementById('flap'+partNo+'4');}
+		if (src.indexOf('tense') >= 0){ totalNoOfMods = 3; var flap = document.getElementById('flap'+partNo+'2');}
+		if (src.indexOf('time') >= 0){ totalNoOfMods = 3; var flap = document.getElementById('flap'+partNo+'2');}
+		if (src.indexOf('compsuper') >= 0 && partType == 'Circle'){ totalNoOfMods = 2; linkedMod = $('#part'+partNo+'CircleWordSecondaryAdverb').attr('src'); var flap = document.getElementById('flap'+partNo+'5');}
+		if (src.indexOf('compsuper') >= 0 && partType == 'Hex'){ totalNoOfMods = 2; linkedMod = $('#part'+partNo+'HexWordSecondary1').attr('src'); var flap = document.getElementById('flap'+partNo+'6');}
+		if (src.indexOf('dotty') >= 0 && curatorLanguage == 'eng' || src.indexOf('dotty') >= 0 && curatorLanguage == 'ger' || src.indexOf('dotty') >= 0 && curatorLanguage == 'fre'){totalNoOfMods = 8; var flap = document.getElementById('flap'+partNo+'5'); $('#part'+partNo+'HexModArticle').attr('src', 'https://www.teanga.me/img/player/mod_article_0.png')} //turn off article
+		if (src.indexOf('dotty') >= 0 && curatorLanguage == 'gle'){ totalNoOfMods = 7; var flap = document.getElementById('flap'+partNo+'5'); $('#part'+partNo+'HexModArticle').attr('src', 'https://www.teanga.me/img/player/mod_article_0.png')}
+		
+		var compSuperPart1 = $('#part'+partNo+'HexWordSecondary1').attr('src');
+		var compSuperPart2 = $('#part'+partNo+'CircleWordSecondaryAdverb').attr('src');
+		
+		console.log('partNo ' + partNo);
+		console.log('TEST ' + compSuperPart1);
+		console.log('TEST ' + compSuperPart2);
+		//part1CircleWordSecondaryAdverb
+		//part0HexWordSecondary1
+		
+		try{
+		
+		if (src.indexOf('compsuper') >=0 && compSuperPart1.indexOf('blank') >= 0){
+			console.log('disallowing compsuperHEX as associated part empty')
+			$('#part'+partNo+'HexModCompSuper').attr('src', 'img/player/mod_compsuper_0.png');
+			return;
+		} 
+		}catch(e){
+			console.log('passing1')
+		}
+		
+		try{
+		
+		if (src.indexOf('compsuper') >=0 && compSuperPart2.indexOf('blank') >= 0){
+			console.log('disallowing compsuperCIRC as associated part empty')
+			$('#part'+partNo+'CircleModCompSuper').attr('src', 'img/player/mod_compsuper_0.png');
+			return;
+		} 
+		
+		}catch(e){
+			console.log('passing2')
+		}
+		
+		if (nextNo <= totalNoOfMods && nextNo != 0){
+		
+				var newsrc = src.replace(srcNo, nextNo);
+				mod.style.opacity = '0.9'
+				mod.src = newsrc
+				flap.style.opacity = '1'	
+
+				if (src.indexOf('imperative') >= 0){
+				flap.style.opacity = '1'	
+				}
+				
+				if (src.indexOf('modal') >= 0){
+				flap.style.opacity = '1'	
+				}
+		
+		}else{
+			var newsrc = src.replace(srcNo, 0); //was 1
+			mod.src = newsrc
+			mod.style.opacity = '1'
+			
+			if (src.indexOf('compsuper') >= 0 && linkedMod.indexOf('blank') >= 0 || src.indexOf('compsuper') == -1){
+				flap.style.opacity = '0.3'
+			}
+				
+			if (src.indexOf('interrogative') >= 0){
+				$('#part'+partNo+'CircleWordSecondaryQuestion').attr('src', "img/player/blank.gif");
+			}
+
+			if (src.indexOf('imperative') >= 0 && $('#part'+partNo+'CircleModModal').attr('src') !== "https://www.teanga.me/img/player/mod_modal_0.png"){
+				flap.style.opacity = '1'
+			}
+			
+			if (src.indexOf('modal') >= 0 && $('#part'+partNo+'CircleModImperativePassive').attr('src') !== "https://www.teanga.me/img/player/mod_imperative_0.png"){
+				flap.style.opacity = '1'
+			}		
+		}			
+		
+	}else{console.log('cant navigate mods without word')}			
+		saveMashInfo()	
+}
+
+function activateMod(mod){
+	console.log('modactivated')
+	$('#'+mod+'').fadeTo(1000, 1);
+	saveMashInfo()
+}
+
+function deactivateMod(mod){
+	console.log('moddeactivated')
+	$('#'+mod+'').fadeTo(1000, .2);	
+	saveMashInfo()
+}
+</script>
+
+<script>
+														///SEARCH GLYPHS///														
+var selectedWordType = 'Noun'
+var allWordsArray = []	
+var autocompleteArray = []
+var autocompleteIDArray = []													
+														
+$("#searchButton").bind("click ", function() { //focus/click/keydown was here			//STOP DEFAULT FOR ONE SECOND
+		setTimeout(function(){
+		searchGlyphs()	  
+		}, 500);	   
+	}); 	
+		
+$('input:checkbox').on('ifToggled', function() {
+	saveStepInfo('saveExisting')
+});
+
+//console.log('autocompleteArray')
+//console.log(autocompleteArray)
+	 
+$("#tags").autocomplete({
+		source: function(request, response) {
+		
+		//console.log(request)
+		//console.log(response		
+        var results = $.ui.autocomplete.filter(autocompleteArray, request.term);
+		//console.log(results1)
+		//console.log(results2)
+
+        response(results.slice(0, 10));
+		},
+		
+		//source: autocompleteArray,
+		select: function(event, ui) {
+			if(ui.item){
+				$('#tags').val(ui.item.value);
+				
+				var type = ui.item.value.match(/\(([^)]+)\)/)[1]
+				//var query = ui.item.value.substr(0, ui.item.value.indexOf(" "));
+				var query = ui.item.value.substring(0, ui.item.value.indexOf(' ('))
+				
+				var wordID = autocompleteIDArray[$.inArray(ui.item.value, autocompleteArray)]
+								
+				console.log('type ' + type)
+				console.log('ui.item.value ' + ui.item.value)
+				console.log('index no ' +   $.inArray(ui.item.value, autocompleteArray))
+				
+				console.log(autocompleteIDArray[$.inArray(ui.item.value, autocompleteArray)])	
+				searchGlyphs(query, type, wordID)
+			}
+        //$('#tags').submit();
+		}
+    });
+			
+function loadWords() {
+
+	$.get('https://www.teanga.me/getWords?lang='+curatorLanguage+'', function(data){
+
+		var dataKeys = Object.keys(data)		
+		wordData=data
+				
+		for(var i=0; i<dataKeys.length; i++){				
+			allWordsArray.push([data[dataKeys[i]]['word_glyph_id'], data[dataKeys[i]]['word_type'], data[dataKeys[i]]['word_id'], unescape(data[dataKeys[i]]['word_text_root']), data[dataKeys[i]]['word_gender']]);
+			
+			var type = data[dataKeys[i]]['word_type']
+			if (type == 'word_noun'){type= 'Noun'}
+			if (type == 'word_adjective'){type= 'Adjective'}
+			if (type == 'word_adverb'){type= 'Adverb'}
+			if (type == 'word_preposition'){type= 'Preposition'}
+			if (type == 'word_ordinal'){type= 'Ordinal'}
+			if (type == 'word_verb'){type= 'Verb'}
+			if (type == 'word_interrogative'){type='Interrogative'}
+			if (type == 'word_negative'){type='Negative'}
+			
+			var root = unescape(data[dataKeys[i]]['word_text_root']).replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+					
+			if (root == "Watch"){
+			
+			console.log([data[dataKeys[i]]['word_glyph_id']])
+			console.log([data[dataKeys[i]]['word_text_root']])
+			}
+										
+			if (autocompleteArray.indexOf(root +' ('+type+')') > 1){		
+				autocompleteArray.push(root +' ('+type+') (1)');
+			}else{
+				autocompleteArray.push(root +' ('+type+')');
+			}
+				
+			//autocompleteArray.push({name:root +' ('+type+')', idx:i})
+			//autocompleteIDArray.push(root + '' + [data[dataKeys[i]]['word_glyph_id']]);
+			//autocompleteIDArray.push([data[dataKeys[i]]['word_glyph_id']]);
+			autocompleteIDArray.push([data[dataKeys[i]]['word_id']]);
+		}
+	})
+}	
+		
+function searchGlyphs(word, selectedWordType, wordID) {
+
+console.log('word')
+console.log(word)
+console.log(wordID)
+	//var allowServerSearch = false;		
+	//var o = document.getElementById('wordSearch')	
+	//var t = o.value	
+	//var s = getSelectionStart(o)	
+	//var e = getSelectionEnd(o)
+	//var caretPos = s
+	//var selectedText = t.substring(s, e).replace(/ /g, '\xa0') || '\xa0'
+	///var word = getWordAt(t, s)
+	//var word = t
+	word = word.toLowerCase();
+	
+	//$('#selectedWordType').removeClass('glow');
+	if (selectedWordType == 'Noun'){selectedWordType = 'word_noun'}
+	if (selectedWordType == 'Ordinal'){selectedWordType = 'word_ordinal'}
+	if (selectedWordType == 'Preposition'){selectedWordType = 'word_preposition'}
+	if (selectedWordType == 'Adjective'){selectedWordType = 'word_adjective'}
+	if (selectedWordType == 'Verb'){selectedWordType = 'word_verb'}
+	if (selectedWordType == 'Adverb'){selectedWordType = 'word_adverb'}
+	if (selectedWordType == 'Interrogative'){selectedWordType = 'word_interrogative'}
+	if (selectedWordType == 'Word Type'){selectedWordType = ''; $('#selectedWordType').addClass('blueglow');}
+		
+	console.log('searching ' + word + ' of type ' + selectedWordType)
+	//console.log(searchedWordsArray)
+	
+	$('#wordGlyph').attr('src','img/player/blank.gif')	
+	$('html, body').stop();
+		
+	//	console.log('Searching all words')
+		for (var i = 0; i< allWordsArray.length+1; i ++){
+		
+			if (i < allWordsArray.length+1){
+					
+				try{
+					var array = allWordsArray[i]
+				//	console.log(array)
+					var currentGlyphID = array[0]
+					var currentWordType = array[1].toLowerCase();
+						currentWordType = currentWordType.toLowerCase();
+					var currentWordID = array[2]
+					//var currentWordID = wordID
+					var currentwordRoot = array[3]
+						currentwordRoot = currentwordRoot.toLowerCase();
+					var currentwordGender = array[4]
+					var currentwordRec = 'serve_recording?id='+currentWordID+''
+					//console.log(currentwordRoot + ' + ' +  currentWordType + ' + ' + word )
+					
+						if (currentwordRoot != 'undefined'){
+							//if (currentwordRoot.indexOf(word) >= 0 && currentWordType == selectedWordType){	
+							if (currentWordID == wordID && currentWordType == selectedWordType){				
+									//console.log(word + ' already saved as search term')
+									//console.log('Root word is ' + array[2] + '')
+									//console.log('type: ' + currentWordType)
+									$('#wordGlyph').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')								
+									$('#wordGlyph').val( currentWordType );
+									$('#wordGlyph').attr('name', currentGlyphID)
+									$('#wordGlyph').attr('data-wordID', currentWordID)
+									$('#wordGlyph').attr('data-wordType', currentWordType)
+									$('#wordGlyph').attr('data-wordGlyphID', currentGlyphID)
+									$('#wordGlyph').attr('data-wordGender', currentwordGender)
+									$('#wordGlyph').attr('data-wordRec', currentwordRec)
+									allowServerSearch = false;	
+									setupDragDrop()
+									$('#wordSpinny').data('spinner').stop();
+									$('.spinner').remove();	
+								break;
+							}else{
+						//console.log(word + ' not found')
+						$('.spinner').remove();	
+						}
+					}
+				}catch(e){console.log('cant find words')}
+			}
+		}
+}
+
+function getWordAt(s, pos) { 
+	while (s[pos] == " ") pos--; pos = s.lastIndexOf(" ", pos) + 1;
+    var end = s.indexOf(" ", pos); if (end == -1) end = s.length; 
+	return s.substring(pos, end);
+}
+
+function getSelectionStart(o) {  
+	var iCaretPos = 0;
+	if (document.selection) {o.focus(); var oSel = document.selection.createRange(); oSel.moveStart('character', -o.value.length); iCaretPos = oSel.text.length;}  
+	else if (o.selectionStart || o.selectionStart == '0')iCaretPos = o.selectionStart;	
+	return iCaretPos;
+}
+
+function getSelectionEnd(o) {
+	if (o.createTextRange) {var r = document.selection.createRange().duplicate(); r.moveStart('character', -o.value.length)
+	return r.text.length
+	} else return o.selectionEnd
+}
+
+function setupDragDrop (){
+
+	var currentWordType = $('#wordGlyph').val()
+	var currentGlyphID = $('#wordGlyph').attr('name')
+	var wordGender = $('#wordGlyph').attr('data-wordGender')  
+	var wordRec = $('#wordGlyph').attr('data-wordRec') 
+	
+	$("#wordGlyph").draggable({
+		helper: "clone",
+		stack: "#draggable",
+		zIndex: 20000500,
+	});
+	
+	for (var part = 0; part < 3; part++){
+		
+		(function (part){
+		
+			var src = String($('#partTypeImage'+part+'').attr('src'))				
+			if ((src == 'img/player/Hexagon.png') == true){var partType = 'Hex'; $('#partDiv'+part+'Confirm').attr('src', 'img/player/HexagonPart-DROP.png'); $('#partDiv'+part+'Error').attr('src', "img/player/HexagonPart-NODROP.png");}
+			if ((src == 'img/player/Circle.png') == true){var partType = 'Circle'; $('#partDiv'+part+'Confirm').attr('src', 'img/player/CirclePart-DROP.png'); $('#partDiv'+part+'Error').attr('src', "img/player/CirclePart-NODROP.png");}
+		
+			$('#partDiv'+part+'').droppable({
+			drop: function( event, ui ) {		 
+				validateDragDrop(part, currentGlyphID, currentWordType, partType)
+				$('#partDiv'+part+'Error').fadeOut(300)
+				$('#partDiv'+part+'Confirm').fadeOut(300)
+				saveMashInfo()
+
+					
+				$( '#partTypeImage'+part+'' ).hover(function() {
+					$('#partTypeImage'+part+'Hover').fadeIn( 100 );
+				});	
+					
+				
+			},
+			
+			over: function(event, ui) {
+			
+				if (partType == 'Hex'){	
+					if (currentWordType == 'word_noun' || currentWordType == 'word_preposition' || currentWordType == 'word_adjective' || currentWordType == 'word_object' || currentWordType == 'word_ordinal' || currentWordType == ''){
+						$('#partDiv'+part+'Confirm').fadeIn(300)
+					}else{			
+						$('#partDiv'+part+'Error').fadeIn(300)
+					}	
+				}
+															
+				if (partType == 'Circle'){	
+					if (currentWordType == 'word_verb' || currentWordType == 'word_adverb'){
+						$('#partDiv'+part+'Confirm').fadeIn(300)
+					}else{			
+						$('#partDiv'+part+'Error').fadeIn(300)
+					}	
+				}
+			},	
+			 
+			 out: function(event, ui) {
+				$('#partDiv'+part+'Error').fadeOut(300)
+				$('#partDiv'+part+'Confirm').fadeOut(300)
+			}		
+		});	
+		
+		if (partType == 'Hex'){
+		
+			if (currentWordType.indexOf('adjective') >= 0){
+			
+					$('#part'+part+'HexWordSecondary1').droppable({
+						drop: function( event, ui ) {		 
+							///$('#part'+part+'HexWordSecondary1').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+							$('#partDiv'+part+'Error').fadeOut(300)
+							$('#partDiv'+part+'Confirm').fadeOut(300)	
+							$('#part'+part+'HexWordSecondary1').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+							var wordID = $('#wordGlyph').attr('data-wordID')
+							var wordType = $('#wordGlyph').attr('data-wordType') 
+							var wordGlyph = $('#wordGlyph').attr('data-wordGlyph') 
+							$('#part'+part+'HexWordSecondary1').css('opacity', '0.9');		//was word_secondary1
+							$('#part'+part+'HexWordSecondary1').attr('data-wordID', wordID)
+							$('#part'+part+'HexWordSecondary1').attr('data-wordType', wordType)
+							$('#part'+part+'HexWordSecondary1').attr('data-wordGlyphID', wordGlyph)
+							$('#part'+part+'HexWordSecondary1').attr('data-wordGender', wordGender)
+							$('#part'+part+'HexWordSecondary1').attr('data-wordRec', wordRec)
+							$('#part'+part+'HexWordSecondary1').attr('data-wordPartPosition', '6')
+							$('#part'+part+'HexWordSecondary1').attr('name', 'HexWordSecondary1')
+							$('#part'+part+'HexWordSecondary1').addClass('Word extraWord')	
+							$('#flap'+part+'6').css('opacity', '1');
+							
+							console.log('Dropped! ' + wordGender);
+							
+
+							
+							saveMashInfo()								
+						},
+						
+						over: function(event, ui) {
+							///console.log('hovering word_secondary1')
+							$('#partDiv'+part+'Error').fadeOut(300)
+							$('#partDiv'+part+'Confirm').fadeOut(300)
+							
+						},	
+						 
+						 out: function(event, ui) {
+							$('#partDiv'+part+'Confirm').fadeIn(300)
+						}		
+					});
+
+					$('#part'+part+'HexWordSecondary2').droppable({
+						drop: function( event, ui ) {		 
+							///$('#part'+part+'HexWordSecondary2').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+							$('#partDiv'+part+'Error').fadeOut(300)
+							$('#partDiv'+part+'Confirm').fadeOut(300)			
+							$('#part'+part+'HexWordSecondary2').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+							$('#part'+part+'HexWordSecondary2').css('opacity', '0.9');
+							$('#part'+part+'HexWordSecondary2').attr('value', currentWordType) 
+							$('#part'+part+'HexWordSecondary2').attr('data-wordID', $('#wordGlyph').attr('data-wordID'))
+							$('#part'+part+'HexWordSecondary2').attr('data-wordType', $('#wordGlyph').attr('data-wordType'))
+							$('#part'+part+'HexWordSecondary2').attr('data-wordGlyphID', $('#wordGlyph').attr('data-wordGlyphID')	)
+							$('#part'+part+'HexWordSecondary2').attr('data-wordPartPosition', '1')
+							$('#part'+part+'HexWordSecondary2').attr('data-wordGender', wordGender)
+							$('#part'+part+'HexWordSecondary2').attr('data-wordRec', wordRec)
+							$('#part'+part+'HexWordSecondary2').attr('name', 'HexWordSecondary2')
+							$('#part'+part+'HexWordSecondary2').addClass('Word extraWord')	
+							$('#flap'+part+'1').css('opacity', '1');
+							saveMashInfo()	
+							
+							console.log('Dropped! ' + wordGender);
+						},
+						
+						over: function(event, ui) {
+							console.log('hovering word_secondary2')	
+							$('#partDiv'+part+'Confirm').fadeIn(300)
+						},	
+						 
+						 out: function(event, ui) {
+							$('#partDiv'+part+'Error').fadeOut(300)
+							$('#partDiv'+part+'Confirm').fadeOut(300)
+						}		
+					});
+					
+				}
+				
+			if (currentWordType.indexOf('preposition') >= 0){
+			
+					$('#part'+part+'HexWordPreposition').droppable({
+						drop: function( event, ui ) {		 
+							///$('#part'+part+'HexWordSecondary1').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+							$('#partDiv'+part+'Error').fadeOut(300)
+							$('#partDiv'+part+'Confirm').fadeOut(300)	
+							$('#part'+part+'HexWordPreposition').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+							var wordID = $('#wordGlyph').attr('data-wordID')
+							var wordType = $('#wordGlyph').attr('data-wordType') 
+							var wordGlyph = $('#wordGlyph').attr('data-wordGlyph') 
+							$('#part'+part+'HexWordPreposition').css('opacity', '0.9');		//was word_secondary1
+							$('#part'+part+'HexWordPreposition').attr('data-wordID', wordID)
+							$('#part'+part+'HexWordPreposition').attr('data-wordType', wordType)
+							$('#part'+part+'HexWordPreposition').attr('data-wordGlyphID', wordGlyph)
+							$('#part'+part+'HexWordPreposition').attr('data-wordGender', wordGender)
+							$('#part'+part+'HexWordPreposition').attr('data-wordRec', wordRec)
+							$('#part'+part+'HexWordPreposition').attr('data-wordPartPosition', '4')
+							$('#part'+part+'HexWordPreposition').attr('name', 'HexWordPreposition') 
+							$('#part'+part+'HexWordPreposition').addClass('Word extraWord')							
+							$('#flap'+part+'4').css('opacity', '1');
+							saveMashInfo()								
+						},
+						
+						over: function(event, ui) {
+							console.log('hovering word_secondary1')
+							$('#partDiv'+part+'Error').fadeOut(300)
+							$('#partDiv'+part+'Confirm').fadeOut(300)
+							
+						},	
+						 
+						 out: function(event, ui) {
+							$('#partDiv'+part+'Confirm').fadeIn(300)
+						}		
+					});
+
+					$('#part'+part+'HexWordSecondary2').droppable({
+						drop: function( event, ui ) {		 
+							///$('#part'+part+'HexWordSecondary2').attr('src', 'http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+							$('#partDiv'+part+'Error').fadeOut(300)
+							$('#partDiv'+part+'Confirm').fadeOut(300)			
+							$('#part'+part+'HexWordSecondary2').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+							$('#part'+part+'HexWordSecondary2').css('opacity', '0.9');
+							$('#part'+part+'HexWordSecondary2').attr('value', currentWordType) 
+							$('#part'+part+'HexWordSecondary2').attr('data-wordID', $('#wordGlyph').attr('data-wordID'))
+							$('#part'+part+'HexWordSecondary2').attr('data-wordType', $('#wordGlyph').attr('data-wordType'))
+							$('#part'+part+'HexWordSecondary2').attr('data-wordGlyphID', $('#wordGlyph').attr('data-wordGlyphID')	)
+							$('#part'+part+'HexWordSecondary2').attr('data-wordPartPosition', '1')
+							$('#part'+part+'HexWordSecondary2').attr('data-wordGender', wordGender)
+							$('#part'+part+'HexWordSecondary2').attr('data-wordRec', wordRec)
+							$('#part'+part+'HexWordSecondary2').attr('name', 'HexWordSecondary2') 
+							$('#part'+part+'HexWordSecondary2').addClass('Word extraWord')
+							$('#flap'+part+'1').css('opacity', '1');
+							saveMashInfo()	
+						},
+						
+						over: function(event, ui) {
+							console.log('hovering word_secondary2')	
+							$('#partDiv'+part+'Confirm').fadeIn(300)
+						},	
+						 
+						 out: function(event, ui) {
+							$('#partDiv'+part+'Error').fadeOut(300)
+							$('#partDiv'+part+'Confirm').fadeOut(300)
+						}		
+					});
+					
+				}	
+				
+		}else if (partType == 'Circle'){
+				
+			if (currentWordType.indexOf('adverb') >= 0){	
+				
+				$('#part'+part+'CircleWordSecondaryAdverb').droppable({
+				drop: function( event, ui ) {		 
+					$('#partDiv'+part+'Error').fadeOut(300)
+					$('#partDiv'+part+'Confirm').fadeOut(300)			
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+					$('#part'+part+'CircleWordSecondaryAdverb').css('opacity', '0.9');
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('value', currentWordType) 
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('data-wordID', $('#wordGlyph').attr('data-wordID'))
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('data-wordType', $('#wordGlyph').attr('data-wordType'))
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('data-wordGlyphID', $('#wordGlyph').attr('data-wordGlyphID')	)
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('data-wordPartPosition', '5')
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('data-wordGender', wordGender)
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('data-wordRec', wordRec)
+					$('#part'+part+'CircleWordSecondaryAdverb').attr('name', 'CircleWordSecondaryAdverb')
+					$('#part'+part+'CircleWordSecondaryAdverb').addClass('Word extraWord') 								
+					$('#flap'+part+'5').css('opacity', '1');
+					saveMashInfo()	
+				},
+				
+				over: function(event, ui) {
+					console.log('hovering CircleWordSecondaryAdverb')
+					$('#partDiv'+part+'Confirm').fadeIn(300)					
+				},	
+				 
+				 out: function(event, ui) {
+					$('#partDiv'+part+'Error').fadeOut(300)
+					$('#partDiv'+part+'Confirm').fadeOut(300)
+				}		
+			});
+			
+			}
+			
+			if (currentWordType.indexOf('interrogative') >= 0){		
+				$('#part'+part+'CircleWordSecondaryQuestion').droppable({
+				drop: function( event, ui ) {		 
+					$('#partDiv'+part+'Error').fadeOut(300)
+					$('#partDiv'+part+'Confirm').fadeOut(300)			
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+					$('#part'+part+'CircleWordSecondaryQuestion').css('opacity', '0.9');
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('value', currentWordType) 
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('data-wordID', $('#wordGlyph').attr('data-wordID'))
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('data-wordType', $('#wordGlyph').attr('data-wordType'))
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('data-wordGlyphID', $('#wordGlyph').attr('data-wordGlyphID')	)
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('data-wordPartPosition', '1')
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('data-wordGender', wordGender)
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('data-wordRec', wordRec)
+					$('#part'+part+'CircleWordSecondaryQuestion').attr('name', 'CircleWordSecondaryQuestion') 
+					$('#part'+part+'CircleWordSecondaryQuestion').addClass('Word extraWord') 
+					$('#flap'+part+'1').css('opacity', '1');
+					$('#part'+part+'CircleModQuestion').attr('src',"img/player/mod_interrogative_1.png")
+					saveMashInfo()	
+				},
+				
+				over: function(event, ui) {
+					console.log('hovering CircleWordSecondaryQuestion')
+					$('#partDiv'+part+'Confirm').fadeIn(300)					
+				},	
+				 
+				 out: function(event, ui) {
+					$('#partDiv'+part+'Error').fadeOut(300)
+					$('#partDiv'+part+'Confirm').fadeOut(300)
+				}		
+			});
+			
+			}
+		
+		if (currentWordType == "word_verb"){
+		console.log('TESTINGHERE currentWordType ' + currentWordType)
+			$('#part'+part+'CircleWordSecondaryVerb').droppable({
+				drop: function( event, ui ) {		 
+					$('#partDiv'+part+'Error').fadeOut(300)
+					$('#partDiv'+part+'Confirm').fadeOut(300)			
+					$('#part'+part+'CircleWordSecondaryVerb').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+					$('#part'+part+'CircleWordSecondaryVerb').css('opacity', '0.9');
+					$('#part'+part+'CircleWordSecondaryVerb').attr('value', currentWordType) 
+					$('#part'+part+'CircleWordSecondaryVerb').attr('data-wordID', $('#wordGlyph').attr('data-wordID'))
+					$('#part'+part+'CircleWordSecondaryVerb').attr('data-wordType', 'word_verb')
+					$('#part'+part+'CircleWordSecondaryVerb').attr('data-wordGlyphID', $('#wordGlyph').attr('data-wordGlyphID')	)
+					$('#part'+part+'CircleWordSecondaryVerb').attr('data-wordPartPosition', '3')
+					$('#part'+part+'CircleWordSecondaryVerb').attr('data-wordGender', wordGender)
+					$('#part'+part+'CircleWordSecondaryVerb').attr('data-wordRec', wordRec)
+					$('#part'+part+'CircleWordSecondaryVerb').attr('name', 'CircleWordSecondaryVerb') 
+					$('#flap'+part+'1').css('opacity', '1');
+					
+					console.log('Dropped! ' + wordGender);
+					
+					saveMashInfo();
+				},
+				
+				over: function(event, ui) {
+					console.log('hovering CircleWordSecondaryVerb')	
+					$('#partDiv'+part+'Confirm').fadeIn(300)
+				},	
+				 
+				 out: function(event, ui) {
+					$('#partDiv'+part+'Error').fadeOut(300)
+					$('#partDiv'+part+'Confirm').fadeOut(300)
+				}		
+			});				
+			}
+		}				
+		}) (part);		
+	}	
+}
+
+function validateDragDrop(part, currentGlyphID, currentWordType, type){
+
+	var wordType = $('#wordGlyph').attr('data-wordType')	
+	var wordID = $('#wordGlyph').attr('data-wordID')
+	var glyphID = $('#wordGlyph').attr('data-wordGlyphID')
+	var wordGender = $('#wordGlyph').attr('data-wordGender')
+	var wordRec = $('#wordGlyph').attr('data-wordRec')
+	console.log('GENDER IS ' + wordGender )
+	///console.log('type ' + type)
+	//console.log('currentWordType ' + currentWordType)
+	
+	if (type == 'Hex' && currentWordType == 'word_noun' || type == 'Hex' &&  currentWordType == 'word_object' ){
+		$('#mainWord'+part+'').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'') 
+		$('#mainWord'+part+'').attr('value', $('#wordGlyph').attr('data-wordType'))
+		$('#mainWord'+part+'').attr('data-wordID', wordID)
+		$('#mainWord'+part+'').attr('data-wordType', 'word_noun')
+		$('#mainWord'+part+'').attr('data-wordGlyphID', glyphID) 
+		$('#mainWord'+part+'').attr('data-wordGender', wordGender) 
+		$('#mainWord'+part+'').attr('data-wordRec', wordRec) 
+		$('#mainWord'+part+'').attr('name', 'Word')	
+		$('#mainWord'+part+'').attr('data-wordPartPosition', '0')
+		$('#mainWord'+part+'').addClass('Word ')	
+		$('#partTypeImage'+part+'').removeClass("maleGenderGlow")
+		$('#partTypeImage'+part+'').removeClass("femaleGenderGlow")
+		$('#partTypeImage'+part+'').removeClass("neuterGenderGlow")
+		
+		if(wordGender == 'Masculine'){
+			$('#partTypeImage'+part+'').addClass("maleGenderGlow")
+		}else if(wordGender == 'Feminine'){
+			$('#partTypeImage'+part+'').addClass("femaleGenderGlow")
+		}else if (wordGender == 'Neuter'){
+			$('#partTypeImage'+part+'').addClass("neuterGenderGlow")}
+		
+		$('#mainWord'+part+'').css('opacity', '0.9');
+		console.log('dropped main word')
+		
+	}else if (type == 'Circle' && currentWordType == 'word_verb'){
+		$('#mainWord'+part+'').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+		$('#mainWord'+part+'').attr('value', wordType) 
+		$('#mainWord'+part+'').attr('data-wordID', wordID)
+		$('#mainWord'+part+'').attr('data-wordType', 'word_verb')
+		$('#mainWord'+part+'').attr('data-wordGlyphID', glyphID)
+		$('#mainWord'+part+'').attr('data-wordGender', wordGender) 
+		$('#mainWord'+part+'').attr('data-wordRec', wordRec) 
+		$('#mainWord'+part+'').attr('name', 'Word')	
+		$('#mainWord'+part+'').attr('data-wordPartPosition', '0')			
+		$('#mainWord'+part+'').addClass('Word')
+		$('#mainWord'+part+'').css('opacity', '0.9');
+		console.log('dropped main verb')		
+	}else if (type == 'Hex' && currentWordType == 'word_ordinal'){
+		$('#part'+part+'HexWordOrdinal').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+		$('#part'+part+'HexWordOrdinal').attr('value', $('#wordGlyph').attr('data-wordType'))
+		$('#part'+part+'HexWordOrdinal').attr('data-wordID', $('#wordGlyph').attr('data-wordID'))
+		$('#part'+part+'HexWordOrdinal').attr('data-wordType', 'word_ordinal')
+		$('#part'+part+'HexWordOrdinal').attr('data-wordGlyphID', $('#wordGlyph').attr('data-wordGlyphID')) 
+		$('#part'+part+'HexWordOrdinal').attr('name', 'HexWordOrdinal')
+		$('#part'+part+'HexWordOrdinal').attr('data-wordGender', wordGender)
+		$('#part'+part+'HexWordOrdinal').attr('data-wordRec', wordRec)				
+		$('#part'+part+'HexWordOrdinal').attr('data-wordPartPosition', '3')		
+		$('#part'+part+'HexWordOrdinal').css('opacity', '0.9');
+		$('#part'+part+'HexWordOrdinal').addClass('Word extraWord') //added late
+		$('#flap'+part+'3').css('opacity', '1');
+		console.log('dropped word_ordinal')				
+	}
+	else if (type == 'Hex' && currentWordType == 'word_preposition'){
+		$('#part'+part+'HexWordPreposition').attr('src','http://dev.teanga-webapp.appspot.com/glyph_serve?id='+currentGlyphID+'')
+		$('#part'+part+'HexWordPreposition').attr('data-wordID', $('#wordGlyph').attr('data-wordID'))
+		$('#part'+part+'HexWordPreposition').attr('data-wordType', $('#wordGlyph').attr('data-wordType'))
+		$('#part'+part+'HexWordPreposition').attr('data-wordGlyphID', $('#wordGlyph').attr('data-wordGlyphID')	) 
+		$('#part'+part+'HexWordPreposition').attr('data-wordType', 'word_preposition')
+		$('#part'+part+'HexWordPreposition').attr('data-wordPartPosition', '4')	
+		$('#part'+part+'HexWordPreposition').attr('data-wordGender', wordGender)
+		$('#part'+part+'HexWordPreposition').attr('data-wordRec', wordRec)				
+		$('#part'+part+'HexWordPreposition').attr('name', 'HexWordPreposition') 
+		$('#part'+part+'HexWordPreposition').css('opacity', '0.9');
+		$('#part'+part+'HexWordPreposition').addClass('Word extraWord')
+		$('#flap'+part+'4').css('opacity', '1');
+		console.log('dropped prep')
+	}else{	
+		$('#partDivValidate'+part+'').fadeIn(500)
+		setTimeout(function(){ $('#partDivValidate'+part+'').fadeOut(500) }, 3000);
+		console.log('Word cannot go here.')
+	}	
+	
+	saveMashInfo()
+}			
+
+function saveAll(){
+	console.log('Saving all')
+	saveModuleInfo()
+	saveStepInfo('saveExisting')
+	saveMashInfo()
+}
+
+function saveModuleInfo(){
+		
+	console.log('SAVING MODULE INFO')
+		
+	var moduleTitle = $('#moduleSelect').val()
+	//var moduleArtworkURL = $('#moduleArtwork').val()
+	var moduleArtworkURL = currentModuleArtworkURL
+	var moduleStepCount = currentModuleStepCount
+	newModuleArtURL = moduleArtworkURL 
+	
+	console.log('moduleArtworkURL ' + moduleArtworkURL)
+		
+	//if (moduleArtworkURL == 'null' || moduleArtworkURL == 'undefined' || moduleArtworkURL == '' || moduleArtworkURL == '()' ){
+	//	var moduleArtworkURL = 'img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png' }
+	
+	//if (moduleArtworkURL.indexOf('Hex') == -1 || moduleArtworkURL.indexOf('Circle') == -1 ){
+	//	var moduleArtworkURL = 'img/bg/CHAPPI-TEANGA-MONKEY-SMALL-WHITE.png' }
+		
+	if (moduleTitle == 'null' || moduleTitle == 'undefined' || moduleTitle == ''){	
+		var moduleTitle = $('#moduleSelect').attr('placeholder');  
+		}
+	
+	var userAdminLanguage = "{{user.UserAdminLanguageID}}";			
+	//if (userAdminLanguage == 2){var curLang = 'fre'}		//REVIEW - MAKE SURE THESE NUMBERS ARE CORRECT
+	///if (userAdminLanguage == 1){var curLang = 'eng'}
+	//if (userAdminLanguage == 4){var curLang = 'gle'}
+	//if (userAdminLanguage == 3){var curLang = 'ger'}
+	
+	var UserLearningLanguageID = "{{user.UserLearningLanguageID}}";
+	var UserType = "{{user.UserType}}";
+	
+	//if (UserType == 'USER_CURATOR' && UserLearningLanguageID == 2){var curLang = 'fre'}		//REVIEW - MAKE SURE THESE NUMBERS ARE CORRECT
+	//if (UserType == 'USER_CURATOR' && UserLearningLanguageID == 1){var curLang = 'eng'}
+	//if (UserType == 'USER_CURATOR' && UserLearningLanguageID == 4){var curLang = 'gle'}
+	//if (UserType == 'USER_CURATOR' && UserLearningLanguageID == 3){var curLang = 'ger'}
+	
+				{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){		
+					$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					//$('#newUserMenuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					curLang = '{{lang.LanguageISOCode}}'
+				}
+			{% endfor %}
+		
+										
+					var fd = new FormData()
+					fd.append('moduleID', currentModuleID)
+					fd.append('moduleLanguage', curLang)
+					fd.append('moduleTitle', moduleTitle)
+					fd.append('moduleArtworkURL', newModuleArtURL)
+					fd.append('moduleStatus', 'OK')
+					fd.append('moduleStepCount', currentModuleStepCount)
+					
+					$.ajax({
+						type: 'POST',
+						url: '/saveModule',
+						data: fd,
+						cache: false,
+						processData: false,
+						contentType: false
+					}).done(function(data) {
+						  // console.log('post complete:'+currentModuleID)
+					});
+}
+
+var stepRefAuto
+var stepReqRating
+
+function saveStepInfo(command){
+	
+	console.log('Saving step')
+	
+	var stepTitle = $('#stepTitle').val()
+	var currentStepRecording = currentStepRecording
+	
+	//if ($('#stepReqRating').prop('checked') == true){var stepReqRating = 'YES'}else{var stepReqRating = 'NO'}
+	//if ($('#stepReqAudio').prop('checked') == true){var stepReqAudio = 'YES'; $('#stepReqRatingDiv').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast');}else{var stepReqAudio = 'NO'; $('#stepReqRatingDiv').css({opacity: 1, visibility: "hidden"}).animate({opacity: 0}, 'fast'); }
+	
+	//if ($('#stepRefAuto').prop('checked') == true){var stepRefAuto = 'YES'}else{var stepRefAuto = 'NO'}
+	//if ($('#stepReqReference').prop('checked') == true){var stepReqReference = 'YES'; $('#stepRefAutoDiv').css({opacity: 0, visibility: "visible"}).animate({opacity: 1}, 'fast');}else{var stepReqReference = 'NO'; $('#stepRefAutoDiv').css({opacity: 1, visibility: "hidden"}).animate({opacity: 0}, 'fast'); }
+	
+	
+	if ($('#stepReqRating').prop('checked') == true){var stepReqRating = 'YES'}else{var stepReqRating = 'NO'}
+	if ($('#stepReqAudio').prop('checked') == true){var stepReqAudio = 'YES';  $('#stepReqRatingDiv').css({visibility: "visible"})}else{var stepReqRating = 'NO'; var stepReqAudio = 'NO'; $('#stepReqRatingDiv').css({visibility: "hidden"})}
+
+
+	if ($('#stepRefAuto').prop('checked') == true){var stepRefAuto = 'YES'}else{var stepRefAuto = 'NO'}
+	if ($('#stepReqReference').prop('checked') == true){var stepReqReference = 'YES'; $('#stepRefAutoDiv').css({visibility: "visible"})}else{var stepRefAuto = 'NO'; var stepReqReference = 'NO'; $('#stepRefAutoDiv').css({visibility: "hidden"})}
+	
+	
+	//if ($('#stepReqRating').prop('checked') == true){var stepReqRating = 'YES'}else{stepReqRating = 'NO'}
+	//if ($('#stepReqAudio').prop('checked') == true){var stepReqAudio = 'YES'; $('#stepReqRatingDiv').css("visibility", 'visible');}
+	//if ($('#stepRefAuto').prop('checked') == true){var stepRefAuto = 'YES';}else{var stepRefAuto = 'NO'}
+		
+	//else{var stepReqAudio = 'NO'; stepReqRating = 'NO';$('#stepReqRatingDiv').css("visibility", 'hidden');}	
+	//if ($('#stepRefAuto').prop('unchecked') == true){var stepRefAuto = 'NO'}else{stepRefAuto = 'NO'}
+	//if ($('#stepRefAuto').prop('checked') == true){var stepRefAuto = 'YES'}else{stepRefAuto = 'NO'}
+	
+	///var stepReqReference = 'NO'; stepRefAuto = 'NO'; $('#stepRefAutoDiv').css("visibility", 'hidden');}
+		
+	//if ($('#stepReqAudio').prop('unchecked') == true){var stepReqAudio = 'NO'; var stepReqRating = 'NO'; $('#stepReqAudio').css("visibility", 'hidden');}
+	//if ($('#stepReqAudio').prop('checked') == true){var stepReqAudio = 'YES';  $('#stepReqRatingDiv').css("visibility", 'visible');}
+	//if ($('#stepReqRating').prop('checked') == true){var stepReqRating = 'YES'}else{stepReqRating = 'NO'}
+	
+	//if ($('#stepReqReference').prop('unchecked') == true){var stepReqReference = 'NO'; var stepRefAuto = 'NO'; $('#stepRefAutoDiv').css("visibility", 'hidden');}
+	//if ($('#stepReqReference').prop('checked') == true){var stepReqReference = 'YES'; $('#stepRefAutoDiv').css("visibility", 'visible');}
+	//if ($('#stepRefAuto').prop('checked') == true){var stepRefAuto = 'YES'}else{var stepRefAuto = 'NO'}
+	
+	
+	//if ($('#stepReqRating').prop('checked') == true){var stepReqRating = 'YES'}else{var stepReqRating = 'NO'}
+	//if ($('#stepReqAudio').prop('checked') == true){var stepReqAudio = 'YES';}else{var stepReqAudio = 'NO'; }
+	///if ($('#stepRefAuto').prop('checked') == true){var stepRefAuto = 'YES'}else{var stepRefAuto = 'NO'}
+	//if ($('#stepReqReference').prop('checked') == true){var stepReqReference = 'YES'; }else{var stepReqReference = 'NO';}
+
+	if ($('#stepTitle').val() == ''){
+		var moduleTitle = $('#moduleSelect').attr('placeholder'); 
+	}else{
+		moduleTitle = $('#stepTitle').val()
+	}
+	
+	if ($('#moduleArtworkURL').val() == ''){
+		var moduleArtworkURL = $('#moduleArtworkURL').attr('placeholder'); 
+	}else{
+		moduleArtworkURL = $('#moduleArtworkURL').val()
+	}
+			
+	if (currentStepRecording == 'null' || currentStepRecording == 'undefined' || currentStepRecording == '' ){
+		var currentStepRecording = 'No Recording'}
+		
+	if (stepTitle == 'null' || stepTitle == 'undefined' || stepTitle == ''){
+		var stepTitle = 'Step not yet named'}
+		
+				$.get('/getUploadLink?moduleID='+currentModuleID, function(data){			//moduleKeys[i]
+					var url = data['data']
+					var moduleID = data['moduleID']
+					
+					if (currentModuleStepData == 'undefined' || currentModuleStepData == 'null' ){
+						currentModuleStepData = 1
+					}
+												
+					var fd = new FormData()
+					fd.append('StepRatingConfig', stepReqRating)
+					fd.append('StepReferenceConfig', stepReqReference)
+					fd.append('StepRecordingConfig', stepReqAudio)
+					fd.append('StepRefAutoConfig', stepRefAuto)
+					fd.append('ModuleCreationLanguage', curatorLanguage)
+								
+					console.log('stepReqReference - ' + stepReqReference)
+					console.log('stepRefAuto - ' + stepRefAuto)
+					console.log('stepReqAudio - ' + stepReqAudio)
+					console.log('curatorLanguage - ' + curatorLanguage)
+
+									
+					if (newBlob == true){
+						fd.append('audio', mp3Blob)												
+					}else{
+						console.log('NOT SENDING BLOB')
+					}						
+						
+					console.log('STEPNUMBER ' + currentStepNumber);	
+						
+					fd.append('StepRefVoiceURL', StepRefVoiceURL)
+					fd.append('StepTitle', String($('#stepTitle').val()))
+					fd.append('StepModuleID', currentModuleID)
+					fd.append('StepData', stepJSON )
+					fd.append('StepID', currentStepID )
+					fd.append('StepNumber', currentStepNumber)	
+					fd.append('Command', command)						
+					
+					$.ajax({
+						type: 'POST',
+						url: url,
+						data: fd,
+						cache: false,
+						processData: false,
+						contentType: false
+					}).done(function(data) {
+					
+						if (newBlob == true){ // && finishedRecording == false
+							
+							nowRecording = false;	
+							
+							//console.log($('#spinnerContainer').spin())
+							console.log(currentBuffer)
+							
+							playAudio(currentBuffer);
+							
+							console.log('turning spinner off')
+							
+							$('#spinnerContainer').spin("modal")
+							
+							try{
+								$('#spinnerContainer').data('spinner').stop();
+								$(".spinner").remove();							
+							}catch(e){
+							
+							console.log('tried to stop spinner but failed')
+							}
+						}								
+					
+						mp3Blob = ''		
+						newBlob = false		
+						$( ".listEl" ).addClass('enabled')
+						//$( ".listEl" ).closest('li').addClass('active')	
+						//$( ".listEl" ).addClass('active')							
+					});
+				})
+				
+		
+			}
+
+function saveMashInfo(){
+
+	var mashMeaningText = $('#mashMeaningText').val()
+	console.log('mashMeaningText')
+	//console.log(mashMeaningText)
+
+	var obj = JSON.parse(stepJSON)
+	
+	var JSONString = '['	
+			
+	for (var part = 0; part < 3; part++){
+
+		activateModInfo = []
+		activateWordInfo = []
+						
+				var partActiveModArray = $('#partDiv'+part+'').find('.Mod')
+				for (var t = 0; t < partActiveModArray.length; t++ ){
+					var id = partActiveModArray[t].id
+					console.log('found ' + partActiveModArray[t])
+					var op = $('#'+partActiveModArray[t].id+'').css("opacity")			
+						if (op == '0.9'){
+							activateModInfo.push([[part],[partActiveModArray[t].currentSrc]])
+							console.log(partActiveModArray[t])
+							}
+				}	
+				
+				var partActiveWordArray = $('#partDiv'+part+'').find('.Word')
+				for (var t = 0; t < partActiveWordArray.length; t++ ){
+					var id = partActiveWordArray[t].id
+					var op = $('#'+partActiveWordArray[t].id+'').css("opacity")
+					var src = partActiveWordArray[t].currentSrc
+						if (src.indexOf('blank') == -1 ){ //(op == '0.9' && 
+							activateWordInfo.push([[part],[src], [$('#'+partActiveWordArray[t].id+'').attr('data-wordType')], [$('#'+partActiveWordArray[t].id+'').attr('data-wordID')], [$('#'+partActiveWordArray[t].id+'').attr('data-wordPartPosition')], [$('#'+partActiveWordArray[t].id+'').attr('data-wordGender')], [$('#'+partActiveWordArray[t].id+'').attr('data-wordRec')]])
+						//	console.log(partActiveWordArray[t])
+						//	console.log(partActiveWordArray[t].currentSrc)
+						//	console.log($('#'+partActiveWordArray[t].id+'').attr('data-wordPartPosition'))
+						//	console.log($('#'+partActiveWordArray[t].id+'').attr('data-wordID'))
+						}
+				}		
+	
+		var mashJSON = obj.data[currentStepNumber].StepMash.MashPart
+		var mashPartHeader = JSON.parse(mashJSON)		
+		var noOfWords = activateWordInfo.length		
+		var partType = $('#partDiv'+part+'').attr('name')
+		
+		try {var wordImageURL = $('#mainWord'+part+'').attr('src')}catch(e){var wordImageURL = 'img/player/blank.gif'}
+		var wordType = $('#mainWord'+part+'').attr('value')
+		
+			JSONString += '{"PartType":"'+partType+'",'		
+			JSONString += '"Word": ['
+					
+			if (noOfWords == 0){JSONString +=']'}
+									
+		for (var a = 0; a < activateWordInfo.length; a++){
+			
+			if (activateWordInfo[a][0] == part){			//WORDS
+							
+				var wordID = String(activateWordInfo[a][3])
+				var wordType = String(activateWordInfo[a][2])
+				var wordURL = activateWordInfo[a][1]
+				var wordPartPosition = activateWordInfo[a][4]
+				var wordGender = activateWordInfo[a][5]
+				var wordRec = activateWordInfo[a][6]
+				
+				var wordString = ''
+				wordString = 	'{'
+				wordString +=	'"WordID":"'+wordID+'",' 			//fix word id
+				wordString +=	'"WordImageURL":"'+String(wordURL)+'",' 
+				wordString +=	'"WordType":"'+wordType+'",'  
+				wordString +=	'"WordSubtype":"Word",'
+				wordString +=	'"WordPartPosition":"'+wordPartPosition+'",'
+				wordString +=	'"WordGender":"'+wordGender+'",'
+				wordString +=	'"WordRec":"'+wordRec+'",'
+				wordString +=	'"Mod": []'								
+				JSONString +=	''+wordString+''
+																	
+								for (var mod = 0; mod < activateModInfo.length; mod++){			//MODS
+									
+									var arrayLength = activateModInfo.length - 1;
+							
+									console.log('Creating mod');
+									console.log('wordPartPosition ' + wordPartPosition);
+									console.log('a ' + a);
+									
+									console.log(activateModInfo);
+							
+											var modText = String(activateModInfo[mod][1])	
+											console.log('Creating mod ' + modText);
+
+											if (activateModInfo[mod][0] == part && a < 1 && modText.indexOf('compsuper') <= 0 && modText != '') {	//&& activateModInfo[t][1].indexOf('compsuper') == 0
+												
+												var lastCharacter = JSONString.slice(-1);
+												var lastTwoChar = JSONString.slice(-2);
+												
+												if (lastTwoChar == '[]'){ 
+													JSONString = JSONString.substring(0, JSONString.length - 1);									
+												}else if (lastTwoChar == '}]'){
+													JSONString = JSONString.substring(0, JSONString.length - 1);		
+													JSONString += ','												
+												}
+																																			
+												var modText= String(activateModInfo[mod][1])		
+												
+																																														
+												if (modText.indexOf('article') >= 0){var modType = 'MOD_ARTICLE';}
+												if (modText.indexOf('plural') >= 0){var modType = 'MOD_PLURAL';}
+												if (modText.indexOf('negative') >= 0){var modType = 'MOD_NEGATIVE';}
+												if (modText.indexOf('interrogative') >= 0){var modType = 'MOD_INTERROGATIVE';}
+												if (modText.indexOf('imperative') >= 0){var modType = 'MOD_IMPERATIVE';}
+												if (modText.indexOf('modal') >= 0){var modType = 'MOD_MODAL';}
+												if (modText.indexOf('tense') >= 0){var modType = 'MOD_TENSE';}
+												if (modText.indexOf('time') >= 0){var modType = 'MOD_TIME';}
+												if (modText.indexOf('dotty') >= 0){var modType = 'MOD_DOTTY';}
+												modState = modText.match(/\d+/)[0]							
+												
+												var modString =		'{'
+												modString +=		'"ModType":"'+modType+'",'
+												modString +=		'"ModState":"'+modState+'",'
+												modString +=		'"ModImageURL":"'+modText+'"'
+												modString +=		'},'
+												
+												var modLength =  parseInt(activateModInfo.length-2)
+													modString = modString.substring(0, modString.length - 1);
+													modString += ']'										
+																													
+												JSONString +=''+modString+''
+											
+											}else if (wordPartPosition == '6' && modText.indexOf('compsuper') >= 0  || wordPartPosition == '5'  && modText.indexOf('compsuper') >= 0 && a == 1){
+												
+												console.log('adding compsuper')
+												JSONString = JSONString.substring(0, JSONString.length - 1);
+												if (t == 1 ){JSONString = JSONString.substring(0, JSONString.length - 1);}	
+												
+												var modString =		'{'
+												modString +=		'"ModType": "MOD_COMPSUPER",'
+												modString +=		'"ModState": "MOD_COMPSUPER",'
+												modString +=		'"ModImageURL":"'+modText+'"'					///FIX
+												modString +=		'}]'												
+												JSONString +=''+modString+''
+											}else{
+												console.log('failed to add comsuper')
+											
+											}									
+									}
+						try {var nextWordPart = activateWordInfo[a+1][0]}catch(e){
+						var nextWordPart = 150}																
+					
+					if (a < activateWordInfo.length-1){ //was 
+					JSONString +=	'},'	
+					}else{
+					JSONString +=	'}]'
+					}													
+				}
+			}
+				if (nextWordPart == part){ wordString += '},'}else{	wordString += '}]}'}																															
+				JSONString +=	'}'								
+				if (part < 2){ JSONString += ','}										//If there is another part	
+		}					
+	
+		JSONString += ']'			
+		console.log(JSONString)
+		saveMash(mashMeaningText, currentStepNumber, mashVoiceURL, JSONString)
+}                                                             
+
+function saveMash(mashMeaningText, currentStepNumber, mashVoiceURL, JSONString ){
+		
+		var fd = new FormData()
+		fd.append('mashMeaningText', mashMeaningText)		
+		fd.append('mashID', mashID)
+		fd.append('StepData', stepJSON)
+		fd.append('StepNumber', currentStepNumber)	
+		fd.append('mashVoiceURL', mashVoiceURL)	
+		fd.append('MashValue', JSONString)
+		fd.append('StepID', currentStepID)
+						
+		$.ajax({
+			type: 'POST',
+			url: '/saveMash',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+		}).done(function(data) {
+			console.log(fd)
+		});
+	}		
+
+function changeStep(command){
+	
+	
+
+	
+	if (pauseForLoad == true){
+		console.log('disallowing add/remove - waiting 2s for load')	
+		return;
+	}
+	
+	console.log('changeStep - ' + command)
+	
+	pauseForLoad = true;
+	
+	setTimeout(function() {
+		pauseForLoad = false
+		console.log('allowing changestep')
+	}, 1000);	
+	
+
+
+	RefreshTable()
+	
+	if (currentStepRecording == 'null' || currentStepRecording == 'undefined' || currentStepRecording == '' ){
+		var currentStepRecording = 'No Recording'}
+		
+	if (stepTitle == 'null' || stepTitle == 'undefined' || stepTitle == ''){
+		var stepTitle = 'Step not yet named'}
+		
+				$.get('/getUploadLink?moduleID='+currentModuleID, function(data){			//moduleKeys[i]
+					var url = data['data']
+					var moduleID = data['moduleID']
+				
+					if (currentModuleStepData == 'undefined' || currentModuleStepData == 'null' ){
+						currentModuleStepData = 1
+					}
+					
+					var fd = new FormData()
+					fd.append('StepModuleID', currentModuleID)
+					fd.append('StepID', currentStepID )
+					fd.append('StepNumber', currentStepNumber)
+					fd.append('Command', command)
+					fd.append('ModuleCreationLanguage', curatorLanguage)
+					
+					$.ajax({
+						type: 'POST',
+						url: url,
+						data: fd,
+						cache: false,
+						processData: false,
+						contentType: false
+					}).done(function(data) {
+						
+						setTimeout(function(){
+									
+								if (command == 'add'){
+									populateStepInfo(currentModuleID, (currentStepNumber+1))
+									$('#playButton').fadeOut()
+								}else if (command == 'remove'){
+									populateStepInfo(currentModuleID, (0))
+								}
+						
+						}, 500);
+						
+					});
+				})				
+	}	
+	
+function removeCurrentStep() {
+	console.log('removing item')
+	
+	var title = $('#stepTitle').val()
+	var type = 'Step'
+				
+	var fd = new FormData()
+	fd.append('Id', currentStepID)
+	fd.append('type', type)	
+	fd.append('title', title)
+		
+	//console.log(fd)	
+						
+		$.ajax({
+			type:"GET",
+			url: '/removeItem',
+			data: fd,
+			cache: false,
+			processData: false,
+		}).done(function(data) {
+			setTimeout(function(){
+				populateStepInfo(currentModuleID, 0)
+			}, 500);		
+		})		
+}		
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67934815-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+		<style>
+			.select2-container .select2-choice .select2-chosen {
+				color: #555555;
+				font-size: 12px !important;
+				bottom: 6px !important;
+				position: relative !important; 
+			}
+			
+			.select2-container {
+				top: 2px;
+			}
+			
+			.select2-container .select2-choice {
+				height: 31px;
+			}
+			
+			#breadcrumb a {
+				font-size: 11px;
+			}
+			
+			.dd-container {
+				position: absolute;
+				display: inline-block;
+				height: 30px;
+			}
+			
+			.dd-select {
+				background-color: #fff;
+				background: #fff;
+				top: 6.5px;
+				height: 31px;
+			}
+			
+			.dd-selected {
+			    background-image: url('');
+			}
+			
+			.dd-select a {
+				background-image: url('../img/player/blank.png');
+			}			
+		</style>
+</body>
+</html>

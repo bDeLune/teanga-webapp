@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Teanga Admin</title>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="unicorn/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="unicorn/css/font-awesome.css" />
+    <link rel="stylesheet" href="unicorn/css/jquery-ui.css" />
+	<link rel="stylesheet" href="unicorn/css/icheck/flat/blue.css" />
+	<link rel="stylesheet" href="unicorn/css/select2.css" />		
+	<link rel="stylesheet" href="unicorn/css/unicorn.css" />
+	<link rel="stylesheet" href="css/customNavBar.css" />
+	<link href="css/Flags2.css" rel="stylesheet" type="text/css" />
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+		<![endif]-->
+		
+	<style type="text/css">		
+        .fa { padding: 4px;	}		
+		#footer{ padding: 80px;	}	
+		#content {min-height: 650px;}	
+
+			.dropdown-menu>li>a {
+   				 white-space: inherit;
+			}
+			
+			
+.flag {
+    position: relative;
+    top: -7px;
+}
+
+			.caret {
+ 				   display: inline; 
+			}
+
+	</style>		
+    </style>		
+</head>	
+<body data-color="grey" class="flat">
+	<div id="wrapper">
+		<div id="header">
+			<h1><a href="./index.html">Unicorn Admin</a></h1>	
+			<a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>	
+		</div>
+		
+		<div id="user-nav">
+	        <ul class="btn-group">
+				
+				{% if user.UserType == 'USER_ADMIN'%}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"><b id="languageCaret" class="caret"></b></a>
+								<ul id="languageList" class="download-btn dropdown-menu" role="menu" style="min-width: 70px">
+								<!--	<li  onclick="changeLanguage('fre')"  class="lang_select" data-iso="fre" style="width: 100%">
+										<a href="#!" style="width: 100%">fre <img class="flag flag-fre pull-right"></a>
+								    </li>
+									<li  onclick="changeLanguage('eng')" class="lang_select" data-iso="eng" style="width: 100%">
+										<a href="#!" style="width: 100%">eng <img class="flag flag-eng pull-right"></a>
+									</li>
+								    <li onclick="changeLanguage('gle')" class="lang_select" data-iso="gle" style="width: 100%">
+										<a href="#!" style="width: 100%">gle <img class="flag flag-gle pull-right"></a>
+								    </li>
+									<li onclick="changeLanguage('ger')"  class="lang_select" data-iso="ger" style="width: 100%">
+										<a href="#!" style="width: 100%">ger <img class="flag flag-ger pull-right"></a>
+								    </li>	-->								
+								</ul>
+						</li>
+					{% else %}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"></a>							
+						</li
+					{% endif %}
+					
+	                <li class="btn" ><a title="" href="#"><i class="fa fa-user"></i> <span class="text">Profile</span></a></li>
+	                <li class="btn"><a title="" href="#"><i class="fa fa-cog"></i> <span class="text">Settings</span></a></li>
+	                <li class="btn"><a title="" href="signout"><i class="fa fa-share"></i> <span class="text">Logout</span></a></li>
+	            </ul>
+	        </div>
+
+			<div id="sidebar">
+				<ul>
+					<li><a href="languages"><i class="fa fa-bullhorn"></i> <span>Languages</span></a></li>
+					<li><a href="images"><i class="fa fa-th"></i> <span>Images</span></a></li>
+					<li><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					<li><a href="users"><i class="fa fa-user"></i> <span>Users</span></a></li>
+					<li class="active"><a href="/voices"><i class="fa fa-volume-up"></i> <span>Voices</span></a></li>
+				</ul>			
+			</div>		
+		<div id="content">
+				<div id="content-header" class="mini">
+					<h1>Voices</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="#" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Voices</a>
+				</div>
+				
+			<div class="col-xs-12" style="padding-bottom: 20px" id="tableView">
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="icon">
+										<i class="fa fa-th"></i>
+									</span>
+								<h5>Voice Recording Table</h5>
+							</div>
+						<div class="widget-content nopadding" id="tableContent">
+					</div>
+				</div>
+			</div>	
+		</div>	
+		<div class="row">
+			<div id="footer" class="col-xs-12">
+				2014 - 2015 &copy;TEANGA</div>
+			</div>
+		</div>
+	</div>
+<script src="unicorn/js/jquery.min.js"></script>
+<script src="unicorn/js/jquery-ui.custom.js"></script>
+<script src="unicorn/js/bootstrap.min.js"></script>
+<script src="unicorn/js/jquery.icheck.min.js"></script>
+<script src="unicorn/js/select2.min.js"></script>
+<script src="unicorn/js/jquery.dataTables.min.js"></script>		
+<script src="unicorn/js/jquery.nicescroll.min.js"></script>
+<script src="unicorn/js/unicorn.js"></script>
+<script src="unicorn/js/bootbox.min.js"></script>
+<script src="unicorn/js/unicorn.tables.js"></script>
+</body>
+<script>
+
+var langData = {}
+	{% if user.UserType == 'USER_ADMIN'%}
+		
+		{% for lang in languages %}
+		langData['{{lang.LanguageID}}'] = {'LanguageISOCode' : '{{lang.LanguageISOCode}}', 'LanguageNameEnglish' : '{{lang.LanguageNameEnglish}}', 'LanguageNameNative' :'{{lang.LanguageNameNative}}', 'LanguageSupported' : {% if lang.LanguageSupported %} true {% else%} false {% endif %}}
+
+			console.log('ADDING LANGUAGE ' + '{{lang.LanguageISOCode}}')
+
+			$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+		
+			$( "#flag-{{lang.LanguageID}}" ).click(function() {
+ 	 			changeLanguage('{{lang.LanguageID}}', '{{lang.LanguageFlagURL}}')
+			});
+	
+		{% endfor %}
+	{% else %}
+		{% for lang in languages %}
+			{% if user.UserLearningLanguageID == '{{lang.LanguageID}}' %}
+	 			console.log('FOUND USER')
+	 		$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+	 		{% endif %}
+		{% endfor %}
+	{% endif %}
+
+
+
+var currentISO 
+var audio_context;
+var gainNode
+
+function changeLanguage(newLanguage, newLanguageURL){
+
+	console.log('TRYING TO CHANGE LANGUAGE ' + newLanguage)
+
+	$('#menuFlag').attr('src', newLanguageURL)
+				
+	var UserID = '{{user.UserID}}'
+	console.log('UserID ' + UserID)
+
+	var fd = new FormData()
+	fd.append('newLanguage', newLanguage)
+	fd.append('UserID', UserID)
+								
+		$.ajax({
+			type: 'POST',
+			url: '/changeLanguage',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+			}).done(function(data) {
+			   location.reload()
+			});					
+}
+
+window.onload = function() {
+		
+	var userAdminLanguage = "{{user.UserAdminLanguageID}}";
+	var UserType = "{{user.UserType}}";
+	var UserID = "{{user.UserID}}";
+			
+			{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){		
+					$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+				}
+			{% endfor %}
+			
+	
+	try {
+		window.AudioContext = window.AudioContext || window.webkitAudioContext;
+		navigator.getUserMedia = ( navigator.getUserMedia ||
+								navigator.webkitGetUserMedia ||
+								navigator.mozGetUserMedia ||
+								navigator.msGetUserMedia);
+		window.URL = window.URL || window.webkitURL;
+
+		audio_context = new AudioContext;
+		gainNode = audio_context.createGain()
+				
+	} catch (e) {
+		alert('No web audio support in this browser!');
+	}
+	getRecordings()
+}
+		
+function startRemove(wordID, wordText){
+	bootbox.dialog({
+		message: "Are you sure you want to remove the word \""+wordText+"\"?",
+		backdrop: true,
+		buttons:{
+		cancel:{
+			label: "Cancel",
+			callback: function(){
+				//return false
+			}
+		},
+		ok:{
+			label: "Ok",
+						callback: function() {
+							$.get('/removeItem?type=Word&id='+wordID, function(data){
+								location.reload()
+							})
+						}
+				}
+		}			
+	}); 
+}
+
+function startEdit(wordID){
+	var word = wordData[wordID]
+			
+	$('#selectedImage').html('<img src="/glyph_serve?id='+word['word_glyph_id']+'" alt="">')
+	$('#imageID').val(word['word_glyph_id'])
+	$('#wordText').val(unescape(wordData[wordID]['word_text_root']))	
+}
+
+function playAudio(buffer){ 
+	var source = audio_context.createBufferSource();														
+	source.buffer = buffer;	
+	source.connect(gainNode);																		
+	gainNode.connect(audio_context.destination);
+	source.start(0);
+}
+  
+function bufferAudio(id){																			//Buffer relevant audio files			
+
+	var URL = 'serve_mash_recording?id='+id+''
+	console.log('buffering ' + URL)
+	
+	try {												
+		var request = new XMLHttpRequest();
+		request.open('GET', URL, true);																		//function should accept URL, row and column
+		request.responseType = 'arraybuffer';
+		request.onload = function() {
+		audio_context.decodeAudioData(request.response, function(buffer) {			
+				playAudio(buffer)				
+		});	}																									// by corresponding nodes, building an appropriate audio graph
+			request.send();
+	}catch(e){
+		alert("Could not buffer " + URL);																	
+	}
+}
+
+function getRecordings(){
+	$.get('https://www.teanga.me/getRecordings', function(data){
+		var dataKeys = Object.keys(data)	
+		console.log(data)
+		wordData=data
+		var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+
+		html_out = '<table class="table table-bordered table-striped table-hover data-table">'
+		html_out += 	'<thead>'
+		html_out +=			'<tr><th>Creation Date</th>'
+		html_out +=			'<th>Creation Language</th>'
+		html_out +=			'<th>Type</th>'
+		html_out +=			'<th>Word ID</th>'
+		html_out +=			'<th>Mash ID</th>'
+		html_out +=			'<th></th></tr>'
+		html_out += 	'</thead>'
+		html_out += '<tbody>'
+					
+		console.log(data)
+		
+		for(var i=0; i<dataKeys.length; i++){				
+			html_out += '<tr class="gradeX">'
+			html_out += '	<td>'+data[dataKeys[i]]['rec_creation_date']+'</td>'
+			html_out += '	<td>'+data[dataKeys[i]]['rec_language']+'</td>'
+			html_out += '	<td>'+data[dataKeys[i]]['rec_type']+'</td>'
+			html_out += '	<td>'+data[dataKeys[i]]['rec_word_id']+'</td>'
+			html_out += '	<td>'+data[dataKeys[i]]['rec_mash_id']+'</td>'
+			html_out += '	<td><a data-rec_id="'+data[dataKeys[i]]['rec_id']+'" data_mash_id="'+data[dataKeys[i]]['rec_mash_id']+'" class="tip-top play" data-original-title="play"><i class="fa fa-play"></i></a><a data-word_id="'+data[dataKeys[i]]['rec_word_id']+'" data_mash_id="'+data[dataKeys[i]]['rec_mash_id']+'" class="tip-top edit" data-original-title="Edit"><i class="fa fa-pencil"></i></a><a data-word_id="'+data[dataKeys[i]]['rec_word_id']+'" data_mash_id="'+data[dataKeys[i]]['rec_mash_id']+'" class="tip-top remove" data-original-title="Remove"><i class="fa fa-trash-o"></i></a></td>'
+			html_out += '</tr>'		
+		}
+				
+		html_out += '</tbody></table>'				
+		$('#tableContent').html(html_out)
+				
+		$('.remove').click(function(e){
+			var wordID = e.target.parentElement.getAttribute('data-word-id')
+			var wordText = e.target.parentElement.getAttribute('data-word-text')	
+			startRemove(wordID, wordText)
+		})
+				
+		$('.edit').click(function(e){
+			var wordID = e.target.parentElement.getAttribute('data-word-id')			
+			startEdit(wordID)
+		})
+		
+		$('.play').click(function(e){
+			var wordID = e.target.parentElement.getAttribute('data-rec_id')			
+			bufferAudio(wordID)
+		})
+				
+		$('.data-table').dataTable({
+			"bJQueryUI": true,
+			"bPaginate":true,
+			"sPaginationType": "full_numbers",
+			"sDom": '<""l>t<"F"fp>',					
+		});
+	})
+}				
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67934815-1', 'auto');
+  ga('send', 'pageview');
+</script>	
+</html>

@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Teanga Admin</title>
+		<!--<meta charset="UTF-8" />-->
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="unicorn/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="unicorn/css/font-awesome.css" />
+        <link rel="stylesheet" href="unicorn/css/jquery-ui.css" />
+		<link rel="stylesheet" href="unicorn/css/icheck/flat/blue.css" />
+		<link rel="stylesheet" href="unicorn/css/select2.css" />		
+		<link rel="stylesheet" href="unicorn/css/unicorn.css" />
+		<link type="text/css" href="css/animate.css" rel="stylesheet" media="screen" />
+		<link rel="stylesheet" href="css/extra.css" />
+		<link href="css/Flags2.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/customNavBar.css" />
+		<style type="text/css">
+		
+            p {
+              font-size: 1.2em;
+            }
+            p.demo{
+                text-align: center;
+            }
+            p.demo.demo4{
+                text-align: left;
+            }
+            pre{
+                margin: 10px 0;
+            }
+            .bs-docs-example {
+                position: relative;
+                margin: 15px 0;
+                padding: 39px 19px 14px;
+                background-color: white;
+                border: 1px solid #DDD;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            .bs-docs-example::after {
+                content: "Example";
+                position: absolute;
+                top: -1px;
+                left: -1px;
+                padding: 3px 7px;
+                font-size: 12px;
+                font-weight: bold;
+                background-color: whiteSmoke;
+                border: 1px solid #DDD;
+                color: #9DA0A4;
+                -webkit-border-radius: 4px 0 4px 0;
+                -moz-border-radius: 4px 0 4px 0;
+                border-radius: 4px 0 4px 0;
+            }
+           
+		   .addthis-buttons{
+                width: 80px;
+            }
+            
+			.pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus{
+                cursor: pointer !important;
+            }
+            
+
+			.dropdown-menu>li>a {
+   				 white-space: inherit;
+			}
+			
+			.flag {
+    position: relative;
+    top: -7px;
+}
+
+			.caret {
+ 				   display: inline; 
+			}
+
+	</style>
+			
+		
+       </style>
+		
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+		<![endif]-->
+			
+	</head>	
+	<body data-color="grey" class="flat">
+		<div id="wrapper">
+			<div id="header">
+				<h1><a href="https://www.teanga.me/words">Unicorn Admin</a></h1>	
+				<a id="menu-trigger" href="#"><i class="fa fa-bars"></i></a>	
+			</div>
+		
+			<div id="user-nav">
+	            <ul class="btn-group">
+																								
+					{% if user.UserType == 'USER_ADMIN'%}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"><b id="languageCaret" class="caret"></b></a>
+								<ul id="languageList" class="download-btn dropdown-menu" role="menu" style="min-width: 70px">
+									<!--<li  onclick="changeLanguage('fre')"  class="lang_select" data-iso="fre" style="width: 100%">
+										<a href="#!" style="width: 100%">fre <img class="flag flag-fre pull-right"></a>
+								    </li>
+									<li  onclick="changeLanguage('eng')" class="lang_select" data-iso="eng" style="width: 100%">
+										<a href="#!" style="width: 100%">eng <img class="flag flag-eng pull-right"></a>
+									</li>
+								    <li onclick="changeLanguage('gle')" class="lang_select" data-iso="gle" style="width: 100%">
+										<a href="#!" style="width: 100%">gle <img class="flag flag-gle pull-right"></a>
+								    </li>
+									<li onclick="changeLanguage('ger')"  class="lang_select" data-iso="ger" style="width: 100%">
+										<a href="#!" style="width: 100%">ger <img class="flag flag-ger pull-right"></a>
+								    </li>
+									-->
+								</ul>
+						</li>
+					{% else %}
+						<li id="dropdown1" class="dropdown">
+							<a id="dropdown2" class="dropdown-toggle" data-toggle="dropdown" role="button"><img id="menuFlag" class="flag"></b></a>						
+						</li>
+					{% endif %}
+				
+	                <li class="btn"><a title="" href="#"><i class="fa fa-user"></i> <span class="text">Profile</span></a></li>
+	                <li class="btn"><a title="" href="#"><i class="fa fa-cog"></i> <span class="text">Settings</span></a></li>
+	                <li class="btn"><a title="" href="signout"><i class="fa fa-share"></i> <span class="text">Logout</span></a></li>
+	            </ul>
+	        </div>
+
+			<div id="sidebar">
+				<ul>
+					{% if user.UserType == 'USER_ADMIN'%}
+					<li><a href="languages"><i class="fa fa-bullhorn"></i> <span>Languages</span></a></li>
+					<li><a href="images"><i class="fa fa-th"></i> <span>Images</span></a></li>
+					<li class="active"><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					<li><a href="users"><i class="fa fa-user"></i> <span>Users</span></a></li>
+					<li><a href="/voices"><i class="fa fa-volume-up"></i> <span>Voices</span></a></li>
+					{% else %}
+					<li class="active"><a href="words"><i class="fa fa-th-list"></i> <span>Words</span></a></li>
+					<li><a href="modules"><i class="fa fa-star"></i> <span>Modules</span></a></li>
+					{% endif %}
+				</ul>			
+			</div>
+			
+			<div id="content">
+				<div id="content-header" class="mini">
+					<h1>Words</h1>
+				</div>
+				<div id="breadcrumb">
+					<a href="https://www.teanga.me/words" title="" class="tip-bottom" data-original-title="Go to Home"><i class="fa fa-home"></i> Home</a>
+					<a href="#" class="current">Words</a>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12" style="padding-bottom: 20px" id="tableView">
+						
+							<div class="pull-right">
+								<button class="btn btn-info" type="button" id="addButton">Add</button>
+							</div>
+						
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="icon">
+										<i class="fa fa-th"></i>
+									</span>
+									<h5>Word Table</h5>
+								</div>
+								<div class="widget-content nopadding" id="tableContent">
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="col-xs-12" id="galleryView" style="display: none; padding-bottom: 20px">
+							<div class="pull-right">
+								<input placeholder="Search" id="searchBox">
+							</div>
+							<div class="widget-box">
+								<div class="widget-title">
+									<span class="icon">
+										<i class="fa fa-picture-o"></i>
+									</span>
+									<h5>Select an Image</h5>
+								</div>
+								<div class="widget-content" style="min-height: 605px">
+									<div class="gallery-masonry"></div>
+									<div class="col-xs-12">
+										<p class="pagination demo"></p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12" id="formView" style="display: none; padding-bottom: 20px">
+							<form action="#" method="post" class="form-horizontal" id="submitForm" enctype="multipart/form-data">
+								<div style="min-height: 65px" class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label"></label>								
+									 <img size="10" onclick="recorderButton()" src="img/player/nowRecording.png" id="recordButton"></img>
+									 <img size="10" src="img/player/Play64x64.png" id="playButton"></img>
+									 <img style="display:none" size="10" src="img/player/playingOriginal.png" id="playOriginal"></img>
+										<div class="col-sm-9 col-md-9 col-lg-10">								
+										<span id="selectedImage"></span>
+									</div><br>
+									<div id="saveText"></div>
+									
+									<div id="infoText"></div>									
+								</div>
+								<!--<div id="validationFormGroup" class="form-group">
+									
+								</div>-->
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">Word Text</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<input style="width:150px" type="text" class="form-control input-sm" id="wordText" name="wordText">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">Word Type</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<select id="wordType" name="wordType" >
+											<option value="word_noun">Noun</option>
+											<option value="word_verb">Verb</option>
+											<option value="word_adjective">Adjective</option>
+											<option value="word_adverb">Adverb</option>
+											<option value="word_preposition">Preposition</option>
+											<option value="word_ordinal">Ordinal</option>
+											<option value="word_interrogative">Interrogative</option>
+										</select>
+									</div>
+								</div><!--style="display: none" -->
+								<div class="form-group">
+									<label id="genderLabel" class="col-sm-3 col-md-3 col-lg-2 control-label">Word Gender</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<select id="wordGender" name="wordGender">
+											<option value="Raw">Raw</option>
+											<option value="Masculine">Masculine</option>
+											<option value="Feminine">Feminine</option>
+											<option value="Neuter">Neuter</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label">Syllable Count</label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<select id="wordSyllables" name="wordSyllables">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+										</select>
+									</div>
+								</div>
+								
+								<input type="hidden" id="imageID" name="imageID">
+								
+								<input type="hidden" id="wordID" name="wordID">
+								
+								<div class="form-group">
+									<label class="col-sm-3 col-md-3 col-lg-2 control-label"></label>
+									<div class="col-sm-9 col-md-9 col-lg-10">
+										<button type="button" class="btn btn-info btn-sm" id="saveButton">Save</button>							
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div id="footer" class="col-xs-12">
+					2014 - 2015 &copy;TEANGA</div>
+				</div>
+			</div>
+		</div>		
+<script src="unicorn/js/jquery.min.js"></script>
+<script src="unicorn/js/jquery-ui.custom.js"></script>
+<script src="unicorn/js/bootstrap.min.js"></script>
+<script src="unicorn/js/jquery.dataTables.min.js"></script>	
+<script src="unicorn/js/jquery.nicescroll.min.js"></script>
+<script src="unicorn/js/unicorn.js"></script>
+<script src="unicorn/js/jquery.masonry.min.js"></script>
+<script src="unicorn/js/select2.min.js"></script>
+<script src="unicorn/js/jquery.bootpag.min.js"></script>
+<script src="unicorn/js/bootbox.min.js"></script>		
+<script>	
+
+var langData = {}
+	{% if user.UserType == 'USER_ADMIN'%}
+		
+		{% for lang in languages %}
+		langData['{{lang.LanguageID}}'] = {'LanguageISOCode' : '{{lang.LanguageISOCode}}', 'LanguageNameEnglish' : '{{lang.LanguageNameEnglish}}', 'LanguageNameNative' :'{{lang.LanguageNameNative}}', 'LanguageSupported' : {% if lang.LanguageSupported %} true {% else%} false {% endif %}}
+
+			console.log('ADDING LANGUAGE ' + '{{lang.LanguageISOCode}}')
+
+			$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+		
+			$( "#flag-{{lang.LanguageID}}" ).click(function() {
+ 	 			changeLanguage('{{lang.LanguageID}}', '{{lang.LanguageFlagURL}}')
+			});
+	
+		{% endfor %}
+	{% else %}
+		{% for lang in languages %}
+			{% if user.UserLearningLanguageID == '{{lang.LanguageID}}' %}
+	 			console.log('FOUND USER')
+	 		$( "#languageList" ).append( 
+			"<li id='flag-{{lang.LanguageID}}' class='lang_select' data-iso='{{lang.LanguageISOCode}}' style='width: 90%'><a href='#!' style='width: 100%'>{{lang.LanguageNameEnglish}}<img src='{{lang.LanguageFlagURL}}'></a></li>"
+			);
+	 		{% endif %}
+		{% endfor %}
+	{% endif %}
+
+
+
+var wordData;
+var imageData;
+var validImageData;
+var gainNode;		
+var myContext;
+var notCompatable = false;
+var gainNode;
+var audio_context
+var nowRecording = false;
+var finishedRecording = false;
+var currentISO
+var mp3Blob = 'null';																			
+var firstRecord = true;
+var rec;
+var micInput;
+var blob;
+var bufferArray = [];
+var mediaStream;
+var navigator = window.navigator;
+var currentlyRecording, bufferExists, recordedAgain = false, currentlyRecording, interrupted = false, reachedEnd = false;
+var audio_context;
+var recorder;
+var localStream;
+var input;
+var wordType;
+var CheckMicInterval;	
+var timeOut
+var disableContinue = false	
+	
+	$('#addButton').click(function(){
+		$('#tableView').hide()
+		$('#galleryView').show()
+			
+		setViewableImages(0)
+	})
+		
+	$('#searchBox').keyup(function(){
+		validImageData = []
+		var term = $('#searchBox').val()
+			term = term.toLowerCase()	
+					
+			for(var i=0; i<imageData.length; i++){
+				var item = imageData[i]['glyph_comment'].toLowerCase();
+						
+			if(item.indexOf(term) >= 0){
+				validImageData[validImageData.length] = imageData[i]
+			}
+		}
+			
+	setViewableImages(0)
+		
+	$('.pagination').bootpag({
+		total: (validImageData.length/20)+1,
+		page: 1,
+		maxVisible: 5,
+		leaps: true,
+		firstLastUse: true,
+		first: '<span aria-hidden="true">&larr;</span>',
+		last: '<span aria-hidden="true">&rarr;</span>',
+		wrapClass: 'pagination',
+		activeClass: 'active',
+		disabledClass: 'disabled',
+		nextClass: 'next',
+		prevClass: 'prev',
+		lastClass: 'last',
+		firstClass: 'first'
+	}).on("page", function(event, num){
+		setViewableImages(num-1)
+		});
+	})
+		
+	$('#saveButton').click(function(){
+		$.get('/getUploadWordURL', function(data){			
+			saveRecording(data['data'])
+		})
+	})
+		
+
+function checkMicAvailibility() {
+		
+	navigator.getUserMedia({audio: true}, success, function(e) {
+		console.log('No live audio input: ' + e);
+		
+		$('#recordButton').unbind()
+		$('#recordButton').attr('src','/img/player/warningNoMic.png')
+		$('#recordButton').fadeIn(500)
+		$('#infoText').show();	
+		$('#retryButton').fadeIn(500)
+		document.getElementById('infoText').innerHTML = 'No mic detected. Please check. Retrying...';
+	});	
+
+	function success(stream) {
+		console.log('Microphone detected');
+		//document.getElementById('infoText').innerHTML = '';	
+		$('#infoText').hide();
+		//CHECK HERE FOR EXISTING RECORDING
+		$('#recordButton').attr('src','/img/player/nowRecording.png')
+		$('#recordButton').fadeIn(500)
+		//$('#retryButton').fadeOut(500)
+		var track = stream.getTracks()[0]; 
+        track.stop();
+		
+		try {
+			localStream.stop();
+		}catch(e){		
+		}			
+	}	
+}
+	
+function recorderButton () {
+	console.log('nowRecording ' + nowRecording)
+	if (nowRecording == false){			// && disableContinue == false
+		console.log('!!!!Recording!!!!')		
+		$('#playButton').fadeOut(500)		
+		startRecording()
+		finishedRecording = false;
+	}else if (nowRecording == true){
+		stopRecording()
+		console.log('!!!stopped recording!!!!')
+	}
+}
+		
+window.onload = function(){
+		
+	var userAdminLanguage = "{{user.UserAdminLanguageID}}";
+	var UserLearningLanguageID = "{{user.UserLearningLanguageID}}";
+	var UserType = "{{user.UserType}}";
+	var UserID = "{{user.UserID}}";
+			
+			{% for lang in languages %}
+			
+			console.log('lang langid  - - - {{lang.LanguageID}}')	
+			console.log("user useradmin id -- - {{user.UserAdminLanguageID}}")
+			
+				if ('{{lang.LanguageID}}' == "{{user.UserAdminLanguageID}}"){		
+					$('#menuFlag').attr('src', '{{lang.LanguageFlagURL}}')
+					currentISO = '{{lang.LanguageISOCode}}'
+				}
+			{% endfor %}
+			
+			
+	getWords()
+	getImages()				
+	$('#saveButton').hide()			
+		
+	setTimeout(function(){ 
+		$(window).load(function(){   $('#content').masonry(); });
+	}, 100);
+			
+	$('#submitForm').on('keyup keypress', function(e) {   ///stop enter triggering form
+	var code = e.keyCode || e.which;
+	if (code == 13) { 
+		e.preventDefault();
+		return false;
+	}
+	});			
+		window.AudioContext = window.AudioContext || window.webkitAudioContext;
+		audio_context = new AudioContext;
+		
+		console.log('Audio context set up.');
+		gainNode = audio_context.createGain()
+	
+	try {
+		navigator.getUserMedia = ( navigator.getUserMedia ||
+								navigator.webkitGetUserMedia ||
+								navigator.mozGetUserMedia ||
+								navigator.msGetUserMedia);
+		window.URL = window.URL || window.webkitURL;
+		
+		console.log('getUserMedia  ' + (navigator.getUserMedia ? 'available.' : 'not present!'));
+				
+		checkMicAvailibility()
+		
+		 CheckMicInterval = setInterval(function(){checkMicAvailibility() }, 6000);
+				
+	} catch (e) {
+		alert('Web audio recorder not supported with this browser.');
+	}
+				
+}
+
+function getWords(){
+
+	console.log('getting words!');
+
+	$.get('https://www.teanga.me/getWords?lang='+currentISO+'', function(data){
+		var dataKeys = Object.keys(data)			
+		wordData=data
+		console.log('wordData');
+		console.log(wordData);
+		
+		var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+
+		html_out = '<table class="table table-bordered table-striped table-hover data-table"><thead><tr><th>Word Text</th><th>Word Type</th><th></th></tr></thead><tbody>'
+				
+		for(var i=0; i<dataKeys.length; i++){
+			var root = unescape(data[dataKeys[i]]['word_text_root'])					
+			html_out+='<tr class="gradeX"><td>'+(root)+'</td><td>'+data[dataKeys[i]]['word_type']+'</td><td><a data-word-text="'+(root)+'" data-word-id="'+data[dataKeys[i]]['word_id']+'"title="" href="#!" class="tip-top edit" data-original-title="Edit"><i class="fa fa-pencil"></i></a><a data-word-text="'+unescape(data[dataKeys[i]]['word_text_root'])+'" data-word-id="'+data[dataKeys[i]]['word_id']+'" title="" href="#!" class="tip-top remove" data-original-title="Remove"><i class="fa fa-trash-o"></i></a></td></tr>'
+		}
+				
+		html_out += '</tbody></table>'				
+		$('#tableContent').html(html_out)
+				
+		$('.remove').click(function(e){
+			var wordID = e.target.parentElement.getAttribute('data-word-id')
+			var wordText = e.target.parentElement.getAttribute('data-word-text')	
+			startRemove(wordID, wordText)
+		})
+				
+		$('.edit').click(function(e){
+			var wordID = e.target.parentElement.getAttribute('data-word-id')			
+			startEdit(wordID)
+		})
+				
+		$('.data-table').dataTable({
+			"iDisplayLength": 50,
+			"bJQueryUI": true,
+			"sPaginationType": "full_numbers",
+			"sDom": '<""l>t<"F"fp>',				
+			"aoColumns": [ {"bSearchable": true}, {"bSearchable": false}, {"bSearchable": false}]		
+		});
+	})
+}
+		
+function getImages(){
+	$.get('/getImages', function(data){
+		imageData = data
+		validImageData = data
+				
+	$('.pagination').bootpag({
+		total: (validImageData.length/20)+1,
+		page: 1,
+		maxVisible: 5,
+		leaps: true,
+		firstLastUse: true,
+		first: '<span aria-hidden="true">&larr;</span>',
+		last: '<span aria-hidden="true">&rarr;</span>',
+		wrapClass: 'pagination',
+		activeClass: 'active',
+		disabledClass: 'disabled',
+		nextClass: 'next',
+		prevClass: 'prev',
+		lastClass: 'last',
+		firstClass: 'first'
+	}).on("page", function(event, num){
+		setViewableImages(num-1)
+		});
+	})
+}
+		
+function setViewableImages(page){
+	var startingIndex = page*20
+	var finalIndex = (page*20)+20
+			
+	html_out=''
+			
+	for(startingIndex; startingIndex<finalIndex; startingIndex++){
+		try {
+			if(validImageData[startingIndex] != undefined){
+				html_out+='<div class="item"><a href="#" class="thumbnail" data-image-id="'+validImageData[startingIndex]['glyph_id']+'"><img src="/glyph_serve?id='+validImageData[startingIndex]['glyph_id']+'" alt=""></a></div>'
+				}
+			}catch(e){
+				console.log(e);
+			}
+		}
+			
+	if( $('.item').length >0 ){
+		$('.gallery-masonry').masonry('remove', $('.item'))
+	}
+			
+	$('.gallery-masonry').html(html_out)
+			
+	$('.thumbnail').click(function(e){
+		var imageID
+				
+		if(e.target.tagName == 'A'){imageID = e.target.getAttribute('data-image-id')}
+		if(e.target.tagName == 'IMG'){imageID = e.target.parentElement.getAttribute('data-image-id')}
+				
+		$('#selectedImage').html('<img src="/glyph_serve?id='+imageID+'" alt="">')
+		$('#imageID').val(imageID)
+		$('#wordID').val('')
+			
+		$('#galleryView').hide()
+		$('#formView').show()
+	})
+			
+	$('.gallery-masonry').masonry({itemSelector: '.item', isAnimated: true, isFitWidth: true, resize: true})
+}
+		
+function startRemove(wordID, wordText){
+	bootbox.dialog({
+		message: "Are you sure you want to remove the word \""+wordText+"\"?",
+		backdrop: true,
+		buttons:{
+		cancel:{
+			label: "Cancel",
+			callback: function(){
+				//return false
+			}
+		},
+		ok:{
+			label: "Ok",
+						callback: function() {
+							$.get('/removeItem?type=Word&id='+wordID, function(data){
+								location.reload()
+							})
+						}
+					}
+				}			
+			}); 
+		}
+		
+function startEdit(wordID){
+	var word = wordData[wordID]
+			
+	$('#selectedImage').html('<img src="/glyph_serve?id='+word['word_glyph_id']+'" alt="">')
+	$('#imageID').val(word['word_glyph_id'])
+	$('#wordText').val(unescape(wordData[wordID]['word_text_root']))
+			
+	var wordType = word['word_type']
+	if(wordType == 'word_noun'){wordType = 'Noun'}
+	if(wordType == 'word_ordinal'){wordType = 'Ordinal'}
+	if(wordType == 'word_verb'){wordType = 'Verb'}
+	if(wordType == 'word_preposition'){wordType = 'Preposition'}
+	if(wordType == 'word_adjective'){wordType = 'Adjective'}
+	if(wordType == 'word_interrogative'){wordType = 'Interrogative'}
+						
+	$('#wordType').val(word['word_type'])
+	$('#wordSyllables').val(word['word_syllables'])
+						
+	if ($('#wordGender').val(word['word_gender']) != 'null'){
+		$('#wordGender').val(word['word_gender'])}else{
+		('#wordGender').hide();
+	}
+			
+	$('#wordID').val(word['word_id'])		
+	$('#tableView').hide()
+	$('#formView').show()
+			
+	var wordID = (word['word_id'])
+	console.log('word id is ' + word['word_id'])
+	var currentRecording = String('serve_recording?id='+wordID+'')
+	console.log(currentRecording)
+			
+	if (currentRecording != 'null'){
+		console.log('Editing word.')
+		mp3Blob == 'Existing Word'
+		$('#playButton').fadeIn(500);
+		$('#saveButton').fadeIn(500);
+		bufferAudio(currentRecording, 10)			
+	}else{
+		console.log('This is a new word.')
+		$('#saveButton').fadeOut(500);	
+		$('#saveButton').fadeIn(500);	
+	}
+}
+</script>
+<script type="text/javascript" src="js/recordMP3/recordmp3.js"></script>	 	
+<script>
+var currentlySaving;												///RECORDING INPUT///	
+
+function startRecording() {
+
+	disableContinue = false;
+
+	if (nowRecording == false){		// && disableContinue == false
+	
+	//disableContinue = true;
+
+	nowRecording = true
+	
+	clearInterval(CheckMicInterval);
+	
+	document.getElementById('recordButton').style.pointerEvents = 'none';
+
+	setTimeout(function(){ 	
+			document.getElementById('recordButton').style.pointerEvents = 'auto';
+		}, 500);	
+	
+	currentlySaving = false;
+
+	$('#infoText').hide()
+	
+	$('#saveButton').fadeOut(500)
+
+	navigator.getUserMedia({audio: true}, startUserMedia, function(e) {
+	  console.log('No live audio input: ' + e);
+     });
+
+	function startUserMedia(stream) {
+	
+		//$('#recordButton').attr('src', 'img/player/currentlyRecording.png')
+
+	    input = audio_context.createMediaStreamSource(stream);
+		localStream = stream;
+
+		recorder = new Recorder(input, {
+                  numChannels: 1
+                });
+				
+	    recorder && recorder.record();	
+		console.log('Recording...');
+		
+		$('#recordButton').attr('src', 'img/player/currentlyRecording.png')
+					
+		 timeOut = setTimeout(function(){ 	
+			try{					
+				if (nowRecording == true)//currentlySaving == false && 
+				{
+					stopRecording()
+					$('#recordButton').attr('src', 'img/player/nowRecording.png')
+					document.getElementById('infoText').innerHTML = 'Record has been stopped automatically';
+					nowRecording = false;
+				}else{console.log('tried to stop automatically but failed.')}
+				
+				}catch(e){
+					console.log(e)
+				}
+			}, 5000);
+		}
+	
+	}
+ }
+
+function stopRecording() {
+  
+	$('#recordButton').attr('src', 'img/player/nowRecording.png')
+  
+	document.getElementById('recordButton').style.pointerEvents = 'none';
+
+	currentlySaving = true
+    recorder && recorder.stop();
+	
+	try {
+		localStream.stop();
+	}catch(e){
+		console.log('cant stop media stream as function is deprecated.')
+	}
+
+	try {
+		var track = localStream.getTracks()[0]; 
+      	track.stop();
+	}catch(e){
+		console.log('cant stop media stream as function is deprecated.')
+	}
+
+    console.log('Stopped recording.');	
+	$('#recordButton').attr('src', 'img/player/nowRecording.png')
+	
+	try{
+		createDownloadLink();
+		recorder.clear();
+	}catch(e){
+		console.log(e)
+	}	
+	
+	clearTimeout(timeOut);
+	
+ }
+
+function createDownloadLink() {
+		recorder && recorder.exportWAV(function(blob) {
+    });	
+  }
+  
+function playAudio(url){
+  
+ // document.getElementById('infoText').innerHTML = '';
+  document.getElementById('recordButton').style.pointerEvents = 'auto';
+	console.log('playing audio url')
+	console.log(url)
+	
+	gainNode.gain.value = 1;	
+	var source = audio_context.createBufferSource();														
+	source.buffer = url;	
+	source.connect(gainNode);																		
+	gainNode.connect(audio_context.destination);
+	source.start(0);
+	
+	var waitTime = (1 + source.buffer.duration)
+	document.getElementById('recordButton').style.pointerEvents = 'auto'; 
+	
+	$('#recordButton').attr('src','/img/player/nowRecording.png')
+  }
+  
+function bufferAudio(URL, glyphID){																			//Buffer relevant audio files				
+	
+	console.log('BUFFERING ' + URL)
+	
+	console.log(URL)
+	
+	try {												
+		var request = new XMLHttpRequest();
+		request.open('GET', URL, true);																		//function should accept URL, row and column
+		request.responseType = 'arraybuffer';
+		request.onload = function() {
+		//audio_context.decodeAudioData(request.response, function(buffer) {
+		
+		audio_context.decodeAudioData(request.response).then(function(buffer) {
+		//use the decoded data here
+	
+			disableContinue = false;
+			nowRecording = false;
+					
+			if (glyphID == 0 || glyphID == 'null'){
+				playAudio(buffer)
+				$("#playButton").unbind();
+				$('#playButton').fadeIn(500)
+				$('#saveButton').fadeIn(500)
+				finishedRecording = true	
+				console.log('BUFFERING AND PLAYING')
+				$("#playButton").click(function(){ playAudio(buffer); });
+				CheckMicInterval = setInterval(function(){checkMicAvailibility() }, 6000);
+			}else{		
+				console.log('buffered audio asset')
+				
+				$("#playButton").unbind();
+				$("#playButton").click(function(){ playAudio(buffer); });			
+				}				
+		}, function(err) {
+			console.log(err); // Error: "It broke"
+			});
+		}		
+									// by corresponding nodes, building an appropriate audio graph
+			console.log('nearly buffered - just before request.send')						
+			
+		request.send();	
+			
+	}catch(e){
+		alert("Could not buffer " + URL);																	
+	}
+}
+
+function saveRecording(url){
+	
+		console.log('saving...')	
+		currentlySaving = false;	
+		
+		var value= $.trim($("#wordText").val());					
+
+		if (value.length == 0){
+			console.log('Word text.')
+			document.getElementById('infoText').innerHTML = 'Please enter word text.'
+		}else{
+			document.getElementById('infoText').innerHTML = ''
+			var fd = new FormData()
+			
+			if (mp3Blob instanceof Blob == true){
+				fd.append('file', mp3Blob)
+			}else{
+				console.log('cant buffer as not of type blob')
+			}
+		
+			console.log('saving as ' + currentISO)		
+
+			wordType = $('#wordType').val();			
+			fd.append('wordText', encodeURIComponent($('#wordText').val()))//
+			fd.append('wordType', wordType)
+			fd.append('wordLanguage', currentISO)
+			fd.append('wordSyllables', $('#wordSyllables').val())
+			
+			if ($('#wordGender').val() != 'null'){
+				fd.append('wordGender', $('#wordGender').val())}else{console.log('Gender not included in form')}
+				fd.append('imageID', ($('#imageID').val()))
+				fd.append('wordID', $('#wordID').val())				
+
+				$.ajax({
+					type: 'POST',
+					url: url,
+					data: fd,
+					cache: false,
+					processData: false,
+					contentType: false
+				}).done(function(data) {
+					window.location = '/words'
+				});
+				return false;			
+		}
+	return false;
+}
+
+document.getElementById("wordType").onchange = function(){
+    if (this.options[this.selectedIndex].value == 'word_noun') {
+       $('#genderLabel').fadeIn(500)
+	   $('#wordGender').fadeIn(500)
+		wordType = $('#wordType').val()
+		console.log($('#wordType').val())
+	   console.log('Displaying gender choice')  //id="genderLabel"
+    }else{
+	   console.log('No Gender attached')
+	   $('#genderLabel').fadeOut(500)
+	   $('#wordGender').fadeOut(500)
+	}
+}	
+
+function changeLanguage(newLanguage, newLanguageURL){
+
+	console.log('TRYING TO CHANGE LANGUAGE ' + newLanguage)
+
+	currentISO =newLanguage
+
+	$('#menuFlag').attr('src', newLanguageURL)
+				
+	var UserID = '{{user.UserID}}'
+	console.log('UserID ' + UserID)
+
+	var fd = new FormData()
+	fd.append('newLanguage', newLanguage)
+	fd.append('UserID', UserID)
+								
+		$.ajax({
+			type: 'POST',
+			url: '/changeLanguage',
+			data: fd,
+			cache: false,
+			processData: false,
+			contentType: false
+			}).done(function(data) {
+			   location.reload()
+			});					
+}
+</script>			
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67934815-1', 'auto');
+  ga('send', 'pageview');
+
+</script>		
+</body>
+</html>

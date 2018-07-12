@@ -1,0 +1,16 @@
+<form action="/signup" method="post">
+<input name="name" placeholder="name"></input></br>
+<input name="email" placeholder="email"></input></br>
+<input name="pass" placeholder="pass"></input></br>
+<select name="nativeLanguage">
+{% for item in languages %}
+<option value="{{item.LanguageID}}">{{item.LanguageNameEnglish}}</option>
+{% endfor %}
+</select></br>
+<select name="learningLanguage">
+{% for item in languages %}
+<option value="{{item.LanguageID}}">{{item.LanguageNameEnglish}}</option>
+{% endfor %}
+</select></br>
+<button type="submit">Submit</button>
+</form>

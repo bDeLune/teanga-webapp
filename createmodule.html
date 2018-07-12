@@ -1,0 +1,36 @@
+<form action="/createmodule" method="post">
+<input name="title" placeholder="Title"></input></br>
+<input name="subtitle" placeholder="Subtitle"></input></br>
+<input name="artworkURL" placeholder="ArtworkURL"></input></br>
+<select name="createdLanguage">
+{% for item in languages %}
+<option value="{{item.LanguageID}}">{{item.LanguageNameEnglish}}</option>
+{% endfor %}
+</select></br>
+
+<h2>Steps</h2></br>
+<button type="button"id="addStep">Add Step</button>
+<div id="stepContainer">
+<input name="stepTitle" placeholder="Step Title"></input></br>
+<input name="stepSubtitle" placeholder="Step Subtitle"></input></br>
+
+<h3>Mash</h3></br>
+<input name="mashText" placeholder="Mash Text"></input></br>
+
+
+</div>
+<button type="submit">Submit</button>
+</form>
+
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+
+<script>
+
+$('#addStep').click(function(e){
+	html_out = $('#stepContainer').html()
+	
+	html_out += ''
+	
+	$('#stepContainer').html(html_out)
+})
+</script>

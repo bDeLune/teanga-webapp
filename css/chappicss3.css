@@ -1,0 +1,143 @@
+
+
+.centerPlease{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+}​
+
+
+/*   CIRCLES     */
+div {width: 10px; height: 10px; border-radius: 50%; float: left; margin: 5% 11%}
+
+/*  RED GLOW     */
+.one { 
+  -webkit-animation: redglow 800ms ease-out infinite alternate;}
+@-webkit-keyframes redglow {
+    0% {	
+		
+		box-shadow: 0 0 -25px rgba(255,0,0,.2), inset 0 0 10px rgba(255,0,0,.1), 0 2px 0 #000;
+    }	
+    100% {
+		
+		box-shadow: 0 0 225px rgba(255,0,0,.6), inset 0 0 140px rgba(255,0,0,.4), 0 2px 0 #000;
+    }
+}
+
+#circle {
+
+position: absolute;
+top: 20px;
+right:65px;
+}
+
+.word {
+
+position: absolute;
+top: 120px;
+width:60px;
+height: 60px;
+
+}
+
+.imgs {
+	/* 
+	position: absolute;
+	top: 150px;
+	left:  120px;
+	display: none;  */
+	position: absolute;
+	border: none;
+	width:90px;
+	height: 90px;
+	top: -60px;
+	left: 110px;
+}
+
+
+.mainImage {
+	position : absolute;
+	top: 45px;
+	right: 5px;
+}
+/* 
+.nounHex {
+	position: relative;
+	left:60px;	
+	right:100px;
+	top:-90px;	
+	width:180px;	
+	z-index: -1;
+	  -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222); 
+} */
+
+.typeClass {
+	position: relative;
+	left:60px;	
+	right:100px;
+	top:-90px;	
+	width:180px;	
+	z-index: -1;
+	/*  -webkit-filter: drop-shadow(5px 5px 5px #222);*/
+    
+}
+
+.rawTypeFilter{
+	
+	-webkit-filter: drop-shadow(8px 8px 5px rgba(0,0,355,0.80));
+	-webkit-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+}
+
+.maleTypeFilter {
+
+	filter:         drop-shadow(5px 5px 5px #222);
+	-webkit-filter: drop-shadow(8px 8px 5px rgba(111,225,385,0.80));
+	-webkit-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+	border-style: solid;
+    border-color:#0000FF;
+	
+	
+	
+}.maleTypeFilter:hover {
+	-webkit-filter: drop-shadow(0px 3px 8px rgba(121, 225, 385, 0.8));
+}
+
+
+
+.neautralTypeFilter {
+
+	-webkit-filter: drop-shadow(8px 8px 5px rgba(171,185,185,0.80));
+	-webkit-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+
+		
+}.neautralTypeFilter:hover {
+	-webkit-filter: drop-shadow(0px3px 8px rgba(171, 185, 185, 0.8));
+}
+
+
+.femaleTypeFilter {
+
+	-webkit-filter: drop-shadow(2px 2px 4px rgba(204,204,204,0.80));
+	-webkit-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+	 -webkit-filter: drop-shadow(3px 3px 3px #222);
+}.femaleTypeFilter:hover {
+	-webkit-filter: drop-shadow(0px 3px 4px rgba(214, 214, 214, 0.8));
+}
+
+
+.newHeader {
+	color: black;	
+}
